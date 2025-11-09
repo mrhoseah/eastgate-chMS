@@ -69,105 +69,18 @@ export default function CalendarPage() {
         id: event.id,
         title: event.title,
         start: event.startDate,
-        end: event.endDate || event.startDate,
-        allDay: false,
-        extendedProps: {
-          type: event.type,
-          location: event.location,
-          description: event.description,
-          status: event.status,
-        },
-      }));
+        "use client";
 
-      setEvents(calendarEvents);
-    } catch (error) {
-      console.error("Error fetching events:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+        import React from "react";
 
-  const checkGoogleConnection = async () => {
-    try {
-      const res = await fetch("/api/calendar/google/status");
-      if (res.ok) {
-        const data = await res.json();
-        setGoogleConnected(data.connected || false);
-      }
-    } catch (error) {
-      console.error("Error checking Google connection:", error);
-    }
-  };
-
-  const handleEventClick = async (event: CalendarEvent) => {
-    try {
-      const res = await fetch(`/api/events/${event.id}`);
-      if (res.ok) {
-        const eventDetail: EventDetail = await res.json();
-        setSelectedEvent(eventDetail);
-        setEventDialogOpen(true);
-      }
-    } catch (error) {
-      console.error("Error fetching event details:", error);
-    }
-  };
-
-  const handleDateSelect = (start: Date, end: Date) => {
-    // Could open create event dialog with pre-filled dates
-    console.log("Date selected:", start, end);
-  };
-
-  const handleEventCreate = async (event: CalendarEvent) => {
-    try {
-      const res = await fetch("/api/events", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: event.title,
-          startDate: event.start,
-          endDate: event.end || event.start,
-          type: event.extendedProps?.type || "OTHER",
-          status: "DRAFT",
-        }),
-      });
-
-      if (res.ok) {
-        await fetchEvents();
-      } else {
-        throw new Error("Failed to create event");
-      }
-    } catch (error) {
-      console.error("Error creating event:", error);
-      alert("Failed to create event");
-    }
-  };
-
-  const handleEventUpdate = async (event: CalendarEvent) => {
-    try {
-      const res = await fetch(`/api/events/${event.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          startDate: event.start,
-          endDate: event.end || event.start,
-        }),
-      });
-
-      if (res.ok) {
-        await fetchEvents();
-      } else {
-        throw new Error("Failed to update event");
-      }
-    } catch (error) {
-      console.error("Error updating event:", error);
-      alert("Failed to update event");
-    }
-  };
-
-  const handleGoogleSync = async () => {
-    try {
-      const res = await fetch("/api/calendar/google/auth");
-      const data = await res.json();
+        export default function CalendarPage(): JSX.Element {
+          return (
+            <div className="p-6 sm:p-8 lg:p-10 xl:p-12">
+              <h1 className="text-3xl font-bold">Calendar</h1>
+              <p className="mt-2 text-sm text-gray-600">Temporary minimal page — the full calendar UI will be re-applied once duplicates are removed.</p>
+            </div>
+          );
+        }
       if (data.authUrl) {
         window.location.href = data.authUrl;
       }
