@@ -395,6 +395,7 @@ export const ModelName = {
   SocialLogin: 'SocialLogin',
   UserSession: 'UserSession',
   Invitation: 'Invitation',
+  RolePermission: 'RolePermission',
   AuthAccount: 'AuthAccount',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
@@ -415,6 +416,8 @@ export const ModelName = {
   AnnouncementRead: 'AnnouncementRead',
   Notification: 'Notification',
   MessageTemplate: 'MessageTemplate',
+  SystemAnnouncement: 'SystemAnnouncement',
+  SystemAnnouncementRead: 'SystemAnnouncementRead',
   ServicePlan: 'ServicePlan',
   ServicePlanItem: 'ServicePlanItem',
   ServiceAssignment: 'ServiceAssignment',
@@ -507,6 +510,8 @@ export const ModelName = {
   MemberConnection: 'MemberConnection',
   Sponsorship: 'Sponsorship',
   SponsorshipApplication: 'SponsorshipApplication',
+  AuditLog: 'AuditLog',
+  SystemSetting: 'SystemSetting',
   CasbinRule: 'CasbinRule'
 } as const
 
@@ -523,7 +528,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "fundCategory" | "user" | "socialLogin" | "userSession" | "invitation" | "authAccount" | "session" | "verificationToken" | "activityLog" | "campus" | "smallGroup" | "groupMember" | "groupMeeting" | "groupMeetingRotation" | "groupMeetingAttendance" | "groupDiscussion" | "groupDiscussionReply" | "discipleshipClass" | "discipleshipEnrollment" | "mentorship" | "mentorshipMeeting" | "announcement" | "announcementRead" | "notification" | "messageTemplate" | "servicePlan" | "servicePlanItem" | "serviceAssignment" | "media" | "livestream" | "livestreamChat" | "livestreamAnalytics" | "masterEvent" | "attendanceSession" | "attendanceRecord" | "attendance" | "biometricDevice" | "serviceSession" | "sessionAttendee" | "decision" | "meeting" | "donation" | "givingQRCode" | "recurringDonation" | "expense" | "budget" | "account" | "transaction" | "event" | "eventRegistration" | "eventCheckIn" | "calendarEvent" | "facility" | "facilityBooking" | "volunteerRole" | "volunteerAssignment" | "volunteerShift" | "childrenClass" | "childrenMinistryMember" | "childrenAttendance" | "childrenLesson" | "youthGroup" | "youthGroupMember" | "youthEvent" | "outreach" | "outreachParticipant" | "outreachTestimony" | "communityProject" | "projectDonation" | "projectUpdate" | "document" | "presentation" | "presentationSlide" | "asset" | "assetMaintenance" | "department" | "inventoryItem" | "inventoryTransaction" | "leadershipAssignment" | "staff" | "payroll" | "payslip" | "check" | "guestVisit" | "guestFollowUp" | "leave" | "performanceAppraisal" | "church" | "subscription" | "churchSetting" | "communicationTemplate" | "customField" | "residence" | "prayerRequest" | "prayer" | "prayerRequestUpdate" | "conversation" | "conversationParticipant" | "message" | "messageRead" | "sMSLog" | "survey" | "surveyQuestion" | "surveyResponse" | "surveyResponseAnswer" | "memberEngagementScore" | "workflow" | "workflowAction" | "workflowExecution" | "workflowActionExecution" | "form" | "formField" | "formSubmission" | "formSubmissionAnswer" | "memberConnection" | "sponsorship" | "sponsorshipApplication" | "casbinRule"
+    modelProps: "fundCategory" | "user" | "socialLogin" | "userSession" | "invitation" | "rolePermission" | "authAccount" | "session" | "verificationToken" | "activityLog" | "campus" | "smallGroup" | "groupMember" | "groupMeeting" | "groupMeetingRotation" | "groupMeetingAttendance" | "groupDiscussion" | "groupDiscussionReply" | "discipleshipClass" | "discipleshipEnrollment" | "mentorship" | "mentorshipMeeting" | "announcement" | "announcementRead" | "notification" | "messageTemplate" | "systemAnnouncement" | "systemAnnouncementRead" | "servicePlan" | "servicePlanItem" | "serviceAssignment" | "media" | "livestream" | "livestreamChat" | "livestreamAnalytics" | "masterEvent" | "attendanceSession" | "attendanceRecord" | "attendance" | "biometricDevice" | "serviceSession" | "sessionAttendee" | "decision" | "meeting" | "donation" | "givingQRCode" | "recurringDonation" | "expense" | "budget" | "account" | "transaction" | "event" | "eventRegistration" | "eventCheckIn" | "calendarEvent" | "facility" | "facilityBooking" | "volunteerRole" | "volunteerAssignment" | "volunteerShift" | "childrenClass" | "childrenMinistryMember" | "childrenAttendance" | "childrenLesson" | "youthGroup" | "youthGroupMember" | "youthEvent" | "outreach" | "outreachParticipant" | "outreachTestimony" | "communityProject" | "projectDonation" | "projectUpdate" | "document" | "presentation" | "presentationSlide" | "asset" | "assetMaintenance" | "department" | "inventoryItem" | "inventoryTransaction" | "leadershipAssignment" | "staff" | "payroll" | "payslip" | "check" | "guestVisit" | "guestFollowUp" | "leave" | "performanceAppraisal" | "church" | "subscription" | "churchSetting" | "communicationTemplate" | "customField" | "residence" | "prayerRequest" | "prayer" | "prayerRequestUpdate" | "conversation" | "conversationParticipant" | "message" | "messageRead" | "sMSLog" | "survey" | "surveyQuestion" | "surveyResponse" | "surveyResponseAnswer" | "memberEngagementScore" | "workflow" | "workflowAction" | "workflowExecution" | "workflowActionExecution" | "form" | "formField" | "formSubmission" | "formSubmissionAnswer" | "memberConnection" | "sponsorship" | "sponsorshipApplication" | "auditLog" | "systemSetting" | "casbinRule"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -894,6 +899,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.InvitationCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.InvitationCountAggregateOutputType> | number
+        }
+      }
+    }
+    RolePermission: {
+      payload: Prisma.$RolePermissionPayload<ExtArgs>
+      fields: Prisma.RolePermissionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RolePermissionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RolePermissionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>
+        }
+        findFirst: {
+          args: Prisma.RolePermissionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RolePermissionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>
+        }
+        findMany: {
+          args: Prisma.RolePermissionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>[]
+        }
+        create: {
+          args: Prisma.RolePermissionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>
+        }
+        createMany: {
+          args: Prisma.RolePermissionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RolePermissionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>[]
+        }
+        delete: {
+          args: Prisma.RolePermissionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>
+        }
+        update: {
+          args: Prisma.RolePermissionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>
+        }
+        deleteMany: {
+          args: Prisma.RolePermissionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RolePermissionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RolePermissionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>[]
+        }
+        upsert: {
+          args: Prisma.RolePermissionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RolePermissionPayload>
+        }
+        aggregate: {
+          args: Prisma.RolePermissionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRolePermission>
+        }
+        groupBy: {
+          args: Prisma.RolePermissionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RolePermissionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RolePermissionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RolePermissionCountAggregateOutputType> | number
         }
       }
     }
@@ -2374,6 +2453,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MessageTemplateCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MessageTemplateCountAggregateOutputType> | number
+        }
+      }
+    }
+    SystemAnnouncement: {
+      payload: Prisma.$SystemAnnouncementPayload<ExtArgs>
+      fields: Prisma.SystemAnnouncementFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SystemAnnouncementFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SystemAnnouncementFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>
+        }
+        findFirst: {
+          args: Prisma.SystemAnnouncementFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SystemAnnouncementFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>
+        }
+        findMany: {
+          args: Prisma.SystemAnnouncementFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>[]
+        }
+        create: {
+          args: Prisma.SystemAnnouncementCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>
+        }
+        createMany: {
+          args: Prisma.SystemAnnouncementCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SystemAnnouncementCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>[]
+        }
+        delete: {
+          args: Prisma.SystemAnnouncementDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>
+        }
+        update: {
+          args: Prisma.SystemAnnouncementUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>
+        }
+        deleteMany: {
+          args: Prisma.SystemAnnouncementDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SystemAnnouncementUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SystemAnnouncementUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>[]
+        }
+        upsert: {
+          args: Prisma.SystemAnnouncementUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementPayload>
+        }
+        aggregate: {
+          args: Prisma.SystemAnnouncementAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSystemAnnouncement>
+        }
+        groupBy: {
+          args: Prisma.SystemAnnouncementGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemAnnouncementGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SystemAnnouncementCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemAnnouncementCountAggregateOutputType> | number
+        }
+      }
+    }
+    SystemAnnouncementRead: {
+      payload: Prisma.$SystemAnnouncementReadPayload<ExtArgs>
+      fields: Prisma.SystemAnnouncementReadFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SystemAnnouncementReadFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SystemAnnouncementReadFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>
+        }
+        findFirst: {
+          args: Prisma.SystemAnnouncementReadFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SystemAnnouncementReadFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>
+        }
+        findMany: {
+          args: Prisma.SystemAnnouncementReadFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>[]
+        }
+        create: {
+          args: Prisma.SystemAnnouncementReadCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>
+        }
+        createMany: {
+          args: Prisma.SystemAnnouncementReadCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SystemAnnouncementReadCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>[]
+        }
+        delete: {
+          args: Prisma.SystemAnnouncementReadDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>
+        }
+        update: {
+          args: Prisma.SystemAnnouncementReadUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>
+        }
+        deleteMany: {
+          args: Prisma.SystemAnnouncementReadDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SystemAnnouncementReadUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SystemAnnouncementReadUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>[]
+        }
+        upsert: {
+          args: Prisma.SystemAnnouncementReadUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemAnnouncementReadPayload>
+        }
+        aggregate: {
+          args: Prisma.SystemAnnouncementReadAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSystemAnnouncementRead>
+        }
+        groupBy: {
+          args: Prisma.SystemAnnouncementReadGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemAnnouncementReadGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SystemAnnouncementReadCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemAnnouncementReadCountAggregateOutputType> | number
         }
       }
     }
@@ -9185,6 +9412,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AuditLog: {
+      payload: Prisma.$AuditLogPayload<ExtArgs>
+      fields: Prisma.AuditLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AuditLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AuditLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        findFirst: {
+          args: Prisma.AuditLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AuditLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        findMany: {
+          args: Prisma.AuditLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+        }
+        create: {
+          args: Prisma.AuditLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        createMany: {
+          args: Prisma.AuditLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AuditLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+        }
+        delete: {
+          args: Prisma.AuditLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        update: {
+          args: Prisma.AuditLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.AuditLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AuditLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AuditLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.AuditLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuditLogPayload>
+        }
+        aggregate: {
+          args: Prisma.AuditLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAuditLog>
+        }
+        groupBy: {
+          args: Prisma.AuditLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AuditLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuditLogCountAggregateOutputType> | number
+        }
+      }
+    }
+    SystemSetting: {
+      payload: Prisma.$SystemSettingPayload<ExtArgs>
+      fields: Prisma.SystemSettingFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SystemSettingFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SystemSettingFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        findFirst: {
+          args: Prisma.SystemSettingFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SystemSettingFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        findMany: {
+          args: Prisma.SystemSettingFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>[]
+        }
+        create: {
+          args: Prisma.SystemSettingCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        createMany: {
+          args: Prisma.SystemSettingCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SystemSettingCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>[]
+        }
+        delete: {
+          args: Prisma.SystemSettingDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        update: {
+          args: Prisma.SystemSettingUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        deleteMany: {
+          args: Prisma.SystemSettingDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SystemSettingUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SystemSettingUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>[]
+        }
+        upsert: {
+          args: Prisma.SystemSettingUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SystemSettingPayload>
+        }
+        aggregate: {
+          args: Prisma.SystemSettingAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSystemSetting>
+        }
+        groupBy: {
+          args: Prisma.SystemSettingGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemSettingGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SystemSettingCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SystemSettingCountAggregateOutputType> | number
+        }
+      }
+    }
     CasbinRule: {
       payload: Prisma.$CasbinRulePayload<ExtArgs>
       fields: Prisma.CasbinRuleFieldRefs
@@ -9398,9 +9773,12 @@ export const InvitationScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   role: 'role',
+  invitationType: 'invitationType',
+  churchId: 'churchId',
   campusId: 'campusId',
   invitedById: 'invitedById',
   message: 'message',
+  permissions: 'permissions',
   status: 'status',
   acceptedAt: 'acceptedAt',
   expiresAt: 'expiresAt',
@@ -9411,6 +9789,20 @@ export const InvitationScalarFieldEnum = {
 } as const
 
 export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
+
+
+export const RolePermissionScalarFieldEnum = {
+  id: 'id',
+  role: 'role',
+  resource: 'resource',
+  action: 'action',
+  scope: 'scope',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RolePermissionScalarFieldEnum = (typeof RolePermissionScalarFieldEnum)[keyof typeof RolePermissionScalarFieldEnum]
 
 
 export const AuthAccountScalarFieldEnum = {
@@ -9704,6 +10096,36 @@ export const MessageTemplateScalarFieldEnum = {
 } as const
 
 export type MessageTemplateScalarFieldEnum = (typeof MessageTemplateScalarFieldEnum)[keyof typeof MessageTemplateScalarFieldEnum]
+
+
+export const SystemAnnouncementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  authorId: 'authorId',
+  priority: 'priority',
+  targetAudience: 'targetAudience',
+  targetChurches: 'targetChurches',
+  category: 'category',
+  publishAt: 'publishAt',
+  expiresAt: 'expiresAt',
+  isPublished: 'isPublished',
+  isPinned: 'isPinned',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemAnnouncementScalarFieldEnum = (typeof SystemAnnouncementScalarFieldEnum)[keyof typeof SystemAnnouncementScalarFieldEnum]
+
+
+export const SystemAnnouncementReadScalarFieldEnum = {
+  id: 'id',
+  systemAnnouncementId: 'systemAnnouncementId',
+  userId: 'userId',
+  readAt: 'readAt'
+} as const
+
+export type SystemAnnouncementReadScalarFieldEnum = (typeof SystemAnnouncementReadScalarFieldEnum)[keyof typeof SystemAnnouncementReadScalarFieldEnum]
 
 
 export const ServicePlanScalarFieldEnum = {
@@ -11308,6 +11730,41 @@ export const SponsorshipApplicationScalarFieldEnum = {
 export type SponsorshipApplicationScalarFieldEnum = (typeof SponsorshipApplicationScalarFieldEnum)[keyof typeof SponsorshipApplicationScalarFieldEnum]
 
 
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userName: 'userName',
+  action: 'action',
+  entity: 'entity',
+  entityId: 'entityId',
+  entityName: 'entityName',
+  description: 'description',
+  metadata: 'metadata',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const SystemSettingScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  type: 'type',
+  category: 'category',
+  label: 'label',
+  description: 'description',
+  isPublic: 'isPublic',
+  isEditable: 'isEditable',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemSettingScalarFieldEnum = (typeof SystemSettingScalarFieldEnum)[keyof typeof SystemSettingScalarFieldEnum]
+
+
 export const CasbinRuleScalarFieldEnum = {
   id: 'id',
   ptype: 'ptype',
@@ -12152,6 +12609,34 @@ export type EnumSponsorshipStatusFieldRefInput<$PrismaModel> = FieldRefInputType
 export type ListEnumSponsorshipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SponsorshipStatus[]'>
     
 
+
+/**
+ * Reference to a field of type 'AuditAction'
+ */
+export type EnumAuditActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuditAction'>
+    
+
+
+/**
+ * Reference to a field of type 'AuditAction[]'
+ */
+export type ListEnumAuditActionFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuditAction[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SettingType'
+ */
+export type EnumSettingTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SettingType'>
+    
+
+
+/**
+ * Reference to a field of type 'SettingType[]'
+ */
+export type ListEnumSettingTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SettingType[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -12244,6 +12729,7 @@ export type GlobalOmitConfig = {
   socialLogin?: Prisma.SocialLoginOmit
   userSession?: Prisma.UserSessionOmit
   invitation?: Prisma.InvitationOmit
+  rolePermission?: Prisma.RolePermissionOmit
   authAccount?: Prisma.AuthAccountOmit
   session?: Prisma.SessionOmit
   verificationToken?: Prisma.VerificationTokenOmit
@@ -12264,6 +12750,8 @@ export type GlobalOmitConfig = {
   announcementRead?: Prisma.AnnouncementReadOmit
   notification?: Prisma.NotificationOmit
   messageTemplate?: Prisma.MessageTemplateOmit
+  systemAnnouncement?: Prisma.SystemAnnouncementOmit
+  systemAnnouncementRead?: Prisma.SystemAnnouncementReadOmit
   servicePlan?: Prisma.ServicePlanOmit
   servicePlanItem?: Prisma.ServicePlanItemOmit
   serviceAssignment?: Prisma.ServiceAssignmentOmit
@@ -12356,6 +12844,8 @@ export type GlobalOmitConfig = {
   memberConnection?: Prisma.MemberConnectionOmit
   sponsorship?: Prisma.SponsorshipOmit
   sponsorshipApplication?: Prisma.SponsorshipApplicationOmit
+  auditLog?: Prisma.AuditLogOmit
+  systemSetting?: Prisma.SystemSettingOmit
   casbinRule?: Prisma.CasbinRuleOmit
 }
 

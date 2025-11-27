@@ -54,6 +54,7 @@ export const ModelName = {
   SocialLogin: 'SocialLogin',
   UserSession: 'UserSession',
   Invitation: 'Invitation',
+  RolePermission: 'RolePermission',
   AuthAccount: 'AuthAccount',
   Session: 'Session',
   VerificationToken: 'VerificationToken',
@@ -74,6 +75,8 @@ export const ModelName = {
   AnnouncementRead: 'AnnouncementRead',
   Notification: 'Notification',
   MessageTemplate: 'MessageTemplate',
+  SystemAnnouncement: 'SystemAnnouncement',
+  SystemAnnouncementRead: 'SystemAnnouncementRead',
   ServicePlan: 'ServicePlan',
   ServicePlanItem: 'ServicePlanItem',
   ServiceAssignment: 'ServiceAssignment',
@@ -166,6 +169,8 @@ export const ModelName = {
   MemberConnection: 'MemberConnection',
   Sponsorship: 'Sponsorship',
   SponsorshipApplication: 'SponsorshipApplication',
+  AuditLog: 'AuditLog',
+  SystemSetting: 'SystemSetting',
   CasbinRule: 'CasbinRule'
 } as const
 
@@ -285,9 +290,12 @@ export const InvitationScalarFieldEnum = {
   firstName: 'firstName',
   lastName: 'lastName',
   role: 'role',
+  invitationType: 'invitationType',
+  churchId: 'churchId',
   campusId: 'campusId',
   invitedById: 'invitedById',
   message: 'message',
+  permissions: 'permissions',
   status: 'status',
   acceptedAt: 'acceptedAt',
   expiresAt: 'expiresAt',
@@ -298,6 +306,20 @@ export const InvitationScalarFieldEnum = {
 } as const
 
 export type InvitationScalarFieldEnum = (typeof InvitationScalarFieldEnum)[keyof typeof InvitationScalarFieldEnum]
+
+
+export const RolePermissionScalarFieldEnum = {
+  id: 'id',
+  role: 'role',
+  resource: 'resource',
+  action: 'action',
+  scope: 'scope',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type RolePermissionScalarFieldEnum = (typeof RolePermissionScalarFieldEnum)[keyof typeof RolePermissionScalarFieldEnum]
 
 
 export const AuthAccountScalarFieldEnum = {
@@ -591,6 +613,36 @@ export const MessageTemplateScalarFieldEnum = {
 } as const
 
 export type MessageTemplateScalarFieldEnum = (typeof MessageTemplateScalarFieldEnum)[keyof typeof MessageTemplateScalarFieldEnum]
+
+
+export const SystemAnnouncementScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  authorId: 'authorId',
+  priority: 'priority',
+  targetAudience: 'targetAudience',
+  targetChurches: 'targetChurches',
+  category: 'category',
+  publishAt: 'publishAt',
+  expiresAt: 'expiresAt',
+  isPublished: 'isPublished',
+  isPinned: 'isPinned',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemAnnouncementScalarFieldEnum = (typeof SystemAnnouncementScalarFieldEnum)[keyof typeof SystemAnnouncementScalarFieldEnum]
+
+
+export const SystemAnnouncementReadScalarFieldEnum = {
+  id: 'id',
+  systemAnnouncementId: 'systemAnnouncementId',
+  userId: 'userId',
+  readAt: 'readAt'
+} as const
+
+export type SystemAnnouncementReadScalarFieldEnum = (typeof SystemAnnouncementReadScalarFieldEnum)[keyof typeof SystemAnnouncementReadScalarFieldEnum]
 
 
 export const ServicePlanScalarFieldEnum = {
@@ -2193,6 +2245,41 @@ export const SponsorshipApplicationScalarFieldEnum = {
 } as const
 
 export type SponsorshipApplicationScalarFieldEnum = (typeof SponsorshipApplicationScalarFieldEnum)[keyof typeof SponsorshipApplicationScalarFieldEnum]
+
+
+export const AuditLogScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userName: 'userName',
+  action: 'action',
+  entity: 'entity',
+  entityId: 'entityId',
+  entityName: 'entityName',
+  description: 'description',
+  metadata: 'metadata',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type AuditLogScalarFieldEnum = (typeof AuditLogScalarFieldEnum)[keyof typeof AuditLogScalarFieldEnum]
+
+
+export const SystemSettingScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  type: 'type',
+  category: 'category',
+  label: 'label',
+  description: 'description',
+  isPublic: 'isPublic',
+  isEditable: 'isEditable',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SystemSettingScalarFieldEnum = (typeof SystemSettingScalarFieldEnum)[keyof typeof SystemSettingScalarFieldEnum]
 
 
 export const CasbinRuleScalarFieldEnum = {

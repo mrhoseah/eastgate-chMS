@@ -128,8 +128,8 @@ async function main() {
       data: {
         name: "East Gate Chapel",
         denomination: "Pentecostal",
-        email: "info@eastgatechapel.org",
-        phone: "+254715070203",
+        email: "fgckeastgatechapel@gmail.com",
+        phone: "+254715996253",
         address: "Nairobi, Kenya",
         city: "Nairobi",
         country: "Kenya",

@@ -150,7 +150,8 @@ This invitation will expire in 7 days. If you didn't expect this invitation, you
  * Send invitation email
  */
 export async function sendInvitationEmail(
-  invitationId: string
+  invitationId: string,
+  churchId?: string
 ): Promise<{ success: boolean; error?: string; messageId?: string }> {
   try {
     // Get invitation with related data
@@ -168,6 +169,7 @@ export async function sendInvitationEmail(
           select: {
             church: {
               select: {
+                id: true,
                 name: true,
               },
             },
@@ -178,6 +180,11 @@ export async function sendInvitationEmail(
 
     if (!invitation) {
       return { success: false, error: "Invitation not found" };
+    }
+
+    // Get church ID from invitation if not provided
+    if (!churchId) {
+      churchId = invitation.campus?.church?.id;
     }
 
     // Get church name
@@ -212,7 +219,7 @@ export async function sendInvitationEmail(
       subject,
       content: text,
       html,
-    });
+    }, churchId);
 
     if (!result.success) {
       return {

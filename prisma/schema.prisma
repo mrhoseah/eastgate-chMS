@@ -16,8 +16,15 @@ datasource db {
 // ============================================================================
 
 enum UserRole {
-  SUPERADMIN // System-level super admin (can manage all churches)
-  ADMIN // Church admin (can manage their church)
+  // System-level roles (not tied to specific churches)
+  SUPERADMIN // Full system access, manage all churches
+  SYSTEM_ADMIN // System administrator with limited permissions
+  SYSTEM_SUPPORT // Support staff with read-only system access
+  
+  // Church-level roles
+  ADMIN // Church admin (full church management)
+  EDITOR // Can edit content, members, events (no settings/finance)
+  VIEWER // Read-only access to church data
   PASTOR
   LEADER
   MEMBER
@@ -281,6 +288,8 @@ model User {
   notifications        Notification[]
   notificationsAboutMe Notification[]     @relation("NotificationRelatedUser")
   announcementsRead    AnnouncementRead[]
+  systemAnnouncementsRead SystemAnnouncementRead[]
+  systemAnnouncementAuthors SystemAnnouncement[] @relation("SystemAnnouncementAuthor")
 
   // Children/Youth
   childrenMinistryMembers ChildrenMinistryMember[]
@@ -418,13 +427,18 @@ model Invitation {
   firstName String
   lastName  String
   role      UserRole @default(GUEST)
-  campusId  String?
-  campus    Campus?  @relation(fields: [campusId], references: [id])
+  
+  // Church or System level
+  invitationType String   @default("church") // "church" or "system"
+  churchId       String? // For church invitations
+  campusId       String?
+  campus         Campus?  @relation(fields: [campusId], references: [id])
 
   // Invitation details
   invitedById String? // Admin who sent the invitation
   invitedBy   User?   @relation("UserInvitations", fields: [invitedById], references: [id])
   message     String? // Optional message from inviter
+  permissions Json?   // Specific permissions override (optional)
 
   // Status tracking
   status        InvitationStatus @default(PENDING)
@@ -444,6 +458,8 @@ model Invitation {
   @@index([status])
   @@index([invitedById])
   @@index([expiresAt])
+  @@index([invitationType])
+  @@index([churchId])
 }
 
 enum InvitationStatus {
@@ -451,6 +467,22 @@ enum InvitationStatus {
   ACCEPTED
   EXPIRED
   CANCELLED
+}
+
+// Role permissions and capabilities
+model RolePermission {
+  id          String   @id @default(cuid())
+  role        UserRole
+  resource    String // e.g., "members", "events", "finance", "settings"
+  action      String // e.g., "create", "read", "update", "delete"
+  scope       String   @default("church") // "church", "campus", "system"
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([role, resource, action, scope])
+  @@index([role])
+  @@index([resource])
 }
 
 // ============================================================================
@@ -852,6 +884,46 @@ model MessageTemplate {
   @@index([type])
   @@index([category])
   @@index([trigger])
+}
+
+// System-wide announcements (SUPERADMIN only)
+model SystemAnnouncement {
+  id             String    @id @default(cuid())
+  title          String
+  content        String
+  authorId       String
+  author         User      @relation("SystemAnnouncementAuthor", fields: [authorId], references: [id])
+  priority       String    @default("normal") // low, normal, high, urgent, critical
+  targetAudience String    @default("all") // all, superadmins, church_admins, specific_churches
+  targetChurches String? // Comma-separated church IDs if targetAudience is "specific_churches"
+  category       String    @default("general") // general, maintenance, update, security, billing
+  publishAt      DateTime?
+  expiresAt      DateTime?
+  isPublished    Boolean   @default(false)
+  isPinned       Boolean   @default(false) // Pin to top
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  reads SystemAnnouncementRead[]
+
+  @@index([authorId])
+  @@index([isPublished])
+  @@index([isPinned])
+  @@index([publishAt])
+  @@index([category])
+}
+
+model SystemAnnouncementRead {
+  id                   String            @id @default(cuid())
+  systemAnnouncementId String
+  systemAnnouncement   SystemAnnouncement @relation(fields: [systemAnnouncementId], references: [id], onDelete: Cascade)
+  userId               String
+  user                 User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  readAt               DateTime          @default(now())
+
+  @@unique([systemAnnouncementId, userId])
+  @@index([systemAnnouncementId])
+  @@index([userId])
 }
 
 // ============================================================================
@@ -3326,6 +3398,77 @@ model SponsorshipApplication {
 
   @@index([token])
   @@index([submittedAt])
+}
+
+// ============================================================================
+// AUDIT LOGGING (System Admin Actions)
+// ============================================================================
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  VIEW
+  EXPORT
+  TOGGLE_STATUS
+  INVITE
+  REVOKE
+  GRANT_PERMISSION
+  REVOKE_PERMISSION
+  SYSTEM_SETTING_CHANGE
+}
+
+model AuditLog {
+  id          String      @id @default(cuid())
+  userId      String      // SUPERADMIN who performed action
+  userName    String      // Cached name for reporting
+  action      AuditAction
+  entity      String      // e.g., "Church", "User", "SystemSetting"
+  entityId    String?     // ID of affected entity
+  entityName  String?     // Name of affected entity (cached)
+  description String      // Human-readable description
+  metadata    Json?       // Additional data (old values, new values, etc.)
+  ipAddress   String?
+  userAgent   String?
+  createdAt   DateTime    @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([entity])
+  @@index([entityId])
+  @@index([createdAt])
+}
+
+// ============================================================================
+// SYSTEM SETTINGS (Global Configurations)
+// ============================================================================
+
+enum SettingType {
+  STRING
+  NUMBER
+  BOOLEAN
+  JSON
+  ARRAY
+}
+
+model SystemSetting {
+  id          String      @id @default(cuid())
+  key         String      @unique // e.g., "maintenance_mode", "max_churches_per_month"
+  value       String      // Stored as string, parsed based on type
+  type        SettingType @default(STRING)
+  category    String      @default("general") // general, security, billing, features, limits
+  label       String      // Display name
+  description String?     // Help text
+  isPublic    Boolean     @default(false) // Can be viewed by church admins
+  isEditable  Boolean     @default(true) // Can be edited via UI
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([key])
+  @@index([category])
+  @@index([isPublic])
 }
 
 // ============================================================================

@@ -70,6 +70,11 @@ export type UserSession = Prisma.UserSessionModel
  */
 export type Invitation = Prisma.InvitationModel
 /**
+ * Model RolePermission
+ * 
+ */
+export type RolePermission = Prisma.RolePermissionModel
+/**
  * Model AuthAccount
  * 
  */
@@ -169,6 +174,16 @@ export type Notification = Prisma.NotificationModel
  * 
  */
 export type MessageTemplate = Prisma.MessageTemplateModel
+/**
+ * Model SystemAnnouncement
+ * 
+ */
+export type SystemAnnouncement = Prisma.SystemAnnouncementModel
+/**
+ * Model SystemAnnouncementRead
+ * 
+ */
+export type SystemAnnouncementRead = Prisma.SystemAnnouncementReadModel
 /**
  * Model ServicePlan
  * 
@@ -631,6 +646,16 @@ export type Sponsorship = Prisma.SponsorshipModel
  * 
  */
 export type SponsorshipApplication = Prisma.SponsorshipApplicationModel
+/**
+ * Model AuditLog
+ * 
+ */
+export type AuditLog = Prisma.AuditLogModel
+/**
+ * Model SystemSetting
+ * 
+ */
+export type SystemSetting = Prisma.SystemSettingModel
 /**
  * Model CasbinRule
  * 

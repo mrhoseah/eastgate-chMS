@@ -27,10 +27,11 @@ let tokenExpiry: number = 0;
 /**
  * Get M-Pesa settings from database
  */
-async function getMpesaSettings(): Promise<MpesaSettings | null> {
+async function getMpesaSettings(churchId?: string): Promise<MpesaSettings | null> {
   try {
+    // Get church by ID if provided, otherwise get first active church
     const church = await prisma.church.findFirst({
-      where: { isActive: true },
+      where: churchId ? { id: churchId } : { isActive: true },
       include: {
         settings: {
           where: {
@@ -81,9 +82,9 @@ async function getMpesaSettings(): Promise<MpesaSettings | null> {
 /**
  * Get M-Pesa OAuth access token
  */
-async function getAccessToken(): Promise<string | null> {
+async function getAccessToken(churchId?: string): Promise<string | null> {
   try {
-    const settings = await getMpesaSettings();
+    const settings = await getMpesaSettings(churchId);
     if (!settings) return null;
 
     // Check if cached token is still valid
@@ -131,7 +132,8 @@ async function getAccessToken(): Promise<string | null> {
  * Initiate M-Pesa STK Push
  */
 export async function initiateSTKPush(
-  options: STKPushOptions
+  options: STKPushOptions,
+  churchId?: string
 ): Promise<{
   success: boolean;
   checkoutRequestID?: string;
@@ -140,7 +142,7 @@ export async function initiateSTKPush(
   error?: string;
 }> {
   try {
-    const settings = await getMpesaSettings();
+    const settings = await getMpesaSettings(churchId);
     if (!settings) {
       return {
         success: false,
@@ -148,7 +150,7 @@ export async function initiateSTKPush(
       };
     }
 
-    const accessToken = await getAccessToken();
+    const accessToken = await getAccessToken(churchId);
     if (!accessToken) {
       return {
         success: false,
@@ -243,7 +245,8 @@ export async function initiateSTKPush(
  * Query STK Push status
  */
 export async function querySTKStatus(
-  checkoutRequestID: string
+  checkoutRequestID: string,
+  churchId?: string
 ): Promise<{
   success: boolean;
   resultCode?: string;
@@ -251,7 +254,7 @@ export async function querySTKStatus(
   error?: string;
 }> {
   try {
-    const settings = await getMpesaSettings();
+    const settings = await getMpesaSettings(churchId);
     if (!settings) {
       return {
         success: false,
@@ -259,7 +262,7 @@ export async function querySTKStatus(
       };
     }
 
-    const accessToken = await getAccessToken();
+    const accessToken = await getAccessToken(churchId);
     if (!accessToken) {
       return {
         success: false,

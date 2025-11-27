@@ -100,13 +100,30 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Initiate M-Pesa STK Push
+    // Get church context
+    let churchId: string | undefined;
+    if (user?.campusId) {
+      const campus = await prisma.campus.findUnique({
+        where: { id: user.campusId },
+        select: { churchId: true },
+      });
+      churchId = campus?.churchId;
+    }
+    if (!churchId) {
+      const activeChurch = await prisma.church.findFirst({
+        where: { isActive: true },
+        select: { id: true },
+      });
+      churchId = activeChurch?.id;
+    }
+
+    // Initiate M-Pesa STK Push with church context
     const stkResult = await initiateSTKPush({
       phoneNumber: formattedPhone,
       amount: parseFloat(amount),
       accountReference: reference,
       transactionDesc: `Donation - ${category || "OFFERING"}`,
-    });
+    }, churchId);
 
     if (!stkResult.success) {
       // Update donation status to failed

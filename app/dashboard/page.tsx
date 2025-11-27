@@ -22,7 +22,12 @@ export default async function DashboardPage() {
     redirect("/auth/signin");
   }
 
-  // Use role-based dashboard
+  // Redirect SUPERADMIN to system admin dashboard
+  if (session.user.role === "SUPERADMIN") {
+    redirect("/sys-591f98aa001826fc");
+  }
+
+  // Use role-based dashboard for church users
   return (
     <div className="p-6 sm:p-8 lg:p-10 xl:p-12 space-y-8">
       {/* Page Header */}

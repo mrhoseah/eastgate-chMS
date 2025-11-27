@@ -87,6 +87,10 @@ export async function POST(request: NextRequest) {
     // Collect all recipient IDs
     const allRecipientIds = new Set<string>(recipientIds || []);
     
+    console.log("[SMS Bulk] Initial recipient IDs:", Array.from(allRecipientIds));
+    console.log("[SMS Bulk] Group IDs:", groupIds);
+    console.log("[SMS Bulk] Group target type:", groupTargetType);
+    
     // Add group members if groups are selected
     if (groupIds && groupIds.length > 0) {
       // Fetch all subgroups recursively if needed
@@ -132,6 +136,11 @@ export async function POST(request: NextRequest) {
         },
       });
 
+      console.log("[SMS Bulk] Found", groups.length, "groups");
+      groups.forEach(g => {
+        console.log(`[SMS Bulk] Group "${g.name}": ${g.members.length} members`);
+      });
+
       // Filter members based on groupTargetType
       groups.forEach((group) => {
         group.members.forEach((member) => {
@@ -153,6 +162,8 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    console.log("[SMS Bulk] Total recipient IDs after processing groups:", Array.from(allRecipientIds).length);
+
     // Get all recipients with their data
     const recipients = await prisma.user.findMany({
       where: {
@@ -166,6 +177,11 @@ export async function POST(request: NextRequest) {
         middleName: true,
         phone: true,
       },
+    });
+
+    console.log("[SMS Bulk] Found", recipients.length, "recipients with phone numbers");
+    recipients.forEach(r => {
+      console.log(`[SMS Bulk] Recipient: ${r.firstName} ${r.lastName}, Phone: ${r.phone}`);
     });
 
     // Prepare personalized messages
@@ -190,6 +206,8 @@ export async function POST(request: NextRequest) {
         });
       });
     }
+
+    console.log("[SMS Bulk] Total messages to send:", messagesToSend.length);
 
     // Send SMS via Afrika's Talking API using current church's integration settings
     const result = await sendBulkSMS(messagesToSend, churchId);

@@ -19,10 +19,11 @@ interface SendEmailOptions {
 /**
  * Get email settings from database
  */
-async function getEmailSettings(): Promise<EmailSettings | null> {
+async function getEmailSettings(churchId?: string): Promise<EmailSettings | null> {
   try {
+    // Get church by ID if provided, otherwise get first active church
     const church = await prisma.church.findFirst({
-      where: { isActive: true },
+      where: churchId ? { id: churchId } : { isActive: true },
       include: {
         settings: {
           where: {
@@ -73,8 +74,8 @@ async function getEmailSettings(): Promise<EmailSettings | null> {
 /**
  * Create nodemailer transporter
  */
-async function createTransporter() {
-  const settings = await getEmailSettings();
+async function createTransporter(churchId?: string) {
+  const settings = await getEmailSettings(churchId);
   if (!settings) {
     throw new Error("Email settings not configured");
   }
@@ -101,14 +102,15 @@ async function createTransporter() {
  * Send email via SMTP
  */
 export async function sendEmail(
-  options: SendEmailOptions
+  options: SendEmailOptions,
+  churchId?: string
 ): Promise<{
   success: boolean;
   messageId?: string;
   error?: string;
 }> {
   try {
-    const settings = await getEmailSettings();
+    const settings = await getEmailSettings(churchId);
     if (!settings) {
       return {
         success: false,
@@ -116,7 +118,7 @@ export async function sendEmail(
       };
     }
 
-    const transporter = await createTransporter();
+    const transporter = await createTransporter(churchId);
 
     // Convert single recipient to array
     const recipients = Array.isArray(options.to) ? options.to : [options.to];
@@ -148,7 +150,8 @@ export async function sendEmail(
  * Send bulk emails
  */
 export async function sendBulkEmail(
-  emails: SendEmailOptions[]
+  emails: SendEmailOptions[],
+  churchId?: string
 ): Promise<{
   success: number;
   failed: number;
@@ -161,7 +164,7 @@ export async function sendBulkEmail(
 }> {
   const results = await Promise.all(
     emails.map(async (email) => {
-      const result = await sendEmail(email);
+      const result = await sendEmail(email, churchId);
       return {
         to: email.to,
         success: result.success,
@@ -184,12 +187,12 @@ export async function sendBulkEmail(
 /**
  * Verify email configuration
  */
-export async function verifyEmailConfig(): Promise<{
+export async function verifyEmailConfig(churchId?: string): Promise<{
   valid: boolean;
   error?: string;
 }> {
   try {
-    const transporter = await createTransporter();
+    const transporter = await createTransporter(churchId);
     await transporter.verify();
     return { valid: true };
   } catch (error: any) {

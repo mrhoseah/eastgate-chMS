@@ -15,7 +15,7 @@ async function requireAdminOrPastor() {
     select: { role: true },
   });
 
-  if (!user || (user.role !== "ADMIN" && user.role !== "PASTOR")) {
+  if (!user || (user.role !== "SUPERADMIN" && user.role !== "ADMIN" && user.role !== "PASTOR")) {
     return { authorized: false, error: "Forbidden" };
   }
 

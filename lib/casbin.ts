@@ -216,8 +216,8 @@ export async function checkPermission(
       return false;
     }
 
-    // Admins have all permissions
-    if (user.role === "ADMIN") {
+    // SUPERADMIN and ADMIN have all permissions
+    if (user.role === "SUPERADMIN" || user.role === "ADMIN") {
       return true;
     }
 
@@ -239,8 +239,8 @@ export async function canUserLogin(userId: string): Promise<boolean> {
 
   if (!user) return false;
 
-  // Admins can always login
-  if (user.role === "ADMIN") return true;
+  // SUPERADMIN and ADMIN can always login
+  if (user.role === "SUPERADMIN" || user.role === "ADMIN") return true;
 
   // Leaders need canLogin permission
   if (user.role === "LEADER") {

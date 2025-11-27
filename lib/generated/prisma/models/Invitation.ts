@@ -32,6 +32,8 @@ export type InvitationMinAggregateOutputType = {
   firstName: string | null
   lastName: string | null
   role: $Enums.UserRole | null
+  invitationType: string | null
+  churchId: string | null
   campusId: string | null
   invitedById: string | null
   message: string | null
@@ -52,6 +54,8 @@ export type InvitationMaxAggregateOutputType = {
   firstName: string | null
   lastName: string | null
   role: $Enums.UserRole | null
+  invitationType: string | null
+  churchId: string | null
   campusId: string | null
   invitedById: string | null
   message: string | null
@@ -72,9 +76,12 @@ export type InvitationCountAggregateOutputType = {
   firstName: number
   lastName: number
   role: number
+  invitationType: number
+  churchId: number
   campusId: number
   invitedById: number
   message: number
+  permissions: number
   status: number
   acceptedAt: number
   expiresAt: number
@@ -94,6 +101,8 @@ export type InvitationMinAggregateInputType = {
   firstName?: true
   lastName?: true
   role?: true
+  invitationType?: true
+  churchId?: true
   campusId?: true
   invitedById?: true
   message?: true
@@ -114,6 +123,8 @@ export type InvitationMaxAggregateInputType = {
   firstName?: true
   lastName?: true
   role?: true
+  invitationType?: true
+  churchId?: true
   campusId?: true
   invitedById?: true
   message?: true
@@ -134,9 +145,12 @@ export type InvitationCountAggregateInputType = {
   firstName?: true
   lastName?: true
   role?: true
+  invitationType?: true
+  churchId?: true
   campusId?: true
   invitedById?: true
   message?: true
+  permissions?: true
   status?: true
   acceptedAt?: true
   expiresAt?: true
@@ -227,9 +241,12 @@ export type InvitationGroupByOutputType = {
   firstName: string
   lastName: string
   role: $Enums.UserRole
+  invitationType: string
+  churchId: string | null
   campusId: string | null
   invitedById: string | null
   message: string | null
+  permissions: runtime.JsonValue | null
   status: $Enums.InvitationStatus
   acceptedAt: Date | null
   expiresAt: Date
@@ -268,9 +285,12 @@ export type InvitationWhereInput = {
   firstName?: Prisma.StringFilter<"Invitation"> | string
   lastName?: Prisma.StringFilter<"Invitation"> | string
   role?: Prisma.EnumUserRoleFilter<"Invitation"> | $Enums.UserRole
+  invitationType?: Prisma.StringFilter<"Invitation"> | string
+  churchId?: Prisma.StringNullableFilter<"Invitation"> | string | null
   campusId?: Prisma.StringNullableFilter<"Invitation"> | string | null
   invitedById?: Prisma.StringNullableFilter<"Invitation"> | string | null
   message?: Prisma.StringNullableFilter<"Invitation"> | string | null
+  permissions?: Prisma.JsonNullableFilter<"Invitation">
   status?: Prisma.EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
   acceptedAt?: Prisma.DateTimeNullableFilter<"Invitation"> | Date | string | null
   expiresAt?: Prisma.DateTimeFilter<"Invitation"> | Date | string
@@ -291,9 +311,12 @@ export type InvitationOrderByWithRelationInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  invitationType?: Prisma.SortOrder
+  churchId?: Prisma.SortOrderInput | Prisma.SortOrder
   campusId?: Prisma.SortOrderInput | Prisma.SortOrder
   invitedById?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
+  permissions?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   acceptedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -318,9 +341,12 @@ export type InvitationWhereUniqueInput = Prisma.AtLeast<{
   firstName?: Prisma.StringFilter<"Invitation"> | string
   lastName?: Prisma.StringFilter<"Invitation"> | string
   role?: Prisma.EnumUserRoleFilter<"Invitation"> | $Enums.UserRole
+  invitationType?: Prisma.StringFilter<"Invitation"> | string
+  churchId?: Prisma.StringNullableFilter<"Invitation"> | string | null
   campusId?: Prisma.StringNullableFilter<"Invitation"> | string | null
   invitedById?: Prisma.StringNullableFilter<"Invitation"> | string | null
   message?: Prisma.StringNullableFilter<"Invitation"> | string | null
+  permissions?: Prisma.JsonNullableFilter<"Invitation">
   status?: Prisma.EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
   acceptedAt?: Prisma.DateTimeNullableFilter<"Invitation"> | Date | string | null
   expiresAt?: Prisma.DateTimeFilter<"Invitation"> | Date | string
@@ -340,9 +366,12 @@ export type InvitationOrderByWithAggregationInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  invitationType?: Prisma.SortOrder
+  churchId?: Prisma.SortOrderInput | Prisma.SortOrder
   campusId?: Prisma.SortOrderInput | Prisma.SortOrder
   invitedById?: Prisma.SortOrderInput | Prisma.SortOrder
   message?: Prisma.SortOrderInput | Prisma.SortOrder
+  permissions?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   acceptedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -366,9 +395,12 @@ export type InvitationScalarWhereWithAggregatesInput = {
   firstName?: Prisma.StringWithAggregatesFilter<"Invitation"> | string
   lastName?: Prisma.StringWithAggregatesFilter<"Invitation"> | string
   role?: Prisma.EnumUserRoleWithAggregatesFilter<"Invitation"> | $Enums.UserRole
+  invitationType?: Prisma.StringWithAggregatesFilter<"Invitation"> | string
+  churchId?: Prisma.StringNullableWithAggregatesFilter<"Invitation"> | string | null
   campusId?: Prisma.StringNullableWithAggregatesFilter<"Invitation"> | string | null
   invitedById?: Prisma.StringNullableWithAggregatesFilter<"Invitation"> | string | null
   message?: Prisma.StringNullableWithAggregatesFilter<"Invitation"> | string | null
+  permissions?: Prisma.JsonNullableWithAggregatesFilter<"Invitation">
   status?: Prisma.EnumInvitationStatusWithAggregatesFilter<"Invitation"> | $Enums.InvitationStatus
   acceptedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Invitation"> | Date | string | null
   expiresAt?: Prisma.DateTimeWithAggregatesFilter<"Invitation"> | Date | string
@@ -386,7 +418,10 @@ export type InvitationCreateInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -406,9 +441,12 @@ export type InvitationUncheckedCreateInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   campusId?: string | null
   invitedById?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -426,7 +464,10 @@ export type InvitationUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -446,9 +487,12 @@ export type InvitationUncheckedUpdateInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invitedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -466,9 +510,12 @@ export type InvitationCreateManyInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   campusId?: string | null
   invitedById?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -486,7 +533,10 @@ export type InvitationUpdateManyMutationInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -503,9 +553,12 @@ export type InvitationUncheckedUpdateManyInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invitedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -538,9 +591,12 @@ export type InvitationCountOrderByAggregateInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  invitationType?: Prisma.SortOrder
+  churchId?: Prisma.SortOrder
   campusId?: Prisma.SortOrder
   invitedById?: Prisma.SortOrder
   message?: Prisma.SortOrder
+  permissions?: Prisma.SortOrder
   status?: Prisma.SortOrder
   acceptedAt?: Prisma.SortOrder
   expiresAt?: Prisma.SortOrder
@@ -558,6 +614,8 @@ export type InvitationMaxOrderByAggregateInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  invitationType?: Prisma.SortOrder
+  churchId?: Prisma.SortOrder
   campusId?: Prisma.SortOrder
   invitedById?: Prisma.SortOrder
   message?: Prisma.SortOrder
@@ -578,6 +636,8 @@ export type InvitationMinOrderByAggregateInput = {
   firstName?: Prisma.SortOrder
   lastName?: Prisma.SortOrder
   role?: Prisma.SortOrder
+  invitationType?: Prisma.SortOrder
+  churchId?: Prisma.SortOrder
   campusId?: Prisma.SortOrder
   invitedById?: Prisma.SortOrder
   message?: Prisma.SortOrder
@@ -718,7 +778,10 @@ export type InvitationCreateWithoutInvitedByInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -737,8 +800,11 @@ export type InvitationUncheckedCreateWithoutInvitedByInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   campusId?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -766,7 +832,10 @@ export type InvitationCreateWithoutUserInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -785,9 +854,12 @@ export type InvitationUncheckedCreateWithoutUserInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   campusId?: string | null
   invitedById?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -828,9 +900,12 @@ export type InvitationScalarWhereInput = {
   firstName?: Prisma.StringFilter<"Invitation"> | string
   lastName?: Prisma.StringFilter<"Invitation"> | string
   role?: Prisma.EnumUserRoleFilter<"Invitation"> | $Enums.UserRole
+  invitationType?: Prisma.StringFilter<"Invitation"> | string
+  churchId?: Prisma.StringNullableFilter<"Invitation"> | string | null
   campusId?: Prisma.StringNullableFilter<"Invitation"> | string | null
   invitedById?: Prisma.StringNullableFilter<"Invitation"> | string | null
   message?: Prisma.StringNullableFilter<"Invitation"> | string | null
+  permissions?: Prisma.JsonNullableFilter<"Invitation">
   status?: Prisma.EnumInvitationStatusFilter<"Invitation"> | $Enums.InvitationStatus
   acceptedAt?: Prisma.DateTimeNullableFilter<"Invitation"> | Date | string | null
   expiresAt?: Prisma.DateTimeFilter<"Invitation"> | Date | string
@@ -859,7 +934,10 @@ export type InvitationUpdateWithoutUserInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -878,9 +956,12 @@ export type InvitationUncheckedUpdateWithoutUserInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invitedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -897,7 +978,10 @@ export type InvitationCreateWithoutCampusInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -916,8 +1000,11 @@ export type InvitationUncheckedCreateWithoutCampusInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   invitedById?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -961,8 +1048,11 @@ export type InvitationCreateManyInvitedByInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   campusId?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -980,7 +1070,10 @@ export type InvitationUpdateWithoutInvitedByInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -999,8 +1092,11 @@ export type InvitationUncheckedUpdateWithoutInvitedByInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1018,8 +1114,11 @@ export type InvitationUncheckedUpdateManyWithoutInvitedByInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1037,8 +1136,11 @@ export type InvitationCreateManyCampusInput = {
   firstName: string
   lastName: string
   role?: $Enums.UserRole
+  invitationType?: string
+  churchId?: string | null
   invitedById?: string | null
   message?: string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: $Enums.InvitationStatus
   acceptedAt?: Date | string | null
   expiresAt: Date | string
@@ -1056,7 +1158,10 @@ export type InvitationUpdateWithoutCampusInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1075,8 +1180,11 @@ export type InvitationUncheckedUpdateWithoutCampusInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invitedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1094,8 +1202,11 @@ export type InvitationUncheckedUpdateManyWithoutCampusInput = {
   firstName?: Prisma.StringFieldUpdateOperationsInput | string
   lastName?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  invitationType?: Prisma.StringFieldUpdateOperationsInput | string
+  churchId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   invitedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   message?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   status?: Prisma.EnumInvitationStatusFieldUpdateOperationsInput | $Enums.InvitationStatus
   acceptedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   expiresAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1115,9 +1226,12 @@ export type InvitationSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   firstName?: boolean
   lastName?: boolean
   role?: boolean
+  invitationType?: boolean
+  churchId?: boolean
   campusId?: boolean
   invitedById?: boolean
   message?: boolean
+  permissions?: boolean
   status?: boolean
   acceptedAt?: boolean
   expiresAt?: boolean
@@ -1138,9 +1252,12 @@ export type InvitationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   firstName?: boolean
   lastName?: boolean
   role?: boolean
+  invitationType?: boolean
+  churchId?: boolean
   campusId?: boolean
   invitedById?: boolean
   message?: boolean
+  permissions?: boolean
   status?: boolean
   acceptedAt?: boolean
   expiresAt?: boolean
@@ -1161,9 +1278,12 @@ export type InvitationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   firstName?: boolean
   lastName?: boolean
   role?: boolean
+  invitationType?: boolean
+  churchId?: boolean
   campusId?: boolean
   invitedById?: boolean
   message?: boolean
+  permissions?: boolean
   status?: boolean
   acceptedAt?: boolean
   expiresAt?: boolean
@@ -1184,9 +1304,12 @@ export type InvitationSelectScalar = {
   firstName?: boolean
   lastName?: boolean
   role?: boolean
+  invitationType?: boolean
+  churchId?: boolean
   campusId?: boolean
   invitedById?: boolean
   message?: boolean
+  permissions?: boolean
   status?: boolean
   acceptedAt?: boolean
   expiresAt?: boolean
@@ -1196,7 +1319,7 @@ export type InvitationSelectScalar = {
   updatedAt?: boolean
 }
 
-export type InvitationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "token" | "email" | "phone" | "firstName" | "lastName" | "role" | "campusId" | "invitedById" | "message" | "status" | "acceptedAt" | "expiresAt" | "cognitoUserId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
+export type InvitationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "token" | "email" | "phone" | "firstName" | "lastName" | "role" | "invitationType" | "churchId" | "campusId" | "invitedById" | "message" | "permissions" | "status" | "acceptedAt" | "expiresAt" | "cognitoUserId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["invitation"]>
 export type InvitationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   campus?: boolean | Prisma.Invitation$campusArgs<ExtArgs>
   invitedBy?: boolean | Prisma.Invitation$invitedByArgs<ExtArgs>
@@ -1228,9 +1351,12 @@ export type $InvitationPayload<ExtArgs extends runtime.Types.Extensions.Internal
     firstName: string
     lastName: string
     role: $Enums.UserRole
+    invitationType: string
+    churchId: string | null
     campusId: string | null
     invitedById: string | null
     message: string | null
+    permissions: runtime.JsonValue | null
     status: $Enums.InvitationStatus
     acceptedAt: Date | null
     expiresAt: Date
@@ -1671,9 +1797,12 @@ export interface InvitationFieldRefs {
   readonly firstName: Prisma.FieldRef<"Invitation", 'String'>
   readonly lastName: Prisma.FieldRef<"Invitation", 'String'>
   readonly role: Prisma.FieldRef<"Invitation", 'UserRole'>
+  readonly invitationType: Prisma.FieldRef<"Invitation", 'String'>
+  readonly churchId: Prisma.FieldRef<"Invitation", 'String'>
   readonly campusId: Prisma.FieldRef<"Invitation", 'String'>
   readonly invitedById: Prisma.FieldRef<"Invitation", 'String'>
   readonly message: Prisma.FieldRef<"Invitation", 'String'>
+  readonly permissions: Prisma.FieldRef<"Invitation", 'Json'>
   readonly status: Prisma.FieldRef<"Invitation", 'InvitationStatus'>
   readonly acceptedAt: Prisma.FieldRef<"Invitation", 'DateTime'>
   readonly expiresAt: Prisma.FieldRef<"Invitation", 'DateTime'>

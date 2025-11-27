@@ -4,6 +4,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UserMenu } from "@/components/user-menu";
 import { ModeToggle } from "@/components/mode-toggle";
 import { NotificationsBell } from "@/components/notifications-bell";
+import { SystemAnnouncementsBell } from "@/components/system-announcements-bell";
 import { GlobalSearch } from "@/components/global-search";
 
 export function DashboardHeader() {
@@ -18,6 +19,7 @@ export function DashboardHeader() {
           <div className="hidden md:block flex-1 max-w-2xl mx-4">
             <GlobalSearch />
           </div>
+          <SystemAnnouncementsBell />
           <NotificationsBell />
           <ModeToggle />
           <UserMenu />

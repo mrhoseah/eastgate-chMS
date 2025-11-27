@@ -11,7 +11,11 @@
 
 export const UserRole = {
   SUPERADMIN: 'SUPERADMIN',
+  SYSTEM_ADMIN: 'SYSTEM_ADMIN',
+  SYSTEM_SUPPORT: 'SYSTEM_SUPPORT',
   ADMIN: 'ADMIN',
+  EDITOR: 'EDITOR',
+  VIEWER: 'VIEWER',
   PASTOR: 'PASTOR',
   LEADER: 'LEADER',
   MEMBER: 'MEMBER',
@@ -585,3 +589,33 @@ export const SponsorshipStatus = {
 } as const
 
 export type SponsorshipStatus = (typeof SponsorshipStatus)[keyof typeof SponsorshipStatus]
+
+
+export const AuditAction = {
+  CREATE: 'CREATE',
+  UPDATE: 'UPDATE',
+  DELETE: 'DELETE',
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
+  VIEW: 'VIEW',
+  EXPORT: 'EXPORT',
+  TOGGLE_STATUS: 'TOGGLE_STATUS',
+  INVITE: 'INVITE',
+  REVOKE: 'REVOKE',
+  GRANT_PERMISSION: 'GRANT_PERMISSION',
+  REVOKE_PERMISSION: 'REVOKE_PERMISSION',
+  SYSTEM_SETTING_CHANGE: 'SYSTEM_SETTING_CHANGE'
+} as const
+
+export type AuditAction = (typeof AuditAction)[keyof typeof AuditAction]
+
+
+export const SettingType = {
+  STRING: 'STRING',
+  NUMBER: 'NUMBER',
+  BOOLEAN: 'BOOLEAN',
+  JSON: 'JSON',
+  ARRAY: 'ARRAY'
+} as const
+
+export type SettingType = (typeof SettingType)[keyof typeof SettingType]
