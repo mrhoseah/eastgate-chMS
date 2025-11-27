@@ -13,7 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Smartphone, Mail, Loader2, CheckCircle2, XCircle, Heart, ArrowRight } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { Smartphone, Mail, Loader2, CheckCircle2, XCircle, Heart, ArrowRight, Landmark } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -39,84 +40,204 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-export default function PublicGivePage() {
-  const { data: session } = useSession();
-  const router = useRouter();
-  const { toast } = useToast();
-  
-  // Form state
-  const [amount, setAmount] = useState<number>(1000);
-  const [category, setCategory] = useState<string>("OFFERING");
-  const [paymentMethod, setPaymentMethod] = useState<"MPESA" | "PAYPAL">("MPESA");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [userPhone, setUserPhone] = useState<string | null>(null);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
-  const [userGroups, setUserGroups] = useState<Array<{ id: string; name: string; groupGivingEnabled: boolean }>>([]);
-  const [selectedGroupId, setSelectedGroupId] = useState<string>("");
+type SupportedPaymentMethod = "MPESA" | "PAYPAL" | "BANK_TRANSFER";
 
-  const categories = [
-    { value: "TITHE", label: "Tithe" },
-    { value: "OFFERING", label: "Offering" },
-    { value: "MISSIONS", label: "Missions" },
-    { value: "BUILDING_FUND", label: "Building Fund" },
-    { value: "SPECIAL_PROJECT", label: "Special Project" },
-    { value: "OTHER", label: "Other" },
-  ];
+interface PaymentOption {
+  method: SupportedPaymentMethod;
+  label: string;
+  currency: string;
+}
 
-  // Fetch user info if logged in
-  useEffect(() => {
-    if (session?.user) {
-      fetchUserInfo();
-      fetchUserGroups();
-    }
-  }, [session]);
+interface BankDetails {
+  bankName: string;
+  accountName: string;
+  accountNumber: string;
+  branch?: string;
+  swiftCode?: string;
+  currency: string;
+  instructions?: string;
+              {/* Contact Information */}
+              {paymentMethod === "MPESA" && (
+                <div>
+                  <Label htmlFor="phone" className="mb-2 block flex items-center gap-2">
+                    <Smartphone className="w-4 h-4" />
+                    M-Pesa Phone Number
+                  </Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    placeholder="0712 345 678"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    className="h-12 text-lg"
+                    required
+                  />
+                  {userPhone && userPhone !== phoneNumber && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="h-auto p-1 text-xs mt-2"
+                      onClick={() => setPhoneNumber(userPhone)}
+                    >
+                      Use my registered number ({userPhone})
+                    </Button>
+                  )}
+                  {phoneNumber && !isValidPhoneNumber(phoneNumber) && (
+                    <p className="text-xs text-red-500 mt-1">
+                      Please enter a valid Kenyan phone number
+                    </p>
+                  )}
+                  {mpesaDetails && (
+                    <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-900/20 rounded text-xs text-blue-700 dark:text-blue-200">
+                      Prefer paybill? Use business number <strong>{mpesaDetails.paybillNumber || "[paybill]"}</strong> and account <strong>{mpesaDetails.paybillAccountName || "[account]"}</strong>.
+                    </div>
+                  )}
+                </div>
+              )}
 
-  const fetchUserInfo = async () => {
-    try {
-      const res = await fetch("/api/people/me");
-      if (res.ok) {
-        const user = await res.json();
-        if (user.phone) {
-          setUserPhone(user.phone);
-          if (!phoneNumber) setPhoneNumber(user.phone);
-        }
-        if (user.email) {
-          setUserEmail(user.email);
-          if (!email) setEmail(user.email);
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching user info:", error);
-    }
-  };
+              {paymentMethod === "PAYPAL" && (
+                <div>
+                  <Label htmlFor="email" className="mb-2 block flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    Email Address
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="h-12 text-lg"
+                    required
+                  />
+                  {userEmail && userEmail !== email && (
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="h-auto p-1 text-xs mt-2"
+                      onClick={() => setEmail(userEmail)}
+                    >
+                      Use my registered email ({userEmail})
+                    </Button>
+                  )}
+                  {email && !isValidEmail(email) && (
+                    <p className="text-xs text-red-500 mt-1">Please enter a valid email address</p>
+                  )}
+                </div>
+              )}
 
-  const fetchUserGroups = async () => {
-    try {
-      const res = await fetch("/api/groups/my-groups");
-      if (res.ok) {
+              {paymentMethod === "BANK_TRANSFER" && (
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="bankDepositor" className="mb-2 block">Depositor Name</Label>
+                    <Input
+                      id="bankDepositor"
+                      value={bankDepositorName}
+                      onChange={(e) => setBankDepositorName(e.target.value)}
+                      placeholder="Name appearing on the transfer"
+                      className="h-12"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="bankEmail" className="mb-2 block">Confirmation Email</Label>
+                    <Input
+                      id="bankEmail"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@email.com"
+                      className="h-12"
+                    />
+                    {email && !isValidEmail(email) && (
+                      <p className="text-xs text-red-500 mt-1">Please enter a valid email address</p>
+                    )}
+                  </div>
+                  <div>
+                    <Label htmlFor="bankReference" className="mb-2 block">Transfer Reference (optional)</Label>
+                    <Input
+                      id="bankReference"
+                      value={bankReference}
+                      onChange={(e) => setBankReference(e.target.value)}
+                      placeholder="e.g., EFT12345"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="bankNotes" className="mb-2 block">Notes to Finance (optional)</Label>
+                    <Textarea
+                      id="bankNotes"
+                      rows={3}
+                      value={transferNotes}
+                      onChange={(e) => setTransferNotes(e.target.value)}
+                      placeholder="Add any pledge notes or instructions"
+                    />
+                  </div>
+                  {bankDetails ? (
+                    <div className="p-4 border rounded-lg text-sm space-y-1 bg-white dark:bg-gray-900">
+                      <p className="font-semibold flex items-center gap-2">
+                        <Landmark className="w-4 h-4" /> Bank Transfer Details
+                      </p>
+                      <p>{bankDetails.bankName}{bankDetails.branch ? ` — ${bankDetails.branch}` : ""}</p>
+                      <p>Account Name: <strong>{bankDetails.accountName}</strong></p>
+                      <p>Account Number: <strong>{bankDetails.accountNumber}</strong></p>
+                      {bankDetails.swiftCode && <p>SWIFT: <strong>{bankDetails.swiftCode}</strong></p>}
+                      <p>Currency: {bankDetails.currency}</p>
+                      {bankDetails.instructions && (
+                        <p className="text-xs text-gray-600 dark:text-gray-300 mt-2">{bankDetails.instructions}</p>
+                      )}
+                      {bankDetails.contactEmail && (
+                        <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">Questions? Email {bankDetails.contactEmail}</p>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="p-3 bg-amber-50 text-amber-700 rounded text-sm">
+                      Bank transfer details are loading. Please try again.
+                    </div>
+                  )}
+                </div>
+              )}
         const data = await res.json();
-        const groupsWithGiving = (data.groups || []).filter(
-          (g: any) => g.groupGivingEnabled
-        );
-        setUserGroups(groupsWithGiving);
-        // Auto-select first group if only one
-        if (groupsWithGiving.length === 1) {
-          setSelectedGroupId(groupsWithGiving[0].id);
-        }
-      }
-    } catch (error) {
-      console.error("Error fetching user groups:", error);
+        const available: PaymentOption[] = (data.methods || [])
+          .filter((method: any) => method.enabled)
+          .map((method: any) => ({
+            method: method.method,
+            label: method.label,
+            currency: method.currency,
+          }));
+        setPaymentOptions(available);
+  const isBankTransfer = paymentMethod === "BANK_TRANSFER";
+  const currencyCode = currentMethod?.currency?.toUpperCase?.() || (isPayPal ? "USD" : "KES");
+  const currencyPrefix = isPayPal ? "$" : currencyCode;
+  const minAmount = isPayPal ? 1 : 100;
+  const maxAmount = isPayPal ? 100000 : 1000000;
+
+  const handleSelectMethod = (method: SupportedPaymentMethod) => {
+    setPaymentMethod(method);
+    if (method === "PAYPAL") {
+      setAmount(10);
+    } else {
+      setAmount(1000);
     }
   };
 
-  // Quick amount buttons
-  const mpesaAmounts = [500, 1000, 2000, 5000, 10000, 20000];
-  const paypalAmounts = [5, 10, 25, 50, 100, 250];
+  const getPresetAmounts = () => {
+    if (paymentMethod === "PAYPAL") {
+      return paypalAmounts;
+    }
+    return mpesaAmounts;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!paymentMethod) {
+      toast({
+        title: "No payment methods",
+        description: "A giving method is not available yet. Please contact the church administrator.",
+        variant: "destructive",
+      });
+      return;
+    }
     
     // Validation
     if (paymentMethod === "MPESA") {
@@ -136,7 +257,40 @@ export default function PublicGivePage() {
         });
         return;
       }
-    } else {
+    } else if (paymentMethod === "PAYPAL") {
+      if (!email) {
+        toast({
+          title: "Email required",
+          description: "Please enter your email address",
+          variant: "destructive",
+        });
+        return;
+      }
+      if (!isValidEmail(email)) {
+        toast({
+          title: "Invalid email",
+          description: "Please enter a valid email address",
+          variant: "destructive",
+        });
+        return;
+      }
+    } else if (paymentMethod === "BANK_TRANSFER") {
+      if (!bankDetails) {
+        toast({
+          title: "Bank transfers disabled",
+          description: "The finance team has not finished configuring bank transfers.",
+          variant: "destructive",
+        });
+        return;
+      }
+      if (!bankDepositorName.trim()) {
+        toast({
+          title: "Depositor name required",
+          description: "Let us know who is making the transfer so we can reconcile it quickly.",
+          variant: "destructive",
+        });
+        return;
+      }
       if (!email) {
         toast({
           title: "Email required",
@@ -192,7 +346,7 @@ export default function PublicGivePage() {
             variant: "destructive",
           });
         }
-      } else {
+      } else if (paymentMethod === "PAYPAL") {
         // PayPal payment
         const response = await fetch("/api/donations/paypal", {
           method: "POST",
@@ -215,6 +369,38 @@ export default function PublicGivePage() {
           toast({
             title: "Payment failed",
             description: data.error || "Failed to initiate PayPal payment. Please try again.",
+            variant: "destructive",
+          });
+        }
+      } else {
+        const response = await fetch("/api/donations/bank-transfer", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            amount,
+            category,
+            donorName: bankDepositorName,
+            email,
+            reference: bankReference,
+            notes: transferNotes,
+            groupId: selectedGroupId || null,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          toast({
+            title: "Transfer logged",
+            description: "Please complete the bank transfer using the displayed details. We'll update you once it clears.",
+          });
+          setBankDepositorName("");
+          setBankReference("");
+          setTransferNotes("");
+        } else {
+          toast({
+            title: "Unable to log transfer",
+            description: data.error || "Please try again or contact finance.",
             variant: "destructive",
           });
         }
@@ -257,74 +443,77 @@ export default function PublicGivePage() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Payment Method Toggle */}
-              <div className="flex gap-2 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                <Button
-                  type="button"
-                  variant={paymentMethod === "MPESA" ? "default" : "ghost"}
-                  className="flex-1"
-                  onClick={() => {
-                    setPaymentMethod("MPESA");
-                    setAmount(1000);
-                  }}
-                >
-                  <Smartphone className="w-4 h-4 mr-2" />
-                  M-Pesa
-                </Button>
-                <Button
-                  type="button"
-                  variant={paymentMethod === "PAYPAL" ? "default" : "ghost"}
-                  className="flex-1"
-                  onClick={() => {
-                    setPaymentMethod("PAYPAL");
-                    setAmount(10);
-                  }}
-                >
-                  <Mail className="w-4 h-4 mr-2" />
-                  PayPal
-                </Button>
+              <div className="flex gap-2 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg min-h-[3rem]">
+                {methodsLoading ? (
+                  <div className="w-full h-10 rounded bg-gray-200 dark:bg-gray-700 animate-pulse" />
+                ) : paymentOptions.length === 0 ? (
+                  <p className="text-sm text-red-600 dark:text-red-400 text-center w-full">
+                    No payment methods are active yet. Please ask the church admin to configure giving.
+                  </p>
+                ) : (
+                  paymentOptions.map((option) => {
+                    const Icon = option.method === "PAYPAL" ? Mail : option.method === "BANK_TRANSFER" ? Landmark : Smartphone;
+                    return (
+                      <Button
+                        key={option.method}
+                        type="button"
+                        variant={paymentMethod === option.method ? "default" : "ghost"}
+                        className="flex-1"
+                        onClick={() => handleSelectMethod(option.method)}
+                      >
+                        <Icon className="w-4 h-4 mr-2" />
+                        {option.label}
+                      </Button>
+                    );
+                  })
+                )}
               </div>
 
               {/* Amount Selection */}
               <div>
                 <Label className="mb-3 block text-sm font-semibold">Amount</Label>
-                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
-                  {(paymentMethod === "MPESA" ? mpesaAmounts : paypalAmounts).map((preset) => (
-                    <Button
-                      key={preset}
-                      type="button"
-                      variant={amount === preset ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => setAmount(preset)}
-                      className="font-semibold"
-                    >
-                      {paymentMethod === "MPESA" ? (
-                        <>KES {preset >= 1000 ? `${preset / 1000}K` : preset}</>
-                      ) : (
-                        <>${preset}</>
-                      )}
-                    </Button>
-                  ))}
-                </div>
-                <div className="relative">
-                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
-                    {paymentMethod === "MPESA" ? "KES" : "$"}
-                  </div>
-                  <Input
-                    type="number"
-                    min={paymentMethod === "MPESA" ? 100 : 1}
-                    max={paymentMethod === "MPESA" ? 1000000 : 100000}
-                    step={paymentMethod === "MPESA" ? 100 : 1}
-                    value={amount}
-                    onChange={(e) => {
-                      const value = parseFloat(e.target.value) || (paymentMethod === "MPESA" ? 100 : 1);
-                      const min = paymentMethod === "MPESA" ? 100 : 1;
-                      const max = paymentMethod === "MPESA" ? 1000000 : 100000;
-                      setAmount(Math.max(min, Math.min(max, value)));
-                    }}
-                    className="pl-16 text-lg font-semibold h-14"
-                    placeholder="Enter amount"
-                  />
-                </div>
+                {paymentMethod ? (
+                  <>
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
+                      {getPresetAmounts().map((preset) => (
+                        <Button
+                          key={preset}
+                          type="button"
+                          variant={amount === preset ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => setAmount(preset)}
+                          className="font-semibold"
+                        >
+                          {isPayPal ? (
+                            <>${preset}</>
+                          ) : (
+                            <>KES {preset >= 1000 ? `${preset / 1000}K` : preset}</>
+                          )}
+                        </Button>
+                      ))}
+                    </div>
+                    <div className="relative">
+                      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-semibold">
+                        {currencyPrefix}
+                      </div>
+                      <Input
+                        type="number"
+                        min={minAmount}
+                        max={maxAmount}
+                        step={isPayPal ? 1 : 100}
+                        value={amount}
+                        onChange={(e) => {
+                          const value = parseFloat(e.target.value) || minAmount;
+                          setAmount(Math.max(minAmount, Math.min(maxAmount, value)));
+                        }}
+                        className="pl-16 text-lg font-semibold h-14"
+                        placeholder="Enter amount"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-sm text-gray-500">Select a payment method to enter an amount.</p>
+                )}
               </div>
 
               {/* Group Selection (if user is member of groups with giving enabled) */}
@@ -437,7 +626,7 @@ export default function PublicGivePage() {
               {/* Submit Button */}
               <Button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !paymentMethod}
                 className="w-full h-14 text-lg font-semibold"
                 size="lg"
               >
@@ -448,15 +637,22 @@ export default function PublicGivePage() {
                   </>
                 ) : (
                   <>
-                    {paymentMethod === "MPESA" ? (
+                    {paymentMethod === "MPESA" && (
                       <>
                         <Smartphone className="w-5 h-5 mr-2" />
                         Pay with M-Pesa
                       </>
-                    ) : (
+                    )}
+                    {paymentMethod === "PAYPAL" && (
                       <>
                         <Mail className="w-5 h-5 mr-2" />
                         Continue to PayPal
+                      </>
+                    )}
+                    {paymentMethod === "BANK_TRANSFER" && (
+                      <>
+                        <Landmark className="w-5 h-5 mr-2" />
+                        Log Bank Transfer
                       </>
                     )}
                     <ArrowRight className="w-5 h-5 ml-2" />

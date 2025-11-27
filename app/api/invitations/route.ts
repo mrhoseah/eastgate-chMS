@@ -6,6 +6,7 @@ import {
   getInvitationByToken,
   getInvitationUrl,
 } from "@/lib/invitations";
+import { sendInvitationEmail } from "@/lib/invitation-email";
 import { prisma } from "@/lib/prisma";
 
 // GET - Get invitation by token (public, for invitation page)
@@ -70,15 +71,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Check if user is admin
+    // Check if user can invite (SUPERADMIN, ADMIN, or PASTOR)
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
       select: { role: true },
     });
 
-    if (user?.role !== "ADMIN") {
+    const canInvite = ["SUPERADMIN", "ADMIN", "PASTOR"].includes(user?.role || "");
+    if (!canInvite) {
       return NextResponse.json(
-        { error: "Only admins can create invitations" },
+        { error: "Only system admins, church admins, or pastors can create invitations" },
         { status: 403 }
       );
     }
@@ -154,8 +156,20 @@ export async function POST(request: NextRequest) {
 
     const invitationUrl = getInvitationUrl(invitation.token);
 
-    // TODO: Send email if sendEmail is true
-    // You can integrate with your email service here (e.g., SendGrid, AWS SES, etc.)
+    // Send email if sendEmail is true
+    if (sendEmail !== false) {
+      // Default to true if not specified
+      try {
+        const emailResult = await sendInvitationEmail(invitation.id);
+        if (!emailResult.success) {
+          console.error("Failed to send invitation email:", emailResult.error);
+          // Don't fail the request, just log the error
+        }
+      } catch (error) {
+        console.error("Error sending invitation email:", error);
+        // Don't fail the request if email fails
+      }
+    }
 
     return NextResponse.json(
       {

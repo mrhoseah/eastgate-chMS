@@ -31,6 +31,8 @@ export type PresentationSlideAvgAggregateOutputType = {
   y: number | null
   width: number | null
   height: number | null
+  rotation: number | null
+  scale: number | null
   order: number | null
 }
 
@@ -39,6 +41,8 @@ export type PresentationSlideSumAggregateOutputType = {
   y: number | null
   width: number | null
   height: number | null
+  rotation: number | null
+  scale: number | null
   order: number | null
 }
 
@@ -51,9 +55,12 @@ export type PresentationSlideMinAggregateOutputType = {
   y: number | null
   width: number | null
   height: number | null
+  rotation: number | null
+  scale: number | null
   order: number | null
   backgroundColor: string | null
   textColor: string | null
+  borderColor: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -67,9 +74,12 @@ export type PresentationSlideMaxAggregateOutputType = {
   y: number | null
   width: number | null
   height: number | null
+  rotation: number | null
+  scale: number | null
   order: number | null
   backgroundColor: string | null
   textColor: string | null
+  borderColor: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -83,9 +93,12 @@ export type PresentationSlideCountAggregateOutputType = {
   y: number
   width: number
   height: number
+  rotation: number
+  scale: number
   order: number
   backgroundColor: number
   textColor: number
+  borderColor: number
   metadata: number
   createdAt: number
   updatedAt: number
@@ -98,6 +111,8 @@ export type PresentationSlideAvgAggregateInputType = {
   y?: true
   width?: true
   height?: true
+  rotation?: true
+  scale?: true
   order?: true
 }
 
@@ -106,6 +121,8 @@ export type PresentationSlideSumAggregateInputType = {
   y?: true
   width?: true
   height?: true
+  rotation?: true
+  scale?: true
   order?: true
 }
 
@@ -118,9 +135,12 @@ export type PresentationSlideMinAggregateInputType = {
   y?: true
   width?: true
   height?: true
+  rotation?: true
+  scale?: true
   order?: true
   backgroundColor?: true
   textColor?: true
+  borderColor?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -134,9 +154,12 @@ export type PresentationSlideMaxAggregateInputType = {
   y?: true
   width?: true
   height?: true
+  rotation?: true
+  scale?: true
   order?: true
   backgroundColor?: true
   textColor?: true
+  borderColor?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -150,9 +173,12 @@ export type PresentationSlideCountAggregateInputType = {
   y?: true
   width?: true
   height?: true
+  rotation?: true
+  scale?: true
   order?: true
   backgroundColor?: true
   textColor?: true
+  borderColor?: true
   metadata?: true
   createdAt?: true
   updatedAt?: true
@@ -254,9 +280,12 @@ export type PresentationSlideGroupByOutputType = {
   y: number
   width: number
   height: number
+  rotation: number
+  scale: number
   order: number
   backgroundColor: string | null
   textColor: string | null
+  borderColor: string | null
   metadata: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
@@ -294,9 +323,12 @@ export type PresentationSlideWhereInput = {
   y?: Prisma.FloatFilter<"PresentationSlide"> | number
   width?: Prisma.FloatFilter<"PresentationSlide"> | number
   height?: Prisma.FloatFilter<"PresentationSlide"> | number
+  rotation?: Prisma.FloatFilter<"PresentationSlide"> | number
+  scale?: Prisma.FloatFilter<"PresentationSlide"> | number
   order?: Prisma.IntFilter<"PresentationSlide"> | number
   backgroundColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
   textColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
+  borderColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
   metadata?: Prisma.JsonNullableFilter<"PresentationSlide">
   createdAt?: Prisma.DateTimeFilter<"PresentationSlide"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PresentationSlide"> | Date | string
@@ -312,9 +344,12 @@ export type PresentationSlideOrderByWithRelationInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
   backgroundColor?: Prisma.SortOrderInput | Prisma.SortOrder
   textColor?: Prisma.SortOrderInput | Prisma.SortOrder
+  borderColor?: Prisma.SortOrderInput | Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -333,9 +368,12 @@ export type PresentationSlideWhereUniqueInput = Prisma.AtLeast<{
   y?: Prisma.FloatFilter<"PresentationSlide"> | number
   width?: Prisma.FloatFilter<"PresentationSlide"> | number
   height?: Prisma.FloatFilter<"PresentationSlide"> | number
+  rotation?: Prisma.FloatFilter<"PresentationSlide"> | number
+  scale?: Prisma.FloatFilter<"PresentationSlide"> | number
   order?: Prisma.IntFilter<"PresentationSlide"> | number
   backgroundColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
   textColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
+  borderColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
   metadata?: Prisma.JsonNullableFilter<"PresentationSlide">
   createdAt?: Prisma.DateTimeFilter<"PresentationSlide"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PresentationSlide"> | Date | string
@@ -351,9 +389,12 @@ export type PresentationSlideOrderByWithAggregationInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
   backgroundColor?: Prisma.SortOrderInput | Prisma.SortOrder
   textColor?: Prisma.SortOrderInput | Prisma.SortOrder
+  borderColor?: Prisma.SortOrderInput | Prisma.SortOrder
   metadata?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -376,9 +417,12 @@ export type PresentationSlideScalarWhereWithAggregatesInput = {
   y?: Prisma.FloatWithAggregatesFilter<"PresentationSlide"> | number
   width?: Prisma.FloatWithAggregatesFilter<"PresentationSlide"> | number
   height?: Prisma.FloatWithAggregatesFilter<"PresentationSlide"> | number
+  rotation?: Prisma.FloatWithAggregatesFilter<"PresentationSlide"> | number
+  scale?: Prisma.FloatWithAggregatesFilter<"PresentationSlide"> | number
   order?: Prisma.IntWithAggregatesFilter<"PresentationSlide"> | number
   backgroundColor?: Prisma.StringNullableWithAggregatesFilter<"PresentationSlide"> | string | null
   textColor?: Prisma.StringNullableWithAggregatesFilter<"PresentationSlide"> | string | null
+  borderColor?: Prisma.StringNullableWithAggregatesFilter<"PresentationSlide"> | string | null
   metadata?: Prisma.JsonNullableWithAggregatesFilter<"PresentationSlide">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"PresentationSlide"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"PresentationSlide"> | Date | string
@@ -392,9 +436,12 @@ export type PresentationSlideCreateInput = {
   y?: number
   width?: number
   height?: number
+  rotation?: number
+  scale?: number
   order?: number
   backgroundColor?: string | null
   textColor?: string | null
+  borderColor?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -410,9 +457,12 @@ export type PresentationSlideUncheckedCreateInput = {
   y?: number
   width?: number
   height?: number
+  rotation?: number
+  scale?: number
   order?: number
   backgroundColor?: string | null
   textColor?: string | null
+  borderColor?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -426,9 +476,12 @@ export type PresentationSlideUpdateInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -444,9 +497,12 @@ export type PresentationSlideUncheckedUpdateInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -461,9 +517,12 @@ export type PresentationSlideCreateManyInput = {
   y?: number
   width?: number
   height?: number
+  rotation?: number
+  scale?: number
   order?: number
   backgroundColor?: string | null
   textColor?: string | null
+  borderColor?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -477,9 +536,12 @@ export type PresentationSlideUpdateManyMutationInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -494,9 +556,12 @@ export type PresentationSlideUncheckedUpdateManyInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -521,9 +586,12 @@ export type PresentationSlideCountOrderByAggregateInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
   backgroundColor?: Prisma.SortOrder
   textColor?: Prisma.SortOrder
+  borderColor?: Prisma.SortOrder
   metadata?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -534,6 +602,8 @@ export type PresentationSlideAvgOrderByAggregateInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
 }
 
@@ -546,9 +616,12 @@ export type PresentationSlideMaxOrderByAggregateInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
   backgroundColor?: Prisma.SortOrder
   textColor?: Prisma.SortOrder
+  borderColor?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -562,9 +635,12 @@ export type PresentationSlideMinOrderByAggregateInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
   backgroundColor?: Prisma.SortOrder
   textColor?: Prisma.SortOrder
+  borderColor?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -574,6 +650,8 @@ export type PresentationSlideSumOrderByAggregateInput = {
   y?: Prisma.SortOrder
   width?: Prisma.SortOrder
   height?: Prisma.SortOrder
+  rotation?: Prisma.SortOrder
+  scale?: Prisma.SortOrder
   order?: Prisma.SortOrder
 }
 
@@ -635,9 +713,12 @@ export type PresentationSlideCreateWithoutPresentationInput = {
   y?: number
   width?: number
   height?: number
+  rotation?: number
+  scale?: number
   order?: number
   backgroundColor?: string | null
   textColor?: string | null
+  borderColor?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -651,9 +732,12 @@ export type PresentationSlideUncheckedCreateWithoutPresentationInput = {
   y?: number
   width?: number
   height?: number
+  rotation?: number
+  scale?: number
   order?: number
   backgroundColor?: string | null
   textColor?: string | null
+  borderColor?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -697,9 +781,12 @@ export type PresentationSlideScalarWhereInput = {
   y?: Prisma.FloatFilter<"PresentationSlide"> | number
   width?: Prisma.FloatFilter<"PresentationSlide"> | number
   height?: Prisma.FloatFilter<"PresentationSlide"> | number
+  rotation?: Prisma.FloatFilter<"PresentationSlide"> | number
+  scale?: Prisma.FloatFilter<"PresentationSlide"> | number
   order?: Prisma.IntFilter<"PresentationSlide"> | number
   backgroundColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
   textColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
+  borderColor?: Prisma.StringNullableFilter<"PresentationSlide"> | string | null
   metadata?: Prisma.JsonNullableFilter<"PresentationSlide">
   createdAt?: Prisma.DateTimeFilter<"PresentationSlide"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PresentationSlide"> | Date | string
@@ -713,9 +800,12 @@ export type PresentationSlideCreateManyPresentationInput = {
   y?: number
   width?: number
   height?: number
+  rotation?: number
+  scale?: number
   order?: number
   backgroundColor?: string | null
   textColor?: string | null
+  borderColor?: string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -729,9 +819,12 @@ export type PresentationSlideUpdateWithoutPresentationInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -745,9 +838,12 @@ export type PresentationSlideUncheckedUpdateWithoutPresentationInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -761,9 +857,12 @@ export type PresentationSlideUncheckedUpdateManyWithoutPresentationInput = {
   y?: Prisma.FloatFieldUpdateOperationsInput | number
   width?: Prisma.FloatFieldUpdateOperationsInput | number
   height?: Prisma.FloatFieldUpdateOperationsInput | number
+  rotation?: Prisma.FloatFieldUpdateOperationsInput | number
+  scale?: Prisma.FloatFieldUpdateOperationsInput | number
   order?: Prisma.IntFieldUpdateOperationsInput | number
   backgroundColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   textColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  borderColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -780,9 +879,12 @@ export type PresentationSlideSelect<ExtArgs extends runtime.Types.Extensions.Int
   y?: boolean
   width?: boolean
   height?: boolean
+  rotation?: boolean
+  scale?: boolean
   order?: boolean
   backgroundColor?: boolean
   textColor?: boolean
+  borderColor?: boolean
   metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -798,9 +900,12 @@ export type PresentationSlideSelectCreateManyAndReturn<ExtArgs extends runtime.T
   y?: boolean
   width?: boolean
   height?: boolean
+  rotation?: boolean
+  scale?: boolean
   order?: boolean
   backgroundColor?: boolean
   textColor?: boolean
+  borderColor?: boolean
   metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -816,9 +921,12 @@ export type PresentationSlideSelectUpdateManyAndReturn<ExtArgs extends runtime.T
   y?: boolean
   width?: boolean
   height?: boolean
+  rotation?: boolean
+  scale?: boolean
   order?: boolean
   backgroundColor?: boolean
   textColor?: boolean
+  borderColor?: boolean
   metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -834,15 +942,18 @@ export type PresentationSlideSelectScalar = {
   y?: boolean
   width?: boolean
   height?: boolean
+  rotation?: boolean
+  scale?: boolean
   order?: boolean
   backgroundColor?: boolean
   textColor?: boolean
+  borderColor?: boolean
   metadata?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PresentationSlideOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "presentationId" | "title" | "content" | "x" | "y" | "width" | "height" | "order" | "backgroundColor" | "textColor" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["presentationSlide"]>
+export type PresentationSlideOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "presentationId" | "title" | "content" | "x" | "y" | "width" | "height" | "rotation" | "scale" | "order" | "backgroundColor" | "textColor" | "borderColor" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["presentationSlide"]>
 export type PresentationSlideInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   presentation?: boolean | Prisma.PresentationDefaultArgs<ExtArgs>
 }
@@ -867,9 +978,12 @@ export type $PresentationSlidePayload<ExtArgs extends runtime.Types.Extensions.I
     y: number
     width: number
     height: number
+    rotation: number
+    scale: number
     order: number
     backgroundColor: string | null
     textColor: string | null
+    borderColor: string | null
     metadata: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
@@ -1305,9 +1419,12 @@ export interface PresentationSlideFieldRefs {
   readonly y: Prisma.FieldRef<"PresentationSlide", 'Float'>
   readonly width: Prisma.FieldRef<"PresentationSlide", 'Float'>
   readonly height: Prisma.FieldRef<"PresentationSlide", 'Float'>
+  readonly rotation: Prisma.FieldRef<"PresentationSlide", 'Float'>
+  readonly scale: Prisma.FieldRef<"PresentationSlide", 'Float'>
   readonly order: Prisma.FieldRef<"PresentationSlide", 'Int'>
   readonly backgroundColor: Prisma.FieldRef<"PresentationSlide", 'String'>
   readonly textColor: Prisma.FieldRef<"PresentationSlide", 'String'>
+  readonly borderColor: Prisma.FieldRef<"PresentationSlide", 'String'>
   readonly metadata: Prisma.FieldRef<"PresentationSlide", 'Json'>
   readonly createdAt: Prisma.FieldRef<"PresentationSlide", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"PresentationSlide", 'DateTime'>

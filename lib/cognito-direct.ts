@@ -1,6 +1,118 @@
 import { createHmac } from "crypto";
 import { logError } from "./error-logger";
 
+// Helper: fetch with timeout and exponential backoff retry
+// Uses Node.js native https module for better reliability in WSL2
+async function fetchWithTimeout(url: string, options: RequestInit = {}, timeoutMs = 30000, retries = 5) {
+  const https = require("https");
+  const { URL } = require("url");
+  const urlObj = new URL(url);
+  
+  let attempt = 0;
+  let backoff = 500;
+
+  // Helper to detect timeout / abort errors
+  function isTimeoutError(err: any) {
+    if (!err) return false;
+    if (err.code === "ETIMEDOUT") return true;
+    if (err.code === "ECONNRESET") return true;
+    if (err.code === "ENOTFOUND") return true;
+    if (err.code === "EAI_AGAIN") return true;
+    if (err.name === "AbortError") return true;
+    if (err.name === "TimeoutError") return true;
+    if (typeof err.message === "string" && /timed out|timeout|ETIMEDOUT|ECONNRESET|ENOTFOUND|EAI_AGAIN/i.test(err.message)) return true;
+    if (err.cause && isTimeoutError(err.cause)) return true;
+    return false;
+  }
+
+  while (true) {
+    attempt += 1;
+    
+    try {
+      console.log(`fetchWithTimeout: attempt ${attempt}/${retries + 1} -> ${urlObj.hostname}`);
+      
+      const requestBody = options.body ? (typeof options.body === "string" ? options.body : JSON.stringify(options.body)) : "";
+      
+      const response = await new Promise<any>((resolve, reject) => {
+        const req = https.request({
+          hostname: urlObj.hostname,
+          port: 443,
+          path: urlObj.pathname,
+          method: options.method || "GET",
+          headers: options.headers as any,
+          timeout: timeoutMs,
+          family: 4, // Force IPv4
+        }, (res: any) => {
+          let data = "";
+          res.on("data", (chunk: string) => {
+            data += chunk;
+          });
+          res.on("end", () => {
+            // Create a Response-like object
+            resolve({
+              ok: res.statusCode >= 200 && res.statusCode < 300,
+              status: res.statusCode,
+              statusText: res.statusMessage,
+              headers: res.headers,
+              json: async () => JSON.parse(data),
+              text: async () => data,
+            });
+          });
+        });
+
+        req.on("error", (err: any) => {
+          reject(err);
+        });
+
+        req.on("timeout", () => {
+          req.destroy();
+          const timeoutErr: any = new Error("Request timeout");
+          timeoutErr.code = "ETIMEDOUT";
+          reject(timeoutErr);
+        });
+
+        if (requestBody) {
+          req.write(requestBody);
+        }
+        req.end();
+      });
+
+      return response;
+    } catch (err: any) {
+      const timeoutDetected = isTimeoutError(err);
+      const errorMsg = err?.message || String(err);
+      const errorCode = err?.code || "UNKNOWN";
+      
+      console.warn(`fetchWithTimeout: attempt ${attempt} failed${timeoutDetected ? ' (timeout/network)' : ''}`, {
+        code: errorCode,
+        message: errorMsg,
+        hostname: urlObj.hostname,
+      });
+
+      if (attempt > retries) {
+        // Create detailed error
+        const wrapped: any = new Error(
+          `fetchWithTimeout: failed after ${attempt} attempt(s). ` +
+          `Last error: ${errorMsg} (${errorCode}). ` +
+          `This may be a network connectivity issue. ` +
+          `Please check your internet connection and try again.`
+        );
+        wrapped.attempts = attempt;
+        wrapped.original = err;
+        wrapped.code = errorCode;
+        wrapped.hostname = urlObj.hostname;
+        throw wrapped;
+      }
+
+      // Exponential backoff before retrying
+      const waitTime = Math.min(backoff, 5000); // Max 5 seconds
+      console.log(`fetchWithTimeout: waiting ${waitTime}ms before retry...`);
+      await new Promise((r) => setTimeout(r, waitTime));
+      backoff *= 1.5; // Slower backoff growth
+    }
+  }
+}
+
 // Cognito configuration - read at runtime to ensure .env is loaded
 function getCognitoConfig() {
   return {
@@ -72,14 +184,20 @@ export async function signInWithCognitoDirect(email: string, password: string) {
   }, null, 2));
 
   try {
-    const response = await fetch(endpoint, {
+    // Allow overriding timeout/retries via env for slow networks or debugging
+    // Increased defaults to handle WSL2/network issues
+    const timeoutMs = Number(process.env.COGNITO_FETCH_TIMEOUT_MS || 30000); // 30 seconds default
+    const retries = Number(process.env.COGNITO_FETCH_RETRIES || 5); // 5 retries default
+
+    // Use fetchWithTimeout to avoid long undici/Node timeouts and retry transient network errors
+    const response = await fetchWithTimeout(endpoint, {
       method: "POST",
       headers: {
         "X-Amz-Target": "AWSCognitoIdentityProviderService.InitiateAuth",
         "Content-Type": "application/x-amz-json-1.1",
       },
       body: JSON.stringify(requestBody),
-    });
+    }, timeoutMs, retries);
 
     console.log("📥 Response received");
     console.log("   Status:", response.status, response.statusText);
@@ -168,16 +286,30 @@ export async function signInWithCognitoDirect(email: string, password: string) {
     };
   } catch (error: any) {
     console.error("❌ Direct Cognito authentication error:", error);
-    
-    // Log to JSON file
-    logError("CognitoDirect_Exception", error, {
+
+    // Prepare extended context for logging (include original/nested errors when available)
+    const extra: any = {
       email,
       endpoint,
       clientId: config.clientId,
       userPoolId: config.userPoolId,
       region: config.region,
-    });
-    
+    };
+
+    if (error && typeof error === "object") {
+      if (error.attempts) extra.attempts = error.attempts;
+      if (error.original) {
+        extra.original = {
+          name: error.original.name,
+          message: error.original.message,
+          code: (error.original && (error.original.code || (error.original.cause && error.original.cause.code))) || undefined,
+        };
+      }
+    }
+
+    // Log to JSON file with extended context
+    logError("CognitoDirect_Exception", error, extra);
+
     throw error;
   }
 }
@@ -189,7 +321,11 @@ export async function getUserFromTokenDirect(accessToken: string) {
   const endpoint = `https://cognito-idp.${region}.amazonaws.com/`;
 
   try {
-    const response = await fetch(endpoint, {
+    // Increased defaults to handle network issues
+    const timeoutMs = Number(process.env.COGNITO_FETCH_TIMEOUT_MS || 30000); // 30 seconds default
+    const retries = Number(process.env.COGNITO_FETCH_RETRIES || 5); // 5 retries default
+
+    const response = await fetchWithTimeout(endpoint, {
       method: "POST",
       headers: {
         "X-Amz-Target": "AWSCognitoIdentityProviderService.GetUser",
@@ -198,7 +334,7 @@ export async function getUserFromTokenDirect(accessToken: string) {
       body: JSON.stringify({
         AccessToken: accessToken,
       }),
-    });
+    }, timeoutMs, retries);
 
     const data = await response.json();
 

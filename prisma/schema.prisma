@@ -16,7 +16,8 @@ datasource db {
 // ============================================================================
 
 enum UserRole {
-  ADMIN
+  SUPERADMIN // System-level super admin (can manage all churches)
+  ADMIN // Church admin (can manage their church)
   PASTOR
   LEADER
   MEMBER
@@ -24,6 +25,7 @@ enum UserRole {
   FINANCE
   USHER
   PROTOCOL
+  ACCOUNT_MANAGER // Church account manager
 }
 
 enum UserStatus {
@@ -67,14 +69,14 @@ enum GivingCategory {
 model FundCategory {
   id          String   @id @default(cuid())
   code        String   @unique // Paybill fund code (e.g., "TTH", "WLFR", "BLDG") - uppercase, 3-5 chars
-  name        String   // Display name (e.g., "Tithe", "Welfare Fund")
+  name        String // Display name (e.g., "Tithe", "Welfare Fund")
   description String?
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  
-  donations   Donation[]
-  
+
+  donations Donation[]
+
   @@index([code])
   @@index([isActive])
 }
@@ -211,6 +213,9 @@ model User {
   dedicationDate     DateTime?
   weddingAnniversary DateTime?
 
+  // Biometric Integration
+  biometricUserId String? // User ID in biometric device system
+
   // Family Relations
   spouseId      String? @unique
   spouse        User?   @relation("SpouseRelation", fields: [spouseId], references: [id])
@@ -336,6 +341,10 @@ model User {
   conversations ConversationParticipant[] @relation("ConversationParticipant")
   sentMessages  Message[]                 @relation("MessageSender")
   messageReads  MessageRead[]             @relation("MessageRead")
+
+  // SMS
+  sentSMS     SMSLog[] @relation("SMSSender")
+  receivedSMS SMSLog[] @relation("SMSRecipient")
 
   // Surveys
   surveys         Survey[]         @relation("SurveyAuthor")
@@ -534,28 +543,28 @@ model Campus {
 // ============================================================================
 
 model SmallGroup {
-  id              String       @id @default(cuid())
-  name            String
-  description     String?
-  type            String? // zone, connect-group, cell-group, etc.
-  campusId        String?
-  campus          Campus?      @relation(fields: [campusId], references: [id])
-  parentId        String? // For hierarchical groups (e.g., Zone -> Connect Groups -> Cell Groups)
-  parent          SmallGroup?  @relation("GroupHierarchy", fields: [parentId], references: [id])
-  subgroups       SmallGroup[] @relation("GroupHierarchy")
-  leaderId        String? // Primary leader (for backward compatibility)
-  leader          User?        @relation("GroupLeader", fields: [leaderId], references: [id])
-  meetingDay      String? // Monday, Tuesday, etc.
-  meetingTime     String?
-  meetingLocation String? // Legacy field - kept for backward compatibility
-  latitude        Float?
-  longitude       Float?
-  useRotation     Boolean      @default(false) // Whether to use rotational meeting locations
-  isActive        Boolean      @default(true)
-  groupGivingEnabled Boolean   @default(false) // Enable giving for group members
-  groupCode       String?      @unique // Paybill group code (e.g., "ZION", "JERICHO") - uppercase, alphanumeric
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
+  id                 String       @id @default(cuid())
+  name               String
+  description        String?
+  type               String? // zone, connect-group, cell-group, etc.
+  campusId           String?
+  campus             Campus?      @relation(fields: [campusId], references: [id])
+  parentId           String? // For hierarchical groups (e.g., Zone -> Connect Groups -> Cell Groups)
+  parent             SmallGroup?  @relation("GroupHierarchy", fields: [parentId], references: [id])
+  subgroups          SmallGroup[] @relation("GroupHierarchy")
+  leaderId           String? // Primary leader (for backward compatibility)
+  leader             User?        @relation("GroupLeader", fields: [leaderId], references: [id])
+  meetingDay         String? // Monday, Tuesday, etc.
+  meetingTime        String?
+  meetingLocation    String? // Legacy field - kept for backward compatibility
+  latitude           Float?
+  longitude          Float?
+  useRotation        Boolean      @default(false) // Whether to use rotational meeting locations
+  isActive           Boolean      @default(true)
+  groupGivingEnabled Boolean      @default(false) // Enable giving for group members
+  groupCode          String?      @unique // Paybill group code (e.g., "ZION", "JERICHO") - uppercase, alphanumeric
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
 
   members               GroupMember[]
   meetings              GroupMeeting[]
@@ -564,6 +573,7 @@ model SmallGroup {
   masterEvents          MasterEvent[]          @relation("MasterEventGroup")
   leadershipAssignments LeadershipAssignment[] @relation("GroupLeadership")
   donations             Donation[]             @relation("GroupDonations")
+  smsLogs               SMSLog[]
 
   @@index([campusId])
   @@index([leaderId])
@@ -1129,20 +1139,49 @@ model AttendanceRecord {
 
 // Legacy Attendance model (kept for backward compatibility during migration)
 model Attendance {
-  id            String           @id @default(cuid())
-  userId        String
-  user          User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  date          DateTime
-  type          String // service, event, group, etc.
-  referenceId   String? // ID of service, event, or group
-  status        AttendanceStatus @default(PRESENT)
-  checkInMethod String? // manual, qr, nfc, etc.
-  notes         String?
-  createdAt     DateTime         @default(now())
+  id                String           @id @default(cuid())
+  userId            String
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date              DateTime
+  type              String // service, event, group, etc.
+  referenceId       String? // ID of service, event, or group
+  status            AttendanceStatus @default(PRESENT)
+  checkInMethod     String? // manual, qr, nfc, biometric, etc.
+  notes             String?
+  metadata          Json? // Additional data (temperature, face mask, input type, etc.)
+  biometricDeviceId String? // Link to biometric device if recorded via biometric
+  biometricDevice   BiometricDevice? @relation("BiometricAttendance", fields: [biometricDeviceId], references: [id])
+  createdAt         DateTime         @default(now())
 
   @@index([userId])
   @@index([date])
   @@index([type, referenceId])
+  @@index([biometricDeviceId])
+}
+
+// ============================================================================
+// BIOMETRIC DEVICE INTEGRATION
+// ============================================================================
+
+model BiometricDevice {
+  id           String   @id @default(cuid())
+  name         String
+  serviceTagId String   @unique // STGID from Cams API
+  deviceModel  String?
+  location     String?
+  authToken    String // Auth token configured in API Monitor
+  callbackUrl  String // Callback URL configured in API Monitor
+  isActive     Boolean  @default(true)
+  churchId     String
+  church       Church   @relation(fields: [churchId], references: [id], onDelete: Cascade)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  attendanceRecords Attendance[] @relation("BiometricAttendance")
+
+  @@index([churchId])
+  @@index([serviceTagId])
+  @@index([isActive])
 }
 
 // Legacy ServiceSession (kept for backward compatibility - will be migrated to MasterEvent + AttendanceSession)
@@ -1411,11 +1450,11 @@ model Donation {
   linkedSession       AttendanceSession? @relation(fields: [linkedSessionId], references: [id], onDelete: SetNull)
   // Group giving
   groupId             String? // Link to SmallGroup if donation is made as part of group giving
-  group               SmallGroup? @relation("GroupDonations", fields: [groupId], references: [id], onDelete: SetNull)
+  group               SmallGroup?        @relation("GroupDonations", fields: [groupId], references: [id], onDelete: SetNull)
   // Paybill giving
   paybillAccountRef   String? // Raw account number from M-Pesa webhook (e.g., "JERICHO-TTH")
   fundCategoryId      String? // Link to FundCategory for paybill donations
-  fundCategory        FundCategory? @relation(fields: [fundCategoryId], references: [id], onDelete: SetNull)
+  fundCategory        FundCategory?      @relation(fields: [fundCategoryId], references: [id], onDelete: SetNull)
 
   @@index([userId])
   @@index([linkedSessionId])
@@ -2024,6 +2063,7 @@ model Presentation {
   isPresenting    Boolean?            @default(false) // Whether presenter is currently presenting
   viewerCountdown Int?                @default(0) // Countdown timer for viewers (seconds)
   viewerAnimation String?             @default("pulse") // Animation template for waiting screen: "countdown", "pulse", "wave", "spinner", "particles", "gradient"
+  path            Json? // Array of slide IDs defining presentation path (for non-linear navigation)
   createdById     String
   createdBy       User                @relation("PresentationCreator", fields: [createdById], references: [id])
   churchId        String
@@ -2044,14 +2084,17 @@ model PresentationSlide {
   presentation    Presentation @relation(fields: [presentationId], references: [id], onDelete: Cascade)
   title           String
   content         String?      @db.Text
-  x               Float        @default(500) // Position on 1000x1000 canvas
+  x               Float        @default(500) // Position on canvas
   y               Float        @default(500)
-  width           Float        @default(320) // Slide dimensions
+  width           Float        @default(320) // Slide/frame dimensions
   height          Float        @default(192)
+  rotation        Float        @default(0) // Rotation in degrees (for zoomable frames)
+  scale           Float        @default(1) // Scale factor (for zoomable frames)
   order           Int          @default(0) // Display order
   backgroundColor String? // Hex color
   textColor       String? // Hex color
-  metadata        Json? // Additional slide data (images, videos, etc.)
+  borderColor     String? // Hex color for frame border
+  metadata        Json? // Additional data: elements array, etc. (for elements within frames)
   createdAt       DateTime     @default(now())
   updatedAt       DateTime     @updatedAt
 
@@ -2539,23 +2582,87 @@ model Church {
   language     String   @default("en")
   currency     String   @default("USD")
   isActive     Boolean  @default(true)
+  isSponsored  Boolean  @default(false) // Sponsored account (e.g., East Gate Chapel)
+  unlimitedUse Boolean  @default(false) // Unlimited use for sponsored accounts
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  campuses       Campus[]
-  accounts       Account[]
-  budgets        Budget[]
-  calendarEvents CalendarEvent[]
-  documents      Document[]
-  presentations  Presentation[]
-  assets         Asset[]
-  settings       ChurchSetting[]
-  customFields   CustomField[]
-  residences     Residence[]
-  payrolls       Payroll[]
-  checks         Check[]
+  campuses         Campus[]
+  accounts         Account[]
+  budgets          Budget[]
+  calendarEvents   CalendarEvent[]
+  documents        Document[]
+  presentations    Presentation[]
+  assets           Asset[]
+  settings         ChurchSetting[]
+  customFields     CustomField[]
+  residences       Residence[]
+  payrolls         Payroll[]
+  biometricDevices BiometricDevice[]
+  checks           Check[]
+  subscription     Subscription?
+  smsLogs          SMSLog[]
 
   @@index([isActive])
+}
+
+// ============================================================================
+// SUBSCRIPTION & PREMIUM FEATURES
+// ============================================================================
+
+enum SubscriptionPlan {
+  FREE
+  BASIC
+  PREMIUM
+  ENTERPRISE
+}
+
+enum PremiumFeature {
+  BIOMETRIC_ATTENDANCE
+  ADVANCED_REPORTING
+  CUSTOM_BRANDING
+  API_ACCESS
+  PRIORITY_SUPPORT
+  MULTI_CAMPUS
+  ADVANCED_ANALYTICS
+  AI_POWERED_INSIGHTS
+  AUTOMATED_WORKFLOWS
+  ADVANCED_INTEGRATIONS
+  MEMBER_ENGAGEMENT_SCORING
+  PREDICTIVE_ANALYTICS
+  BULK_OPERATIONS
+  CUSTOM_FORMS
+  WHITE_LABEL
+  ADVANCED_SECURITY
+  DATA_EXPORT_IMPORT
+  SMS_MESSAGING
+  VIDEO_CONFERENCING
+  ADVANCED_SCHEDULING
+  MEMBER_DIRECTORY_PRO
+}
+
+model Subscription {
+  id                   String           @id @default(cuid())
+  churchId             String           @unique
+  church               Church           @relation(fields: [churchId], references: [id], onDelete: Cascade)
+  plan                 SubscriptionPlan @default(FREE)
+  features             PremiumFeature[] // Array of enabled premium features
+  status               String           @default("active") // active, cancelled, expired, trial
+  billingCycle         String? // monthly, yearly
+  amount               Decimal?         @db.Decimal(10, 2)
+  currency             String           @default("USD")
+  startDate            DateTime         @default(now())
+  endDate              DateTime?
+  trialEndDate         DateTime?
+  cancelledAt          DateTime?
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+
+  @@index([churchId])
+  @@index([status])
+  @@index([plan])
 }
 
 model ChurchSetting {
@@ -2773,6 +2880,49 @@ model MessageRead {
   @@unique([messageId, userId])
   @@index([messageId])
   @@index([userId])
+}
+
+// ============================================================================
+// SMS LOGGING
+// ============================================================================
+
+enum SMSStatus {
+  PENDING
+  SENT
+  DELIVERED
+  FAILED
+  QUEUED
+}
+
+model SMSLog {
+  id            String      @id @default(cuid())
+  churchId      String
+  church        Church      @relation(fields: [churchId], references: [id], onDelete: Cascade)
+  senderId      String
+  sender        User        @relation("SMSSender", fields: [senderId], references: [id], onDelete: Cascade)
+  recipientId   String? // Null for manual phone numbers
+  recipient     User?       @relation("SMSRecipient", fields: [recipientId], references: [id], onDelete: Cascade)
+  phoneNumber   String // Actual phone number used
+  message       String // Message content sent
+  status        SMSStatus   @default(PENDING)
+  messageId     String? // Afrika's Talking message ID
+  errorMessage  String?
+  sentAt        DateTime?
+  deliveredAt   DateTime?
+  recipientType String? // individuals, leaders, groups, guests, admins
+  groupId       String? // If sent via group
+  group         SmallGroup? @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  metadata      Json? // Additional data
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([churchId])
+  @@index([senderId])
+  @@index([recipientId])
+  @@index([groupId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([phoneNumber])
 }
 
 // ============================================================================

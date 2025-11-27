@@ -426,6 +426,7 @@ export const ModelName = {
   AttendanceSession: 'AttendanceSession',
   AttendanceRecord: 'AttendanceRecord',
   Attendance: 'Attendance',
+  BiometricDevice: 'BiometricDevice',
   ServiceSession: 'ServiceSession',
   SessionAttendee: 'SessionAttendee',
   Decision: 'Decision',
@@ -477,6 +478,7 @@ export const ModelName = {
   Leave: 'Leave',
   PerformanceAppraisal: 'PerformanceAppraisal',
   Church: 'Church',
+  Subscription: 'Subscription',
   ChurchSetting: 'ChurchSetting',
   CommunicationTemplate: 'CommunicationTemplate',
   CustomField: 'CustomField',
@@ -488,6 +490,7 @@ export const ModelName = {
   ConversationParticipant: 'ConversationParticipant',
   Message: 'Message',
   MessageRead: 'MessageRead',
+  SMSLog: 'SMSLog',
   Survey: 'Survey',
   SurveyQuestion: 'SurveyQuestion',
   SurveyResponse: 'SurveyResponse',
@@ -518,7 +521,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "fundCategory" | "user" | "socialLogin" | "userSession" | "invitation" | "authAccount" | "session" | "verificationToken" | "activityLog" | "campus" | "smallGroup" | "groupMember" | "groupMeeting" | "groupMeetingRotation" | "groupMeetingAttendance" | "groupDiscussion" | "groupDiscussionReply" | "discipleshipClass" | "discipleshipEnrollment" | "mentorship" | "mentorshipMeeting" | "announcement" | "announcementRead" | "notification" | "messageTemplate" | "servicePlan" | "servicePlanItem" | "serviceAssignment" | "media" | "livestream" | "livestreamChat" | "livestreamAnalytics" | "masterEvent" | "attendanceSession" | "attendanceRecord" | "attendance" | "serviceSession" | "sessionAttendee" | "decision" | "meeting" | "donation" | "givingQRCode" | "recurringDonation" | "expense" | "budget" | "account" | "transaction" | "event" | "eventRegistration" | "eventCheckIn" | "calendarEvent" | "facility" | "facilityBooking" | "volunteerRole" | "volunteerAssignment" | "volunteerShift" | "childrenClass" | "childrenMinistryMember" | "childrenAttendance" | "childrenLesson" | "youthGroup" | "youthGroupMember" | "youthEvent" | "outreach" | "outreachParticipant" | "outreachTestimony" | "communityProject" | "projectDonation" | "projectUpdate" | "document" | "presentation" | "presentationSlide" | "asset" | "assetMaintenance" | "department" | "inventoryItem" | "inventoryTransaction" | "leadershipAssignment" | "staff" | "payroll" | "payslip" | "check" | "guestVisit" | "guestFollowUp" | "leave" | "performanceAppraisal" | "church" | "churchSetting" | "communicationTemplate" | "customField" | "residence" | "prayerRequest" | "prayer" | "prayerRequestUpdate" | "conversation" | "conversationParticipant" | "message" | "messageRead" | "survey" | "surveyQuestion" | "surveyResponse" | "surveyResponseAnswer" | "memberEngagementScore" | "workflow" | "workflowAction" | "workflowExecution" | "workflowActionExecution" | "form" | "formField" | "formSubmission" | "formSubmissionAnswer" | "memberConnection" | "casbinRule"
+    modelProps: "fundCategory" | "user" | "socialLogin" | "userSession" | "invitation" | "authAccount" | "session" | "verificationToken" | "activityLog" | "campus" | "smallGroup" | "groupMember" | "groupMeeting" | "groupMeetingRotation" | "groupMeetingAttendance" | "groupDiscussion" | "groupDiscussionReply" | "discipleshipClass" | "discipleshipEnrollment" | "mentorship" | "mentorshipMeeting" | "announcement" | "announcementRead" | "notification" | "messageTemplate" | "servicePlan" | "servicePlanItem" | "serviceAssignment" | "media" | "livestream" | "livestreamChat" | "livestreamAnalytics" | "masterEvent" | "attendanceSession" | "attendanceRecord" | "attendance" | "biometricDevice" | "serviceSession" | "sessionAttendee" | "decision" | "meeting" | "donation" | "givingQRCode" | "recurringDonation" | "expense" | "budget" | "account" | "transaction" | "event" | "eventRegistration" | "eventCheckIn" | "calendarEvent" | "facility" | "facilityBooking" | "volunteerRole" | "volunteerAssignment" | "volunteerShift" | "childrenClass" | "childrenMinistryMember" | "childrenAttendance" | "childrenLesson" | "youthGroup" | "youthGroupMember" | "youthEvent" | "outreach" | "outreachParticipant" | "outreachTestimony" | "communityProject" | "projectDonation" | "projectUpdate" | "document" | "presentation" | "presentationSlide" | "asset" | "assetMaintenance" | "department" | "inventoryItem" | "inventoryTransaction" | "leadershipAssignment" | "staff" | "payroll" | "payslip" | "check" | "guestVisit" | "guestFollowUp" | "leave" | "performanceAppraisal" | "church" | "subscription" | "churchSetting" | "communicationTemplate" | "customField" | "residence" | "prayerRequest" | "prayer" | "prayerRequestUpdate" | "conversation" | "conversationParticipant" | "message" | "messageRead" | "sMSLog" | "survey" | "surveyQuestion" | "surveyResponse" | "surveyResponseAnswer" | "memberEngagementScore" | "workflow" | "workflowAction" | "workflowExecution" | "workflowActionExecution" | "form" | "formField" | "formSubmission" | "formSubmissionAnswer" | "memberConnection" | "casbinRule"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -3183,6 +3186,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AttendanceCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AttendanceCountAggregateOutputType> | number
+        }
+      }
+    }
+    BiometricDevice: {
+      payload: Prisma.$BiometricDevicePayload<ExtArgs>
+      fields: Prisma.BiometricDeviceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.BiometricDeviceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.BiometricDeviceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+        }
+        findFirst: {
+          args: Prisma.BiometricDeviceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.BiometricDeviceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+        }
+        findMany: {
+          args: Prisma.BiometricDeviceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>[]
+        }
+        create: {
+          args: Prisma.BiometricDeviceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+        }
+        createMany: {
+          args: Prisma.BiometricDeviceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.BiometricDeviceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>[]
+        }
+        delete: {
+          args: Prisma.BiometricDeviceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+        }
+        update: {
+          args: Prisma.BiometricDeviceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+        }
+        deleteMany: {
+          args: Prisma.BiometricDeviceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.BiometricDeviceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.BiometricDeviceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>[]
+        }
+        upsert: {
+          args: Prisma.BiometricDeviceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$BiometricDevicePayload>
+        }
+        aggregate: {
+          args: Prisma.BiometricDeviceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateBiometricDevice>
+        }
+        groupBy: {
+          args: Prisma.BiometricDeviceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BiometricDeviceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.BiometricDeviceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.BiometricDeviceCountAggregateOutputType> | number
         }
       }
     }
@@ -6960,6 +7037,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Subscription: {
+      payload: Prisma.$SubscriptionPayload<ExtArgs>
+      fields: Prisma.SubscriptionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SubscriptionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SubscriptionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+        }
+        findFirst: {
+          args: Prisma.SubscriptionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SubscriptionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+        }
+        findMany: {
+          args: Prisma.SubscriptionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
+        }
+        create: {
+          args: Prisma.SubscriptionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+        }
+        createMany: {
+          args: Prisma.SubscriptionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SubscriptionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
+        }
+        delete: {
+          args: Prisma.SubscriptionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+        }
+        update: {
+          args: Prisma.SubscriptionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+        }
+        deleteMany: {
+          args: Prisma.SubscriptionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SubscriptionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SubscriptionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
+        }
+        upsert: {
+          args: Prisma.SubscriptionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SubscriptionPayload>
+        }
+        aggregate: {
+          args: Prisma.SubscriptionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSubscription>
+        }
+        groupBy: {
+          args: Prisma.SubscriptionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubscriptionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SubscriptionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SubscriptionCountAggregateOutputType> | number
+        }
+      }
+    }
     ChurchSetting: {
       payload: Prisma.$ChurchSettingPayload<ExtArgs>
       fields: Prisma.ChurchSettingFieldRefs
@@ -7771,6 +7922,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.MessageReadCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.MessageReadCountAggregateOutputType> | number
+        }
+      }
+    }
+    SMSLog: {
+      payload: Prisma.$SMSLogPayload<ExtArgs>
+      fields: Prisma.SMSLogFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SMSLogFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SMSLogFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>
+        }
+        findFirst: {
+          args: Prisma.SMSLogFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SMSLogFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>
+        }
+        findMany: {
+          args: Prisma.SMSLogFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>[]
+        }
+        create: {
+          args: Prisma.SMSLogCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>
+        }
+        createMany: {
+          args: Prisma.SMSLogCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SMSLogCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>[]
+        }
+        delete: {
+          args: Prisma.SMSLogDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>
+        }
+        update: {
+          args: Prisma.SMSLogUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>
+        }
+        deleteMany: {
+          args: Prisma.SMSLogDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SMSLogUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SMSLogUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>[]
+        }
+        upsert: {
+          args: Prisma.SMSLogUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSLogPayload>
+        }
+        aggregate: {
+          args: Prisma.SMSLogAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSMSLog>
+        }
+        groupBy: {
+          args: Prisma.SMSLogGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SMSLogGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SMSLogCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SMSLogCountAggregateOutputType> | number
         }
       }
     }
@@ -8970,6 +9195,7 @@ export const UserScalarFieldEnum = {
   baptismLocation: 'baptismLocation',
   dedicationDate: 'dedicationDate',
   weddingAnniversary: 'weddingAnniversary',
+  biometricUserId: 'biometricUserId',
   spouseId: 'spouseId',
   parentId: 'parentId',
   familyPhoto: 'familyPhoto',
@@ -9519,10 +9745,29 @@ export const AttendanceScalarFieldEnum = {
   status: 'status',
   checkInMethod: 'checkInMethod',
   notes: 'notes',
+  metadata: 'metadata',
+  biometricDeviceId: 'biometricDeviceId',
   createdAt: 'createdAt'
 } as const
 
 export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+export const BiometricDeviceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  serviceTagId: 'serviceTagId',
+  deviceModel: 'deviceModel',
+  location: 'location',
+  authToken: 'authToken',
+  callbackUrl: 'callbackUrl',
+  isActive: 'isActive',
+  churchId: 'churchId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BiometricDeviceScalarFieldEnum = (typeof BiometricDeviceScalarFieldEnum)[keyof typeof BiometricDeviceScalarFieldEnum]
 
 
 export const ServiceSessionScalarFieldEnum = {
@@ -10140,6 +10385,7 @@ export const PresentationScalarFieldEnum = {
   isPresenting: 'isPresenting',
   viewerCountdown: 'viewerCountdown',
   viewerAnimation: 'viewerAnimation',
+  path: 'path',
   createdById: 'createdById',
   churchId: 'churchId',
   createdAt: 'createdAt',
@@ -10158,9 +10404,12 @@ export const PresentationSlideScalarFieldEnum = {
   y: 'y',
   width: 'width',
   height: 'height',
+  rotation: 'rotation',
+  scale: 'scale',
   order: 'order',
   backgroundColor: 'backgroundColor',
   textColor: 'textColor',
+  borderColor: 'borderColor',
   metadata: 'metadata',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -10454,11 +10703,35 @@ export const ChurchScalarFieldEnum = {
   language: 'language',
   currency: 'currency',
   isActive: 'isActive',
+  isSponsored: 'isSponsored',
+  unlimitedUse: 'unlimitedUse',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ChurchScalarFieldEnum = (typeof ChurchScalarFieldEnum)[keyof typeof ChurchScalarFieldEnum]
+
+
+export const SubscriptionScalarFieldEnum = {
+  id: 'id',
+  churchId: 'churchId',
+  plan: 'plan',
+  features: 'features',
+  status: 'status',
+  billingCycle: 'billingCycle',
+  amount: 'amount',
+  currency: 'currency',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  trialEndDate: 'trialEndDate',
+  cancelledAt: 'cancelledAt',
+  stripeCustomerId: 'stripeCustomerId',
+  stripeSubscriptionId: 'stripeSubscriptionId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum]
 
 
 export const ChurchSettingScalarFieldEnum = {
@@ -10612,6 +10885,28 @@ export const MessageReadScalarFieldEnum = {
 } as const
 
 export type MessageReadScalarFieldEnum = (typeof MessageReadScalarFieldEnum)[keyof typeof MessageReadScalarFieldEnum]
+
+
+export const SMSLogScalarFieldEnum = {
+  id: 'id',
+  churchId: 'churchId',
+  senderId: 'senderId',
+  recipientId: 'recipientId',
+  phoneNumber: 'phoneNumber',
+  message: 'message',
+  status: 'status',
+  messageId: 'messageId',
+  errorMessage: 'errorMessage',
+  sentAt: 'sentAt',
+  deliveredAt: 'deliveredAt',
+  recipientType: 'recipientType',
+  groupId: 'groupId',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SMSLogScalarFieldEnum = (typeof SMSLogScalarFieldEnum)[keyof typeof SMSLogScalarFieldEnum]
 
 
 export const SurveyScalarFieldEnum = {
@@ -11481,6 +11776,34 @@ export type ListEnumLeaveStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$
 
 
 /**
+ * Reference to a field of type 'SubscriptionPlan'
+ */
+export type EnumSubscriptionPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionPlan'>
+    
+
+
+/**
+ * Reference to a field of type 'SubscriptionPlan[]'
+ */
+export type ListEnumSubscriptionPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionPlan[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PremiumFeature[]'
+ */
+export type ListEnumPremiumFeatureFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PremiumFeature[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PremiumFeature'
+ */
+export type EnumPremiumFeatureFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PremiumFeature'>
+    
+
+
+/**
  * Reference to a field of type 'PrayerRequestCategory'
  */
 export type EnumPrayerRequestCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrayerRequestCategory'>
@@ -11519,6 +11842,20 @@ export type EnumPrayerRequestPrivacyFieldRefInput<$PrismaModel> = FieldRefInputT
  * Reference to a field of type 'PrayerRequestPrivacy[]'
  */
 export type ListEnumPrayerRequestPrivacyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PrayerRequestPrivacy[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SMSStatus'
+ */
+export type EnumSMSStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SMSStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SMSStatus[]'
+ */
+export type ListEnumSMSStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SMSStatus[]'>
     
 
 
@@ -11728,6 +12065,7 @@ export type GlobalOmitConfig = {
   attendanceSession?: Prisma.AttendanceSessionOmit
   attendanceRecord?: Prisma.AttendanceRecordOmit
   attendance?: Prisma.AttendanceOmit
+  biometricDevice?: Prisma.BiometricDeviceOmit
   serviceSession?: Prisma.ServiceSessionOmit
   sessionAttendee?: Prisma.SessionAttendeeOmit
   decision?: Prisma.DecisionOmit
@@ -11779,6 +12117,7 @@ export type GlobalOmitConfig = {
   leave?: Prisma.LeaveOmit
   performanceAppraisal?: Prisma.PerformanceAppraisalOmit
   church?: Prisma.ChurchOmit
+  subscription?: Prisma.SubscriptionOmit
   churchSetting?: Prisma.ChurchSettingOmit
   communicationTemplate?: Prisma.CommunicationTemplateOmit
   customField?: Prisma.CustomFieldOmit
@@ -11790,6 +12129,7 @@ export type GlobalOmitConfig = {
   conversationParticipant?: Prisma.ConversationParticipantOmit
   message?: Prisma.MessageOmit
   messageRead?: Prisma.MessageReadOmit
+  sMSLog?: Prisma.SMSLogOmit
   survey?: Prisma.SurveyOmit
   surveyQuestion?: Prisma.SurveyQuestionOmit
   surveyResponse?: Prisma.SurveyResponseOmit

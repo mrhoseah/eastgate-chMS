@@ -26,6 +26,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Workflow, Plus, Play, Pause, Trash2, Edit, CheckCircle2, Clock, Mail, Bell, Users } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { PremiumBadge } from "@/components/premium/premium-badge";
+import { UpgradeDialog } from "@/components/premium/upgrade-dialog";
+import { PremiumFeature } from "@/lib/utils/premium-features";
 
 interface WorkflowRule {
   id: string;
@@ -45,6 +48,8 @@ export default function WorkflowsPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedWorkflow, setSelectedWorkflow] = useState<WorkflowRule | null>(null);
   const { toast } = useToast();
+  const [hasPremiumAccess, setHasPremiumAccess] = useState(false);
+  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -54,8 +59,23 @@ export default function WorkflowsPage() {
   });
 
   useEffect(() => {
+    checkPremiumAccess();
     fetchWorkflows();
   }, []);
+
+  const checkPremiumAccess = async () => {
+    try {
+      const response = await fetch(
+        `/api/subscription/features?feature=${PremiumFeature.AUTOMATED_WORKFLOWS}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setHasPremiumAccess(data.hasAccess || false);
+      }
+    } catch (error) {
+      console.error("Error checking premium access:", error);
+    }
+  };
 
   const fetchWorkflows = async () => {
     setLoading(true);
@@ -73,6 +93,11 @@ export default function WorkflowsPage() {
   };
 
   const handleSave = async () => {
+    if (!hasPremiumAccess) {
+      setShowUpgradeDialog(true);
+      return;
+    }
+
     if (!formData.name) {
       toast({
         title: "Error",
@@ -179,6 +204,7 @@ export default function WorkflowsPage() {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
             <Workflow className="w-8 h-8" />
             Automated Workflows
+            <PremiumBadge size="md" />
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-1">
             Automate follow-ups, reminders, and communications
@@ -477,6 +503,12 @@ export default function WorkflowsPage() {
           </div>
         </TabsContent>
       </Tabs>
+
+      <UpgradeDialog
+        open={showUpgradeDialog}
+        onOpenChange={setShowUpgradeDialog}
+        feature={PremiumFeature.AUTOMATED_WORKFLOWS}
+      />
     </div>
   );
 }

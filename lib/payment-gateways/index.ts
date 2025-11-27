@@ -132,6 +132,10 @@ class PaymentGatewayManager {
 // Export singleton instance
 export const paymentGatewayManager = new PaymentGatewayManager();
 
+export const getPaymentGateway = (method: PaymentMethod): PaymentGateway | null => {
+  return paymentGatewayManager.getGateway(method);
+};
+
 // Export types and gateways
 export * from "./types";
 export { MpesaGateway } from "./mpesa";

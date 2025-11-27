@@ -129,7 +129,7 @@ export async function PATCH(
       });
     }
 
-    // Create notification for the user if login access was granted
+    // Create notification and send invitation email if login access was granted
     if (canLogin === true && !currentUserData.canLogin && user.email) {
       try {
         await prisma.notification.create({
@@ -137,13 +137,51 @@ export async function PATCH(
             userId: id,
             type: "IN_APP",
             title: "Dashboard Access Granted",
-            content: `You now have access to the Eastgate Church Management System dashboard. You can log in with your email: ${user.email}`,
+            content: `You now have access to the Church Management System dashboard. You can log in with your email: ${user.email}`,
             link: "/dashboard",
           },
         });
+
+        // Send invitation email if user doesn't have an account yet
+        // Check if user has an invitation
+        const existingInvitation = await prisma.invitation.findFirst({
+          where: {
+            email: user.email.toLowerCase(),
+            status: "PENDING",
+            expiresAt: {
+              gt: new Date(),
+            },
+          },
+        });
+
+        if (!existingInvitation) {
+          // Create invitation for the user
+          const { createInvitation } = await import("@/lib/invitations");
+          const invitation = await createInvitation({
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            role: user.role,
+            invitedById: currentUser.id,
+            message: `You have been granted access to the Church Management System dashboard. Please accept this invitation to set up your account.`,
+            expiresInDays: 7,
+          });
+
+          // Link invitation to user
+          await prisma.invitation.update({
+            where: { id: invitation.id },
+            data: { userId: id },
+          });
+
+          // Send invitation email
+          const { sendInvitationEmail } = await import("@/lib/invitation-email");
+          await sendInvitationEmail(invitation.id).catch((error) => {
+            console.error("Failed to send invitation email:", error);
+          });
+        }
       } catch (notifError) {
-        console.error("Error creating notification:", notifError);
-        // Don't fail the request if notification fails
+        console.error("Error creating notification or invitation:", notifError);
+        // Don't fail the request if notification/invitation fails
       }
     }
 

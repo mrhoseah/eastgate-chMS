@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -31,7 +31,22 @@ interface Group {
   id: string;
   name: string;
   description: string | null;
-  _count: { members: number };
+  type: string | null;
+  parentId: string | null;
+  parent?: { id: string; name: string } | null;
+  _count: { members: number; subgroups: number };
+}
+
+interface SmsHistoryEntry {
+  id: string;
+  message: string;
+  status: "PENDING" | "SENT" | "PARTIAL" | "FAILED";
+  totalCount: number;
+  successCount: number;
+  failureCount: number;
+  recipients?: Array<{ to: string; recipientId?: string | null }> | null;
+  createdAt: string;
+  sender?: { id: string; firstName: string; lastName: string } | null;
 }
 
 export default function SMSPage() {
@@ -39,6 +54,7 @@ export default function SMSPage() {
   const [recipientType, setRecipientType] = useState<string>("individuals");
   const [selectedRecipients, setSelectedRecipients] = useState<string[]>([]);
   const [selectedGroups, setSelectedGroups] = useState<string[]>([]);
+  const [groupTargetType, setGroupTargetType] = useState<string>("all-members");
   const [recipients, setRecipients] = useState<Recipient[]>([]);
   const [groups, setGroups] = useState<Group[]>([]);
   const [loading, setLoading] = useState(false);
@@ -46,7 +62,41 @@ export default function SMSPage() {
   const [manualNumbers, setManualNumbers] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [recentMessages, setRecentMessages] = useState<any[]>([]);
+  const [loadingHistory, setLoadingHistory] = useState(false);
+  const [historyError, setHistoryError] = useState<string | null>(null);
+  const [historySearchQuery, setHistorySearchQuery] = useState("");
+  const [historyPage, setHistoryPage] = useState(1);
+  const [historyPagination, setHistoryPagination] = useState<any>(null);
   const itemsPerPage = 10;
+  const historyItemsPerPage = 10;
+
+  const fetchSmsHistory = useCallback(async () => {
+    setLoadingHistory(true);
+    setHistoryError(null);
+    try {
+      const offset = (historyPage - 1) * historyItemsPerPage;
+      const params = new URLSearchParams({
+        limit: historyItemsPerPage.toString(),
+        offset: offset.toString(),
+      });
+      if (historySearchQuery) {
+        params.append("search", historySearchQuery);
+      }
+      const res = await fetch(`/api/communications/sms/history?${params}`);
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to fetch SMS history");
+      }
+      setRecentMessages(data.messages || []);
+      setHistoryPagination(data.pagination);
+    } catch (error: any) {
+      console.error("Error loading SMS history:", error);
+      setHistoryError(error.message || "Failed to fetch SMS history");
+    } finally {
+      setLoadingHistory(false);
+    }
+  }, [historyPage, historySearchQuery, historyItemsPerPage]);
 
   const handleSendSMS = async () => {
     if (!message.trim()) {
@@ -72,6 +122,8 @@ export default function SMSPage() {
           message,
           recipientIds: recipientType === "groups" ? [] : selectedRecipients,
           groupIds: recipientType === "groups" ? selectedGroups : undefined,
+          groupTargetType: recipientType === "groups" ? groupTargetType : undefined,
+          recipientType,
           manualNumbers: manualNumbers.trim() || undefined,
         }),
       });
@@ -84,11 +136,15 @@ export default function SMSPage() {
 
       alert(`Successfully sent ${data.sent} SMS message(s)!`);
       
+      // Refresh history
+      fetchRecentMessages();
+      
       // Reset form
       setMessage("");
       setSelectedRecipients([]);
       setSelectedGroups([]);
       setManualNumbers("");
+      await fetchSmsHistory();
     } catch (error: any) {
       console.error("Error sending SMS:", error);
       alert(error.message || "Failed to send SMS. Please try again.");
@@ -101,7 +157,18 @@ export default function SMSPage() {
     fetchRecipients();
     setCurrentPage(1); // Reset to first page when recipient type changes
     setSearchQuery(""); // Clear search when recipient type changes
+    setSelectedRecipients([]);
+    setSelectedGroups([]);
   }, [recipientType]);
+
+  useEffect(() => {
+    fetchSmsHistory();
+  }, [fetchSmsHistory]);
+
+  // Reset to page 1 when search changes
+  useEffect(() => {
+    setHistoryPage(1);
+  }, [historySearchQuery]);
 
   const fetchRecipients = async () => {
     setLoading(true);
@@ -126,8 +193,15 @@ export default function SMSPage() {
     );
   };
 
+  const toggleGroup = (id: string) => {
+    setSelectedGroups((prev) =>
+      prev.includes(id) ? prev.filter((g) => g !== id) : [...prev, id]
+    );
+  };
+
   const clearSelection = () => {
     setSelectedRecipients([]);
+    setSelectedGroups([]);
   };
 
   const getRecipientTypeLabel = (type: string) => {
@@ -190,7 +264,7 @@ export default function SMSPage() {
   // Select all filtered results (not just current page)
   const selectAll = () => {
     if (recipientType === "groups") {
-      setSelectedRecipients(filteredGroups.map((g) => g.id));
+      setSelectedGroups(filteredGroups.map((g) => g.id));
     } else {
       setSelectedRecipients(filteredRecipients.map((r) => r.id));
     }
@@ -259,6 +333,63 @@ export default function SMSPage() {
               </Select>
             </div>
 
+            {/* Group Targeting Options - Only show when groups are selected */}
+            {recipientType === "groups" && (
+              <div className="space-y-2">
+                <Label htmlFor="groupTargetType">Group Targeting</Label>
+                <Select value={groupTargetType} onValueChange={setGroupTargetType}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all-members">
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">All Members</span>
+                        <span className="text-xs text-gray-500">Send to all members in selected groups</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="parent-with-subgroups">
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">Parent + Subgroups</span>
+                        <span className="text-xs text-gray-500">Include all members from subgroups</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="leaders-only">
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">Leaders Only</span>
+                        <span className="text-xs text-gray-500">Send only to group leaders</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="parent-leaders">
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">Parent Group Leaders</span>
+                        <span className="text-xs text-gray-500">Leaders of selected parent groups only</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="subgroup-leaders">
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">Subgroup Leaders</span>
+                        <span className="text-xs text-gray-500">Leaders of child groups only</span>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <div className="text-xs text-gray-500 bg-blue-50 dark:bg-blue-900/20 p-2 rounded border border-blue-200 dark:border-blue-800">
+                  <strong>Tip:</strong> {
+                    groupTargetType === "parent-with-subgroups" 
+                      ? "Selecting a parent group will automatically include all members from its subgroups."
+                      : groupTargetType === "leaders-only"
+                      ? "Only members marked as leaders in the selected groups will receive the message."
+                      : groupTargetType === "parent-leaders"
+                      ? "Only leaders of the parent groups you select will receive the message."
+                      : groupTargetType === "subgroup-leaders"
+                      ? "Only leaders of subgroups under the selected parent groups will receive the message."
+                      : "All members in the selected groups will receive the message."
+                  }
+                </div>
+              </div>
+            )}
+
             {/* Recipient Selection */}
             <div>
               <div className="flex items-center justify-between mb-2">
@@ -322,10 +453,29 @@ export default function SMSPage() {
                           onCheckedChange={() => toggleGroup(group.id)}
                         />
                         <div className="flex-1">
-                          <p className="font-medium">{group.name}</p>
-                          <p className="text-sm text-gray-500">
-                            {group._count.members} members
-                          </p>
+                          <div className="flex items-center gap-2">
+                            <p className="font-medium">{group.name}</p>
+                            {group.type && (
+                              <Badge variant="outline" className="text-xs">
+                                {group.type}
+                              </Badge>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <span>{group._count.members} members</span>
+                            {group._count.subgroups > 0 && (
+                              <>
+                                <span>•</span>
+                                <span>{group._count.subgroups} subgroups</span>
+                              </>
+                            )}
+                            {group.parent && (
+                              <>
+                                <span>•</span>
+                                <span className="text-xs">Under: {group.parent.name}</span>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
                     ))
@@ -507,6 +657,21 @@ export default function SMSPage() {
                 <UserPlus className="w-4 h-4 mr-2" />
                 Send to All Guests
               </Button>
+              <div className="border-t my-2 pt-2">
+                <p className="text-xs text-gray-500 font-medium mb-2">Group Actions</p>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start text-sm"
+                  onClick={() => {
+                    setRecipientType("groups");
+                    setGroupTargetType("leaders-only");
+                    setTimeout(selectAll, 100);
+                  }}
+                >
+                  <UserCheck className="w-3 h-3 mr-2" />
+                  All Group Leaders
+                </Button>
+              </div>
             </CardContent>
           </Card>
 
@@ -529,13 +694,165 @@ export default function SMSPage() {
       {/* Recent Messages */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent SMS Messages</CardTitle>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle>Recent SMS Messages</CardTitle>
+              <CardDescription className="mt-1">
+                {historyPagination && `${historyPagination.total} total messages`}
+              </CardDescription>
+            </div>
+          </div>
+          {/* Search Bar */}
+          <div className="mt-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <Input
+                placeholder="Search messages, recipients, or phone numbers..."
+                value={historySearchQuery}
+                onChange={(e) => setHistorySearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </div>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-8 text-gray-500">
-            <MessageCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
-            <p>No messages sent yet</p>
-          </div>
+          {loadingHistory ? (
+            <div className="text-center py-12 text-gray-500">
+              <Loader2 className="w-8 h-8 mx-auto mb-2 animate-spin" />
+              <p>Loading messages...</p>
+            </div>
+          ) : historyError ? (
+            <div className="text-center py-12 text-red-500">
+              <MessageCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
+              <p>{historyError}</p>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={fetchSmsHistory}
+                className="mt-4"
+              >
+                Retry
+              </Button>
+            </div>
+          ) : recentMessages.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">
+              <MessageCircle className="w-12 h-12 mx-auto mb-2 opacity-50" />
+              <p>{historySearchQuery ? "No messages found matching your search" : "No messages sent yet"}</p>
+              {historySearchQuery && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setHistorySearchQuery("")}
+                  className="mt-4"
+                >
+                  Clear Search
+                </Button>
+              )}
+            </div>
+          ) : (
+            <>
+              <div className="space-y-3">
+                {recentMessages.map((msg) => (
+                  <div
+                    key={msg.id}
+                    className="border rounded-lg p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="text-sm font-medium text-gray-900 dark:text-white">
+                            {msg.sender?.firstName} {msg.sender?.lastName}
+                          </p>
+                          {msg.recipientType && (
+                            <Badge variant="outline" className="text-xs">
+                              {getRecipientTypeLabel(msg.recipientType)}
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-500">
+                          {new Date(msg.createdAt).toLocaleString()}
+                        </p>
+                      </div>
+                      <Badge
+                        variant={msg.successCount === msg.totalRecipients ? "default" : msg.successCount > 0 ? "secondary" : "destructive"}
+                        className="text-xs shrink-0"
+                      >
+                        {msg.successCount}/{msg.totalRecipients} sent
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 mb-2 line-clamp-2">
+                      {msg.message}
+                    </p>
+                    {msg.group && (
+                      <div className="flex items-center gap-1 text-xs text-gray-500">
+                        <Users className="w-3 h-3" />
+                        <span>{msg.group.name}</span>
+                      </div>
+                    )}
+                    {msg.failedCount > 0 && (
+                      <div className="mt-2 text-xs text-red-600 dark:text-red-400">
+                        {msg.failedCount} failed delivery
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              {historyPagination && historyPagination.total > historyItemsPerPage && (
+                <div className="flex items-center justify-between mt-6 pt-4 border-t">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Showing {((historyPage - 1) * historyItemsPerPage) + 1} to {Math.min(historyPage * historyItemsPerPage, historyPagination.total)} of {historyPagination.total}
+                  </p>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setHistoryPage(p => Math.max(1, p - 1))}
+                      disabled={historyPage === 1 || loadingHistory}
+                    >
+                      Previous
+                    </Button>
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: Math.min(5, Math.ceil(historyPagination.total / historyItemsPerPage)) }, (_, i) => {
+                        const totalPages = Math.ceil(historyPagination.total / historyItemsPerPage);
+                        let pageNum;
+                        if (totalPages <= 5) {
+                          pageNum = i + 1;
+                        } else if (historyPage <= 3) {
+                          pageNum = i + 1;
+                        } else if (historyPage >= totalPages - 2) {
+                          pageNum = totalPages - 4 + i;
+                        } else {
+                          pageNum = historyPage - 2 + i;
+                        }
+                        return (
+                          <Button
+                            key={pageNum}
+                            variant={historyPage === pageNum ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setHistoryPage(pageNum)}
+                            disabled={loadingHistory}
+                            className="w-9 h-9 p-0"
+                          >
+                            {pageNum}
+                          </Button>
+                        );
+                      })}
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setHistoryPage(p => p + 1)}
+                      disabled={!historyPagination.hasMore || loadingHistory}
+                    >
+                      Next
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </>
+          )}
         </CardContent>
       </Card>
     </div>

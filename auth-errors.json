@@ -1,115 +1,1035 @@
 [
   {
-    "timestamp": "2025-11-09T15:07:23.653Z",
+    "timestamp": "2025-11-15T12:20:51.743Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:20:51.745Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3252:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_40c50123._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:20:55.653Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:20:55.654Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3252:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_40c50123._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:32:10.571Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:32:10.572Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:35:59.282Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:35:59.284Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:38:07.432Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:38:07.433Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:55:55.193Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:55:55.198Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3262:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:56:52.657Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T12:56:52.658Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T17:54:27.734Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T17:54:27.736Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T17:54:38.316Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T17:54:38.317Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-15T20:32:49.356Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-15T20:32:49.383Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "hoseahkplgt@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T06:30:33.111Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T06:30:33.115Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3137:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3260:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:47:40.746Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:47:40.748Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3308:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3431:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:50:49.117Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:50:49.120Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3308:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3431:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:50:55.643Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError [ETIMEDOUT]: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:52:31.570Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError [ETIMEDOUT]: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:52:52.994Z",
+    "type": "CognitoDirect_Exception",
+    "error": {
+      "name": "Error",
+      "message": "fetchWithTimeout: failed after 6 attempt(s): fetch failed",
+      "stack": "Error: fetchWithTimeout: failed after 6 attempt(s): fetch failed\n    at fetchWithTimeout (/home/mrhoseah/dev/shepherd-chMS/lib/cognito-direct.ts:50:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async signInWithCognitoDirect (/home/mrhoseah/dev/shepherd-chMS/lib/cognito-direct.ts:142:22)\n    at async debugSignIn (/home/mrhoseah/dev/shepherd-chMS/scripts/debug-signin.ts:87:25)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "endpoint": "https://cognito-idp.af-south-1.amazonaws.com/",
+      "clientId": "3tqr6stk71nj1dqid070ortevv",
+      "userPoolId": "af-south-1_LmAJvuOpj",
+      "region": "af-south-1",
+      "attempts": 6,
+      "original": {
+        "name": "TypeError",
+        "message": "fetch failed",
+        "code": "ETIMEDOUT"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:53:12.367Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:53:12.369Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3142:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3265:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:54:45.630Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "Error",
+      "message": "getaddrinfo EAI_AGAIN cognito-idp.af-south-1.amazonaws.com",
+      "code": "EAI_AGAIN",
+      "stack": "Error: getaddrinfo EAI_AGAIN cognito-idp.af-south-1.amazonaws.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:57:07.251Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError [ETIMEDOUT]: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:59:14.891Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T10:59:14.892Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3158:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3284:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_264b4b05._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:02:39.288Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:02:39.289Z",
+    "type": "NextAuth_Authorize_Error",
+    "error": {
+      "name": "Error",
+      "message": "Cognito SDK InitiateAuth error: TimeoutError",
+      "stack": "Error: Cognito SDK InitiateAuth error: TimeoutError\n    at signInWithCognitoSdk (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3158:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3278:54)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_40c50123._.js:1600:20)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "cognitoConfig": {
+        "userPoolId": "af-south-1_LmAJvuOpj",
+        "clientId": "3tqr6stk71nj1dqid070ortevv",
+        "region": "af-south-1"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:06:02.270Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:07:52.170Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:08:48.240Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:08:52.612Z",
+    "type": "CognitoDirect_Exception",
+    "error": {
+      "name": "Error",
+      "message": "fetchWithTimeout: failed after 3 attempt(s): fetch failed",
+      "stack": "Error: fetchWithTimeout: failed after 3 attempt(s): fetch failed\n    at fetchWithTimeout (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__0c59b76e._.js:192:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async signInWithCognitoDirect (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__0c59b76e._.js:268:26)\n    at async POST (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__0c59b76e._.js:3206:39)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "endpoint": "https://cognito-idp.af-south-1.amazonaws.com/",
+      "clientId": "3tqr6stk71nj1dqid070ortevv",
+      "userPoolId": "af-south-1_LmAJvuOpj",
+      "region": "af-south-1",
+      "attempts": 3,
+      "original": {
+        "name": "TypeError",
+        "message": "fetch failed",
+        "code": "ETIMEDOUT"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:15:12.251Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:15:28.324Z",
+    "type": "CognitoDirect_Exception",
+    "error": {
+      "name": "Error",
+      "message": "fetchWithTimeout: failed after 6 attempt(s): fetch failed",
+      "stack": "Error: fetchWithTimeout: failed after 6 attempt(s): fetch failed\n    at fetchWithTimeout (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:2804:33)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async signInWithCognitoDirect (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:2881:26)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__1837ac4f._.js:3262:47)"
+    },
+    "context": {
+      "email": "mrhoseah@gmail.com",
+      "endpoint": "https://cognito-idp.af-south-1.amazonaws.com/",
+      "clientId": "3tqr6stk71nj1dqid070ortevv",
+      "userPoolId": "af-south-1_LmAJvuOpj",
+      "region": "af-south-1",
+      "attempts": 6,
+      "original": {
+        "name": "TypeError",
+        "message": "fetch failed",
+        "code": "ETIMEDOUT"
+      }
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:18:05.965Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T11:18:14.456Z",
+    "type": "CognitoSDK_GetUser_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-16T12:13:21.925Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "mrhoseah@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "c9MKAn0TwdpesZunsCtRZY9OX+rqKaPMGjIHQhqMbXU="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 3,
+      "isDnsError": false,
+      "isNetworkError": true
+    }
+  },
+  {
+    "timestamp": "2025-11-16T12:13:29.534Z",
+    "type": "CognitoSDK_GetUser_Error",
+    "error": {
+      "name": "TimeoutError",
+      "message": "TimeoutError",
+      "code": "ETIMEDOUT",
+      "stack": "AggregateError: \n    at internalConnectMultiple (node:net:1134:18)\n    at internalConnectMultiple (node:net:1210:5)\n    at Timeout.internalConnectMultipleTimeout (node:net:1742:5)\n    at listOnTimeout (node:internal/timers:610:11)"
+    },
+    "context": {
+      "region": "af-south-1"
+    }
+  },
+  {
+    "timestamp": "2025-11-26T19:38:01.921Z",
+    "type": "CognitoSDK_InitiateAuth_Error",
+    "error": {
+      "name": "NotAuthorizedException",
+      "message": "Incorrect username or password.",
+      "stack": "NotAuthorizedException: Incorrect username or password.\n    at de_NotAuthorizedExceptionRes (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_@aws-sdk_client-cognito-identity-provider_8198290c._.js:6214:23)\n    at de_CommandError (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_@aws-sdk_client-cognito-identity-provider_8198290c._.js:5838:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async /home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_2bd6cd96._.js:12399:32"
+    },
+    "context": {
+      "input": {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
+        "AuthParameters": {
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "@@H5210h1...",
+          "SECRET_HASH": "HSS1YStLBkb58arGTOCMLNPDW6HgxSEObG2SnLjZWp0="
+        }
+      },
+      "region": "af-south-1",
+      "attempt": 1,
+      "isDnsError": false,
+      "isNetworkError": false
+    }
+  },
+  {
+    "timestamp": "2025-11-26T19:38:02.929Z",
     "type": "CognitoDirect_API_Error",
     "error": {
-      "name": "InvalidParameterException",
-      "message": "1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+",
+      "name": "NotAuthorizedException",
+      "message": "Incorrect username or password.",
       "code": "400",
-      "stack": "InvalidParameterException: 1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+\n    at signInWithCognitoDirect (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2485:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2680:45)\n    at async Object.callback (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:1600:20)"
+      "stack": "NotAuthorizedException: Incorrect username or password.\n    at signInWithCognitoDirect (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3114:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3470:47)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_40c50123._.js:1600:20)"
     },
     "context": {
       "endpoint": "https://cognito-idp.af-south-1.amazonaws.com/",
-      "clientId": "your-client-id",
-      "userPoolId": "af-south-1_HZYIpahzs",
+      "clientId": "3tqr6stk71nj1dqid070ortevv",
+      "userPoolId": "af-south-1_LmAJvuOpj",
       "region": "af-south-1",
-      "hasClientSecret": false,
+      "hasClientSecret": true,
       "fullResponse": {
-        "__type": "InvalidParameterException",
-        "message": "1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+"
+        "__type": "NotAuthorizedException",
+        "message": "Incorrect username or password."
       },
       "requestBody": {
         "AuthFlow": "USER_PASSWORD_AUTH",
-        "ClientId": "your-client-id",
+        "ClientId": "3tqr6stk71nj1dqid070ortevv",
         "AuthParameters": {
-          "USERNAME": "mrhoseah@gmail.com",
-          "PASSWORD": "***"
+          "USERNAME": "hoseahkplgt@gmail.com",
+          "PASSWORD": "***",
+          "SECRET_HASH": "***"
         }
       }
     }
   },
   {
-    "timestamp": "2025-11-09T15:07:24.013Z",
+    "timestamp": "2025-11-26T19:38:06.204Z",
     "type": "CognitoDirect_Exception",
     "error": {
       "name": "Error",
-      "message": "Invalid parameter: 1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+",
-      "stack": "Error: Invalid parameter: 1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+\n    at signInWithCognitoDirect (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2513:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2680:45)\n    at async Object.callback (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:1600:20)"
+      "message": "Invalid email or password",
+      "stack": "Error: Invalid email or password\n    at signInWithCognitoDirect (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3145:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/[root-of-the-server]__f4a23566._.js:3470:47)\n    at async Object.callback (/home/mrhoseah/dev/shepherd-chMS/.next/dev/server/chunks/28d5f_next-auth_40c50123._.js:1600:20)"
     },
     "context": {
-      "email": "mrhoseah@gmail.com",
+      "email": "hoseahkplgt@gmail.com",
       "endpoint": "https://cognito-idp.af-south-1.amazonaws.com/",
-      "clientId": "your-client-id",
-      "userPoolId": "af-south-1_HZYIpahzs",
+      "clientId": "3tqr6stk71nj1dqid070ortevv",
+      "userPoolId": "af-south-1_LmAJvuOpj",
       "region": "af-south-1"
-    }
-  },
-  {
-    "timestamp": "2025-11-09T15:07:24.014Z",
-    "type": "NextAuth_Authorize_Error",
-    "error": {
-      "name": "Error",
-      "message": "Invalid parameter: 1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+",
-      "stack": "Error: Invalid parameter: 1 validation error detected: Value 'your-client-id' at 'clientId' failed to satisfy constraint: Member must satisfy regular expression pattern: [\\w+]+\n    at signInWithCognitoDirect (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2513:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Object.authorize (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2680:45)\n    at async Object.callback (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:1600:20)"
-    },
-    "context": {
-      "email": "mrhoseah@gmail.com",
-      "cognitoConfig": {
-        "userPoolId": "af-south-1_HZYIpahzs",
-        "clientId": "your-client-id",
-        "region": "af-south-1"
-      }
-    }
-  },
-  {
-    "timestamp": "2025-11-09T15:14:14.887Z",
-    "type": "NextAuth_Authorize_Error",
-    "error": {
-      "name": "Error",
-      "message": "This role does not have login access. This role is for identification and grouping purposes only.",
-      "stack": "Error: This role does not have login access. This role is for identification and grouping purposes only.\n    at Object.authorize (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2790:31)\n    at async Object.callback (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:1600:20)\n    at async AuthHandler (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:3333:38)\n    at async NextAuthRouteHandler (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:3501:30)"
-    },
-    "context": {
-      "email": "mrhoseah@gmail.com",
-      "cognitoConfig": {
-        "userPoolId": "af-south-1_LmAJvuOpj",
-        "clientId": "3tqr6stk71nj1dqid070ortevv",
-        "region": "af-south-1"
-      }
-    }
-  },
-  {
-    "timestamp": "2025-11-09T15:16:12.139Z",
-    "type": "NextAuth_Authorize_Error",
-    "error": {
-      "name": "Error",
-      "message": "This role does not have login access by default. This role is for identification and grouping purposes only. Please contact an administrator to enable login access.",
-      "stack": "Error: This role does not have login access by default. This role is for identification and grouping purposes only. Please contact an administrator to enable login access.\n    at Object.authorize (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2795:31)\n    at async Object.callback (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:1600:20)\n    at async AuthHandler (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:3333:38)\n    at async NextAuthRouteHandler (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/node_modules_next-auth_1810886e._.js:3501:30)"
-    },
-    "context": {
-      "email": "mrhoseah@gmail.com",
-      "cognitoConfig": {
-        "userPoolId": "af-south-1_LmAJvuOpj",
-        "clientId": "3tqr6stk71nj1dqid070ortevv",
-        "region": "af-south-1"
-      }
-    }
-  },
-  {
-    "timestamp": "2025-11-09T15:19:05.963Z",
-    "type": "NextAuth_Authorize_Error",
-    "error": {
-      "name": "TypeError",
-      "message": "fetch failed",
-      "stack": "TypeError: fetch failed\n    at node:internal/deps/undici/undici:15845:13\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async getUserFromTokenDirect (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2557:26)\n    at async Object.authorize (/home/mrhoseah/dev/eastgate-chMS/.next/dev/server/chunks/[root-of-the-server]__991a9921._.js:2685:41)"
-    },
-    "context": {
-      "email": "mrhoseah@gmail.com",
-      "cognitoConfig": {
-        "userPoolId": "af-south-1_LmAJvuOpj",
-        "clientId": "3tqr6stk71nj1dqid070ortevv",
-        "region": "af-south-1"
-      }
     }
   }
 ]

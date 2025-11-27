@@ -85,6 +85,7 @@ export type PresentationCountAggregateOutputType = {
   isPresenting: number
   viewerCountdown: number
   viewerAnimation: number
+  path: number
   createdById: number
   churchId: number
   createdAt: number
@@ -152,6 +153,7 @@ export type PresentationCountAggregateInputType = {
   isPresenting?: true
   viewerCountdown?: true
   viewerAnimation?: true
+  path?: true
   createdById?: true
   churchId?: true
   createdAt?: true
@@ -258,6 +260,7 @@ export type PresentationGroupByOutputType = {
   isPresenting: boolean | null
   viewerCountdown: number | null
   viewerAnimation: string | null
+  path: runtime.JsonValue | null
   createdById: string
   churchId: string
   createdAt: Date
@@ -300,6 +303,7 @@ export type PresentationWhereInput = {
   isPresenting?: Prisma.BoolNullableFilter<"Presentation"> | boolean | null
   viewerCountdown?: Prisma.IntNullableFilter<"Presentation"> | number | null
   viewerAnimation?: Prisma.StringNullableFilter<"Presentation"> | string | null
+  path?: Prisma.JsonNullableFilter<"Presentation">
   createdById?: Prisma.StringFilter<"Presentation"> | string
   churchId?: Prisma.StringFilter<"Presentation"> | string
   createdAt?: Prisma.DateTimeFilter<"Presentation"> | Date | string
@@ -322,6 +326,7 @@ export type PresentationOrderByWithRelationInput = {
   isPresenting?: Prisma.SortOrderInput | Prisma.SortOrder
   viewerCountdown?: Prisma.SortOrderInput | Prisma.SortOrder
   viewerAnimation?: Prisma.SortOrderInput | Prisma.SortOrder
+  path?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrder
   churchId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -347,6 +352,7 @@ export type PresentationWhereUniqueInput = Prisma.AtLeast<{
   isPresenting?: Prisma.BoolNullableFilter<"Presentation"> | boolean | null
   viewerCountdown?: Prisma.IntNullableFilter<"Presentation"> | number | null
   viewerAnimation?: Prisma.StringNullableFilter<"Presentation"> | string | null
+  path?: Prisma.JsonNullableFilter<"Presentation">
   createdById?: Prisma.StringFilter<"Presentation"> | string
   churchId?: Prisma.StringFilter<"Presentation"> | string
   createdAt?: Prisma.DateTimeFilter<"Presentation"> | Date | string
@@ -369,6 +375,7 @@ export type PresentationOrderByWithAggregationInput = {
   isPresenting?: Prisma.SortOrderInput | Prisma.SortOrder
   viewerCountdown?: Prisma.SortOrderInput | Prisma.SortOrder
   viewerAnimation?: Prisma.SortOrderInput | Prisma.SortOrder
+  path?: Prisma.SortOrderInput | Prisma.SortOrder
   createdById?: Prisma.SortOrder
   churchId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -396,6 +403,7 @@ export type PresentationScalarWhereWithAggregatesInput = {
   isPresenting?: Prisma.BoolNullableWithAggregatesFilter<"Presentation"> | boolean | null
   viewerCountdown?: Prisma.IntNullableWithAggregatesFilter<"Presentation"> | number | null
   viewerAnimation?: Prisma.StringNullableWithAggregatesFilter<"Presentation"> | string | null
+  path?: Prisma.JsonNullableWithAggregatesFilter<"Presentation">
   createdById?: Prisma.StringWithAggregatesFilter<"Presentation"> | string
   churchId?: Prisma.StringWithAggregatesFilter<"Presentation"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Presentation"> | Date | string
@@ -415,6 +423,7 @@ export type PresentationCreateInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: Prisma.UserCreateNestedOneWithoutPresentationsInput
@@ -435,6 +444,7 @@ export type PresentationUncheckedCreateInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById: string
   churchId: string
   createdAt?: Date | string
@@ -455,6 +465,7 @@ export type PresentationUpdateInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.UserUpdateOneRequiredWithoutPresentationsNestedInput
@@ -475,6 +486,7 @@ export type PresentationUncheckedUpdateInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   churchId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -495,6 +507,7 @@ export type PresentationCreateManyInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById: string
   churchId: string
   createdAt?: Date | string
@@ -514,6 +527,7 @@ export type PresentationUpdateManyMutationInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -531,6 +545,7 @@ export type PresentationUncheckedUpdateManyInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   churchId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -560,6 +575,7 @@ export type PresentationCountOrderByAggregateInput = {
   isPresenting?: Prisma.SortOrder
   viewerCountdown?: Prisma.SortOrder
   viewerAnimation?: Prisma.SortOrder
+  path?: Prisma.SortOrder
   createdById?: Prisma.SortOrder
   churchId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -732,6 +748,7 @@ export type PresentationCreateWithoutCreatedByInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   church: Prisma.ChurchCreateNestedOneWithoutPresentationsInput
@@ -751,6 +768,7 @@ export type PresentationUncheckedCreateWithoutCreatedByInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   churchId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -799,6 +817,7 @@ export type PresentationScalarWhereInput = {
   isPresenting?: Prisma.BoolNullableFilter<"Presentation"> | boolean | null
   viewerCountdown?: Prisma.IntNullableFilter<"Presentation"> | number | null
   viewerAnimation?: Prisma.StringNullableFilter<"Presentation"> | string | null
+  path?: Prisma.JsonNullableFilter<"Presentation">
   createdById?: Prisma.StringFilter<"Presentation"> | string
   churchId?: Prisma.StringFilter<"Presentation"> | string
   createdAt?: Prisma.DateTimeFilter<"Presentation"> | Date | string
@@ -818,6 +837,7 @@ export type PresentationCreateWithoutSlidesInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: Prisma.UserCreateNestedOneWithoutPresentationsInput
@@ -837,6 +857,7 @@ export type PresentationUncheckedCreateWithoutSlidesInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById: string
   churchId: string
   createdAt?: Date | string
@@ -872,6 +893,7 @@ export type PresentationUpdateWithoutSlidesInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.UserUpdateOneRequiredWithoutPresentationsNestedInput
@@ -891,6 +913,7 @@ export type PresentationUncheckedUpdateWithoutSlidesInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   churchId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -910,6 +933,7 @@ export type PresentationCreateWithoutChurchInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   createdBy: Prisma.UserCreateNestedOneWithoutPresentationsInput
@@ -929,6 +953,7 @@ export type PresentationUncheckedCreateWithoutChurchInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -974,6 +999,7 @@ export type PresentationCreateManyCreatedByInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   churchId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -992,6 +1018,7 @@ export type PresentationUpdateWithoutCreatedByInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   church?: Prisma.ChurchUpdateOneRequiredWithoutPresentationsNestedInput
@@ -1011,6 +1038,7 @@ export type PresentationUncheckedUpdateWithoutCreatedByInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   churchId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1030,6 +1058,7 @@ export type PresentationUncheckedUpdateManyWithoutCreatedByInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   churchId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1048,6 +1077,7 @@ export type PresentationCreateManyChurchInput = {
   isPresenting?: boolean | null
   viewerCountdown?: number | null
   viewerAnimation?: string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1066,6 +1096,7 @@ export type PresentationUpdateWithoutChurchInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdBy?: Prisma.UserUpdateOneRequiredWithoutPresentationsNestedInput
@@ -1085,6 +1116,7 @@ export type PresentationUncheckedUpdateWithoutChurchInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1104,6 +1136,7 @@ export type PresentationUncheckedUpdateManyWithoutChurchInput = {
   isPresenting?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   viewerCountdown?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   viewerAnimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  path?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdById?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1153,6 +1186,7 @@ export type PresentationSelect<ExtArgs extends runtime.Types.Extensions.Internal
   isPresenting?: boolean
   viewerCountdown?: boolean
   viewerAnimation?: boolean
+  path?: boolean
   createdById?: boolean
   churchId?: boolean
   createdAt?: boolean
@@ -1176,6 +1210,7 @@ export type PresentationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   isPresenting?: boolean
   viewerCountdown?: boolean
   viewerAnimation?: boolean
+  path?: boolean
   createdById?: boolean
   churchId?: boolean
   createdAt?: boolean
@@ -1197,6 +1232,7 @@ export type PresentationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   isPresenting?: boolean
   viewerCountdown?: boolean
   viewerAnimation?: boolean
+  path?: boolean
   createdById?: boolean
   churchId?: boolean
   createdAt?: boolean
@@ -1218,13 +1254,14 @@ export type PresentationSelectScalar = {
   isPresenting?: boolean
   viewerCountdown?: boolean
   viewerAnimation?: boolean
+  path?: boolean
   createdById?: boolean
   churchId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PresentationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "isPublic" | "currentSlideId" | "presenterUserId" | "showSlideRing" | "viewerSize" | "backgroundType" | "isPresenting" | "viewerCountdown" | "viewerAnimation" | "createdById" | "churchId" | "createdAt" | "updatedAt", ExtArgs["result"]["presentation"]>
+export type PresentationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "isPublic" | "currentSlideId" | "presenterUserId" | "showSlideRing" | "viewerSize" | "backgroundType" | "isPresenting" | "viewerCountdown" | "viewerAnimation" | "path" | "createdById" | "churchId" | "createdAt" | "updatedAt", ExtArgs["result"]["presentation"]>
 export type PresentationInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdBy?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   church?: boolean | Prisma.ChurchDefaultArgs<ExtArgs>
@@ -1260,6 +1297,7 @@ export type $PresentationPayload<ExtArgs extends runtime.Types.Extensions.Intern
     isPresenting: boolean | null
     viewerCountdown: number | null
     viewerAnimation: string | null
+    path: runtime.JsonValue | null
     createdById: string
     churchId: string
     createdAt: Date
@@ -1702,6 +1740,7 @@ export interface PresentationFieldRefs {
   readonly isPresenting: Prisma.FieldRef<"Presentation", 'Boolean'>
   readonly viewerCountdown: Prisma.FieldRef<"Presentation", 'Int'>
   readonly viewerAnimation: Prisma.FieldRef<"Presentation", 'String'>
+  readonly path: Prisma.FieldRef<"Presentation", 'Json'>
   readonly createdById: Prisma.FieldRef<"Presentation", 'String'>
   readonly churchId: Prisma.FieldRef<"Presentation", 'String'>
   readonly createdAt: Prisma.FieldRef<"Presentation", 'DateTime'>

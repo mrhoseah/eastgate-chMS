@@ -198,6 +198,11 @@ export type AttendanceRecord = Prisma.AttendanceRecordModel
  */
 export type Attendance = Prisma.AttendanceModel
 /**
+ * Model BiometricDevice
+ * 
+ */
+export type BiometricDevice = Prisma.BiometricDeviceModel
+/**
  * Model ServiceSession
  * 
  */
@@ -455,6 +460,11 @@ export type PerformanceAppraisal = Prisma.PerformanceAppraisalModel
  */
 export type Church = Prisma.ChurchModel
 /**
+ * Model Subscription
+ * 
+ */
+export type Subscription = Prisma.SubscriptionModel
+/**
  * Model ChurchSetting
  * 
  */
@@ -509,6 +519,11 @@ export type Message = Prisma.MessageModel
  * 
  */
 export type MessageRead = Prisma.MessageReadModel
+/**
+ * Model SMSLog
+ * 
+ */
+export type SMSLog = Prisma.SMSLogModel
 /**
  * Model Survey
  * 

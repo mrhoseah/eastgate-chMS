@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { useAppDispatch } from "@/lib/store/hooks";
 import {
-  setMpesaSettings,
-  setSmsSettings,
-  setEmailSettings,
-  setCognitoSettings,
-  setCloudinarySettings,
+  setMpesaSettings as setMpesaSettingsAction,
+  setSmsSettings as setSmsSettingsAction,
+  setEmailSettings as setEmailSettingsAction,
+  setCognitoSettings as setCognitoSettingsAction,
+  setCloudinarySettings as setCloudinarySettingsAction,
 } from "@/lib/store/slices/settingsSlice";
 import { setCurrency } from "@/lib/store/slices/currencySlice";
 import { store } from "@/lib/store/store";
@@ -16,6 +16,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -37,6 +45,7 @@ import {
   Info,
   Plug,
   Tag,
+  Landmark,
 } from "lucide-react";
 import { GuestQRCode } from "@/components/guest-qr-code";
 import Link from "next/link";
@@ -52,14 +61,13 @@ interface Integration {
   docsUrl?: string;
 }
 
-const integrations: Integration[] = [
+const integrationDefinitions: Omit<Integration, "status">[] = [
   {
     id: "cognito",
     name: "AWS Cognito",
     description: "User authentication and identity management",
     icon: <Key className="w-5 h-5" />,
     category: "authentication",
-    status: "configured",
   },
   {
     id: "mpesa",
@@ -67,7 +75,6 @@ const integrations: Integration[] = [
     description: "Mobile money payments via STK Push",
     icon: <Smartphone className="w-5 h-5" />,
     category: "payment",
-    status: "not_configured",
     docsUrl: "https://developer.safaricom.co.ke/",
   },
   {
@@ -76,8 +83,15 @@ const integrations: Integration[] = [
     description: "Online payment processing",
     icon: <CreditCard className="w-5 h-5" />,
     category: "payment",
-    status: "not_configured",
     docsUrl: "https://developer.paypal.com/",
+  },
+  {
+    id: "bank",
+    name: "Bank Transfer",
+    description: "Manual EFT deposits and reconciliations",
+    icon: <Landmark className="w-5 h-5" />,
+    category: "payment",
+    docsUrl: undefined,
   },
   {
     id: "afrikas-talking",
@@ -85,7 +99,6 @@ const integrations: Integration[] = [
     description: "SMS messaging service",
     icon: <MessageSquare className="w-5 h-5" />,
     category: "communication",
-    status: "not_configured",
     docsUrl: "https://developers.africastalking.com/",
   },
   {
@@ -94,7 +107,6 @@ const integrations: Integration[] = [
     description: "Email delivery via SMTP",
     icon: <Mail className="w-5 h-5" />,
     category: "communication",
-    status: "not_configured",
   },
   {
     id: "cloudinary",
@@ -102,7 +114,6 @@ const integrations: Integration[] = [
     description: "Image and media storage",
     icon: <Image className="w-5 h-5" />,
     category: "storage",
-    status: "configured",
     docsUrl: "https://cloudinary.com/documentation",
   },
 ];
@@ -137,6 +148,24 @@ export default function SettingsPage() {
     paybillNumber: "",
     paybillAccountName: "",
   });
+  const [paypalSettings, setPaypalSettings] = useState({
+    clientId: "",
+    clientSecret: "",
+    mode: "sandbox",
+    webhookId: "",
+    brandName: "",
+    currency: "USD",
+  });
+  const [bankSettings, setBankSettings] = useState({
+    bankName: "",
+    accountName: "",
+    accountNumber: "",
+    branch: "",
+    swiftCode: "",
+    instructions: "",
+    currency: "KES",
+    contactEmail: "",
+  });
   const [smsSettings, setSmsSettings] = useState({
     apiKey: "",
     username: "",
@@ -169,6 +198,45 @@ export default function SettingsPage() {
 
   const dispatch = useAppDispatch();
 
+  const mpesaConfigured = Boolean(
+    mpesaSettings.consumerKey &&
+      mpesaSettings.consumerSecret &&
+      mpesaSettings.shortcode &&
+      mpesaSettings.passkey
+  );
+  const paypalConfigured = Boolean(
+    paypalSettings.clientId && paypalSettings.clientSecret
+  );
+  const bankConfigured = Boolean(
+    bankSettings.accountName && bankSettings.accountNumber && bankSettings.bankName
+  );
+
+  const integrations = useMemo(() => {
+    const statusById: Record<string, Integration["status"]> = {
+      cognito: cognitoSettings.userPoolId ? "configured" : "not_configured",
+      mpesa: mpesaConfigured ? "connected" : "not_configured",
+      paypal: paypalConfigured ? "connected" : "not_configured",
+      bank: bankConfigured ? "configured" : "not_configured",
+      "afrikas-talking": smsSettings.apiKey ? "configured" : "not_configured",
+      smtp: emailSettings.smtpHost && emailSettings.smtpUser ? "configured" : "not_configured",
+      cloudinary: cloudinarySettings.cloudName ? "configured" : "not_configured",
+    };
+
+    return integrationDefinitions.map((definition) => ({
+      ...definition,
+      status: statusById[definition.id] || "not_configured",
+    }));
+  }, [
+    cognitoSettings.userPoolId,
+    mpesaConfigured,
+    paypalConfigured,
+    bankConfigured,
+    smsSettings.apiKey,
+    emailSettings.smtpHost,
+    emailSettings.smtpUser,
+    cloudinarySettings.cloudName,
+  ]);
+
   useEffect(() => {
     // Load settings from database first, then fallback to Redux
     const loadSettings = async () => {
@@ -181,23 +249,35 @@ export default function SettingsPage() {
           // Load settings from database if available
           if (dbSettings.mpesa) {
             setMpesaSettings(dbSettings.mpesa);
-            dispatch(setMpesaSettings(dbSettings.mpesa));
+            dispatch(setMpesaSettingsAction(dbSettings.mpesa));
+          }
+          if (dbSettings.paypal) {
+            setPaypalSettings((prev) => ({
+              ...prev,
+              ...dbSettings.paypal,
+            }));
+          }
+          if (dbSettings.bank) {
+            setBankSettings((prev) => ({
+              ...prev,
+              ...dbSettings.bank,
+            }));
           }
           if (dbSettings.sms) {
             setSmsSettings(dbSettings.sms);
-            dispatch(setSmsSettings(dbSettings.sms));
+            dispatch(setSmsSettingsAction(dbSettings.sms));
           }
           if (dbSettings.email) {
             setEmailSettings(dbSettings.email);
-            dispatch(setEmailSettings(dbSettings.email));
+            dispatch(setEmailSettingsAction(dbSettings.email));
           }
           if (dbSettings.cognito) {
             setCognitoSettings(dbSettings.cognito);
-            dispatch(setCognitoSettings(dbSettings.cognito));
+            dispatch(setCognitoSettingsAction(dbSettings.cognito));
           }
           if (dbSettings.cloudinary) {
             setCloudinarySettings(dbSettings.cloudinary);
-            dispatch(setCloudinarySettings(dbSettings.cloudinary));
+            dispatch(setCloudinarySettingsAction(dbSettings.cloudinary));
           }
           if (dbSettings.currency) {
             setCurrencySettings(dbSettings.currency);
@@ -243,7 +323,7 @@ export default function SettingsPage() {
     setLoading(true);
     try {
       // Save to Redux
-      dispatch(setMpesaSettings(mpesaSettings));
+      dispatch(setMpesaSettingsAction(mpesaSettings));
       
       // Save to database - flatten settings for ChurchSetting model
       const settingsToSave: Record<string, any> = {
@@ -275,11 +355,65 @@ export default function SettingsPage() {
     }
   };
 
+  const handleSavePaypal = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          settings: {
+            paypal: paypalSettings,
+          },
+        }),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || "Failed to save settings");
+      }
+
+      alert("PayPal settings saved successfully!");
+    } catch (error: any) {
+      console.error("Error saving PayPal settings:", error);
+      alert(error.message || "Failed to save settings");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSaveBank = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          settings: {
+            bank: bankSettings,
+          },
+        }),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || "Failed to save settings");
+      }
+
+      alert("Bank transfer settings saved successfully!");
+    } catch (error: any) {
+      console.error("Error saving bank settings:", error);
+      alert(error.message || "Failed to save settings");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleSaveSms = async () => {
     setLoading(true);
     try {
       // Save to Redux
-      dispatch(setSmsSettings(smsSettings));
+      dispatch(setSmsSettingsAction(smsSettings));
       
       // Save to database
       const res = await fetch("/api/settings", {
@@ -310,7 +444,7 @@ export default function SettingsPage() {
     setLoading(true);
     try {
       // Save to Redux
-      dispatch(setEmailSettings(emailSettings));
+      dispatch(setEmailSettingsAction(emailSettings));
       
       // Save to database
       const res = await fetch("/api/settings", {
@@ -341,7 +475,7 @@ export default function SettingsPage() {
     setLoading(true);
     try {
       // Save to Redux
-      dispatch(setCognitoSettings(cognitoSettings));
+      dispatch(setCognitoSettingsAction(cognitoSettings));
       
       // Save to database
       const res = await fetch("/api/settings", {
@@ -372,7 +506,7 @@ export default function SettingsPage() {
     setLoading(true);
     try {
       // Save to Redux
-      dispatch(setCloudinarySettings(cloudinarySettings));
+      dispatch(setCloudinarySettingsAction(cloudinarySettings));
       
       // Save to database
       const res = await fetch("/api/settings", {
@@ -493,7 +627,7 @@ export default function SettingsPage() {
           </TabsTrigger>
           <TabsTrigger value="mpesa">
             <Smartphone className="w-4 h-4 mr-2" />
-            M-Pesa
+            Payments
           </TabsTrigger>
           <TabsTrigger value="sms">
             <MessageSquare className="w-4 h-4 mr-2" />
@@ -1149,6 +1283,189 @@ export default function SettingsPage() {
               </div>
               <Button onClick={handleSaveMpesa} disabled={loading}>
                 {loading ? "Saving..." : "Save Paybill Settings"}
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>PayPal Configuration</CardTitle>
+              <CardDescription>Connect your PayPal account for instant card payments</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="paypalClientId">Client ID</Label>
+                <Input
+                  id="paypalClientId"
+                  value={paypalSettings.clientId}
+                  onChange={(e) => setPaypalSettings({ ...paypalSettings, clientId: e.target.value })}
+                  placeholder="Enter PayPal client ID"
+                />
+              </div>
+              <div>
+                <Label htmlFor="paypalClientSecret">Client Secret</Label>
+                <Input
+                  id="paypalClientSecret"
+                  type="password"
+                  value={paypalSettings.clientSecret}
+                  onChange={(e) => setPaypalSettings({ ...paypalSettings, clientSecret: e.target.value })}
+                  placeholder="Enter PayPal client secret"
+                />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="paypalMode">Environment</Label>
+                  <Select
+                    value={paypalSettings.mode}
+                    onValueChange={(value) => setPaypalSettings({ ...paypalSettings, mode: value as "sandbox" | "live" })}
+                  >
+                    <SelectTrigger id="paypalMode">
+                      <SelectValue placeholder="Select environment" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="sandbox">Sandbox (Testing)</SelectItem>
+                      <SelectItem value="live">Live</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label htmlFor="paypalCurrency">Default Currency</Label>
+                  <Input
+                    id="paypalCurrency"
+                    value={paypalSettings.currency}
+                    onChange={(e) => setPaypalSettings({ ...paypalSettings, currency: e.target.value.toUpperCase() })}
+                    placeholder="USD"
+                    maxLength={3}
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="paypalBrandName">Display Name</Label>
+                <Input
+                  id="paypalBrandName"
+                  value={paypalSettings.brandName}
+                  onChange={(e) => setPaypalSettings({ ...paypalSettings, brandName: e.target.value })}
+                  placeholder="e.g., Eastgate Chapel"
+                />
+                <p className="text-xs text-gray-500 mt-1">Shown on the PayPal checkout window.</p>
+              </div>
+              <div>
+                <Label htmlFor="paypalWebhook">Webhook ID (Optional)</Label>
+                <Input
+                  id="paypalWebhook"
+                  value={paypalSettings.webhookId}
+                  onChange={(e) => setPaypalSettings({ ...paypalSettings, webhookId: e.target.value })}
+                  placeholder="Copy from PayPal developer dashboard"
+                />
+              </div>
+              <Button onClick={handleSavePaypal} disabled={loading}>
+                {loading ? "Saving..." : "Save PayPal Settings"}
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Bank Transfer Details</CardTitle>
+              <CardDescription>Share EFT/RTGS details for donors who prefer direct transfers</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="bankName">Bank Name</Label>
+                  <Input
+                    id="bankName"
+                    value={bankSettings.bankName}
+                    onChange={(e) => setBankSettings({ ...bankSettings, bankName: e.target.value })}
+                    placeholder="e.g., Equity Bank"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="bankBranch">Branch</Label>
+                  <Input
+                    id="bankBranch"
+                    value={bankSettings.branch}
+                    onChange={(e) => setBankSettings({ ...bankSettings, branch: e.target.value })}
+                    placeholder="e.g., Upper Hill"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="accountName">Account Name</Label>
+                  <Input
+                    id="accountName"
+                    value={bankSettings.accountName}
+                    onChange={(e) => setBankSettings({ ...bankSettings, accountName: e.target.value })}
+                    placeholder="Eastgate Chapel"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="accountNumber">Account Number</Label>
+                  <Input
+                    id="accountNumber"
+                    value={bankSettings.accountNumber}
+                    onChange={(e) => setBankSettings({ ...bankSettings, accountNumber: e.target.value })}
+                    placeholder="e.g., 0101234567890"
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="swiftCode">SWIFT / Routing Code</Label>
+                  <Input
+                    id="swiftCode"
+                    value={bankSettings.swiftCode}
+                    onChange={(e) => setBankSettings({ ...bankSettings, swiftCode: e.target.value.toUpperCase() })}
+                    placeholder="e.g., EQBLKENA"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="bankCurrency">Currency</Label>
+                  <Input
+                    id="bankCurrency"
+                    value={bankSettings.currency}
+                    onChange={(e) => setBankSettings({ ...bankSettings, currency: e.target.value.toUpperCase() })}
+                    placeholder="KES"
+                    maxLength={3}
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="bankContactEmail">Finance Contact Email</Label>
+                <Input
+                  id="bankContactEmail"
+                  type="email"
+                  value={bankSettings.contactEmail}
+                  onChange={(e) => setBankSettings({ ...bankSettings, contactEmail: e.target.value })}
+                  placeholder="finance@yourchurch.com"
+                />
+                <p className="text-xs text-gray-500 mt-1">Shown to donors who need assistance completing the transfer.</p>
+              </div>
+              <div>
+                <Label htmlFor="bankInstructions">Instructions / Notes</Label>
+                <Textarea
+                  id="bankInstructions"
+                  value={bankSettings.instructions}
+                  onChange={(e) => setBankSettings({ ...bankSettings, instructions: e.target.value })}
+                  placeholder="Include any giving reference, branch codes, or WhatsApp numbers for confirmation."
+                  rows={4}
+                />
+              </div>
+              <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-sm text-gray-700 dark:text-gray-300 space-y-1">
+                <p className="font-semibold">What donors will see:</p>
+                <p>{bankSettings.bankName || "[Bank Name]"} — {bankSettings.branch || "[Branch]"}</p>
+                <p>Account Name: <strong>{bankSettings.accountName || "[Account Name]"}</strong></p>
+                <p>Account Number: <strong>{bankSettings.accountNumber || "[Account Number]"}</strong></p>
+                {bankSettings.swiftCode && (
+                  <p>SWIFT: <strong>{bankSettings.swiftCode}</strong></p>
+                )}
+                {bankSettings.instructions && (
+                  <p className="text-xs">{bankSettings.instructions}</p>
+                )}
+              </div>
+              <Button onClick={handleSaveBank} disabled={loading}>
+                {loading ? "Saving..." : "Save Bank Settings"}
               </Button>
             </CardContent>
           </Card>

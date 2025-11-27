@@ -57,6 +57,7 @@ export type UserMinAggregateOutputType = {
   baptismLocation: string | null
   dedicationDate: Date | null
   weddingAnniversary: Date | null
+  biometricUserId: string | null
   spouseId: string | null
   parentId: string | null
   familyPhoto: string | null
@@ -105,6 +106,7 @@ export type UserMaxAggregateOutputType = {
   baptismLocation: string | null
   dedicationDate: Date | null
   weddingAnniversary: Date | null
+  biometricUserId: string | null
   spouseId: string | null
   parentId: string | null
   familyPhoto: string | null
@@ -154,6 +156,7 @@ export type UserCountAggregateOutputType = {
   baptismLocation: number
   dedicationDate: number
   weddingAnniversary: number
+  biometricUserId: number
   spouseId: number
   parentId: number
   familyPhoto: number
@@ -204,6 +207,7 @@ export type UserMinAggregateInputType = {
   baptismLocation?: true
   dedicationDate?: true
   weddingAnniversary?: true
+  biometricUserId?: true
   spouseId?: true
   parentId?: true
   familyPhoto?: true
@@ -252,6 +256,7 @@ export type UserMaxAggregateInputType = {
   baptismLocation?: true
   dedicationDate?: true
   weddingAnniversary?: true
+  biometricUserId?: true
   spouseId?: true
   parentId?: true
   familyPhoto?: true
@@ -301,6 +306,7 @@ export type UserCountAggregateInputType = {
   baptismLocation?: true
   dedicationDate?: true
   weddingAnniversary?: true
+  biometricUserId?: true
   spouseId?: true
   parentId?: true
   familyPhoto?: true
@@ -423,6 +429,7 @@ export type UserGroupByOutputType = {
   baptismLocation: string | null
   dedicationDate: Date | null
   weddingAnniversary: Date | null
+  biometricUserId: string | null
   spouseId: string | null
   parentId: string | null
   familyPhoto: string | null
@@ -493,6 +500,7 @@ export type UserWhereInput = {
   baptismLocation?: Prisma.StringNullableFilter<"User"> | string | null
   dedicationDate?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   weddingAnniversary?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  biometricUserId?: Prisma.StringNullableFilter<"User"> | string | null
   spouseId?: Prisma.StringNullableFilter<"User"> | string | null
   parentId?: Prisma.StringNullableFilter<"User"> | string | null
   familyPhoto?: Prisma.StringNullableFilter<"User"> | string | null
@@ -590,6 +598,8 @@ export type UserWhereInput = {
   conversations?: Prisma.ConversationParticipantListRelationFilter
   sentMessages?: Prisma.MessageListRelationFilter
   messageReads?: Prisma.MessageReadListRelationFilter
+  sentSMS?: Prisma.SMSLogListRelationFilter
+  receivedSMS?: Prisma.SMSLogListRelationFilter
   surveys?: Prisma.SurveyListRelationFilter
   surveyResponses?: Prisma.SurveyResponseListRelationFilter
   forms?: Prisma.FormListRelationFilter
@@ -634,6 +644,7 @@ export type UserOrderByWithRelationInput = {
   baptismLocation?: Prisma.SortOrderInput | Prisma.SortOrder
   dedicationDate?: Prisma.SortOrderInput | Prisma.SortOrder
   weddingAnniversary?: Prisma.SortOrderInput | Prisma.SortOrder
+  biometricUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   spouseId?: Prisma.SortOrderInput | Prisma.SortOrder
   parentId?: Prisma.SortOrderInput | Prisma.SortOrder
   familyPhoto?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -731,6 +742,8 @@ export type UserOrderByWithRelationInput = {
   conversations?: Prisma.ConversationParticipantOrderByRelationAggregateInput
   sentMessages?: Prisma.MessageOrderByRelationAggregateInput
   messageReads?: Prisma.MessageReadOrderByRelationAggregateInput
+  sentSMS?: Prisma.SMSLogOrderByRelationAggregateInput
+  receivedSMS?: Prisma.SMSLogOrderByRelationAggregateInput
   surveys?: Prisma.SurveyOrderByRelationAggregateInput
   surveyResponses?: Prisma.SurveyResponseOrderByRelationAggregateInput
   forms?: Prisma.FormOrderByRelationAggregateInput
@@ -779,6 +792,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   baptismLocation?: Prisma.StringNullableFilter<"User"> | string | null
   dedicationDate?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   weddingAnniversary?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  biometricUserId?: Prisma.StringNullableFilter<"User"> | string | null
   parentId?: Prisma.StringNullableFilter<"User"> | string | null
   familyPhoto?: Prisma.StringNullableFilter<"User"> | string | null
   familyHeadId?: Prisma.StringNullableFilter<"User"> | string | null
@@ -875,6 +889,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   conversations?: Prisma.ConversationParticipantListRelationFilter
   sentMessages?: Prisma.MessageListRelationFilter
   messageReads?: Prisma.MessageReadListRelationFilter
+  sentSMS?: Prisma.SMSLogListRelationFilter
+  receivedSMS?: Prisma.SMSLogListRelationFilter
   surveys?: Prisma.SurveyListRelationFilter
   surveyResponses?: Prisma.SurveyResponseListRelationFilter
   forms?: Prisma.FormListRelationFilter
@@ -919,6 +935,7 @@ export type UserOrderByWithAggregationInput = {
   baptismLocation?: Prisma.SortOrderInput | Prisma.SortOrder
   dedicationDate?: Prisma.SortOrderInput | Prisma.SortOrder
   weddingAnniversary?: Prisma.SortOrderInput | Prisma.SortOrder
+  biometricUserId?: Prisma.SortOrderInput | Prisma.SortOrder
   spouseId?: Prisma.SortOrderInput | Prisma.SortOrder
   parentId?: Prisma.SortOrderInput | Prisma.SortOrder
   familyPhoto?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -974,6 +991,7 @@ export type UserScalarWhereWithAggregatesInput = {
   baptismLocation?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   dedicationDate?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   weddingAnniversary?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  biometricUserId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   spouseId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   parentId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   familyPhoto?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -1022,6 +1040,7 @@ export type UserCreateInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -1116,6 +1135,8 @@ export type UserCreateInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -1160,6 +1181,7 @@ export type UserUncheckedCreateInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -1253,6 +1275,8 @@ export type UserUncheckedCreateInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -1296,6 +1320,7 @@ export type UserUpdateInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1390,6 +1415,8 @@ export type UserUpdateInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -1434,6 +1461,7 @@ export type UserUncheckedUpdateInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1527,6 +1555,8 @@ export type UserUncheckedUpdateInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -1571,6 +1601,7 @@ export type UserCreateManyInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -1619,6 +1650,7 @@ export type UserUpdateManyMutationInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -1665,6 +1697,7 @@ export type UserUncheckedUpdateManyInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1729,6 +1762,7 @@ export type UserCountOrderByAggregateInput = {
   baptismLocation?: Prisma.SortOrder
   dedicationDate?: Prisma.SortOrder
   weddingAnniversary?: Prisma.SortOrder
+  biometricUserId?: Prisma.SortOrder
   spouseId?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
   familyPhoto?: Prisma.SortOrder
@@ -1777,6 +1811,7 @@ export type UserMaxOrderByAggregateInput = {
   baptismLocation?: Prisma.SortOrder
   dedicationDate?: Prisma.SortOrder
   weddingAnniversary?: Prisma.SortOrder
+  biometricUserId?: Prisma.SortOrder
   spouseId?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
   familyPhoto?: Prisma.SortOrder
@@ -1825,6 +1860,7 @@ export type UserMinOrderByAggregateInput = {
   baptismLocation?: Prisma.SortOrder
   dedicationDate?: Prisma.SortOrder
   weddingAnniversary?: Prisma.SortOrder
+  biometricUserId?: Prisma.SortOrder
   spouseId?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
   familyPhoto?: Prisma.SortOrder
@@ -3217,6 +3253,36 @@ export type UserUpdateOneRequiredWithoutMessageReadsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMessageReadsInput, Prisma.UserUpdateWithoutMessageReadsInput>, Prisma.UserUncheckedUpdateWithoutMessageReadsInput>
 }
 
+export type UserCreateNestedOneWithoutSentSMSInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSentSMSInput, Prisma.UserUncheckedCreateWithoutSentSMSInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSentSMSInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserCreateNestedOneWithoutReceivedSMSInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedSMSInput, Prisma.UserUncheckedCreateWithoutReceivedSMSInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedSMSInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSentSMSNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSentSMSInput, Prisma.UserUncheckedCreateWithoutSentSMSInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSentSMSInput
+  upsert?: Prisma.UserUpsertWithoutSentSMSInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSentSMSInput, Prisma.UserUpdateWithoutSentSMSInput>, Prisma.UserUncheckedUpdateWithoutSentSMSInput>
+}
+
+export type UserUpdateOneWithoutReceivedSMSNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutReceivedSMSInput, Prisma.UserUncheckedCreateWithoutReceivedSMSInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutReceivedSMSInput
+  upsert?: Prisma.UserUpsertWithoutReceivedSMSInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutReceivedSMSInput, Prisma.UserUpdateWithoutReceivedSMSInput>, Prisma.UserUncheckedUpdateWithoutReceivedSMSInput>
+}
+
 export type UserCreateNestedOneWithoutSurveysInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutSurveysInput, Prisma.UserUncheckedCreateWithoutSurveysInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutSurveysInput
@@ -3372,6 +3438,7 @@ export type UserCreateWithoutSpouseOfInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -3465,6 +3532,8 @@ export type UserCreateWithoutSpouseOfInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -3509,6 +3578,7 @@ export type UserUncheckedCreateWithoutSpouseOfInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -3601,6 +3671,8 @@ export type UserUncheckedCreateWithoutSpouseOfInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -3649,6 +3721,7 @@ export type UserCreateWithoutSpouseInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -3742,6 +3815,8 @@ export type UserCreateWithoutSpouseInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -3786,6 +3861,7 @@ export type UserUncheckedCreateWithoutSpouseInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
   familyHeadId?: string | null
@@ -3878,6 +3954,8 @@ export type UserUncheckedCreateWithoutSpouseInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -3926,6 +4004,7 @@ export type UserCreateWithoutChildrenInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -4019,6 +4098,8 @@ export type UserCreateWithoutChildrenInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -4063,6 +4144,7 @@ export type UserUncheckedCreateWithoutChildrenInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -4155,6 +4237,8 @@ export type UserUncheckedCreateWithoutChildrenInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -4203,6 +4287,7 @@ export type UserCreateWithoutParentInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -4296,6 +4381,8 @@ export type UserCreateWithoutParentInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -4340,6 +4427,7 @@ export type UserUncheckedCreateWithoutParentInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   familyPhoto?: string | null
   familyHeadId?: string | null
@@ -4432,6 +4520,8 @@ export type UserUncheckedCreateWithoutParentInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -4485,6 +4575,7 @@ export type UserCreateWithoutFamilyMembersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -4578,6 +4669,8 @@ export type UserCreateWithoutFamilyMembersInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -4622,6 +4715,7 @@ export type UserUncheckedCreateWithoutFamilyMembersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -4714,6 +4808,8 @@ export type UserUncheckedCreateWithoutFamilyMembersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -4762,6 +4858,7 @@ export type UserCreateWithoutFamilyHeadInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -4855,6 +4952,8 @@ export type UserCreateWithoutFamilyHeadInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -4899,6 +4998,7 @@ export type UserUncheckedCreateWithoutFamilyHeadInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -4991,6 +5091,8 @@ export type UserUncheckedCreateWithoutFamilyHeadInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -5055,6 +5157,7 @@ export type UserUpdateWithoutSpouseOfInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -5148,6 +5251,8 @@ export type UserUpdateWithoutSpouseOfInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -5192,6 +5297,7 @@ export type UserUncheckedUpdateWithoutSpouseOfInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5284,6 +5390,8 @@ export type UserUncheckedUpdateWithoutSpouseOfInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -5338,6 +5446,7 @@ export type UserUpdateWithoutSpouseInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -5431,6 +5540,8 @@ export type UserUpdateWithoutSpouseInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -5475,6 +5586,7 @@ export type UserUncheckedUpdateWithoutSpouseInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyHeadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5567,6 +5679,8 @@ export type UserUncheckedUpdateWithoutSpouseInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -5621,6 +5735,7 @@ export type UserUpdateWithoutChildrenInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -5714,6 +5829,8 @@ export type UserUpdateWithoutChildrenInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -5758,6 +5875,7 @@ export type UserUncheckedUpdateWithoutChildrenInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5850,6 +5968,8 @@ export type UserUncheckedUpdateWithoutChildrenInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -5913,6 +6033,7 @@ export type UserScalarWhereInput = {
   baptismLocation?: Prisma.StringNullableFilter<"User"> | string | null
   dedicationDate?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   weddingAnniversary?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  biometricUserId?: Prisma.StringNullableFilter<"User"> | string | null
   spouseId?: Prisma.StringNullableFilter<"User"> | string | null
   parentId?: Prisma.StringNullableFilter<"User"> | string | null
   familyPhoto?: Prisma.StringNullableFilter<"User"> | string | null
@@ -5972,6 +6093,7 @@ export type UserUpdateWithoutFamilyMembersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -6065,6 +6187,8 @@ export type UserUpdateWithoutFamilyMembersInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -6109,6 +6233,7 @@ export type UserUncheckedUpdateWithoutFamilyMembersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6201,6 +6326,8 @@ export type UserUncheckedUpdateWithoutFamilyMembersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -6260,6 +6387,7 @@ export type UserCreateWithoutSocialLoginsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -6353,6 +6481,8 @@ export type UserCreateWithoutSocialLoginsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -6397,6 +6527,7 @@ export type UserUncheckedCreateWithoutSocialLoginsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -6489,6 +6620,8 @@ export type UserUncheckedCreateWithoutSocialLoginsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -6548,6 +6681,7 @@ export type UserUpdateWithoutSocialLoginsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -6641,6 +6775,8 @@ export type UserUpdateWithoutSocialLoginsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -6685,6 +6821,7 @@ export type UserUncheckedUpdateWithoutSocialLoginsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -6777,6 +6914,8 @@ export type UserUncheckedUpdateWithoutSocialLoginsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -6820,6 +6959,7 @@ export type UserCreateWithoutUserSessionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -6913,6 +7053,8 @@ export type UserCreateWithoutUserSessionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -6957,6 +7099,7 @@ export type UserUncheckedCreateWithoutUserSessionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -7049,6 +7192,8 @@ export type UserUncheckedCreateWithoutUserSessionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -7108,6 +7253,7 @@ export type UserUpdateWithoutUserSessionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -7201,6 +7347,8 @@ export type UserUpdateWithoutUserSessionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -7245,6 +7393,7 @@ export type UserUncheckedUpdateWithoutUserSessionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -7337,6 +7486,8 @@ export type UserUncheckedUpdateWithoutUserSessionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -7380,6 +7531,7 @@ export type UserCreateWithoutInvitationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -7473,6 +7625,8 @@ export type UserCreateWithoutInvitationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -7517,6 +7671,7 @@ export type UserUncheckedCreateWithoutInvitationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -7609,6 +7764,8 @@ export type UserUncheckedCreateWithoutInvitationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -7657,6 +7814,7 @@ export type UserCreateWithoutInvitationInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -7750,6 +7908,8 @@ export type UserCreateWithoutInvitationInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -7794,6 +7954,7 @@ export type UserUncheckedCreateWithoutInvitationInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -7886,6 +8047,8 @@ export type UserUncheckedCreateWithoutInvitationInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -7945,6 +8108,7 @@ export type UserUpdateWithoutInvitationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -8038,6 +8202,8 @@ export type UserUpdateWithoutInvitationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -8082,6 +8248,7 @@ export type UserUncheckedUpdateWithoutInvitationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8174,6 +8341,8 @@ export type UserUncheckedUpdateWithoutInvitationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -8228,6 +8397,7 @@ export type UserUpdateWithoutInvitationInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -8321,6 +8491,8 @@ export type UserUpdateWithoutInvitationInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -8365,6 +8537,7 @@ export type UserUncheckedUpdateWithoutInvitationInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -8457,6 +8630,8 @@ export type UserUncheckedUpdateWithoutInvitationInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -8500,6 +8675,7 @@ export type UserCreateWithoutAuthAccountsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -8593,6 +8769,8 @@ export type UserCreateWithoutAuthAccountsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -8637,6 +8815,7 @@ export type UserUncheckedCreateWithoutAuthAccountsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -8729,6 +8908,8 @@ export type UserUncheckedCreateWithoutAuthAccountsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -8788,6 +8969,7 @@ export type UserUpdateWithoutAuthAccountsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -8881,6 +9063,8 @@ export type UserUpdateWithoutAuthAccountsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -8925,6 +9109,7 @@ export type UserUncheckedUpdateWithoutAuthAccountsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9017,6 +9202,8 @@ export type UserUncheckedUpdateWithoutAuthAccountsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -9060,6 +9247,7 @@ export type UserCreateWithoutSessionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -9153,6 +9341,8 @@ export type UserCreateWithoutSessionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -9197,6 +9387,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -9289,6 +9480,8 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -9348,6 +9541,7 @@ export type UserUpdateWithoutSessionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -9441,6 +9635,8 @@ export type UserUpdateWithoutSessionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -9485,6 +9681,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -9577,6 +9774,8 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -9620,6 +9819,7 @@ export type UserCreateWithoutActivityLogsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -9713,6 +9913,8 @@ export type UserCreateWithoutActivityLogsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -9757,6 +9959,7 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -9849,6 +10052,8 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -9908,6 +10113,7 @@ export type UserUpdateWithoutActivityLogsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -10001,6 +10207,8 @@ export type UserUpdateWithoutActivityLogsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -10045,6 +10253,7 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10137,6 +10346,8 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -10180,6 +10391,7 @@ export type UserCreateWithoutCampusPastorInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -10273,6 +10485,8 @@ export type UserCreateWithoutCampusPastorInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -10317,6 +10531,7 @@ export type UserUncheckedCreateWithoutCampusPastorInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -10409,6 +10624,8 @@ export type UserUncheckedCreateWithoutCampusPastorInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -10457,6 +10674,7 @@ export type UserCreateWithoutCampusInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -10550,6 +10768,8 @@ export type UserCreateWithoutCampusInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -10593,6 +10813,7 @@ export type UserUncheckedCreateWithoutCampusInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -10686,6 +10907,8 @@ export type UserUncheckedCreateWithoutCampusInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -10750,6 +10973,7 @@ export type UserUpdateWithoutCampusPastorInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -10843,6 +11067,8 @@ export type UserUpdateWithoutCampusPastorInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -10887,6 +11113,7 @@ export type UserUncheckedUpdateWithoutCampusPastorInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -10979,6 +11206,8 @@ export type UserUncheckedUpdateWithoutCampusPastorInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -11038,6 +11267,7 @@ export type UserCreateWithoutGroupLeadershipInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -11131,6 +11361,8 @@ export type UserCreateWithoutGroupLeadershipInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -11175,6 +11407,7 @@ export type UserUncheckedCreateWithoutGroupLeadershipInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -11267,6 +11500,8 @@ export type UserUncheckedCreateWithoutGroupLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -11326,6 +11561,7 @@ export type UserUpdateWithoutGroupLeadershipInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11419,6 +11655,8 @@ export type UserUpdateWithoutGroupLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -11463,6 +11701,7 @@ export type UserUncheckedUpdateWithoutGroupLeadershipInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -11555,6 +11794,8 @@ export type UserUncheckedUpdateWithoutGroupLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -11598,6 +11839,7 @@ export type UserCreateWithoutGroupMembershipsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -11691,6 +11933,8 @@ export type UserCreateWithoutGroupMembershipsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -11735,6 +11979,7 @@ export type UserUncheckedCreateWithoutGroupMembershipsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -11827,6 +12072,8 @@ export type UserUncheckedCreateWithoutGroupMembershipsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -11886,6 +12133,7 @@ export type UserUpdateWithoutGroupMembershipsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -11979,6 +12227,8 @@ export type UserUpdateWithoutGroupMembershipsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -12023,6 +12273,7 @@ export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12115,6 +12366,8 @@ export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -12158,6 +12411,7 @@ export type UserCreateWithoutHostedGroupMeetingsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -12251,6 +12505,8 @@ export type UserCreateWithoutHostedGroupMeetingsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -12295,6 +12551,7 @@ export type UserUncheckedCreateWithoutHostedGroupMeetingsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -12387,6 +12644,8 @@ export type UserUncheckedCreateWithoutHostedGroupMeetingsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -12446,6 +12705,7 @@ export type UserUpdateWithoutHostedGroupMeetingsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -12539,6 +12799,8 @@ export type UserUpdateWithoutHostedGroupMeetingsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -12583,6 +12845,7 @@ export type UserUncheckedUpdateWithoutHostedGroupMeetingsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -12675,6 +12938,8 @@ export type UserUncheckedUpdateWithoutHostedGroupMeetingsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -12718,6 +12983,7 @@ export type UserCreateWithoutGroupAttendancesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -12811,6 +13077,8 @@ export type UserCreateWithoutGroupAttendancesInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -12855,6 +13123,7 @@ export type UserUncheckedCreateWithoutGroupAttendancesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -12947,6 +13216,8 @@ export type UserUncheckedCreateWithoutGroupAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -13006,6 +13277,7 @@ export type UserUpdateWithoutGroupAttendancesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13099,6 +13371,8 @@ export type UserUpdateWithoutGroupAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -13143,6 +13417,7 @@ export type UserUncheckedUpdateWithoutGroupAttendancesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13235,6 +13510,8 @@ export type UserUncheckedUpdateWithoutGroupAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -13278,6 +13555,7 @@ export type UserCreateWithoutDiscussionAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -13371,6 +13649,8 @@ export type UserCreateWithoutDiscussionAuthorsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -13415,6 +13695,7 @@ export type UserUncheckedCreateWithoutDiscussionAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -13507,6 +13788,8 @@ export type UserUncheckedCreateWithoutDiscussionAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -13566,6 +13849,7 @@ export type UserUpdateWithoutDiscussionAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -13659,6 +13943,8 @@ export type UserUpdateWithoutDiscussionAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -13703,6 +13989,7 @@ export type UserUncheckedUpdateWithoutDiscussionAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -13795,6 +14082,8 @@ export type UserUncheckedUpdateWithoutDiscussionAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -13838,6 +14127,7 @@ export type UserCreateWithoutReplyAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -13931,6 +14221,8 @@ export type UserCreateWithoutReplyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -13975,6 +14267,7 @@ export type UserUncheckedCreateWithoutReplyAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -14067,6 +14360,8 @@ export type UserUncheckedCreateWithoutReplyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -14126,6 +14421,7 @@ export type UserUpdateWithoutReplyAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14219,6 +14515,8 @@ export type UserUpdateWithoutReplyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -14263,6 +14561,7 @@ export type UserUncheckedUpdateWithoutReplyAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14355,6 +14654,8 @@ export type UserUncheckedUpdateWithoutReplyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -14398,6 +14699,7 @@ export type UserCreateWithoutDiscipleshipEnrollmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -14491,6 +14793,8 @@ export type UserCreateWithoutDiscipleshipEnrollmentsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -14535,6 +14839,7 @@ export type UserUncheckedCreateWithoutDiscipleshipEnrollmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -14627,6 +14932,8 @@ export type UserUncheckedCreateWithoutDiscipleshipEnrollmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -14686,6 +14993,7 @@ export type UserUpdateWithoutDiscipleshipEnrollmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -14779,6 +15087,8 @@ export type UserUpdateWithoutDiscipleshipEnrollmentsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -14823,6 +15133,7 @@ export type UserUncheckedUpdateWithoutDiscipleshipEnrollmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -14915,6 +15226,8 @@ export type UserUncheckedUpdateWithoutDiscipleshipEnrollmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -14958,6 +15271,7 @@ export type UserCreateWithoutMentorRelationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -15051,6 +15365,8 @@ export type UserCreateWithoutMentorRelationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -15095,6 +15411,7 @@ export type UserUncheckedCreateWithoutMentorRelationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -15187,6 +15504,8 @@ export type UserUncheckedCreateWithoutMentorRelationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -15235,6 +15554,7 @@ export type UserCreateWithoutMenteeRelationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -15328,6 +15648,8 @@ export type UserCreateWithoutMenteeRelationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -15372,6 +15694,7 @@ export type UserUncheckedCreateWithoutMenteeRelationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -15464,6 +15787,8 @@ export type UserUncheckedCreateWithoutMenteeRelationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -15523,6 +15848,7 @@ export type UserUpdateWithoutMentorRelationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15616,6 +15942,8 @@ export type UserUpdateWithoutMentorRelationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -15660,6 +15988,7 @@ export type UserUncheckedUpdateWithoutMentorRelationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -15752,6 +16081,8 @@ export type UserUncheckedUpdateWithoutMentorRelationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -15806,6 +16137,7 @@ export type UserUpdateWithoutMenteeRelationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -15899,6 +16231,8 @@ export type UserUpdateWithoutMenteeRelationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -15943,6 +16277,7 @@ export type UserUncheckedUpdateWithoutMenteeRelationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16035,6 +16370,8 @@ export type UserUncheckedUpdateWithoutMenteeRelationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -16078,6 +16415,7 @@ export type UserCreateWithoutAnnouncementAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -16171,6 +16509,8 @@ export type UserCreateWithoutAnnouncementAuthorsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -16215,6 +16555,7 @@ export type UserUncheckedCreateWithoutAnnouncementAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -16307,6 +16648,8 @@ export type UserUncheckedCreateWithoutAnnouncementAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -16366,6 +16709,7 @@ export type UserUpdateWithoutAnnouncementAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -16459,6 +16803,8 @@ export type UserUpdateWithoutAnnouncementAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -16503,6 +16849,7 @@ export type UserUncheckedUpdateWithoutAnnouncementAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -16595,6 +16942,8 @@ export type UserUncheckedUpdateWithoutAnnouncementAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -16638,6 +16987,7 @@ export type UserCreateWithoutAnnouncementsReadInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -16731,6 +17081,8 @@ export type UserCreateWithoutAnnouncementsReadInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -16775,6 +17127,7 @@ export type UserUncheckedCreateWithoutAnnouncementsReadInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -16867,6 +17220,8 @@ export type UserUncheckedCreateWithoutAnnouncementsReadInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -16926,6 +17281,7 @@ export type UserUpdateWithoutAnnouncementsReadInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17019,6 +17375,8 @@ export type UserUpdateWithoutAnnouncementsReadInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -17063,6 +17421,7 @@ export type UserUncheckedUpdateWithoutAnnouncementsReadInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17155,6 +17514,8 @@ export type UserUncheckedUpdateWithoutAnnouncementsReadInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -17198,6 +17559,7 @@ export type UserCreateWithoutNotificationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -17291,6 +17653,8 @@ export type UserCreateWithoutNotificationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -17335,6 +17699,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -17427,6 +17792,8 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -17475,6 +17842,7 @@ export type UserCreateWithoutNotificationsAboutMeInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -17568,6 +17936,8 @@ export type UserCreateWithoutNotificationsAboutMeInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -17612,6 +17982,7 @@ export type UserUncheckedCreateWithoutNotificationsAboutMeInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -17704,6 +18075,8 @@ export type UserUncheckedCreateWithoutNotificationsAboutMeInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -17763,6 +18136,7 @@ export type UserUpdateWithoutNotificationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -17856,6 +18230,8 @@ export type UserUpdateWithoutNotificationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -17900,6 +18276,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -17992,6 +18369,8 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -18046,6 +18425,7 @@ export type UserUpdateWithoutNotificationsAboutMeInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18139,6 +18519,8 @@ export type UserUpdateWithoutNotificationsAboutMeInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -18183,6 +18565,7 @@ export type UserUncheckedUpdateWithoutNotificationsAboutMeInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18275,6 +18658,8 @@ export type UserUncheckedUpdateWithoutNotificationsAboutMeInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -18318,6 +18703,7 @@ export type UserCreateWithoutServiceAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -18411,6 +18797,8 @@ export type UserCreateWithoutServiceAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -18455,6 +18843,7 @@ export type UserUncheckedCreateWithoutServiceAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -18547,6 +18936,8 @@ export type UserUncheckedCreateWithoutServiceAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -18606,6 +18997,7 @@ export type UserUpdateWithoutServiceAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -18699,6 +19091,8 @@ export type UserUpdateWithoutServiceAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -18743,6 +19137,7 @@ export type UserUncheckedUpdateWithoutServiceAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -18835,6 +19230,8 @@ export type UserUncheckedUpdateWithoutServiceAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -18878,6 +19275,7 @@ export type UserCreateWithoutMediaUploadsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -18971,6 +19369,8 @@ export type UserCreateWithoutMediaUploadsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -19015,6 +19415,7 @@ export type UserUncheckedCreateWithoutMediaUploadsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -19107,6 +19508,8 @@ export type UserUncheckedCreateWithoutMediaUploadsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -19166,6 +19569,7 @@ export type UserUpdateWithoutMediaUploadsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -19259,6 +19663,8 @@ export type UserUpdateWithoutMediaUploadsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -19303,6 +19709,7 @@ export type UserUncheckedUpdateWithoutMediaUploadsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19395,6 +19802,8 @@ export type UserUncheckedUpdateWithoutMediaUploadsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -19438,6 +19847,7 @@ export type UserCreateWithoutAttendanceRecordsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -19531,6 +19941,8 @@ export type UserCreateWithoutAttendanceRecordsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -19575,6 +19987,7 @@ export type UserUncheckedCreateWithoutAttendanceRecordsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -19667,6 +20080,8 @@ export type UserUncheckedCreateWithoutAttendanceRecordsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -19726,6 +20141,7 @@ export type UserUpdateWithoutAttendanceRecordsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -19819,6 +20235,8 @@ export type UserUpdateWithoutAttendanceRecordsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -19863,6 +20281,7 @@ export type UserUncheckedUpdateWithoutAttendanceRecordsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -19955,6 +20374,8 @@ export type UserUncheckedUpdateWithoutAttendanceRecordsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -19998,6 +20419,7 @@ export type UserCreateWithoutAttendancesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -20091,6 +20513,8 @@ export type UserCreateWithoutAttendancesInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -20135,6 +20559,7 @@ export type UserUncheckedCreateWithoutAttendancesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -20227,6 +20652,8 @@ export type UserUncheckedCreateWithoutAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -20286,6 +20713,7 @@ export type UserUpdateWithoutAttendancesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -20379,6 +20807,8 @@ export type UserUpdateWithoutAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -20423,6 +20853,7 @@ export type UserUncheckedUpdateWithoutAttendancesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -20515,6 +20946,8 @@ export type UserUncheckedUpdateWithoutAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -20558,6 +20991,7 @@ export type UserCreateWithoutSessionAttendancesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -20651,6 +21085,8 @@ export type UserCreateWithoutSessionAttendancesInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -20695,6 +21131,7 @@ export type UserUncheckedCreateWithoutSessionAttendancesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -20787,6 +21224,8 @@ export type UserUncheckedCreateWithoutSessionAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -20846,6 +21285,7 @@ export type UserUpdateWithoutSessionAttendancesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -20939,6 +21379,8 @@ export type UserUpdateWithoutSessionAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -20983,6 +21425,7 @@ export type UserUncheckedUpdateWithoutSessionAttendancesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -21075,6 +21518,8 @@ export type UserUncheckedUpdateWithoutSessionAttendancesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -21118,6 +21563,7 @@ export type UserCreateWithoutProposedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -21211,6 +21657,8 @@ export type UserCreateWithoutProposedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -21255,6 +21703,7 @@ export type UserUncheckedCreateWithoutProposedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -21347,6 +21796,8 @@ export type UserUncheckedCreateWithoutProposedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -21395,6 +21846,7 @@ export type UserCreateWithoutApprovedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -21488,6 +21940,8 @@ export type UserCreateWithoutApprovedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -21532,6 +21986,7 @@ export type UserUncheckedCreateWithoutApprovedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -21624,6 +22079,8 @@ export type UserUncheckedCreateWithoutApprovedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -21672,6 +22129,7 @@ export type UserCreateWithoutAssignedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -21765,6 +22223,8 @@ export type UserCreateWithoutAssignedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -21809,6 +22269,7 @@ export type UserUncheckedCreateWithoutAssignedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -21901,6 +22362,8 @@ export type UserUncheckedCreateWithoutAssignedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -21949,6 +22412,7 @@ export type UserCreateWithoutRecordedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -22042,6 +22506,8 @@ export type UserCreateWithoutRecordedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -22086,6 +22552,7 @@ export type UserUncheckedCreateWithoutRecordedDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -22178,6 +22645,8 @@ export type UserUncheckedCreateWithoutRecordedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -22226,6 +22695,7 @@ export type UserCreateWithoutDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -22319,6 +22789,8 @@ export type UserCreateWithoutDecisionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -22363,6 +22835,7 @@ export type UserUncheckedCreateWithoutDecisionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -22455,6 +22928,8 @@ export type UserUncheckedCreateWithoutDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -22514,6 +22989,7 @@ export type UserUpdateWithoutProposedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -22607,6 +23083,8 @@ export type UserUpdateWithoutProposedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -22651,6 +23129,7 @@ export type UserUncheckedUpdateWithoutProposedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -22743,6 +23222,8 @@ export type UserUncheckedUpdateWithoutProposedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -22797,6 +23278,7 @@ export type UserUpdateWithoutApprovedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -22890,6 +23372,8 @@ export type UserUpdateWithoutApprovedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -22934,6 +23418,7 @@ export type UserUncheckedUpdateWithoutApprovedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23026,6 +23511,8 @@ export type UserUncheckedUpdateWithoutApprovedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -23080,6 +23567,7 @@ export type UserUpdateWithoutAssignedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -23173,6 +23661,8 @@ export type UserUpdateWithoutAssignedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -23217,6 +23707,7 @@ export type UserUncheckedUpdateWithoutAssignedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23309,6 +23800,8 @@ export type UserUncheckedUpdateWithoutAssignedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -23363,6 +23856,7 @@ export type UserUpdateWithoutRecordedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -23456,6 +23950,8 @@ export type UserUpdateWithoutRecordedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -23500,6 +23996,7 @@ export type UserUncheckedUpdateWithoutRecordedDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23592,6 +24089,8 @@ export type UserUncheckedUpdateWithoutRecordedDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -23646,6 +24145,7 @@ export type UserUpdateWithoutDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -23739,6 +24239,8 @@ export type UserUpdateWithoutDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -23783,6 +24285,7 @@ export type UserUncheckedUpdateWithoutDecisionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -23875,6 +24378,8 @@ export type UserUncheckedUpdateWithoutDecisionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -23918,6 +24423,7 @@ export type UserCreateWithoutOrganizedMeetingsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -24011,6 +24517,8 @@ export type UserCreateWithoutOrganizedMeetingsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -24055,6 +24563,7 @@ export type UserUncheckedCreateWithoutOrganizedMeetingsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -24147,6 +24656,8 @@ export type UserUncheckedCreateWithoutOrganizedMeetingsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -24206,6 +24717,7 @@ export type UserUpdateWithoutOrganizedMeetingsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -24299,6 +24811,8 @@ export type UserUpdateWithoutOrganizedMeetingsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -24343,6 +24857,7 @@ export type UserUncheckedUpdateWithoutOrganizedMeetingsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24435,6 +24950,8 @@ export type UserUncheckedUpdateWithoutOrganizedMeetingsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -24478,6 +24995,7 @@ export type UserCreateWithoutDonationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -24571,6 +25089,8 @@ export type UserCreateWithoutDonationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -24615,6 +25135,7 @@ export type UserUncheckedCreateWithoutDonationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -24707,6 +25228,8 @@ export type UserUncheckedCreateWithoutDonationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -24766,6 +25289,7 @@ export type UserUpdateWithoutDonationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -24859,6 +25383,8 @@ export type UserUpdateWithoutDonationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -24903,6 +25429,7 @@ export type UserUncheckedUpdateWithoutDonationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -24995,6 +25522,8 @@ export type UserUncheckedUpdateWithoutDonationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -25038,6 +25567,7 @@ export type UserCreateWithoutRecurringDonationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -25131,6 +25661,8 @@ export type UserCreateWithoutRecurringDonationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -25175,6 +25707,7 @@ export type UserUncheckedCreateWithoutRecurringDonationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -25267,6 +25800,8 @@ export type UserUncheckedCreateWithoutRecurringDonationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -25326,6 +25861,7 @@ export type UserUpdateWithoutRecurringDonationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -25419,6 +25955,8 @@ export type UserUpdateWithoutRecurringDonationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -25463,6 +26001,7 @@ export type UserUncheckedUpdateWithoutRecurringDonationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -25555,6 +26094,8 @@ export type UserUncheckedUpdateWithoutRecurringDonationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -25598,6 +26139,7 @@ export type UserCreateWithoutExpenseSubmissionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -25691,6 +26233,8 @@ export type UserCreateWithoutExpenseSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -25735,6 +26279,7 @@ export type UserUncheckedCreateWithoutExpenseSubmissionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -25827,6 +26372,8 @@ export type UserUncheckedCreateWithoutExpenseSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -25875,6 +26422,7 @@ export type UserCreateWithoutExpenseApprovalsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -25968,6 +26516,8 @@ export type UserCreateWithoutExpenseApprovalsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -26012,6 +26562,7 @@ export type UserUncheckedCreateWithoutExpenseApprovalsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -26104,6 +26655,8 @@ export type UserUncheckedCreateWithoutExpenseApprovalsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -26163,6 +26716,7 @@ export type UserUpdateWithoutExpenseSubmissionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -26256,6 +26810,8 @@ export type UserUpdateWithoutExpenseSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -26300,6 +26856,7 @@ export type UserUncheckedUpdateWithoutExpenseSubmissionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -26392,6 +26949,8 @@ export type UserUncheckedUpdateWithoutExpenseSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -26446,6 +27005,7 @@ export type UserUpdateWithoutExpenseApprovalsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -26539,6 +27099,8 @@ export type UserUpdateWithoutExpenseApprovalsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -26583,6 +27145,7 @@ export type UserUncheckedUpdateWithoutExpenseApprovalsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -26675,6 +27238,8 @@ export type UserUncheckedUpdateWithoutExpenseApprovalsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -26718,6 +27283,7 @@ export type UserCreateWithoutEventOrganizationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -26811,6 +27377,8 @@ export type UserCreateWithoutEventOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -26855,6 +27423,7 @@ export type UserUncheckedCreateWithoutEventOrganizationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -26947,6 +27516,8 @@ export type UserUncheckedCreateWithoutEventOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -27006,6 +27577,7 @@ export type UserUpdateWithoutEventOrganizationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -27099,6 +27671,8 @@ export type UserUpdateWithoutEventOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -27143,6 +27717,7 @@ export type UserUncheckedUpdateWithoutEventOrganizationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -27235,6 +27810,8 @@ export type UserUncheckedUpdateWithoutEventOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -27278,6 +27855,7 @@ export type UserCreateWithoutEventRegistrationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -27371,6 +27949,8 @@ export type UserCreateWithoutEventRegistrationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -27415,6 +27995,7 @@ export type UserUncheckedCreateWithoutEventRegistrationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -27507,6 +28088,8 @@ export type UserUncheckedCreateWithoutEventRegistrationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -27566,6 +28149,7 @@ export type UserUpdateWithoutEventRegistrationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -27659,6 +28243,8 @@ export type UserUpdateWithoutEventRegistrationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -27703,6 +28289,7 @@ export type UserUncheckedUpdateWithoutEventRegistrationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -27795,6 +28382,8 @@ export type UserUncheckedUpdateWithoutEventRegistrationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -27838,6 +28427,7 @@ export type UserCreateWithoutEventCheckInsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -27931,6 +28521,8 @@ export type UserCreateWithoutEventCheckInsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -27975,6 +28567,7 @@ export type UserUncheckedCreateWithoutEventCheckInsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -28067,6 +28660,8 @@ export type UserUncheckedCreateWithoutEventCheckInsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -28126,6 +28721,7 @@ export type UserUpdateWithoutEventCheckInsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -28219,6 +28815,8 @@ export type UserUpdateWithoutEventCheckInsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -28263,6 +28861,7 @@ export type UserUncheckedUpdateWithoutEventCheckInsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -28355,6 +28954,8 @@ export type UserUncheckedUpdateWithoutEventCheckInsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -28398,6 +28999,7 @@ export type UserCreateWithoutFacilityBookingsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -28491,6 +29093,8 @@ export type UserCreateWithoutFacilityBookingsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -28535,6 +29139,7 @@ export type UserUncheckedCreateWithoutFacilityBookingsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -28627,6 +29232,8 @@ export type UserUncheckedCreateWithoutFacilityBookingsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -28686,6 +29293,7 @@ export type UserUpdateWithoutFacilityBookingsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -28779,6 +29387,8 @@ export type UserUpdateWithoutFacilityBookingsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -28823,6 +29433,7 @@ export type UserUncheckedUpdateWithoutFacilityBookingsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -28915,6 +29526,8 @@ export type UserUncheckedUpdateWithoutFacilityBookingsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -28958,6 +29571,7 @@ export type UserCreateWithoutVolunteerAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -29051,6 +29665,8 @@ export type UserCreateWithoutVolunteerAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -29095,6 +29711,7 @@ export type UserUncheckedCreateWithoutVolunteerAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -29187,6 +29804,8 @@ export type UserUncheckedCreateWithoutVolunteerAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -29246,6 +29865,7 @@ export type UserUpdateWithoutVolunteerAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -29339,6 +29959,8 @@ export type UserUpdateWithoutVolunteerAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -29383,6 +30005,7 @@ export type UserUncheckedUpdateWithoutVolunteerAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -29475,6 +30098,8 @@ export type UserUncheckedUpdateWithoutVolunteerAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -29518,6 +30143,7 @@ export type UserCreateWithoutChildrenLeadershipInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -29611,6 +30237,8 @@ export type UserCreateWithoutChildrenLeadershipInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -29655,6 +30283,7 @@ export type UserUncheckedCreateWithoutChildrenLeadershipInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -29747,6 +30376,8 @@ export type UserUncheckedCreateWithoutChildrenLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -29806,6 +30437,7 @@ export type UserUpdateWithoutChildrenLeadershipInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -29899,6 +30531,8 @@ export type UserUpdateWithoutChildrenLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -29943,6 +30577,7 @@ export type UserUncheckedUpdateWithoutChildrenLeadershipInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -30035,6 +30670,8 @@ export type UserUncheckedUpdateWithoutChildrenLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -30078,6 +30715,7 @@ export type UserCreateWithoutChildrenMinistryMembersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -30171,6 +30809,8 @@ export type UserCreateWithoutChildrenMinistryMembersInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -30215,6 +30855,7 @@ export type UserUncheckedCreateWithoutChildrenMinistryMembersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -30307,6 +30948,8 @@ export type UserUncheckedCreateWithoutChildrenMinistryMembersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -30355,6 +30998,7 @@ export type UserCreateWithoutChildrenParentInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -30448,6 +31092,8 @@ export type UserCreateWithoutChildrenParentInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -30492,6 +31138,7 @@ export type UserUncheckedCreateWithoutChildrenParentInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -30584,6 +31231,8 @@ export type UserUncheckedCreateWithoutChildrenParentInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -30643,6 +31292,7 @@ export type UserUpdateWithoutChildrenMinistryMembersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -30736,6 +31386,8 @@ export type UserUpdateWithoutChildrenMinistryMembersInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -30780,6 +31432,7 @@ export type UserUncheckedUpdateWithoutChildrenMinistryMembersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -30872,6 +31525,8 @@ export type UserUncheckedUpdateWithoutChildrenMinistryMembersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -30926,6 +31581,7 @@ export type UserUpdateWithoutChildrenParentInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -31019,6 +31675,8 @@ export type UserUpdateWithoutChildrenParentInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -31063,6 +31721,7 @@ export type UserUncheckedUpdateWithoutChildrenParentInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -31155,6 +31814,8 @@ export type UserUncheckedUpdateWithoutChildrenParentInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -31198,6 +31859,7 @@ export type UserCreateWithoutYouthLeadershipInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -31291,6 +31953,8 @@ export type UserCreateWithoutYouthLeadershipInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -31335,6 +31999,7 @@ export type UserUncheckedCreateWithoutYouthLeadershipInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -31427,6 +32092,8 @@ export type UserUncheckedCreateWithoutYouthLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -31486,6 +32153,7 @@ export type UserUpdateWithoutYouthLeadershipInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -31579,6 +32247,8 @@ export type UserUpdateWithoutYouthLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -31623,6 +32293,7 @@ export type UserUncheckedUpdateWithoutYouthLeadershipInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -31715,6 +32386,8 @@ export type UserUncheckedUpdateWithoutYouthLeadershipInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -31758,6 +32431,7 @@ export type UserCreateWithoutYouthGroupMembersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -31851,6 +32525,8 @@ export type UserCreateWithoutYouthGroupMembersInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -31895,6 +32571,7 @@ export type UserUncheckedCreateWithoutYouthGroupMembersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -31987,6 +32664,8 @@ export type UserUncheckedCreateWithoutYouthGroupMembersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -32046,6 +32725,7 @@ export type UserUpdateWithoutYouthGroupMembersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -32139,6 +32819,8 @@ export type UserUpdateWithoutYouthGroupMembersInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -32183,6 +32865,7 @@ export type UserUncheckedUpdateWithoutYouthGroupMembersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -32275,6 +32958,8 @@ export type UserUncheckedUpdateWithoutYouthGroupMembersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -32318,6 +33003,7 @@ export type UserCreateWithoutOutreachOrganizationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -32411,6 +33097,8 @@ export type UserCreateWithoutOutreachOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -32455,6 +33143,7 @@ export type UserUncheckedCreateWithoutOutreachOrganizationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -32547,6 +33236,8 @@ export type UserUncheckedCreateWithoutOutreachOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -32606,6 +33297,7 @@ export type UserUpdateWithoutOutreachOrganizationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -32699,6 +33391,8 @@ export type UserUpdateWithoutOutreachOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -32743,6 +33437,7 @@ export type UserUncheckedUpdateWithoutOutreachOrganizationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -32835,6 +33530,8 @@ export type UserUncheckedUpdateWithoutOutreachOrganizationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -32878,6 +33575,7 @@ export type UserCreateWithoutOutreachParticipationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -32971,6 +33669,8 @@ export type UserCreateWithoutOutreachParticipationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -33015,6 +33715,7 @@ export type UserUncheckedCreateWithoutOutreachParticipationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -33107,6 +33808,8 @@ export type UserUncheckedCreateWithoutOutreachParticipationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -33166,6 +33869,7 @@ export type UserUpdateWithoutOutreachParticipationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -33259,6 +33963,8 @@ export type UserUpdateWithoutOutreachParticipationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -33303,6 +34009,7 @@ export type UserUncheckedUpdateWithoutOutreachParticipationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -33395,6 +34102,8 @@ export type UserUncheckedUpdateWithoutOutreachParticipationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -33438,6 +34147,7 @@ export type UserCreateWithoutTestimonyAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -33531,6 +34241,8 @@ export type UserCreateWithoutTestimonyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -33575,6 +34287,7 @@ export type UserUncheckedCreateWithoutTestimonyAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -33667,6 +34380,8 @@ export type UserUncheckedCreateWithoutTestimonyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -33726,6 +34441,7 @@ export type UserUpdateWithoutTestimonyAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -33819,6 +34535,8 @@ export type UserUpdateWithoutTestimonyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -33863,6 +34581,7 @@ export type UserUncheckedUpdateWithoutTestimonyAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -33955,6 +34674,8 @@ export type UserUncheckedUpdateWithoutTestimonyAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -33998,6 +34719,7 @@ export type UserCreateWithoutProjectDonationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -34091,6 +34813,8 @@ export type UserCreateWithoutProjectDonationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -34135,6 +34859,7 @@ export type UserUncheckedCreateWithoutProjectDonationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -34227,6 +34952,8 @@ export type UserUncheckedCreateWithoutProjectDonationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -34286,6 +35013,7 @@ export type UserUpdateWithoutProjectDonationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -34379,6 +35107,8 @@ export type UserUpdateWithoutProjectDonationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -34423,6 +35153,7 @@ export type UserUncheckedUpdateWithoutProjectDonationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -34515,6 +35246,8 @@ export type UserUncheckedUpdateWithoutProjectDonationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -34558,6 +35291,7 @@ export type UserCreateWithoutProjectUpdateAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -34651,6 +35385,8 @@ export type UserCreateWithoutProjectUpdateAuthorsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -34695,6 +35431,7 @@ export type UserUncheckedCreateWithoutProjectUpdateAuthorsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -34787,6 +35524,8 @@ export type UserUncheckedCreateWithoutProjectUpdateAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -34846,6 +35585,7 @@ export type UserUpdateWithoutProjectUpdateAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -34939,6 +35679,8 @@ export type UserUpdateWithoutProjectUpdateAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -34983,6 +35725,7 @@ export type UserUncheckedUpdateWithoutProjectUpdateAuthorsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -35075,6 +35818,8 @@ export type UserUncheckedUpdateWithoutProjectUpdateAuthorsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -35118,6 +35863,7 @@ export type UserCreateWithoutDocumentUploadsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -35211,6 +35957,8 @@ export type UserCreateWithoutDocumentUploadsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -35255,6 +36003,7 @@ export type UserUncheckedCreateWithoutDocumentUploadsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -35347,6 +36096,8 @@ export type UserUncheckedCreateWithoutDocumentUploadsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -35406,6 +36157,7 @@ export type UserUpdateWithoutDocumentUploadsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -35499,6 +36251,8 @@ export type UserUpdateWithoutDocumentUploadsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -35543,6 +36297,7 @@ export type UserUncheckedUpdateWithoutDocumentUploadsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -35635,6 +36390,8 @@ export type UserUncheckedUpdateWithoutDocumentUploadsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -35678,6 +36435,7 @@ export type UserCreateWithoutPresentationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -35771,6 +36529,8 @@ export type UserCreateWithoutPresentationsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -35815,6 +36575,7 @@ export type UserUncheckedCreateWithoutPresentationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -35907,6 +36668,8 @@ export type UserUncheckedCreateWithoutPresentationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -35966,6 +36729,7 @@ export type UserUpdateWithoutPresentationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -36059,6 +36823,8 @@ export type UserUpdateWithoutPresentationsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -36103,6 +36869,7 @@ export type UserUncheckedUpdateWithoutPresentationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -36195,6 +36962,8 @@ export type UserUncheckedUpdateWithoutPresentationsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -36238,6 +37007,7 @@ export type UserCreateWithoutAssetAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -36331,6 +37101,8 @@ export type UserCreateWithoutAssetAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -36375,6 +37147,7 @@ export type UserUncheckedCreateWithoutAssetAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -36467,6 +37240,8 @@ export type UserUncheckedCreateWithoutAssetAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -36526,6 +37301,7 @@ export type UserUpdateWithoutAssetAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -36619,6 +37395,8 @@ export type UserUpdateWithoutAssetAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -36663,6 +37441,7 @@ export type UserUncheckedUpdateWithoutAssetAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -36755,6 +37534,8 @@ export type UserUncheckedUpdateWithoutAssetAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -36798,6 +37579,7 @@ export type UserCreateWithoutDepartmentLeaderInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -36891,6 +37673,8 @@ export type UserCreateWithoutDepartmentLeaderInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -36935,6 +37719,7 @@ export type UserUncheckedCreateWithoutDepartmentLeaderInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -37027,6 +37812,8 @@ export type UserUncheckedCreateWithoutDepartmentLeaderInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -37086,6 +37873,7 @@ export type UserUpdateWithoutDepartmentLeaderInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -37179,6 +37967,8 @@ export type UserUpdateWithoutDepartmentLeaderInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -37223,6 +38013,7 @@ export type UserUncheckedUpdateWithoutDepartmentLeaderInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -37315,6 +38106,8 @@ export type UserUncheckedUpdateWithoutDepartmentLeaderInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -37358,6 +38151,7 @@ export type UserCreateWithoutInventoryTransactionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -37451,6 +38245,8 @@ export type UserCreateWithoutInventoryTransactionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -37495,6 +38291,7 @@ export type UserUncheckedCreateWithoutInventoryTransactionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -37587,6 +38384,8 @@ export type UserUncheckedCreateWithoutInventoryTransactionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -37646,6 +38445,7 @@ export type UserUpdateWithoutInventoryTransactionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -37739,6 +38539,8 @@ export type UserUpdateWithoutInventoryTransactionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -37783,6 +38585,7 @@ export type UserUncheckedUpdateWithoutInventoryTransactionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -37875,6 +38678,8 @@ export type UserUncheckedUpdateWithoutInventoryTransactionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -37918,6 +38723,7 @@ export type UserCreateWithoutLeadershipAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -38011,6 +38817,8 @@ export type UserCreateWithoutLeadershipAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -38055,6 +38863,7 @@ export type UserUncheckedCreateWithoutLeadershipAssignmentsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -38147,6 +38956,8 @@ export type UserUncheckedCreateWithoutLeadershipAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -38206,6 +39017,7 @@ export type UserUpdateWithoutLeadershipAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -38299,6 +39111,8 @@ export type UserUpdateWithoutLeadershipAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -38343,6 +39157,7 @@ export type UserUncheckedUpdateWithoutLeadershipAssignmentsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -38435,6 +39250,8 @@ export type UserUncheckedUpdateWithoutLeadershipAssignmentsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -38478,6 +39295,7 @@ export type UserCreateWithoutStaffRecordInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -38571,6 +39389,8 @@ export type UserCreateWithoutStaffRecordInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -38615,6 +39435,7 @@ export type UserUncheckedCreateWithoutStaffRecordInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -38707,6 +39528,8 @@ export type UserUncheckedCreateWithoutStaffRecordInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -38766,6 +39589,7 @@ export type UserUpdateWithoutStaffRecordInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -38859,6 +39683,8 @@ export type UserUpdateWithoutStaffRecordInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -38903,6 +39729,7 @@ export type UserUncheckedUpdateWithoutStaffRecordInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -38995,6 +39822,8 @@ export type UserUncheckedUpdateWithoutStaffRecordInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -39038,6 +39867,7 @@ export type UserCreateWithoutPayrollProcessedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -39131,6 +39961,8 @@ export type UserCreateWithoutPayrollProcessedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -39175,6 +40007,7 @@ export type UserUncheckedCreateWithoutPayrollProcessedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -39267,6 +40100,8 @@ export type UserUncheckedCreateWithoutPayrollProcessedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -39326,6 +40161,7 @@ export type UserUpdateWithoutPayrollProcessedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -39419,6 +40255,8 @@ export type UserUpdateWithoutPayrollProcessedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -39463,6 +40301,7 @@ export type UserUncheckedUpdateWithoutPayrollProcessedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -39555,6 +40394,8 @@ export type UserUncheckedUpdateWithoutPayrollProcessedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -39598,6 +40439,7 @@ export type UserCreateWithoutPayslipsGeneratedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -39691,6 +40533,8 @@ export type UserCreateWithoutPayslipsGeneratedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -39735,6 +40579,7 @@ export type UserUncheckedCreateWithoutPayslipsGeneratedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -39827,6 +40672,8 @@ export type UserUncheckedCreateWithoutPayslipsGeneratedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -39886,6 +40733,7 @@ export type UserUpdateWithoutPayslipsGeneratedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -39979,6 +40827,8 @@ export type UserUpdateWithoutPayslipsGeneratedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -40023,6 +40873,7 @@ export type UserUncheckedUpdateWithoutPayslipsGeneratedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -40115,6 +40966,8 @@ export type UserUncheckedUpdateWithoutPayslipsGeneratedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -40158,6 +41011,7 @@ export type UserCreateWithoutChecksDonatedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -40251,6 +41105,8 @@ export type UserCreateWithoutChecksDonatedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -40295,6 +41151,7 @@ export type UserUncheckedCreateWithoutChecksDonatedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -40387,6 +41244,8 @@ export type UserUncheckedCreateWithoutChecksDonatedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -40435,6 +41294,7 @@ export type UserCreateWithoutChecksReceivedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -40528,6 +41388,8 @@ export type UserCreateWithoutChecksReceivedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -40572,6 +41434,7 @@ export type UserUncheckedCreateWithoutChecksReceivedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -40664,6 +41527,8 @@ export type UserUncheckedCreateWithoutChecksReceivedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -40712,6 +41577,7 @@ export type UserCreateWithoutChecksDepositedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -40805,6 +41671,8 @@ export type UserCreateWithoutChecksDepositedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -40849,6 +41717,7 @@ export type UserUncheckedCreateWithoutChecksDepositedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -40941,6 +41810,8 @@ export type UserUncheckedCreateWithoutChecksDepositedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -41000,6 +41871,7 @@ export type UserUpdateWithoutChecksDonatedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -41093,6 +41965,8 @@ export type UserUpdateWithoutChecksDonatedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -41137,6 +42011,7 @@ export type UserUncheckedUpdateWithoutChecksDonatedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -41229,6 +42104,8 @@ export type UserUncheckedUpdateWithoutChecksDonatedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -41283,6 +42160,7 @@ export type UserUpdateWithoutChecksReceivedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -41376,6 +42254,8 @@ export type UserUpdateWithoutChecksReceivedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -41420,6 +42300,7 @@ export type UserUncheckedUpdateWithoutChecksReceivedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -41512,6 +42393,8 @@ export type UserUncheckedUpdateWithoutChecksReceivedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -41566,6 +42449,7 @@ export type UserUpdateWithoutChecksDepositedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -41659,6 +42543,8 @@ export type UserUpdateWithoutChecksDepositedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -41703,6 +42589,7 @@ export type UserUncheckedUpdateWithoutChecksDepositedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -41795,6 +42682,8 @@ export type UserUncheckedUpdateWithoutChecksDepositedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -41838,6 +42727,7 @@ export type UserCreateWithoutGuestVisitsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -41931,6 +42821,8 @@ export type UserCreateWithoutGuestVisitsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -41975,6 +42867,7 @@ export type UserUncheckedCreateWithoutGuestVisitsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -42067,6 +42960,8 @@ export type UserUncheckedCreateWithoutGuestVisitsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -42115,6 +43010,7 @@ export type UserCreateWithoutGuestVisitsRecordedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -42208,6 +43104,8 @@ export type UserCreateWithoutGuestVisitsRecordedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -42252,6 +43150,7 @@ export type UserUncheckedCreateWithoutGuestVisitsRecordedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -42344,6 +43243,8 @@ export type UserUncheckedCreateWithoutGuestVisitsRecordedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -42403,6 +43304,7 @@ export type UserUpdateWithoutGuestVisitsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -42496,6 +43398,8 @@ export type UserUpdateWithoutGuestVisitsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -42540,6 +43444,7 @@ export type UserUncheckedUpdateWithoutGuestVisitsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -42632,6 +43537,8 @@ export type UserUncheckedUpdateWithoutGuestVisitsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -42686,6 +43593,7 @@ export type UserUpdateWithoutGuestVisitsRecordedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -42779,6 +43687,8 @@ export type UserUpdateWithoutGuestVisitsRecordedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -42823,6 +43733,7 @@ export type UserUncheckedUpdateWithoutGuestVisitsRecordedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -42915,6 +43826,8 @@ export type UserUncheckedUpdateWithoutGuestVisitsRecordedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -42958,6 +43871,7 @@ export type UserCreateWithoutGuestFollowUpsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -43051,6 +43965,8 @@ export type UserCreateWithoutGuestFollowUpsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -43095,6 +44011,7 @@ export type UserUncheckedCreateWithoutGuestFollowUpsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -43187,6 +44104,8 @@ export type UserUncheckedCreateWithoutGuestFollowUpsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -43235,6 +44154,7 @@ export type UserCreateWithoutFollowUpsAssignedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -43328,6 +44248,8 @@ export type UserCreateWithoutFollowUpsAssignedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -43372,6 +44294,7 @@ export type UserUncheckedCreateWithoutFollowUpsAssignedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -43464,6 +44387,8 @@ export type UserUncheckedCreateWithoutFollowUpsAssignedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -43512,6 +44437,7 @@ export type UserCreateWithoutFollowUpsCreatedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -43605,6 +44531,8 @@ export type UserCreateWithoutFollowUpsCreatedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -43649,6 +44577,7 @@ export type UserUncheckedCreateWithoutFollowUpsCreatedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -43741,6 +44670,8 @@ export type UserUncheckedCreateWithoutFollowUpsCreatedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -43800,6 +44731,7 @@ export type UserUpdateWithoutGuestFollowUpsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -43893,6 +44825,8 @@ export type UserUpdateWithoutGuestFollowUpsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -43937,6 +44871,7 @@ export type UserUncheckedUpdateWithoutGuestFollowUpsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -44029,6 +44964,8 @@ export type UserUncheckedUpdateWithoutGuestFollowUpsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -44083,6 +45020,7 @@ export type UserUpdateWithoutFollowUpsAssignedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -44176,6 +45114,8 @@ export type UserUpdateWithoutFollowUpsAssignedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -44220,6 +45160,7 @@ export type UserUncheckedUpdateWithoutFollowUpsAssignedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -44312,6 +45253,8 @@ export type UserUncheckedUpdateWithoutFollowUpsAssignedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -44366,6 +45309,7 @@ export type UserUpdateWithoutFollowUpsCreatedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -44459,6 +45403,8 @@ export type UserUpdateWithoutFollowUpsCreatedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -44503,6 +45449,7 @@ export type UserUncheckedUpdateWithoutFollowUpsCreatedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -44595,6 +45542,8 @@ export type UserUncheckedUpdateWithoutFollowUpsCreatedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -44638,6 +45587,7 @@ export type UserCreateWithoutLeaveApprovalsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -44731,6 +45681,8 @@ export type UserCreateWithoutLeaveApprovalsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -44775,6 +45727,7 @@ export type UserUncheckedCreateWithoutLeaveApprovalsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -44867,6 +45820,8 @@ export type UserUncheckedCreateWithoutLeaveApprovalsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -44926,6 +45881,7 @@ export type UserUpdateWithoutLeaveApprovalsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -45019,6 +45975,8 @@ export type UserUpdateWithoutLeaveApprovalsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -45063,6 +46021,7 @@ export type UserUncheckedUpdateWithoutLeaveApprovalsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -45155,6 +46114,8 @@ export type UserUncheckedUpdateWithoutLeaveApprovalsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -45198,6 +46159,7 @@ export type UserCreateWithoutAppraisalReviewsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -45291,6 +46253,8 @@ export type UserCreateWithoutAppraisalReviewsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -45335,6 +46299,7 @@ export type UserUncheckedCreateWithoutAppraisalReviewsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -45427,6 +46392,8 @@ export type UserUncheckedCreateWithoutAppraisalReviewsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -45486,6 +46453,7 @@ export type UserUpdateWithoutAppraisalReviewsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -45579,6 +46547,8 @@ export type UserUpdateWithoutAppraisalReviewsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -45623,6 +46593,7 @@ export type UserUncheckedUpdateWithoutAppraisalReviewsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -45715,6 +46686,8 @@ export type UserUncheckedUpdateWithoutAppraisalReviewsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -45758,6 +46731,7 @@ export type UserCreateWithoutTemplatesCreatedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -45851,6 +46825,8 @@ export type UserCreateWithoutTemplatesCreatedInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -45895,6 +46871,7 @@ export type UserUncheckedCreateWithoutTemplatesCreatedInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -45987,6 +46964,8 @@ export type UserUncheckedCreateWithoutTemplatesCreatedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -46046,6 +47025,7 @@ export type UserUpdateWithoutTemplatesCreatedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -46139,6 +47119,8 @@ export type UserUpdateWithoutTemplatesCreatedInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -46183,6 +47165,7 @@ export type UserUncheckedUpdateWithoutTemplatesCreatedInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -46275,6 +47258,8 @@ export type UserUncheckedUpdateWithoutTemplatesCreatedInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -46318,6 +47303,7 @@ export type UserCreateWithoutPrayerRequestsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -46411,6 +47397,8 @@ export type UserCreateWithoutPrayerRequestsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -46455,6 +47443,7 @@ export type UserUncheckedCreateWithoutPrayerRequestsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -46547,6 +47536,8 @@ export type UserUncheckedCreateWithoutPrayerRequestsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -46606,6 +47597,7 @@ export type UserUpdateWithoutPrayerRequestsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -46699,6 +47691,8 @@ export type UserUpdateWithoutPrayerRequestsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -46743,6 +47737,7 @@ export type UserUncheckedUpdateWithoutPrayerRequestsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -46835,6 +47830,8 @@ export type UserUncheckedUpdateWithoutPrayerRequestsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -46878,6 +47875,7 @@ export type UserCreateWithoutPrayersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -46971,6 +47969,8 @@ export type UserCreateWithoutPrayersInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -47015,6 +48015,7 @@ export type UserUncheckedCreateWithoutPrayersInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -47107,6 +48108,8 @@ export type UserUncheckedCreateWithoutPrayersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -47166,6 +48169,7 @@ export type UserUpdateWithoutPrayersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -47259,6 +48263,8 @@ export type UserUpdateWithoutPrayersInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -47303,6 +48309,7 @@ export type UserUncheckedUpdateWithoutPrayersInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -47395,6 +48402,8 @@ export type UserUncheckedUpdateWithoutPrayersInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -47438,6 +48447,7 @@ export type UserCreateWithoutPrayerRequestUpdatesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -47531,6 +48541,8 @@ export type UserCreateWithoutPrayerRequestUpdatesInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -47575,6 +48587,7 @@ export type UserUncheckedCreateWithoutPrayerRequestUpdatesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -47667,6 +48680,8 @@ export type UserUncheckedCreateWithoutPrayerRequestUpdatesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -47726,6 +48741,7 @@ export type UserUpdateWithoutPrayerRequestUpdatesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -47819,6 +48835,8 @@ export type UserUpdateWithoutPrayerRequestUpdatesInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -47863,6 +48881,7 @@ export type UserUncheckedUpdateWithoutPrayerRequestUpdatesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -47955,6 +48974,8 @@ export type UserUncheckedUpdateWithoutPrayerRequestUpdatesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -47998,6 +49019,7 @@ export type UserCreateWithoutConversationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -48091,6 +49113,8 @@ export type UserCreateWithoutConversationsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateCreateNestedManyWithoutAuthorInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -48135,6 +49159,7 @@ export type UserUncheckedCreateWithoutConversationsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -48227,6 +49252,8 @@ export type UserUncheckedCreateWithoutConversationsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedCreateNestedManyWithoutAuthorInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -48286,6 +49313,7 @@ export type UserUpdateWithoutConversationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -48379,6 +49407,8 @@ export type UserUpdateWithoutConversationsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUpdateManyWithoutAuthorNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -48423,6 +49453,7 @@ export type UserUncheckedUpdateWithoutConversationsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -48515,6 +49546,8 @@ export type UserUncheckedUpdateWithoutConversationsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedUpdateManyWithoutAuthorNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -48558,6 +49591,7 @@ export type UserCreateWithoutSentMessagesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -48651,6 +49685,8 @@ export type UserCreateWithoutSentMessagesInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateCreateNestedManyWithoutAuthorInput
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -48695,6 +49731,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -48787,6 +49824,8 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedCreateNestedManyWithoutAuthorInput
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -48846,6 +49885,7 @@ export type UserUpdateWithoutSentMessagesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -48939,6 +49979,8 @@ export type UserUpdateWithoutSentMessagesInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUpdateManyWithoutAuthorNestedInput
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -48983,6 +50025,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -49075,6 +50118,8 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedUpdateManyWithoutAuthorNestedInput
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -49118,6 +50163,7 @@ export type UserCreateWithoutMessageReadsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -49211,6 +50257,8 @@ export type UserCreateWithoutMessageReadsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateCreateNestedManyWithoutAuthorInput
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -49255,6 +50303,7 @@ export type UserUncheckedCreateWithoutMessageReadsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -49347,6 +50396,8 @@ export type UserUncheckedCreateWithoutMessageReadsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedCreateNestedManyWithoutAuthorInput
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -49406,6 +50457,7 @@ export type UserUpdateWithoutMessageReadsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -49499,6 +50551,8 @@ export type UserUpdateWithoutMessageReadsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUpdateManyWithoutAuthorNestedInput
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -49543,6 +50597,7 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -49635,6 +50690,8 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedUpdateManyWithoutAuthorNestedInput
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -49645,7 +50702,7 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
 }
 
-export type UserCreateWithoutSurveysInput = {
+export type UserCreateWithoutSentSMSInput = {
   id?: string
   email?: string | null
   phone?: string | null
@@ -49678,6 +50735,7 @@ export type UserCreateWithoutSurveysInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -49772,6 +50830,8 @@ export type UserCreateWithoutSurveysInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
+  surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
   formSubmissions?: Prisma.FormSubmissionCreateNestedManyWithoutUserInput
@@ -49781,7 +50841,7 @@ export type UserCreateWithoutSurveysInput = {
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
 }
 
-export type UserUncheckedCreateWithoutSurveysInput = {
+export type UserUncheckedCreateWithoutSentSMSInput = {
   id?: string
   email?: string | null
   phone?: string | null
@@ -49815,6 +50875,7 @@ export type UserUncheckedCreateWithoutSurveysInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -49908,6 +50969,1152 @@ export type UserUncheckedCreateWithoutSurveysInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
+  surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
+  surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
+  forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
+  formSubmissions?: Prisma.FormSubmissionUncheckedCreateNestedManyWithoutUserInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutAuthorInput
+  engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
+  connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
+  connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+}
+
+export type UserCreateOrConnectWithoutSentSMSInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSentSMSInput, Prisma.UserUncheckedCreateWithoutSentSMSInput>
+}
+
+export type UserCreateWithoutReceivedSMSInput = {
+  id?: string
+  email?: string | null
+  phone?: string | null
+  title?: string | null
+  firstName: string
+  lastName: string
+  middleName?: string | null
+  gender?: $Enums.Gender | null
+  dateOfBirth?: Date | string | null
+  maritalStatus?: $Enums.MaritalStatus | null
+  profession?: string | null
+  profileImage?: string | null
+  bio?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  county?: string | null
+  zipCode?: string | null
+  country?: string | null
+  residence?: string | null
+  emergencyContact?: string | null
+  emergencyPhone?: string | null
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  canLogin?: boolean
+  enableFollowUps?: boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  memberSince?: Date | string | null
+  baptismDate?: Date | string | null
+  baptismLocation?: string | null
+  dedicationDate?: Date | string | null
+  weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
+  familyPhoto?: string | null
+  familyName?: string | null
+  emailVerified?: boolean
+  phoneVerified?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  campus?: Prisma.CampusCreateNestedOneWithoutUsersInput
+  spouse?: Prisma.UserCreateNestedOneWithoutSpouseOfInput
+  spouseOf?: Prisma.UserCreateNestedOneWithoutSpouseInput
+  parent?: Prisma.UserCreateNestedOneWithoutChildrenInput
+  children?: Prisma.UserCreateNestedManyWithoutParentInput
+  familyHead?: Prisma.UserCreateNestedOneWithoutFamilyMembersInput
+  familyMembers?: Prisma.UserCreateNestedManyWithoutFamilyHeadInput
+  socialLogins?: Prisma.SocialLoginCreateNestedManyWithoutUserInput
+  userSessions?: Prisma.UserSessionCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutUserInput
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  invitation?: Prisma.InvitationCreateNestedOneWithoutUserInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentCreateNestedManyWithoutUserInput
+  serviceAssignments?: Prisma.ServiceAssignmentCreateNestedManyWithoutUserInput
+  departmentLeader?: Prisma.DepartmentCreateNestedManyWithoutLeaderInput
+  inventoryTransactions?: Prisma.InventoryTransactionCreateNestedManyWithoutPerformedByInput
+  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
+  sessionAttendances?: Prisma.SessionAttendeeCreateNestedManyWithoutUserInput
+  attendanceRecords?: Prisma.AttendanceRecordCreateNestedManyWithoutUserInput
+  decisions?: Prisma.DecisionCreateNestedManyWithoutUserInput
+  proposedDecisions?: Prisma.DecisionCreateNestedManyWithoutProposedByInput
+  approvedDecisions?: Prisma.DecisionCreateNestedManyWithoutApprovedByInput
+  assignedDecisions?: Prisma.DecisionCreateNestedManyWithoutAssignedToInput
+  recordedDecisions?: Prisma.DecisionCreateNestedManyWithoutRecordedByInput
+  organizedMeetings?: Prisma.MeetingCreateNestedManyWithoutOrganizerInput
+  donations?: Prisma.DonationCreateNestedManyWithoutUserInput
+  eventRegistrations?: Prisma.EventRegistrationCreateNestedManyWithoutUserInput
+  eventCheckIns?: Prisma.EventCheckInCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsAboutMe?: Prisma.NotificationCreateNestedManyWithoutRelatedUserInput
+  announcementsRead?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberCreateNestedManyWithoutUserInput
+  youthGroupMembers?: Prisma.YouthGroupMemberCreateNestedManyWithoutUserInput
+  staffRecord?: Prisma.StaffCreateNestedOneWithoutUserInput
+  mediaUploads?: Prisma.MediaCreateNestedManyWithoutUploadedByInput
+  expenseSubmissions?: Prisma.ExpenseCreateNestedManyWithoutSubmittedByInput
+  expenseApprovals?: Prisma.ExpenseCreateNestedManyWithoutApprovedByInput
+  eventOrganizations?: Prisma.EventCreateNestedManyWithoutOrganizerInput
+  facilityBookings?: Prisma.FacilityBookingCreateNestedManyWithoutUserInput
+  childrenLeadership?: Prisma.ChildrenClassCreateNestedManyWithoutLeaderInput
+  childrenParent?: Prisma.ChildrenMinistryMemberCreateNestedManyWithoutParentInput
+  youthLeadership?: Prisma.YouthGroupCreateNestedManyWithoutLeaderInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentCreateNestedManyWithoutUserInput
+  outreachOrganizations?: Prisma.OutreachCreateNestedManyWithoutOrganizerInput
+  outreachParticipations?: Prisma.OutreachParticipantCreateNestedManyWithoutUserInput
+  testimonyAuthors?: Prisma.OutreachTestimonyCreateNestedManyWithoutAuthorInput
+  projectDonations?: Prisma.ProjectDonationCreateNestedManyWithoutUserInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateCreateNestedManyWithoutAuthorInput
+  documentUploads?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutCreatedByInput
+  assetAssignments?: Prisma.AssetCreateNestedManyWithoutAssignedToInput
+  leaveApprovals?: Prisma.LeaveCreateNestedManyWithoutApprovedByInput
+  appraisalReviews?: Prisma.PerformanceAppraisalCreateNestedManyWithoutReviewedByInput
+  recurringDonations?: Prisma.RecurringDonationCreateNestedManyWithoutUserInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceCreateNestedManyWithoutUserInput
+  payrollProcessed?: Prisma.PayrollCreateNestedManyWithoutProcessedByInput
+  payslipsGenerated?: Prisma.PayslipCreateNestedManyWithoutGeneratedByInput
+  checksReceived?: Prisma.CheckCreateNestedManyWithoutReceivedByInput
+  checksDeposited?: Prisma.CheckCreateNestedManyWithoutDepositedByInput
+  checksDonated?: Prisma.CheckCreateNestedManyWithoutDonorInput
+  guestVisits?: Prisma.GuestVisitCreateNestedManyWithoutGuestInput
+  guestVisitsRecorded?: Prisma.GuestVisitCreateNestedManyWithoutRecordedByInput
+  guestFollowUps?: Prisma.GuestFollowUpCreateNestedManyWithoutGuestInput
+  followUpsAssigned?: Prisma.GuestFollowUpCreateNestedManyWithoutAssignedToInput
+  followUpsCreated?: Prisma.GuestFollowUpCreateNestedManyWithoutCreatedByInput
+  templatesCreated?: Prisma.CommunicationTemplateCreateNestedManyWithoutCreatedByInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentCreateNestedManyWithoutUserInput
+  mentorRelations?: Prisma.MentorshipCreateNestedManyWithoutMentorInput
+  menteeRelations?: Prisma.MentorshipCreateNestedManyWithoutMenteeInput
+  announcementAuthors?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
+  discussionAuthors?: Prisma.GroupDiscussionCreateNestedManyWithoutAuthorInput
+  replyAuthors?: Prisma.GroupDiscussionReplyCreateNestedManyWithoutAuthorInput
+  groupLeadership?: Prisma.SmallGroupCreateNestedManyWithoutLeaderInput
+  campusPastor?: Prisma.CampusCreateNestedManyWithoutPastorInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationCreateNestedManyWithoutMemberInput
+  prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutAuthorInput
+  prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateCreateNestedManyWithoutAuthorInput
+  conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
+  surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
+  forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
+  formSubmissions?: Prisma.FormSubmissionCreateNestedManyWithoutUserInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutAuthorInput
+  engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
+  connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
+  connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+}
+
+export type UserUncheckedCreateWithoutReceivedSMSInput = {
+  id?: string
+  email?: string | null
+  phone?: string | null
+  title?: string | null
+  firstName: string
+  lastName: string
+  middleName?: string | null
+  gender?: $Enums.Gender | null
+  dateOfBirth?: Date | string | null
+  maritalStatus?: $Enums.MaritalStatus | null
+  profession?: string | null
+  profileImage?: string | null
+  bio?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  county?: string | null
+  zipCode?: string | null
+  country?: string | null
+  residence?: string | null
+  emergencyContact?: string | null
+  emergencyPhone?: string | null
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  canLogin?: boolean
+  enableFollowUps?: boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  campusId?: string | null
+  memberSince?: Date | string | null
+  baptismDate?: Date | string | null
+  baptismLocation?: string | null
+  dedicationDate?: Date | string | null
+  weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
+  spouseId?: string | null
+  parentId?: string | null
+  familyPhoto?: string | null
+  familyHeadId?: string | null
+  familyName?: string | null
+  emailVerified?: boolean
+  phoneVerified?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  spouseOf?: Prisma.UserUncheckedCreateNestedOneWithoutSpouseInput
+  children?: Prisma.UserUncheckedCreateNestedManyWithoutParentInput
+  familyMembers?: Prisma.UserUncheckedCreateNestedManyWithoutFamilyHeadInput
+  socialLogins?: Prisma.SocialLoginUncheckedCreateNestedManyWithoutUserInput
+  userSessions?: Prisma.UserSessionUncheckedCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutUserInput
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitation?: Prisma.InvitationUncheckedCreateNestedOneWithoutUserInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUncheckedCreateNestedManyWithoutUserInput
+  serviceAssignments?: Prisma.ServiceAssignmentUncheckedCreateNestedManyWithoutUserInput
+  departmentLeader?: Prisma.DepartmentUncheckedCreateNestedManyWithoutLeaderInput
+  inventoryTransactions?: Prisma.InventoryTransactionUncheckedCreateNestedManyWithoutPerformedByInput
+  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
+  sessionAttendances?: Prisma.SessionAttendeeUncheckedCreateNestedManyWithoutUserInput
+  attendanceRecords?: Prisma.AttendanceRecordUncheckedCreateNestedManyWithoutUserInput
+  decisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutUserInput
+  proposedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutProposedByInput
+  approvedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutApprovedByInput
+  assignedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutAssignedToInput
+  recordedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutRecordedByInput
+  organizedMeetings?: Prisma.MeetingUncheckedCreateNestedManyWithoutOrganizerInput
+  donations?: Prisma.DonationUncheckedCreateNestedManyWithoutUserInput
+  eventRegistrations?: Prisma.EventRegistrationUncheckedCreateNestedManyWithoutUserInput
+  eventCheckIns?: Prisma.EventCheckInUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsAboutMe?: Prisma.NotificationUncheckedCreateNestedManyWithoutRelatedUserInput
+  announcementsRead?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUncheckedCreateNestedManyWithoutUserInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUncheckedCreateNestedManyWithoutUserInput
+  staffRecord?: Prisma.StaffUncheckedCreateNestedOneWithoutUserInput
+  mediaUploads?: Prisma.MediaUncheckedCreateNestedManyWithoutUploadedByInput
+  expenseSubmissions?: Prisma.ExpenseUncheckedCreateNestedManyWithoutSubmittedByInput
+  expenseApprovals?: Prisma.ExpenseUncheckedCreateNestedManyWithoutApprovedByInput
+  eventOrganizations?: Prisma.EventUncheckedCreateNestedManyWithoutOrganizerInput
+  facilityBookings?: Prisma.FacilityBookingUncheckedCreateNestedManyWithoutUserInput
+  childrenLeadership?: Prisma.ChildrenClassUncheckedCreateNestedManyWithoutLeaderInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUncheckedCreateNestedManyWithoutParentInput
+  youthLeadership?: Prisma.YouthGroupUncheckedCreateNestedManyWithoutLeaderInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUncheckedCreateNestedManyWithoutUserInput
+  outreachOrganizations?: Prisma.OutreachUncheckedCreateNestedManyWithoutOrganizerInput
+  outreachParticipations?: Prisma.OutreachParticipantUncheckedCreateNestedManyWithoutUserInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUncheckedCreateNestedManyWithoutAuthorInput
+  projectDonations?: Prisma.ProjectDonationUncheckedCreateNestedManyWithoutUserInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUncheckedCreateNestedManyWithoutAuthorInput
+  documentUploads?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutCreatedByInput
+  assetAssignments?: Prisma.AssetUncheckedCreateNestedManyWithoutAssignedToInput
+  leaveApprovals?: Prisma.LeaveUncheckedCreateNestedManyWithoutApprovedByInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUncheckedCreateNestedManyWithoutReviewedByInput
+  recurringDonations?: Prisma.RecurringDonationUncheckedCreateNestedManyWithoutUserInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUncheckedCreateNestedManyWithoutUserInput
+  payrollProcessed?: Prisma.PayrollUncheckedCreateNestedManyWithoutProcessedByInput
+  payslipsGenerated?: Prisma.PayslipUncheckedCreateNestedManyWithoutGeneratedByInput
+  checksReceived?: Prisma.CheckUncheckedCreateNestedManyWithoutReceivedByInput
+  checksDeposited?: Prisma.CheckUncheckedCreateNestedManyWithoutDepositedByInput
+  checksDonated?: Prisma.CheckUncheckedCreateNestedManyWithoutDonorInput
+  guestVisits?: Prisma.GuestVisitUncheckedCreateNestedManyWithoutGuestInput
+  guestVisitsRecorded?: Prisma.GuestVisitUncheckedCreateNestedManyWithoutRecordedByInput
+  guestFollowUps?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutGuestInput
+  followUpsAssigned?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutAssignedToInput
+  followUpsCreated?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutCreatedByInput
+  templatesCreated?: Prisma.CommunicationTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUncheckedCreateNestedManyWithoutUserInput
+  mentorRelations?: Prisma.MentorshipUncheckedCreateNestedManyWithoutMentorInput
+  menteeRelations?: Prisma.MentorshipUncheckedCreateNestedManyWithoutMenteeInput
+  announcementAuthors?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
+  discussionAuthors?: Prisma.GroupDiscussionUncheckedCreateNestedManyWithoutAuthorInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUncheckedCreateNestedManyWithoutAuthorInput
+  groupLeadership?: Prisma.SmallGroupUncheckedCreateNestedManyWithoutLeaderInput
+  campusPastor?: Prisma.CampusUncheckedCreateNestedManyWithoutPastorInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUncheckedCreateNestedManyWithoutMemberInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutAuthorInput
+  prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedCreateNestedManyWithoutAuthorInput
+  conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
+  surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
+  forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
+  formSubmissions?: Prisma.FormSubmissionUncheckedCreateNestedManyWithoutUserInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutAuthorInput
+  engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
+  connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
+  connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+}
+
+export type UserCreateOrConnectWithoutReceivedSMSInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedSMSInput, Prisma.UserUncheckedCreateWithoutReceivedSMSInput>
+}
+
+export type UserUpsertWithoutSentSMSInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSentSMSInput, Prisma.UserUncheckedUpdateWithoutSentSMSInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSentSMSInput, Prisma.UserUncheckedCreateWithoutSentSMSInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSentSMSInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSentSMSInput, Prisma.UserUncheckedUpdateWithoutSentSMSInput>
+}
+
+export type UserUpdateWithoutSentSMSInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  maritalStatus?: Prisma.NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+  profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  county?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  residence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  canLogin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableFollowUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  memberSince?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  campus?: Prisma.CampusUpdateOneWithoutUsersNestedInput
+  spouse?: Prisma.UserUpdateOneWithoutSpouseOfNestedInput
+  spouseOf?: Prisma.UserUpdateOneWithoutSpouseNestedInput
+  parent?: Prisma.UserUpdateOneWithoutChildrenNestedInput
+  children?: Prisma.UserUpdateManyWithoutParentNestedInput
+  familyHead?: Prisma.UserUpdateOneWithoutFamilyMembersNestedInput
+  familyMembers?: Prisma.UserUpdateManyWithoutFamilyHeadNestedInput
+  socialLogins?: Prisma.SocialLoginUpdateManyWithoutUserNestedInput
+  userSessions?: Prisma.UserSessionUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutUserNestedInput
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  invitation?: Prisma.InvitationUpdateOneWithoutUserNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUpdateManyWithoutUserNestedInput
+  serviceAssignments?: Prisma.ServiceAssignmentUpdateManyWithoutUserNestedInput
+  departmentLeader?: Prisma.DepartmentUpdateManyWithoutLeaderNestedInput
+  inventoryTransactions?: Prisma.InventoryTransactionUpdateManyWithoutPerformedByNestedInput
+  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
+  sessionAttendances?: Prisma.SessionAttendeeUpdateManyWithoutUserNestedInput
+  attendanceRecords?: Prisma.AttendanceRecordUpdateManyWithoutUserNestedInput
+  decisions?: Prisma.DecisionUpdateManyWithoutUserNestedInput
+  proposedDecisions?: Prisma.DecisionUpdateManyWithoutProposedByNestedInput
+  approvedDecisions?: Prisma.DecisionUpdateManyWithoutApprovedByNestedInput
+  assignedDecisions?: Prisma.DecisionUpdateManyWithoutAssignedToNestedInput
+  recordedDecisions?: Prisma.DecisionUpdateManyWithoutRecordedByNestedInput
+  organizedMeetings?: Prisma.MeetingUpdateManyWithoutOrganizerNestedInput
+  donations?: Prisma.DonationUpdateManyWithoutUserNestedInput
+  eventRegistrations?: Prisma.EventRegistrationUpdateManyWithoutUserNestedInput
+  eventCheckIns?: Prisma.EventCheckInUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsAboutMe?: Prisma.NotificationUpdateManyWithoutRelatedUserNestedInput
+  announcementsRead?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUpdateManyWithoutUserNestedInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUpdateManyWithoutUserNestedInput
+  staffRecord?: Prisma.StaffUpdateOneWithoutUserNestedInput
+  mediaUploads?: Prisma.MediaUpdateManyWithoutUploadedByNestedInput
+  expenseSubmissions?: Prisma.ExpenseUpdateManyWithoutSubmittedByNestedInput
+  expenseApprovals?: Prisma.ExpenseUpdateManyWithoutApprovedByNestedInput
+  eventOrganizations?: Prisma.EventUpdateManyWithoutOrganizerNestedInput
+  facilityBookings?: Prisma.FacilityBookingUpdateManyWithoutUserNestedInput
+  childrenLeadership?: Prisma.ChildrenClassUpdateManyWithoutLeaderNestedInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUpdateManyWithoutParentNestedInput
+  youthLeadership?: Prisma.YouthGroupUpdateManyWithoutLeaderNestedInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUpdateManyWithoutUserNestedInput
+  outreachOrganizations?: Prisma.OutreachUpdateManyWithoutOrganizerNestedInput
+  outreachParticipations?: Prisma.OutreachParticipantUpdateManyWithoutUserNestedInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUpdateManyWithoutAuthorNestedInput
+  projectDonations?: Prisma.ProjectDonationUpdateManyWithoutUserNestedInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUpdateManyWithoutAuthorNestedInput
+  documentUploads?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutCreatedByNestedInput
+  assetAssignments?: Prisma.AssetUpdateManyWithoutAssignedToNestedInput
+  leaveApprovals?: Prisma.LeaveUpdateManyWithoutApprovedByNestedInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUpdateManyWithoutReviewedByNestedInput
+  recurringDonations?: Prisma.RecurringDonationUpdateManyWithoutUserNestedInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUpdateManyWithoutUserNestedInput
+  payrollProcessed?: Prisma.PayrollUpdateManyWithoutProcessedByNestedInput
+  payslipsGenerated?: Prisma.PayslipUpdateManyWithoutGeneratedByNestedInput
+  checksReceived?: Prisma.CheckUpdateManyWithoutReceivedByNestedInput
+  checksDeposited?: Prisma.CheckUpdateManyWithoutDepositedByNestedInput
+  checksDonated?: Prisma.CheckUpdateManyWithoutDonorNestedInput
+  guestVisits?: Prisma.GuestVisitUpdateManyWithoutGuestNestedInput
+  guestVisitsRecorded?: Prisma.GuestVisitUpdateManyWithoutRecordedByNestedInput
+  guestFollowUps?: Prisma.GuestFollowUpUpdateManyWithoutGuestNestedInput
+  followUpsAssigned?: Prisma.GuestFollowUpUpdateManyWithoutAssignedToNestedInput
+  followUpsCreated?: Prisma.GuestFollowUpUpdateManyWithoutCreatedByNestedInput
+  templatesCreated?: Prisma.CommunicationTemplateUpdateManyWithoutCreatedByNestedInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUpdateManyWithoutUserNestedInput
+  mentorRelations?: Prisma.MentorshipUpdateManyWithoutMentorNestedInput
+  menteeRelations?: Prisma.MentorshipUpdateManyWithoutMenteeNestedInput
+  announcementAuthors?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
+  discussionAuthors?: Prisma.GroupDiscussionUpdateManyWithoutAuthorNestedInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUpdateManyWithoutAuthorNestedInput
+  groupLeadership?: Prisma.SmallGroupUpdateManyWithoutLeaderNestedInput
+  campusPastor?: Prisma.CampusUpdateManyWithoutPastorNestedInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUpdateManyWithoutMemberNestedInput
+  prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutAuthorNestedInput
+  prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUpdateManyWithoutAuthorNestedInput
+  conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
+  surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
+  surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
+  forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
+  formSubmissions?: Prisma.FormSubmissionUpdateManyWithoutUserNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutAuthorNestedInput
+  engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
+  connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
+  connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSentSMSInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  maritalStatus?: Prisma.NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+  profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  county?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  residence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  canLogin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableFollowUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberSince?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyHeadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  spouseOf?: Prisma.UserUncheckedUpdateOneWithoutSpouseNestedInput
+  children?: Prisma.UserUncheckedUpdateManyWithoutParentNestedInput
+  familyMembers?: Prisma.UserUncheckedUpdateManyWithoutFamilyHeadNestedInput
+  socialLogins?: Prisma.SocialLoginUncheckedUpdateManyWithoutUserNestedInput
+  userSessions?: Prisma.UserSessionUncheckedUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutUserNestedInput
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitation?: Prisma.InvitationUncheckedUpdateOneWithoutUserNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  serviceAssignments?: Prisma.ServiceAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  departmentLeader?: Prisma.DepartmentUncheckedUpdateManyWithoutLeaderNestedInput
+  inventoryTransactions?: Prisma.InventoryTransactionUncheckedUpdateManyWithoutPerformedByNestedInput
+  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
+  sessionAttendances?: Prisma.SessionAttendeeUncheckedUpdateManyWithoutUserNestedInput
+  attendanceRecords?: Prisma.AttendanceRecordUncheckedUpdateManyWithoutUserNestedInput
+  decisions?: Prisma.DecisionUncheckedUpdateManyWithoutUserNestedInput
+  proposedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutProposedByNestedInput
+  approvedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutApprovedByNestedInput
+  assignedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutAssignedToNestedInput
+  recordedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutRecordedByNestedInput
+  organizedMeetings?: Prisma.MeetingUncheckedUpdateManyWithoutOrganizerNestedInput
+  donations?: Prisma.DonationUncheckedUpdateManyWithoutUserNestedInput
+  eventRegistrations?: Prisma.EventRegistrationUncheckedUpdateManyWithoutUserNestedInput
+  eventCheckIns?: Prisma.EventCheckInUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsAboutMe?: Prisma.NotificationUncheckedUpdateManyWithoutRelatedUserNestedInput
+  announcementsRead?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUncheckedUpdateManyWithoutUserNestedInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  staffRecord?: Prisma.StaffUncheckedUpdateOneWithoutUserNestedInput
+  mediaUploads?: Prisma.MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+  expenseSubmissions?: Prisma.ExpenseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  expenseApprovals?: Prisma.ExpenseUncheckedUpdateManyWithoutApprovedByNestedInput
+  eventOrganizations?: Prisma.EventUncheckedUpdateManyWithoutOrganizerNestedInput
+  facilityBookings?: Prisma.FacilityBookingUncheckedUpdateManyWithoutUserNestedInput
+  childrenLeadership?: Prisma.ChildrenClassUncheckedUpdateManyWithoutLeaderNestedInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUncheckedUpdateManyWithoutParentNestedInput
+  youthLeadership?: Prisma.YouthGroupUncheckedUpdateManyWithoutLeaderNestedInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  outreachOrganizations?: Prisma.OutreachUncheckedUpdateManyWithoutOrganizerNestedInput
+  outreachParticipations?: Prisma.OutreachParticipantUncheckedUpdateManyWithoutUserNestedInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUncheckedUpdateManyWithoutAuthorNestedInput
+  projectDonations?: Prisma.ProjectDonationUncheckedUpdateManyWithoutUserNestedInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUncheckedUpdateManyWithoutAuthorNestedInput
+  documentUploads?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutCreatedByNestedInput
+  assetAssignments?: Prisma.AssetUncheckedUpdateManyWithoutAssignedToNestedInput
+  leaveApprovals?: Prisma.LeaveUncheckedUpdateManyWithoutApprovedByNestedInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUncheckedUpdateManyWithoutReviewedByNestedInput
+  recurringDonations?: Prisma.RecurringDonationUncheckedUpdateManyWithoutUserNestedInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  payrollProcessed?: Prisma.PayrollUncheckedUpdateManyWithoutProcessedByNestedInput
+  payslipsGenerated?: Prisma.PayslipUncheckedUpdateManyWithoutGeneratedByNestedInput
+  checksReceived?: Prisma.CheckUncheckedUpdateManyWithoutReceivedByNestedInput
+  checksDeposited?: Prisma.CheckUncheckedUpdateManyWithoutDepositedByNestedInput
+  checksDonated?: Prisma.CheckUncheckedUpdateManyWithoutDonorNestedInput
+  guestVisits?: Prisma.GuestVisitUncheckedUpdateManyWithoutGuestNestedInput
+  guestVisitsRecorded?: Prisma.GuestVisitUncheckedUpdateManyWithoutRecordedByNestedInput
+  guestFollowUps?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutGuestNestedInput
+  followUpsAssigned?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutAssignedToNestedInput
+  followUpsCreated?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutCreatedByNestedInput
+  templatesCreated?: Prisma.CommunicationTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+  mentorRelations?: Prisma.MentorshipUncheckedUpdateManyWithoutMentorNestedInput
+  menteeRelations?: Prisma.MentorshipUncheckedUpdateManyWithoutMenteeNestedInput
+  announcementAuthors?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
+  discussionAuthors?: Prisma.GroupDiscussionUncheckedUpdateManyWithoutAuthorNestedInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUncheckedUpdateManyWithoutAuthorNestedInput
+  groupLeadership?: Prisma.SmallGroupUncheckedUpdateManyWithoutLeaderNestedInput
+  campusPastor?: Prisma.CampusUncheckedUpdateManyWithoutPastorNestedInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUncheckedUpdateManyWithoutMemberNestedInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutAuthorNestedInput
+  prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedUpdateManyWithoutAuthorNestedInput
+  conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
+  surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
+  surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
+  forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
+  formSubmissions?: Prisma.FormSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutAuthorNestedInput
+  engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
+  connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
+  connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+}
+
+export type UserUpsertWithoutReceivedSMSInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutReceivedSMSInput, Prisma.UserUncheckedUpdateWithoutReceivedSMSInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutReceivedSMSInput, Prisma.UserUncheckedCreateWithoutReceivedSMSInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutReceivedSMSInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutReceivedSMSInput, Prisma.UserUncheckedUpdateWithoutReceivedSMSInput>
+}
+
+export type UserUpdateWithoutReceivedSMSInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  maritalStatus?: Prisma.NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+  profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  county?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  residence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  canLogin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableFollowUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  memberSince?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  campus?: Prisma.CampusUpdateOneWithoutUsersNestedInput
+  spouse?: Prisma.UserUpdateOneWithoutSpouseOfNestedInput
+  spouseOf?: Prisma.UserUpdateOneWithoutSpouseNestedInput
+  parent?: Prisma.UserUpdateOneWithoutChildrenNestedInput
+  children?: Prisma.UserUpdateManyWithoutParentNestedInput
+  familyHead?: Prisma.UserUpdateOneWithoutFamilyMembersNestedInput
+  familyMembers?: Prisma.UserUpdateManyWithoutFamilyHeadNestedInput
+  socialLogins?: Prisma.SocialLoginUpdateManyWithoutUserNestedInput
+  userSessions?: Prisma.UserSessionUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutUserNestedInput
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  invitation?: Prisma.InvitationUpdateOneWithoutUserNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUpdateManyWithoutUserNestedInput
+  serviceAssignments?: Prisma.ServiceAssignmentUpdateManyWithoutUserNestedInput
+  departmentLeader?: Prisma.DepartmentUpdateManyWithoutLeaderNestedInput
+  inventoryTransactions?: Prisma.InventoryTransactionUpdateManyWithoutPerformedByNestedInput
+  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
+  sessionAttendances?: Prisma.SessionAttendeeUpdateManyWithoutUserNestedInput
+  attendanceRecords?: Prisma.AttendanceRecordUpdateManyWithoutUserNestedInput
+  decisions?: Prisma.DecisionUpdateManyWithoutUserNestedInput
+  proposedDecisions?: Prisma.DecisionUpdateManyWithoutProposedByNestedInput
+  approvedDecisions?: Prisma.DecisionUpdateManyWithoutApprovedByNestedInput
+  assignedDecisions?: Prisma.DecisionUpdateManyWithoutAssignedToNestedInput
+  recordedDecisions?: Prisma.DecisionUpdateManyWithoutRecordedByNestedInput
+  organizedMeetings?: Prisma.MeetingUpdateManyWithoutOrganizerNestedInput
+  donations?: Prisma.DonationUpdateManyWithoutUserNestedInput
+  eventRegistrations?: Prisma.EventRegistrationUpdateManyWithoutUserNestedInput
+  eventCheckIns?: Prisma.EventCheckInUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsAboutMe?: Prisma.NotificationUpdateManyWithoutRelatedUserNestedInput
+  announcementsRead?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUpdateManyWithoutUserNestedInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUpdateManyWithoutUserNestedInput
+  staffRecord?: Prisma.StaffUpdateOneWithoutUserNestedInput
+  mediaUploads?: Prisma.MediaUpdateManyWithoutUploadedByNestedInput
+  expenseSubmissions?: Prisma.ExpenseUpdateManyWithoutSubmittedByNestedInput
+  expenseApprovals?: Prisma.ExpenseUpdateManyWithoutApprovedByNestedInput
+  eventOrganizations?: Prisma.EventUpdateManyWithoutOrganizerNestedInput
+  facilityBookings?: Prisma.FacilityBookingUpdateManyWithoutUserNestedInput
+  childrenLeadership?: Prisma.ChildrenClassUpdateManyWithoutLeaderNestedInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUpdateManyWithoutParentNestedInput
+  youthLeadership?: Prisma.YouthGroupUpdateManyWithoutLeaderNestedInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUpdateManyWithoutUserNestedInput
+  outreachOrganizations?: Prisma.OutreachUpdateManyWithoutOrganizerNestedInput
+  outreachParticipations?: Prisma.OutreachParticipantUpdateManyWithoutUserNestedInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUpdateManyWithoutAuthorNestedInput
+  projectDonations?: Prisma.ProjectDonationUpdateManyWithoutUserNestedInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUpdateManyWithoutAuthorNestedInput
+  documentUploads?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutCreatedByNestedInput
+  assetAssignments?: Prisma.AssetUpdateManyWithoutAssignedToNestedInput
+  leaveApprovals?: Prisma.LeaveUpdateManyWithoutApprovedByNestedInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUpdateManyWithoutReviewedByNestedInput
+  recurringDonations?: Prisma.RecurringDonationUpdateManyWithoutUserNestedInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUpdateManyWithoutUserNestedInput
+  payrollProcessed?: Prisma.PayrollUpdateManyWithoutProcessedByNestedInput
+  payslipsGenerated?: Prisma.PayslipUpdateManyWithoutGeneratedByNestedInput
+  checksReceived?: Prisma.CheckUpdateManyWithoutReceivedByNestedInput
+  checksDeposited?: Prisma.CheckUpdateManyWithoutDepositedByNestedInput
+  checksDonated?: Prisma.CheckUpdateManyWithoutDonorNestedInput
+  guestVisits?: Prisma.GuestVisitUpdateManyWithoutGuestNestedInput
+  guestVisitsRecorded?: Prisma.GuestVisitUpdateManyWithoutRecordedByNestedInput
+  guestFollowUps?: Prisma.GuestFollowUpUpdateManyWithoutGuestNestedInput
+  followUpsAssigned?: Prisma.GuestFollowUpUpdateManyWithoutAssignedToNestedInput
+  followUpsCreated?: Prisma.GuestFollowUpUpdateManyWithoutCreatedByNestedInput
+  templatesCreated?: Prisma.CommunicationTemplateUpdateManyWithoutCreatedByNestedInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUpdateManyWithoutUserNestedInput
+  mentorRelations?: Prisma.MentorshipUpdateManyWithoutMentorNestedInput
+  menteeRelations?: Prisma.MentorshipUpdateManyWithoutMenteeNestedInput
+  announcementAuthors?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
+  discussionAuthors?: Prisma.GroupDiscussionUpdateManyWithoutAuthorNestedInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUpdateManyWithoutAuthorNestedInput
+  groupLeadership?: Prisma.SmallGroupUpdateManyWithoutLeaderNestedInput
+  campusPastor?: Prisma.CampusUpdateManyWithoutPastorNestedInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUpdateManyWithoutMemberNestedInput
+  prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutAuthorNestedInput
+  prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUpdateManyWithoutAuthorNestedInput
+  conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
+  surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
+  forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
+  formSubmissions?: Prisma.FormSubmissionUpdateManyWithoutUserNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutAuthorNestedInput
+  engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
+  connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
+  connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutReceivedSMSInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  maritalStatus?: Prisma.NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+  profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  county?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  residence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  canLogin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableFollowUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberSince?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyHeadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  spouseOf?: Prisma.UserUncheckedUpdateOneWithoutSpouseNestedInput
+  children?: Prisma.UserUncheckedUpdateManyWithoutParentNestedInput
+  familyMembers?: Prisma.UserUncheckedUpdateManyWithoutFamilyHeadNestedInput
+  socialLogins?: Prisma.SocialLoginUncheckedUpdateManyWithoutUserNestedInput
+  userSessions?: Prisma.UserSessionUncheckedUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutUserNestedInput
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitation?: Prisma.InvitationUncheckedUpdateOneWithoutUserNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  serviceAssignments?: Prisma.ServiceAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  departmentLeader?: Prisma.DepartmentUncheckedUpdateManyWithoutLeaderNestedInput
+  inventoryTransactions?: Prisma.InventoryTransactionUncheckedUpdateManyWithoutPerformedByNestedInput
+  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
+  sessionAttendances?: Prisma.SessionAttendeeUncheckedUpdateManyWithoutUserNestedInput
+  attendanceRecords?: Prisma.AttendanceRecordUncheckedUpdateManyWithoutUserNestedInput
+  decisions?: Prisma.DecisionUncheckedUpdateManyWithoutUserNestedInput
+  proposedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutProposedByNestedInput
+  approvedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutApprovedByNestedInput
+  assignedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutAssignedToNestedInput
+  recordedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutRecordedByNestedInput
+  organizedMeetings?: Prisma.MeetingUncheckedUpdateManyWithoutOrganizerNestedInput
+  donations?: Prisma.DonationUncheckedUpdateManyWithoutUserNestedInput
+  eventRegistrations?: Prisma.EventRegistrationUncheckedUpdateManyWithoutUserNestedInput
+  eventCheckIns?: Prisma.EventCheckInUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsAboutMe?: Prisma.NotificationUncheckedUpdateManyWithoutRelatedUserNestedInput
+  announcementsRead?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUncheckedUpdateManyWithoutUserNestedInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  staffRecord?: Prisma.StaffUncheckedUpdateOneWithoutUserNestedInput
+  mediaUploads?: Prisma.MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+  expenseSubmissions?: Prisma.ExpenseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  expenseApprovals?: Prisma.ExpenseUncheckedUpdateManyWithoutApprovedByNestedInput
+  eventOrganizations?: Prisma.EventUncheckedUpdateManyWithoutOrganizerNestedInput
+  facilityBookings?: Prisma.FacilityBookingUncheckedUpdateManyWithoutUserNestedInput
+  childrenLeadership?: Prisma.ChildrenClassUncheckedUpdateManyWithoutLeaderNestedInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUncheckedUpdateManyWithoutParentNestedInput
+  youthLeadership?: Prisma.YouthGroupUncheckedUpdateManyWithoutLeaderNestedInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  outreachOrganizations?: Prisma.OutreachUncheckedUpdateManyWithoutOrganizerNestedInput
+  outreachParticipations?: Prisma.OutreachParticipantUncheckedUpdateManyWithoutUserNestedInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUncheckedUpdateManyWithoutAuthorNestedInput
+  projectDonations?: Prisma.ProjectDonationUncheckedUpdateManyWithoutUserNestedInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUncheckedUpdateManyWithoutAuthorNestedInput
+  documentUploads?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutCreatedByNestedInput
+  assetAssignments?: Prisma.AssetUncheckedUpdateManyWithoutAssignedToNestedInput
+  leaveApprovals?: Prisma.LeaveUncheckedUpdateManyWithoutApprovedByNestedInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUncheckedUpdateManyWithoutReviewedByNestedInput
+  recurringDonations?: Prisma.RecurringDonationUncheckedUpdateManyWithoutUserNestedInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  payrollProcessed?: Prisma.PayrollUncheckedUpdateManyWithoutProcessedByNestedInput
+  payslipsGenerated?: Prisma.PayslipUncheckedUpdateManyWithoutGeneratedByNestedInput
+  checksReceived?: Prisma.CheckUncheckedUpdateManyWithoutReceivedByNestedInput
+  checksDeposited?: Prisma.CheckUncheckedUpdateManyWithoutDepositedByNestedInput
+  checksDonated?: Prisma.CheckUncheckedUpdateManyWithoutDonorNestedInput
+  guestVisits?: Prisma.GuestVisitUncheckedUpdateManyWithoutGuestNestedInput
+  guestVisitsRecorded?: Prisma.GuestVisitUncheckedUpdateManyWithoutRecordedByNestedInput
+  guestFollowUps?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutGuestNestedInput
+  followUpsAssigned?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutAssignedToNestedInput
+  followUpsCreated?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutCreatedByNestedInput
+  templatesCreated?: Prisma.CommunicationTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+  mentorRelations?: Prisma.MentorshipUncheckedUpdateManyWithoutMentorNestedInput
+  menteeRelations?: Prisma.MentorshipUncheckedUpdateManyWithoutMenteeNestedInput
+  announcementAuthors?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
+  discussionAuthors?: Prisma.GroupDiscussionUncheckedUpdateManyWithoutAuthorNestedInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUncheckedUpdateManyWithoutAuthorNestedInput
+  groupLeadership?: Prisma.SmallGroupUncheckedUpdateManyWithoutLeaderNestedInput
+  campusPastor?: Prisma.CampusUncheckedUpdateManyWithoutPastorNestedInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUncheckedUpdateManyWithoutMemberNestedInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutAuthorNestedInput
+  prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedUpdateManyWithoutAuthorNestedInput
+  conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
+  surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
+  forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
+  formSubmissions?: Prisma.FormSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutAuthorNestedInput
+  engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
+  connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
+  connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+}
+
+export type UserCreateWithoutSurveysInput = {
+  id?: string
+  email?: string | null
+  phone?: string | null
+  title?: string | null
+  firstName: string
+  lastName: string
+  middleName?: string | null
+  gender?: $Enums.Gender | null
+  dateOfBirth?: Date | string | null
+  maritalStatus?: $Enums.MaritalStatus | null
+  profession?: string | null
+  profileImage?: string | null
+  bio?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  county?: string | null
+  zipCode?: string | null
+  country?: string | null
+  residence?: string | null
+  emergencyContact?: string | null
+  emergencyPhone?: string | null
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  canLogin?: boolean
+  enableFollowUps?: boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  memberSince?: Date | string | null
+  baptismDate?: Date | string | null
+  baptismLocation?: string | null
+  dedicationDate?: Date | string | null
+  weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
+  familyPhoto?: string | null
+  familyName?: string | null
+  emailVerified?: boolean
+  phoneVerified?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  campus?: Prisma.CampusCreateNestedOneWithoutUsersInput
+  spouse?: Prisma.UserCreateNestedOneWithoutSpouseOfInput
+  spouseOf?: Prisma.UserCreateNestedOneWithoutSpouseInput
+  parent?: Prisma.UserCreateNestedOneWithoutChildrenInput
+  children?: Prisma.UserCreateNestedManyWithoutParentInput
+  familyHead?: Prisma.UserCreateNestedOneWithoutFamilyMembersInput
+  familyMembers?: Prisma.UserCreateNestedManyWithoutFamilyHeadInput
+  socialLogins?: Prisma.SocialLoginCreateNestedManyWithoutUserInput
+  userSessions?: Prisma.UserSessionCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutUserInput
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  invitation?: Prisma.InvitationCreateNestedOneWithoutUserInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentCreateNestedManyWithoutUserInput
+  serviceAssignments?: Prisma.ServiceAssignmentCreateNestedManyWithoutUserInput
+  departmentLeader?: Prisma.DepartmentCreateNestedManyWithoutLeaderInput
+  inventoryTransactions?: Prisma.InventoryTransactionCreateNestedManyWithoutPerformedByInput
+  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
+  sessionAttendances?: Prisma.SessionAttendeeCreateNestedManyWithoutUserInput
+  attendanceRecords?: Prisma.AttendanceRecordCreateNestedManyWithoutUserInput
+  decisions?: Prisma.DecisionCreateNestedManyWithoutUserInput
+  proposedDecisions?: Prisma.DecisionCreateNestedManyWithoutProposedByInput
+  approvedDecisions?: Prisma.DecisionCreateNestedManyWithoutApprovedByInput
+  assignedDecisions?: Prisma.DecisionCreateNestedManyWithoutAssignedToInput
+  recordedDecisions?: Prisma.DecisionCreateNestedManyWithoutRecordedByInput
+  organizedMeetings?: Prisma.MeetingCreateNestedManyWithoutOrganizerInput
+  donations?: Prisma.DonationCreateNestedManyWithoutUserInput
+  eventRegistrations?: Prisma.EventRegistrationCreateNestedManyWithoutUserInput
+  eventCheckIns?: Prisma.EventCheckInCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsAboutMe?: Prisma.NotificationCreateNestedManyWithoutRelatedUserInput
+  announcementsRead?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberCreateNestedManyWithoutUserInput
+  youthGroupMembers?: Prisma.YouthGroupMemberCreateNestedManyWithoutUserInput
+  staffRecord?: Prisma.StaffCreateNestedOneWithoutUserInput
+  mediaUploads?: Prisma.MediaCreateNestedManyWithoutUploadedByInput
+  expenseSubmissions?: Prisma.ExpenseCreateNestedManyWithoutSubmittedByInput
+  expenseApprovals?: Prisma.ExpenseCreateNestedManyWithoutApprovedByInput
+  eventOrganizations?: Prisma.EventCreateNestedManyWithoutOrganizerInput
+  facilityBookings?: Prisma.FacilityBookingCreateNestedManyWithoutUserInput
+  childrenLeadership?: Prisma.ChildrenClassCreateNestedManyWithoutLeaderInput
+  childrenParent?: Prisma.ChildrenMinistryMemberCreateNestedManyWithoutParentInput
+  youthLeadership?: Prisma.YouthGroupCreateNestedManyWithoutLeaderInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentCreateNestedManyWithoutUserInput
+  outreachOrganizations?: Prisma.OutreachCreateNestedManyWithoutOrganizerInput
+  outreachParticipations?: Prisma.OutreachParticipantCreateNestedManyWithoutUserInput
+  testimonyAuthors?: Prisma.OutreachTestimonyCreateNestedManyWithoutAuthorInput
+  projectDonations?: Prisma.ProjectDonationCreateNestedManyWithoutUserInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateCreateNestedManyWithoutAuthorInput
+  documentUploads?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutCreatedByInput
+  assetAssignments?: Prisma.AssetCreateNestedManyWithoutAssignedToInput
+  leaveApprovals?: Prisma.LeaveCreateNestedManyWithoutApprovedByInput
+  appraisalReviews?: Prisma.PerformanceAppraisalCreateNestedManyWithoutReviewedByInput
+  recurringDonations?: Prisma.RecurringDonationCreateNestedManyWithoutUserInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceCreateNestedManyWithoutUserInput
+  payrollProcessed?: Prisma.PayrollCreateNestedManyWithoutProcessedByInput
+  payslipsGenerated?: Prisma.PayslipCreateNestedManyWithoutGeneratedByInput
+  checksReceived?: Prisma.CheckCreateNestedManyWithoutReceivedByInput
+  checksDeposited?: Prisma.CheckCreateNestedManyWithoutDepositedByInput
+  checksDonated?: Prisma.CheckCreateNestedManyWithoutDonorInput
+  guestVisits?: Prisma.GuestVisitCreateNestedManyWithoutGuestInput
+  guestVisitsRecorded?: Prisma.GuestVisitCreateNestedManyWithoutRecordedByInput
+  guestFollowUps?: Prisma.GuestFollowUpCreateNestedManyWithoutGuestInput
+  followUpsAssigned?: Prisma.GuestFollowUpCreateNestedManyWithoutAssignedToInput
+  followUpsCreated?: Prisma.GuestFollowUpCreateNestedManyWithoutCreatedByInput
+  templatesCreated?: Prisma.CommunicationTemplateCreateNestedManyWithoutCreatedByInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentCreateNestedManyWithoutUserInput
+  mentorRelations?: Prisma.MentorshipCreateNestedManyWithoutMentorInput
+  menteeRelations?: Prisma.MentorshipCreateNestedManyWithoutMenteeInput
+  announcementAuthors?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
+  discussionAuthors?: Prisma.GroupDiscussionCreateNestedManyWithoutAuthorInput
+  replyAuthors?: Prisma.GroupDiscussionReplyCreateNestedManyWithoutAuthorInput
+  groupLeadership?: Prisma.SmallGroupCreateNestedManyWithoutLeaderInput
+  campusPastor?: Prisma.CampusCreateNestedManyWithoutPastorInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationCreateNestedManyWithoutMemberInput
+  prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutAuthorInput
+  prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateCreateNestedManyWithoutAuthorInput
+  conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
+  surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
+  forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
+  formSubmissions?: Prisma.FormSubmissionCreateNestedManyWithoutUserInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutAuthorInput
+  engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
+  connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
+  connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+}
+
+export type UserUncheckedCreateWithoutSurveysInput = {
+  id?: string
+  email?: string | null
+  phone?: string | null
+  title?: string | null
+  firstName: string
+  lastName: string
+  middleName?: string | null
+  gender?: $Enums.Gender | null
+  dateOfBirth?: Date | string | null
+  maritalStatus?: $Enums.MaritalStatus | null
+  profession?: string | null
+  profileImage?: string | null
+  bio?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  county?: string | null
+  zipCode?: string | null
+  country?: string | null
+  residence?: string | null
+  emergencyContact?: string | null
+  emergencyPhone?: string | null
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  canLogin?: boolean
+  enableFollowUps?: boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  campusId?: string | null
+  memberSince?: Date | string | null
+  baptismDate?: Date | string | null
+  baptismLocation?: string | null
+  dedicationDate?: Date | string | null
+  weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
+  spouseId?: string | null
+  parentId?: string | null
+  familyPhoto?: string | null
+  familyHeadId?: string | null
+  familyName?: string | null
+  emailVerified?: boolean
+  phoneVerified?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  spouseOf?: Prisma.UserUncheckedCreateNestedOneWithoutSpouseInput
+  children?: Prisma.UserUncheckedCreateNestedManyWithoutParentInput
+  familyMembers?: Prisma.UserUncheckedCreateNestedManyWithoutFamilyHeadInput
+  socialLogins?: Prisma.SocialLoginUncheckedCreateNestedManyWithoutUserInput
+  userSessions?: Prisma.UserSessionUncheckedCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutUserInput
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitation?: Prisma.InvitationUncheckedCreateNestedOneWithoutUserInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUncheckedCreateNestedManyWithoutUserInput
+  serviceAssignments?: Prisma.ServiceAssignmentUncheckedCreateNestedManyWithoutUserInput
+  departmentLeader?: Prisma.DepartmentUncheckedCreateNestedManyWithoutLeaderInput
+  inventoryTransactions?: Prisma.InventoryTransactionUncheckedCreateNestedManyWithoutPerformedByInput
+  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
+  sessionAttendances?: Prisma.SessionAttendeeUncheckedCreateNestedManyWithoutUserInput
+  attendanceRecords?: Prisma.AttendanceRecordUncheckedCreateNestedManyWithoutUserInput
+  decisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutUserInput
+  proposedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutProposedByInput
+  approvedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutApprovedByInput
+  assignedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutAssignedToInput
+  recordedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutRecordedByInput
+  organizedMeetings?: Prisma.MeetingUncheckedCreateNestedManyWithoutOrganizerInput
+  donations?: Prisma.DonationUncheckedCreateNestedManyWithoutUserInput
+  eventRegistrations?: Prisma.EventRegistrationUncheckedCreateNestedManyWithoutUserInput
+  eventCheckIns?: Prisma.EventCheckInUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsAboutMe?: Prisma.NotificationUncheckedCreateNestedManyWithoutRelatedUserInput
+  announcementsRead?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUncheckedCreateNestedManyWithoutUserInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUncheckedCreateNestedManyWithoutUserInput
+  staffRecord?: Prisma.StaffUncheckedCreateNestedOneWithoutUserInput
+  mediaUploads?: Prisma.MediaUncheckedCreateNestedManyWithoutUploadedByInput
+  expenseSubmissions?: Prisma.ExpenseUncheckedCreateNestedManyWithoutSubmittedByInput
+  expenseApprovals?: Prisma.ExpenseUncheckedCreateNestedManyWithoutApprovedByInput
+  eventOrganizations?: Prisma.EventUncheckedCreateNestedManyWithoutOrganizerInput
+  facilityBookings?: Prisma.FacilityBookingUncheckedCreateNestedManyWithoutUserInput
+  childrenLeadership?: Prisma.ChildrenClassUncheckedCreateNestedManyWithoutLeaderInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUncheckedCreateNestedManyWithoutParentInput
+  youthLeadership?: Prisma.YouthGroupUncheckedCreateNestedManyWithoutLeaderInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUncheckedCreateNestedManyWithoutUserInput
+  outreachOrganizations?: Prisma.OutreachUncheckedCreateNestedManyWithoutOrganizerInput
+  outreachParticipations?: Prisma.OutreachParticipantUncheckedCreateNestedManyWithoutUserInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUncheckedCreateNestedManyWithoutAuthorInput
+  projectDonations?: Prisma.ProjectDonationUncheckedCreateNestedManyWithoutUserInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUncheckedCreateNestedManyWithoutAuthorInput
+  documentUploads?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutCreatedByInput
+  assetAssignments?: Prisma.AssetUncheckedCreateNestedManyWithoutAssignedToInput
+  leaveApprovals?: Prisma.LeaveUncheckedCreateNestedManyWithoutApprovedByInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUncheckedCreateNestedManyWithoutReviewedByInput
+  recurringDonations?: Prisma.RecurringDonationUncheckedCreateNestedManyWithoutUserInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUncheckedCreateNestedManyWithoutUserInput
+  payrollProcessed?: Prisma.PayrollUncheckedCreateNestedManyWithoutProcessedByInput
+  payslipsGenerated?: Prisma.PayslipUncheckedCreateNestedManyWithoutGeneratedByInput
+  checksReceived?: Prisma.CheckUncheckedCreateNestedManyWithoutReceivedByInput
+  checksDeposited?: Prisma.CheckUncheckedCreateNestedManyWithoutDepositedByInput
+  checksDonated?: Prisma.CheckUncheckedCreateNestedManyWithoutDonorInput
+  guestVisits?: Prisma.GuestVisitUncheckedCreateNestedManyWithoutGuestInput
+  guestVisitsRecorded?: Prisma.GuestVisitUncheckedCreateNestedManyWithoutRecordedByInput
+  guestFollowUps?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutGuestInput
+  followUpsAssigned?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutAssignedToInput
+  followUpsCreated?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutCreatedByInput
+  templatesCreated?: Prisma.CommunicationTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUncheckedCreateNestedManyWithoutUserInput
+  mentorRelations?: Prisma.MentorshipUncheckedCreateNestedManyWithoutMentorInput
+  menteeRelations?: Prisma.MentorshipUncheckedCreateNestedManyWithoutMenteeInput
+  announcementAuthors?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
+  discussionAuthors?: Prisma.GroupDiscussionUncheckedCreateNestedManyWithoutAuthorInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUncheckedCreateNestedManyWithoutAuthorInput
+  groupLeadership?: Prisma.SmallGroupUncheckedCreateNestedManyWithoutLeaderInput
+  campusPastor?: Prisma.CampusUncheckedCreateNestedManyWithoutPastorInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUncheckedCreateNestedManyWithoutMemberInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutAuthorInput
+  prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedCreateNestedManyWithoutAuthorInput
+  conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
   formSubmissions?: Prisma.FormSubmissionUncheckedCreateNestedManyWithoutUserInput
@@ -49966,6 +52173,7 @@ export type UserUpdateWithoutSurveysInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -50060,6 +52268,8 @@ export type UserUpdateWithoutSurveysInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
   formSubmissions?: Prisma.FormSubmissionUpdateManyWithoutUserNestedInput
@@ -50103,6 +52313,7 @@ export type UserUncheckedUpdateWithoutSurveysInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -50196,6 +52407,8 @@ export type UserUncheckedUpdateWithoutSurveysInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
   formSubmissions?: Prisma.FormSubmissionUncheckedUpdateManyWithoutUserNestedInput
@@ -50238,6 +52451,7 @@ export type UserCreateWithoutSurveyResponsesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -50332,6 +52546,8 @@ export type UserCreateWithoutSurveyResponsesInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
   formSubmissions?: Prisma.FormSubmissionCreateNestedManyWithoutUserInput
@@ -50375,6 +52591,7 @@ export type UserUncheckedCreateWithoutSurveyResponsesInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -50468,6 +52685,8 @@ export type UserUncheckedCreateWithoutSurveyResponsesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
   formSubmissions?: Prisma.FormSubmissionUncheckedCreateNestedManyWithoutUserInput
@@ -50526,6 +52745,7 @@ export type UserUpdateWithoutSurveyResponsesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -50620,6 +52840,8 @@ export type UserUpdateWithoutSurveyResponsesInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
   formSubmissions?: Prisma.FormSubmissionUpdateManyWithoutUserNestedInput
@@ -50663,6 +52885,7 @@ export type UserUncheckedUpdateWithoutSurveyResponsesInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -50756,6 +52979,8 @@ export type UserUncheckedUpdateWithoutSurveyResponsesInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
   formSubmissions?: Prisma.FormSubmissionUncheckedUpdateManyWithoutUserNestedInput
@@ -50798,6 +53023,7 @@ export type UserCreateWithoutEngagementScoresInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -50892,6 +53118,8 @@ export type UserCreateWithoutEngagementScoresInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -50935,6 +53163,7 @@ export type UserUncheckedCreateWithoutEngagementScoresInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -51028,6 +53257,8 @@ export type UserUncheckedCreateWithoutEngagementScoresInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -51086,6 +53317,7 @@ export type UserUpdateWithoutEngagementScoresInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -51180,6 +53412,8 @@ export type UserUpdateWithoutEngagementScoresInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -51223,6 +53457,7 @@ export type UserUncheckedUpdateWithoutEngagementScoresInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -51316,6 +53551,8 @@ export type UserUncheckedUpdateWithoutEngagementScoresInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -51358,6 +53595,7 @@ export type UserCreateWithoutWorkflowsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -51452,6 +53690,8 @@ export type UserCreateWithoutWorkflowsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -51495,6 +53735,7 @@ export type UserUncheckedCreateWithoutWorkflowsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -51588,6 +53829,8 @@ export type UserUncheckedCreateWithoutWorkflowsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -51646,6 +53889,7 @@ export type UserUpdateWithoutWorkflowsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -51740,6 +53984,8 @@ export type UserUpdateWithoutWorkflowsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -51783,6 +54029,7 @@ export type UserUncheckedUpdateWithoutWorkflowsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -51876,6 +54123,8 @@ export type UserUncheckedUpdateWithoutWorkflowsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -51918,6 +54167,7 @@ export type UserCreateWithoutFormsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -52012,6 +54262,8 @@ export type UserCreateWithoutFormsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   formSubmissions?: Prisma.FormSubmissionCreateNestedManyWithoutUserInput
@@ -52055,6 +54307,7 @@ export type UserUncheckedCreateWithoutFormsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -52148,6 +54401,8 @@ export type UserUncheckedCreateWithoutFormsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   formSubmissions?: Prisma.FormSubmissionUncheckedCreateNestedManyWithoutUserInput
@@ -52206,6 +54461,7 @@ export type UserUpdateWithoutFormsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -52300,6 +54556,8 @@ export type UserUpdateWithoutFormsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   formSubmissions?: Prisma.FormSubmissionUpdateManyWithoutUserNestedInput
@@ -52343,6 +54601,7 @@ export type UserUncheckedUpdateWithoutFormsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -52436,6 +54695,8 @@ export type UserUncheckedUpdateWithoutFormsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   formSubmissions?: Prisma.FormSubmissionUncheckedUpdateManyWithoutUserNestedInput
@@ -52478,6 +54739,7 @@ export type UserCreateWithoutFormSubmissionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -52572,6 +54834,8 @@ export type UserCreateWithoutFormSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -52615,6 +54879,7 @@ export type UserUncheckedCreateWithoutFormSubmissionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -52708,6 +54973,8 @@ export type UserUncheckedCreateWithoutFormSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -52766,6 +55033,7 @@ export type UserUpdateWithoutFormSubmissionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -52860,6 +55128,8 @@ export type UserUpdateWithoutFormSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -52903,6 +55173,7 @@ export type UserUncheckedUpdateWithoutFormSubmissionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -52996,6 +55267,8 @@ export type UserUncheckedUpdateWithoutFormSubmissionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -53038,6 +55311,7 @@ export type UserCreateWithoutConnectionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -53132,6 +55406,8 @@ export type UserCreateWithoutConnectionsInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -53175,6 +55451,7 @@ export type UserUncheckedCreateWithoutConnectionsInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -53268,6 +55545,8 @@ export type UserUncheckedCreateWithoutConnectionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -53315,6 +55594,7 @@ export type UserCreateWithoutConnectedToInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   familyPhoto?: string | null
   familyName?: string | null
   emailVerified?: boolean
@@ -53409,6 +55689,8 @@ export type UserCreateWithoutConnectedToInput = {
   conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
   forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
@@ -53452,6 +55734,7 @@ export type UserUncheckedCreateWithoutConnectedToInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -53545,6 +55828,8 @@ export type UserUncheckedCreateWithoutConnectedToInput = {
   conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
   sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
   messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
   surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
   surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
   forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
@@ -53603,6 +55888,7 @@ export type UserUpdateWithoutConnectionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -53697,6 +55983,8 @@ export type UserUpdateWithoutConnectionsInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -53740,6 +56028,7 @@ export type UserUncheckedUpdateWithoutConnectionsInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -53833,6 +56122,8 @@ export type UserUncheckedUpdateWithoutConnectionsInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -53886,6 +56177,7 @@ export type UserUpdateWithoutConnectedToInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -53980,6 +56272,8 @@ export type UserUpdateWithoutConnectedToInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -54023,6 +56317,7 @@ export type UserUncheckedUpdateWithoutConnectedToInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -54116,6 +56411,8 @@ export type UserUncheckedUpdateWithoutConnectedToInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -54159,6 +56456,7 @@ export type UserCreateManyParentInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   familyPhoto?: string | null
   familyHeadId?: string | null
@@ -54207,6 +56505,7 @@ export type UserCreateManyFamilyHeadInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -54254,6 +56553,7 @@ export type UserUpdateWithoutParentInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -54347,6 +56647,8 @@ export type UserUpdateWithoutParentInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -54391,6 +56693,7 @@ export type UserUncheckedUpdateWithoutParentInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyHeadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -54483,6 +56786,8 @@ export type UserUncheckedUpdateWithoutParentInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -54527,6 +56832,7 @@ export type UserUncheckedUpdateManyWithoutParentInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyHeadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -54574,6 +56880,7 @@ export type UserUpdateWithoutFamilyHeadInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -54667,6 +56974,8 @@ export type UserUpdateWithoutFamilyHeadInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -54711,6 +57020,7 @@ export type UserUncheckedUpdateWithoutFamilyHeadInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -54803,6 +57113,8 @@ export type UserUncheckedUpdateWithoutFamilyHeadInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -54847,6 +57159,7 @@ export type UserUncheckedUpdateManyWithoutFamilyHeadInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -54894,6 +57207,7 @@ export type UserCreateManyCampusInput = {
   baptismLocation?: string | null
   dedicationDate?: Date | string | null
   weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
   spouseId?: string | null
   parentId?: string | null
   familyPhoto?: string | null
@@ -54942,6 +57256,7 @@ export type UserUpdateWithoutCampusInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -55035,6 +57350,8 @@ export type UserUpdateWithoutCampusInput = {
   conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
@@ -55078,6 +57395,7 @@ export type UserUncheckedUpdateWithoutCampusInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -55171,6 +57489,8 @@ export type UserUncheckedUpdateWithoutCampusInput = {
   conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
   sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
   messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
   surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
   surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
   forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
@@ -55214,6 +57534,7 @@ export type UserUncheckedUpdateManyWithoutCampusInput = {
   baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -55312,6 +57633,8 @@ export type UserCountOutputType = {
   conversations: number
   sentMessages: number
   messageReads: number
+  sentSMS: number
+  receivedSMS: number
   surveys: number
   surveyResponses: number
   forms: number
@@ -55400,6 +57723,8 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   conversations?: boolean | UserCountOutputTypeCountConversationsArgs
   sentMessages?: boolean | UserCountOutputTypeCountSentMessagesArgs
   messageReads?: boolean | UserCountOutputTypeCountMessageReadsArgs
+  sentSMS?: boolean | UserCountOutputTypeCountSentSMSArgs
+  receivedSMS?: boolean | UserCountOutputTypeCountReceivedSMSArgs
   surveys?: boolean | UserCountOutputTypeCountSurveysArgs
   surveyResponses?: boolean | UserCountOutputTypeCountSurveyResponsesArgs
   forms?: boolean | UserCountOutputTypeCountFormsArgs
@@ -55962,6 +58287,20 @@ export type UserCountOutputTypeCountMessageReadsArgs<ExtArgs extends runtime.Typ
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountSentSMSArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SMSLogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountReceivedSMSArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SMSLogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountSurveysArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.SurveyWhereInput
 }
@@ -56050,6 +58389,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   baptismLocation?: boolean
   dedicationDate?: boolean
   weddingAnniversary?: boolean
+  biometricUserId?: boolean
   spouseId?: boolean
   parentId?: boolean
   familyPhoto?: boolean
@@ -56147,6 +58487,8 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
   sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>
   messageReads?: boolean | Prisma.User$messageReadsArgs<ExtArgs>
+  sentSMS?: boolean | Prisma.User$sentSMSArgs<ExtArgs>
+  receivedSMS?: boolean | Prisma.User$receivedSMSArgs<ExtArgs>
   surveys?: boolean | Prisma.User$surveysArgs<ExtArgs>
   surveyResponses?: boolean | Prisma.User$surveyResponsesArgs<ExtArgs>
   forms?: boolean | Prisma.User$formsArgs<ExtArgs>
@@ -56192,6 +58534,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   baptismLocation?: boolean
   dedicationDate?: boolean
   weddingAnniversary?: boolean
+  biometricUserId?: boolean
   spouseId?: boolean
   parentId?: boolean
   familyPhoto?: boolean
@@ -56245,6 +58588,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   baptismLocation?: boolean
   dedicationDate?: boolean
   weddingAnniversary?: boolean
+  biometricUserId?: boolean
   spouseId?: boolean
   parentId?: boolean
   familyPhoto?: boolean
@@ -56298,6 +58642,7 @@ export type UserSelectScalar = {
   baptismLocation?: boolean
   dedicationDate?: boolean
   weddingAnniversary?: boolean
+  biometricUserId?: boolean
   spouseId?: boolean
   parentId?: boolean
   familyPhoto?: boolean
@@ -56313,7 +58658,7 @@ export type UserSelectScalar = {
   deletedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "title" | "firstName" | "lastName" | "middleName" | "gender" | "dateOfBirth" | "maritalStatus" | "profession" | "profileImage" | "bio" | "address" | "city" | "state" | "county" | "zipCode" | "country" | "residence" | "emergencyContact" | "emergencyPhone" | "role" | "status" | "canLogin" | "enableFollowUps" | "permissions" | "campusId" | "memberSince" | "baptismDate" | "baptismLocation" | "dedicationDate" | "weddingAnniversary" | "spouseId" | "parentId" | "familyPhoto" | "familyHeadId" | "familyName" | "emailVerified" | "phoneVerified" | "twoFactorEnabled" | "twoFactorSecret" | "createdAt" | "updatedAt" | "lastLoginAt" | "deletedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "phone" | "title" | "firstName" | "lastName" | "middleName" | "gender" | "dateOfBirth" | "maritalStatus" | "profession" | "profileImage" | "bio" | "address" | "city" | "state" | "county" | "zipCode" | "country" | "residence" | "emergencyContact" | "emergencyPhone" | "role" | "status" | "canLogin" | "enableFollowUps" | "permissions" | "campusId" | "memberSince" | "baptismDate" | "baptismLocation" | "dedicationDate" | "weddingAnniversary" | "biometricUserId" | "spouseId" | "parentId" | "familyPhoto" | "familyHeadId" | "familyName" | "emailVerified" | "phoneVerified" | "twoFactorEnabled" | "twoFactorSecret" | "createdAt" | "updatedAt" | "lastLoginAt" | "deletedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   campus?: boolean | Prisma.User$campusArgs<ExtArgs>
   spouse?: boolean | Prisma.User$spouseArgs<ExtArgs>
@@ -56399,6 +58744,8 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   conversations?: boolean | Prisma.User$conversationsArgs<ExtArgs>
   sentMessages?: boolean | Prisma.User$sentMessagesArgs<ExtArgs>
   messageReads?: boolean | Prisma.User$messageReadsArgs<ExtArgs>
+  sentSMS?: boolean | Prisma.User$sentSMSArgs<ExtArgs>
+  receivedSMS?: boolean | Prisma.User$receivedSMSArgs<ExtArgs>
   surveys?: boolean | Prisma.User$surveysArgs<ExtArgs>
   surveyResponses?: boolean | Prisma.User$surveyResponsesArgs<ExtArgs>
   forms?: boolean | Prisma.User$formsArgs<ExtArgs>
@@ -56509,6 +58856,8 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     conversations: Prisma.$ConversationParticipantPayload<ExtArgs>[]
     sentMessages: Prisma.$MessagePayload<ExtArgs>[]
     messageReads: Prisma.$MessageReadPayload<ExtArgs>[]
+    sentSMS: Prisma.$SMSLogPayload<ExtArgs>[]
+    receivedSMS: Prisma.$SMSLogPayload<ExtArgs>[]
     surveys: Prisma.$SurveyPayload<ExtArgs>[]
     surveyResponses: Prisma.$SurveyResponsePayload<ExtArgs>[]
     forms: Prisma.$FormPayload<ExtArgs>[]
@@ -56552,6 +58901,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     baptismLocation: string | null
     dedicationDate: Date | null
     weddingAnniversary: Date | null
+    biometricUserId: string | null
     spouseId: string | null
     parentId: string | null
     familyPhoto: string | null
@@ -57043,6 +59393,8 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   conversations<T extends Prisma.User$conversationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$conversationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ConversationParticipantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   sentMessages<T extends Prisma.User$sentMessagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sentMessagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   messageReads<T extends Prisma.User$messageReadsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$messageReadsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MessageReadPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sentSMS<T extends Prisma.User$sentSMSArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sentSMSArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  receivedSMS<T extends Prisma.User$receivedSMSArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$receivedSMSArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   surveys<T extends Prisma.User$surveysArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$surveysArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   surveyResponses<T extends Prisma.User$surveyResponsesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$surveyResponsesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SurveyResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   forms<T extends Prisma.User$formsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$formsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FormPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -57113,6 +59465,7 @@ export interface UserFieldRefs {
   readonly baptismLocation: Prisma.FieldRef<"User", 'String'>
   readonly dedicationDate: Prisma.FieldRef<"User", 'DateTime'>
   readonly weddingAnniversary: Prisma.FieldRef<"User", 'DateTime'>
+  readonly biometricUserId: Prisma.FieldRef<"User", 'String'>
   readonly spouseId: Prisma.FieldRef<"User", 'String'>
   readonly parentId: Prisma.FieldRef<"User", 'String'>
   readonly familyPhoto: Prisma.FieldRef<"User", 'String'>
@@ -59500,6 +61853,54 @@ export type User$messageReadsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.MessageReadScalarFieldEnum | Prisma.MessageReadScalarFieldEnum[]
+}
+
+/**
+ * User.sentSMS
+ */
+export type User$sentSMSArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SMSLog
+   */
+  select?: Prisma.SMSLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SMSLog
+   */
+  omit?: Prisma.SMSLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SMSLogInclude<ExtArgs> | null
+  where?: Prisma.SMSLogWhereInput
+  orderBy?: Prisma.SMSLogOrderByWithRelationInput | Prisma.SMSLogOrderByWithRelationInput[]
+  cursor?: Prisma.SMSLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SMSLogScalarFieldEnum | Prisma.SMSLogScalarFieldEnum[]
+}
+
+/**
+ * User.receivedSMS
+ */
+export type User$receivedSMSArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SMSLog
+   */
+  select?: Prisma.SMSLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SMSLog
+   */
+  omit?: Prisma.SMSLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SMSLogInclude<ExtArgs> | null
+  where?: Prisma.SMSLogWhereInput
+  orderBy?: Prisma.SMSLogOrderByWithRelationInput | Prisma.SMSLogOrderByWithRelationInput[]
+  cursor?: Prisma.SMSLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SMSLogScalarFieldEnum | Prisma.SMSLogScalarFieldEnum[]
 }
 
 /**

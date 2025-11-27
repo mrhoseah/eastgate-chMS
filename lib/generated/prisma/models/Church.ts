@@ -41,6 +41,8 @@ export type ChurchMinAggregateOutputType = {
   language: string | null
   currency: string | null
   isActive: boolean | null
+  isSponsored: boolean | null
+  unlimitedUse: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -62,6 +64,8 @@ export type ChurchMaxAggregateOutputType = {
   language: string | null
   currency: string | null
   isActive: boolean | null
+  isSponsored: boolean | null
+  unlimitedUse: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -83,6 +87,8 @@ export type ChurchCountAggregateOutputType = {
   language: number
   currency: number
   isActive: number
+  isSponsored: number
+  unlimitedUse: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -106,6 +112,8 @@ export type ChurchMinAggregateInputType = {
   language?: true
   currency?: true
   isActive?: true
+  isSponsored?: true
+  unlimitedUse?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -127,6 +135,8 @@ export type ChurchMaxAggregateInputType = {
   language?: true
   currency?: true
   isActive?: true
+  isSponsored?: true
+  unlimitedUse?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -148,6 +158,8 @@ export type ChurchCountAggregateInputType = {
   language?: true
   currency?: true
   isActive?: true
+  isSponsored?: true
+  unlimitedUse?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -242,6 +254,8 @@ export type ChurchGroupByOutputType = {
   language: string
   currency: string
   isActive: boolean
+  isSponsored: boolean
+  unlimitedUse: boolean
   createdAt: Date
   updatedAt: Date
   _count: ChurchCountAggregateOutputType | null
@@ -284,6 +298,8 @@ export type ChurchWhereInput = {
   language?: Prisma.StringFilter<"Church"> | string
   currency?: Prisma.StringFilter<"Church"> | string
   isActive?: Prisma.BoolFilter<"Church"> | boolean
+  isSponsored?: Prisma.BoolFilter<"Church"> | boolean
+  unlimitedUse?: Prisma.BoolFilter<"Church"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Church"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Church"> | Date | string
   campuses?: Prisma.CampusListRelationFilter
@@ -297,7 +313,10 @@ export type ChurchWhereInput = {
   customFields?: Prisma.CustomFieldListRelationFilter
   residences?: Prisma.ResidenceListRelationFilter
   payrolls?: Prisma.PayrollListRelationFilter
+  biometricDevices?: Prisma.BiometricDeviceListRelationFilter
   checks?: Prisma.CheckListRelationFilter
+  subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
+  smsLogs?: Prisma.SMSLogListRelationFilter
 }
 
 export type ChurchOrderByWithRelationInput = {
@@ -317,6 +336,8 @@ export type ChurchOrderByWithRelationInput = {
   language?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isSponsored?: Prisma.SortOrder
+  unlimitedUse?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   campuses?: Prisma.CampusOrderByRelationAggregateInput
@@ -330,7 +351,10 @@ export type ChurchOrderByWithRelationInput = {
   customFields?: Prisma.CustomFieldOrderByRelationAggregateInput
   residences?: Prisma.ResidenceOrderByRelationAggregateInput
   payrolls?: Prisma.PayrollOrderByRelationAggregateInput
+  biometricDevices?: Prisma.BiometricDeviceOrderByRelationAggregateInput
   checks?: Prisma.CheckOrderByRelationAggregateInput
+  subscription?: Prisma.SubscriptionOrderByWithRelationInput
+  smsLogs?: Prisma.SMSLogOrderByRelationAggregateInput
 }
 
 export type ChurchWhereUniqueInput = Prisma.AtLeast<{
@@ -353,6 +377,8 @@ export type ChurchWhereUniqueInput = Prisma.AtLeast<{
   language?: Prisma.StringFilter<"Church"> | string
   currency?: Prisma.StringFilter<"Church"> | string
   isActive?: Prisma.BoolFilter<"Church"> | boolean
+  isSponsored?: Prisma.BoolFilter<"Church"> | boolean
+  unlimitedUse?: Prisma.BoolFilter<"Church"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Church"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Church"> | Date | string
   campuses?: Prisma.CampusListRelationFilter
@@ -366,7 +392,10 @@ export type ChurchWhereUniqueInput = Prisma.AtLeast<{
   customFields?: Prisma.CustomFieldListRelationFilter
   residences?: Prisma.ResidenceListRelationFilter
   payrolls?: Prisma.PayrollListRelationFilter
+  biometricDevices?: Prisma.BiometricDeviceListRelationFilter
   checks?: Prisma.CheckListRelationFilter
+  subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
+  smsLogs?: Prisma.SMSLogListRelationFilter
 }, "id">
 
 export type ChurchOrderByWithAggregationInput = {
@@ -386,6 +415,8 @@ export type ChurchOrderByWithAggregationInput = {
   language?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isSponsored?: Prisma.SortOrder
+  unlimitedUse?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.ChurchCountOrderByAggregateInput
@@ -413,6 +444,8 @@ export type ChurchScalarWhereWithAggregatesInput = {
   language?: Prisma.StringWithAggregatesFilter<"Church"> | string
   currency?: Prisma.StringWithAggregatesFilter<"Church"> | string
   isActive?: Prisma.BoolWithAggregatesFilter<"Church"> | boolean
+  isSponsored?: Prisma.BoolWithAggregatesFilter<"Church"> | boolean
+  unlimitedUse?: Prisma.BoolWithAggregatesFilter<"Church"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Church"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Church"> | Date | string
 }
@@ -434,6 +467,8 @@ export type ChurchCreateInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -447,7 +482,10 @@ export type ChurchCreateInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateInput = {
@@ -467,6 +505,8 @@ export type ChurchUncheckedCreateInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -480,7 +520,10 @@ export type ChurchUncheckedCreateInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUpdateInput = {
@@ -500,6 +543,8 @@ export type ChurchUpdateInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -513,7 +558,10 @@ export type ChurchUpdateInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateInput = {
@@ -533,6 +581,8 @@ export type ChurchUncheckedUpdateInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -546,7 +596,10 @@ export type ChurchUncheckedUpdateInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateManyInput = {
@@ -566,6 +619,8 @@ export type ChurchCreateManyInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -587,6 +642,8 @@ export type ChurchUpdateManyMutationInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -608,6 +665,8 @@ export type ChurchUncheckedUpdateManyInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -634,6 +693,8 @@ export type ChurchCountOrderByAggregateInput = {
   language?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isSponsored?: Prisma.SortOrder
+  unlimitedUse?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -655,6 +716,8 @@ export type ChurchMaxOrderByAggregateInput = {
   language?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isSponsored?: Prisma.SortOrder
+  unlimitedUse?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -676,6 +739,8 @@ export type ChurchMinOrderByAggregateInput = {
   language?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  isSponsored?: Prisma.SortOrder
+  unlimitedUse?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -692,6 +757,20 @@ export type ChurchUpdateOneRequiredWithoutCampusesNestedInput = {
   upsert?: Prisma.ChurchUpsertWithoutCampusesInput
   connect?: Prisma.ChurchWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutCampusesInput, Prisma.ChurchUpdateWithoutCampusesInput>, Prisma.ChurchUncheckedUpdateWithoutCampusesInput>
+}
+
+export type ChurchCreateNestedOneWithoutBiometricDevicesInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutBiometricDevicesInput, Prisma.ChurchUncheckedCreateWithoutBiometricDevicesInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutBiometricDevicesInput
+  connect?: Prisma.ChurchWhereUniqueInput
+}
+
+export type ChurchUpdateOneRequiredWithoutBiometricDevicesNestedInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutBiometricDevicesInput, Prisma.ChurchUncheckedCreateWithoutBiometricDevicesInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutBiometricDevicesInput
+  upsert?: Prisma.ChurchUpsertWithoutBiometricDevicesInput
+  connect?: Prisma.ChurchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutBiometricDevicesInput, Prisma.ChurchUpdateWithoutBiometricDevicesInput>, Prisma.ChurchUncheckedUpdateWithoutBiometricDevicesInput>
 }
 
 export type ChurchCreateNestedOneWithoutBudgetsInput = {
@@ -806,6 +885,20 @@ export type ChurchUpdateOneRequiredWithoutChecksNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutChecksInput, Prisma.ChurchUpdateWithoutChecksInput>, Prisma.ChurchUncheckedUpdateWithoutChecksInput>
 }
 
+export type ChurchCreateNestedOneWithoutSubscriptionInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutSubscriptionInput, Prisma.ChurchUncheckedCreateWithoutSubscriptionInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSubscriptionInput
+  connect?: Prisma.ChurchWhereUniqueInput
+}
+
+export type ChurchUpdateOneRequiredWithoutSubscriptionNestedInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutSubscriptionInput, Prisma.ChurchUncheckedCreateWithoutSubscriptionInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSubscriptionInput
+  upsert?: Prisma.ChurchUpsertWithoutSubscriptionInput
+  connect?: Prisma.ChurchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutSubscriptionInput, Prisma.ChurchUpdateWithoutSubscriptionInput>, Prisma.ChurchUncheckedUpdateWithoutSubscriptionInput>
+}
+
 export type ChurchCreateNestedOneWithoutSettingsInput = {
   create?: Prisma.XOR<Prisma.ChurchCreateWithoutSettingsInput, Prisma.ChurchUncheckedCreateWithoutSettingsInput>
   connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSettingsInput
@@ -848,6 +941,20 @@ export type ChurchUpdateOneRequiredWithoutResidencesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutResidencesInput, Prisma.ChurchUpdateWithoutResidencesInput>, Prisma.ChurchUncheckedUpdateWithoutResidencesInput>
 }
 
+export type ChurchCreateNestedOneWithoutSmsLogsInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutSmsLogsInput, Prisma.ChurchUncheckedCreateWithoutSmsLogsInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSmsLogsInput
+  connect?: Prisma.ChurchWhereUniqueInput
+}
+
+export type ChurchUpdateOneRequiredWithoutSmsLogsNestedInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutSmsLogsInput, Prisma.ChurchUncheckedCreateWithoutSmsLogsInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSmsLogsInput
+  upsert?: Prisma.ChurchUpsertWithoutSmsLogsInput
+  connect?: Prisma.ChurchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutSmsLogsInput, Prisma.ChurchUpdateWithoutSmsLogsInput>, Prisma.ChurchUncheckedUpdateWithoutSmsLogsInput>
+}
+
 export type ChurchCreateWithoutCampusesInput = {
   id?: string
   name: string
@@ -865,6 +972,8 @@ export type ChurchCreateWithoutCampusesInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutChurchInput
@@ -877,7 +986,10 @@ export type ChurchCreateWithoutCampusesInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutCampusesInput = {
@@ -897,6 +1009,8 @@ export type ChurchUncheckedCreateWithoutCampusesInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutChurchInput
@@ -909,7 +1023,10 @@ export type ChurchUncheckedCreateWithoutCampusesInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutCampusesInput = {
@@ -945,6 +1062,8 @@ export type ChurchUpdateWithoutCampusesInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutChurchNestedInput
@@ -957,7 +1076,10 @@ export type ChurchUpdateWithoutCampusesInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutCampusesInput = {
@@ -977,6 +1099,8 @@ export type ChurchUncheckedUpdateWithoutCampusesInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutChurchNestedInput
@@ -989,7 +1113,174 @@ export type ChurchUncheckedUpdateWithoutCampusesInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+}
+
+export type ChurchCreateWithoutBiometricDevicesInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+}
+
+export type ChurchUncheckedCreateWithoutBiometricDevicesInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetUncheckedCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventUncheckedCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+}
+
+export type ChurchCreateOrConnectWithoutBiometricDevicesInput = {
+  where: Prisma.ChurchWhereUniqueInput
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutBiometricDevicesInput, Prisma.ChurchUncheckedCreateWithoutBiometricDevicesInput>
+}
+
+export type ChurchUpsertWithoutBiometricDevicesInput = {
+  update: Prisma.XOR<Prisma.ChurchUpdateWithoutBiometricDevicesInput, Prisma.ChurchUncheckedUpdateWithoutBiometricDevicesInput>
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutBiometricDevicesInput, Prisma.ChurchUncheckedCreateWithoutBiometricDevicesInput>
+  where?: Prisma.ChurchWhereInput
+}
+
+export type ChurchUpdateToOneWithWhereWithoutBiometricDevicesInput = {
+  where?: Prisma.ChurchWhereInput
+  data: Prisma.XOR<Prisma.ChurchUpdateWithoutBiometricDevicesInput, Prisma.ChurchUncheckedUpdateWithoutBiometricDevicesInput>
+}
+
+export type ChurchUpdateWithoutBiometricDevicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+}
+
+export type ChurchUncheckedUpdateWithoutBiometricDevicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUncheckedUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUncheckedUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutBudgetsInput = {
@@ -1009,6 +1300,8 @@ export type ChurchCreateWithoutBudgetsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1021,7 +1314,10 @@ export type ChurchCreateWithoutBudgetsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutBudgetsInput = {
@@ -1041,6 +1337,8 @@ export type ChurchUncheckedCreateWithoutBudgetsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1053,7 +1351,10 @@ export type ChurchUncheckedCreateWithoutBudgetsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutBudgetsInput = {
@@ -1089,6 +1390,8 @@ export type ChurchUpdateWithoutBudgetsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1101,7 +1404,10 @@ export type ChurchUpdateWithoutBudgetsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutBudgetsInput = {
@@ -1121,6 +1427,8 @@ export type ChurchUncheckedUpdateWithoutBudgetsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1133,7 +1441,10 @@ export type ChurchUncheckedUpdateWithoutBudgetsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutAccountsInput = {
@@ -1153,6 +1464,8 @@ export type ChurchCreateWithoutAccountsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1165,7 +1478,10 @@ export type ChurchCreateWithoutAccountsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutAccountsInput = {
@@ -1185,6 +1501,8 @@ export type ChurchUncheckedCreateWithoutAccountsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1197,7 +1515,10 @@ export type ChurchUncheckedCreateWithoutAccountsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutAccountsInput = {
@@ -1233,6 +1554,8 @@ export type ChurchUpdateWithoutAccountsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1245,7 +1568,10 @@ export type ChurchUpdateWithoutAccountsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutAccountsInput = {
@@ -1265,6 +1591,8 @@ export type ChurchUncheckedUpdateWithoutAccountsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1277,7 +1605,10 @@ export type ChurchUncheckedUpdateWithoutAccountsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutCalendarEventsInput = {
@@ -1297,6 +1628,8 @@ export type ChurchCreateWithoutCalendarEventsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1309,7 +1642,10 @@ export type ChurchCreateWithoutCalendarEventsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutCalendarEventsInput = {
@@ -1329,6 +1665,8 @@ export type ChurchUncheckedCreateWithoutCalendarEventsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1341,7 +1679,10 @@ export type ChurchUncheckedCreateWithoutCalendarEventsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutCalendarEventsInput = {
@@ -1377,6 +1718,8 @@ export type ChurchUpdateWithoutCalendarEventsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1389,7 +1732,10 @@ export type ChurchUpdateWithoutCalendarEventsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutCalendarEventsInput = {
@@ -1409,6 +1755,8 @@ export type ChurchUncheckedUpdateWithoutCalendarEventsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1421,7 +1769,10 @@ export type ChurchUncheckedUpdateWithoutCalendarEventsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutDocumentsInput = {
@@ -1441,6 +1792,8 @@ export type ChurchCreateWithoutDocumentsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1453,7 +1806,10 @@ export type ChurchCreateWithoutDocumentsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutDocumentsInput = {
@@ -1473,6 +1829,8 @@ export type ChurchUncheckedCreateWithoutDocumentsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1485,7 +1843,10 @@ export type ChurchUncheckedCreateWithoutDocumentsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutDocumentsInput = {
@@ -1521,6 +1882,8 @@ export type ChurchUpdateWithoutDocumentsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1533,7 +1896,10 @@ export type ChurchUpdateWithoutDocumentsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutDocumentsInput = {
@@ -1553,6 +1919,8 @@ export type ChurchUncheckedUpdateWithoutDocumentsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1565,7 +1933,10 @@ export type ChurchUncheckedUpdateWithoutDocumentsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutPresentationsInput = {
@@ -1585,6 +1956,8 @@ export type ChurchCreateWithoutPresentationsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1597,7 +1970,10 @@ export type ChurchCreateWithoutPresentationsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutPresentationsInput = {
@@ -1617,6 +1993,8 @@ export type ChurchUncheckedCreateWithoutPresentationsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1629,7 +2007,10 @@ export type ChurchUncheckedCreateWithoutPresentationsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutPresentationsInput = {
@@ -1665,6 +2046,8 @@ export type ChurchUpdateWithoutPresentationsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1677,7 +2060,10 @@ export type ChurchUpdateWithoutPresentationsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutPresentationsInput = {
@@ -1697,6 +2083,8 @@ export type ChurchUncheckedUpdateWithoutPresentationsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1709,7 +2097,10 @@ export type ChurchUncheckedUpdateWithoutPresentationsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutAssetsInput = {
@@ -1729,6 +2120,8 @@ export type ChurchCreateWithoutAssetsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1741,7 +2134,10 @@ export type ChurchCreateWithoutAssetsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutAssetsInput = {
@@ -1761,6 +2157,8 @@ export type ChurchUncheckedCreateWithoutAssetsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1773,7 +2171,10 @@ export type ChurchUncheckedCreateWithoutAssetsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutAssetsInput = {
@@ -1809,6 +2210,8 @@ export type ChurchUpdateWithoutAssetsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1821,7 +2224,10 @@ export type ChurchUpdateWithoutAssetsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutAssetsInput = {
@@ -1841,6 +2247,8 @@ export type ChurchUncheckedUpdateWithoutAssetsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1853,7 +2261,10 @@ export type ChurchUncheckedUpdateWithoutAssetsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutPayrollsInput = {
@@ -1873,6 +2284,8 @@ export type ChurchCreateWithoutPayrollsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -1885,7 +2298,10 @@ export type ChurchCreateWithoutPayrollsInput = {
   settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutPayrollsInput = {
@@ -1905,6 +2321,8 @@ export type ChurchUncheckedCreateWithoutPayrollsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -1917,7 +2335,10 @@ export type ChurchUncheckedCreateWithoutPayrollsInput = {
   settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutPayrollsInput = {
@@ -1953,6 +2374,8 @@ export type ChurchUpdateWithoutPayrollsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -1965,7 +2388,10 @@ export type ChurchUpdateWithoutPayrollsInput = {
   settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutPayrollsInput = {
@@ -1985,6 +2411,8 @@ export type ChurchUncheckedUpdateWithoutPayrollsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -1997,7 +2425,10 @@ export type ChurchUncheckedUpdateWithoutPayrollsInput = {
   settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutChecksInput = {
@@ -2017,6 +2448,8 @@ export type ChurchCreateWithoutChecksInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -2030,6 +2463,9 @@ export type ChurchCreateWithoutChecksInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutChecksInput = {
@@ -2049,6 +2485,8 @@ export type ChurchUncheckedCreateWithoutChecksInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -2062,6 +2500,9 @@ export type ChurchUncheckedCreateWithoutChecksInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutChecksInput = {
@@ -2097,6 +2538,8 @@ export type ChurchUpdateWithoutChecksInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -2110,6 +2553,9 @@ export type ChurchUpdateWithoutChecksInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutChecksInput = {
@@ -2129,6 +2575,8 @@ export type ChurchUncheckedUpdateWithoutChecksInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -2142,6 +2590,173 @@ export type ChurchUncheckedUpdateWithoutChecksInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+}
+
+export type ChurchCreateWithoutSubscriptionInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+}
+
+export type ChurchUncheckedCreateWithoutSubscriptionInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetUncheckedCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventUncheckedCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+}
+
+export type ChurchCreateOrConnectWithoutSubscriptionInput = {
+  where: Prisma.ChurchWhereUniqueInput
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutSubscriptionInput, Prisma.ChurchUncheckedCreateWithoutSubscriptionInput>
+}
+
+export type ChurchUpsertWithoutSubscriptionInput = {
+  update: Prisma.XOR<Prisma.ChurchUpdateWithoutSubscriptionInput, Prisma.ChurchUncheckedUpdateWithoutSubscriptionInput>
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutSubscriptionInput, Prisma.ChurchUncheckedCreateWithoutSubscriptionInput>
+  where?: Prisma.ChurchWhereInput
+}
+
+export type ChurchUpdateToOneWithWhereWithoutSubscriptionInput = {
+  where?: Prisma.ChurchWhereInput
+  data: Prisma.XOR<Prisma.ChurchUpdateWithoutSubscriptionInput, Prisma.ChurchUncheckedUpdateWithoutSubscriptionInput>
+}
+
+export type ChurchUpdateWithoutSubscriptionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+}
+
+export type ChurchUncheckedUpdateWithoutSubscriptionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUncheckedUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUncheckedUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutSettingsInput = {
@@ -2161,6 +2776,8 @@ export type ChurchCreateWithoutSettingsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -2173,7 +2790,10 @@ export type ChurchCreateWithoutSettingsInput = {
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutSettingsInput = {
@@ -2193,6 +2813,8 @@ export type ChurchUncheckedCreateWithoutSettingsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -2205,7 +2827,10 @@ export type ChurchUncheckedCreateWithoutSettingsInput = {
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutSettingsInput = {
@@ -2241,6 +2866,8 @@ export type ChurchUpdateWithoutSettingsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -2253,7 +2880,10 @@ export type ChurchUpdateWithoutSettingsInput = {
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutSettingsInput = {
@@ -2273,6 +2903,8 @@ export type ChurchUncheckedUpdateWithoutSettingsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -2285,7 +2917,10 @@ export type ChurchUncheckedUpdateWithoutSettingsInput = {
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutCustomFieldsInput = {
@@ -2305,6 +2940,8 @@ export type ChurchCreateWithoutCustomFieldsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -2317,7 +2954,10 @@ export type ChurchCreateWithoutCustomFieldsInput = {
   settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutCustomFieldsInput = {
@@ -2337,6 +2977,8 @@ export type ChurchUncheckedCreateWithoutCustomFieldsInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -2349,7 +2991,10 @@ export type ChurchUncheckedCreateWithoutCustomFieldsInput = {
   settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
   residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutCustomFieldsInput = {
@@ -2385,6 +3030,8 @@ export type ChurchUpdateWithoutCustomFieldsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -2397,7 +3044,10 @@ export type ChurchUpdateWithoutCustomFieldsInput = {
   settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutCustomFieldsInput = {
@@ -2417,6 +3067,8 @@ export type ChurchUncheckedUpdateWithoutCustomFieldsInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -2429,7 +3081,10 @@ export type ChurchUncheckedUpdateWithoutCustomFieldsInput = {
   settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
   residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutResidencesInput = {
@@ -2449,6 +3104,8 @@ export type ChurchCreateWithoutResidencesInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
@@ -2461,7 +3118,10 @@ export type ChurchCreateWithoutResidencesInput = {
   settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
   customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutResidencesInput = {
@@ -2481,6 +3141,8 @@ export type ChurchUncheckedCreateWithoutResidencesInput = {
   language?: string
   currency?: string
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
@@ -2493,7 +3155,10 @@ export type ChurchUncheckedCreateWithoutResidencesInput = {
   settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
   customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
   payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutResidencesInput = {
@@ -2529,6 +3194,8 @@ export type ChurchUpdateWithoutResidencesInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
@@ -2541,7 +3208,10 @@ export type ChurchUpdateWithoutResidencesInput = {
   settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
   customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutResidencesInput = {
@@ -2561,6 +3231,8 @@ export type ChurchUncheckedUpdateWithoutResidencesInput = {
   language?: Prisma.StringFieldUpdateOperationsInput | string
   currency?: Prisma.StringFieldUpdateOperationsInput | string
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
@@ -2573,7 +3245,174 @@ export type ChurchUncheckedUpdateWithoutResidencesInput = {
   settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
   customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
   payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+}
+
+export type ChurchCreateWithoutSmsLogsInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+}
+
+export type ChurchUncheckedCreateWithoutSmsLogsInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetUncheckedCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventUncheckedCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+}
+
+export type ChurchCreateOrConnectWithoutSmsLogsInput = {
+  where: Prisma.ChurchWhereUniqueInput
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutSmsLogsInput, Prisma.ChurchUncheckedCreateWithoutSmsLogsInput>
+}
+
+export type ChurchUpsertWithoutSmsLogsInput = {
+  update: Prisma.XOR<Prisma.ChurchUpdateWithoutSmsLogsInput, Prisma.ChurchUncheckedUpdateWithoutSmsLogsInput>
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutSmsLogsInput, Prisma.ChurchUncheckedCreateWithoutSmsLogsInput>
+  where?: Prisma.ChurchWhereInput
+}
+
+export type ChurchUpdateToOneWithWhereWithoutSmsLogsInput = {
+  where?: Prisma.ChurchWhereInput
+  data: Prisma.XOR<Prisma.ChurchUpdateWithoutSmsLogsInput, Prisma.ChurchUncheckedUpdateWithoutSmsLogsInput>
+}
+
+export type ChurchUpdateWithoutSmsLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+}
+
+export type ChurchUncheckedUpdateWithoutSmsLogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUncheckedUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUncheckedUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 
@@ -2593,7 +3432,9 @@ export type ChurchCountOutputType = {
   customFields: number
   residences: number
   payrolls: number
+  biometricDevices: number
   checks: number
+  smsLogs: number
 }
 
 export type ChurchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2608,7 +3449,9 @@ export type ChurchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions
   customFields?: boolean | ChurchCountOutputTypeCountCustomFieldsArgs
   residences?: boolean | ChurchCountOutputTypeCountResidencesArgs
   payrolls?: boolean | ChurchCountOutputTypeCountPayrollsArgs
+  biometricDevices?: boolean | ChurchCountOutputTypeCountBiometricDevicesArgs
   checks?: boolean | ChurchCountOutputTypeCountChecksArgs
+  smsLogs?: boolean | ChurchCountOutputTypeCountSmsLogsArgs
 }
 
 /**
@@ -2701,8 +3544,22 @@ export type ChurchCountOutputTypeCountPayrollsArgs<ExtArgs extends runtime.Types
 /**
  * ChurchCountOutputType without action
  */
+export type ChurchCountOutputTypeCountBiometricDevicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BiometricDeviceWhereInput
+}
+
+/**
+ * ChurchCountOutputType without action
+ */
 export type ChurchCountOutputTypeCountChecksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.CheckWhereInput
+}
+
+/**
+ * ChurchCountOutputType without action
+ */
+export type ChurchCountOutputTypeCountSmsLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SMSLogWhereInput
 }
 
 
@@ -2723,6 +3580,8 @@ export type ChurchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   language?: boolean
   currency?: boolean
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   campuses?: boolean | Prisma.Church$campusesArgs<ExtArgs>
@@ -2736,7 +3595,10 @@ export type ChurchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   customFields?: boolean | Prisma.Church$customFieldsArgs<ExtArgs>
   residences?: boolean | Prisma.Church$residencesArgs<ExtArgs>
   payrolls?: boolean | Prisma.Church$payrollsArgs<ExtArgs>
+  biometricDevices?: boolean | Prisma.Church$biometricDevicesArgs<ExtArgs>
   checks?: boolean | Prisma.Church$checksArgs<ExtArgs>
+  subscription?: boolean | Prisma.Church$subscriptionArgs<ExtArgs>
+  smsLogs?: boolean | Prisma.Church$smsLogsArgs<ExtArgs>
   _count?: boolean | Prisma.ChurchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["church"]>
 
@@ -2757,6 +3619,8 @@ export type ChurchSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   language?: boolean
   currency?: boolean
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["church"]>
@@ -2778,6 +3642,8 @@ export type ChurchSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   language?: boolean
   currency?: boolean
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["church"]>
@@ -2799,11 +3665,13 @@ export type ChurchSelectScalar = {
   language?: boolean
   currency?: boolean
   isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type ChurchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "denomination" | "logo" | "website" | "email" | "phone" | "address" | "city" | "state" | "zipCode" | "country" | "timezone" | "language" | "currency" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["church"]>
+export type ChurchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "denomination" | "logo" | "website" | "email" | "phone" | "address" | "city" | "state" | "zipCode" | "country" | "timezone" | "language" | "currency" | "isActive" | "isSponsored" | "unlimitedUse" | "createdAt" | "updatedAt", ExtArgs["result"]["church"]>
 export type ChurchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   campuses?: boolean | Prisma.Church$campusesArgs<ExtArgs>
   accounts?: boolean | Prisma.Church$accountsArgs<ExtArgs>
@@ -2816,7 +3684,10 @@ export type ChurchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   customFields?: boolean | Prisma.Church$customFieldsArgs<ExtArgs>
   residences?: boolean | Prisma.Church$residencesArgs<ExtArgs>
   payrolls?: boolean | Prisma.Church$payrollsArgs<ExtArgs>
+  biometricDevices?: boolean | Prisma.Church$biometricDevicesArgs<ExtArgs>
   checks?: boolean | Prisma.Church$checksArgs<ExtArgs>
+  subscription?: boolean | Prisma.Church$subscriptionArgs<ExtArgs>
+  smsLogs?: boolean | Prisma.Church$smsLogsArgs<ExtArgs>
   _count?: boolean | Prisma.ChurchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChurchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2836,7 +3707,10 @@ export type $ChurchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     customFields: Prisma.$CustomFieldPayload<ExtArgs>[]
     residences: Prisma.$ResidencePayload<ExtArgs>[]
     payrolls: Prisma.$PayrollPayload<ExtArgs>[]
+    biometricDevices: Prisma.$BiometricDevicePayload<ExtArgs>[]
     checks: Prisma.$CheckPayload<ExtArgs>[]
+    subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
+    smsLogs: Prisma.$SMSLogPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2855,6 +3729,8 @@ export type $ChurchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     language: string
     currency: string
     isActive: boolean
+    isSponsored: boolean
+    unlimitedUse: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["church"]>
@@ -3262,7 +4138,10 @@ export interface Prisma__ChurchClient<T, Null = never, ExtArgs extends runtime.T
   customFields<T extends Prisma.Church$customFieldsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$customFieldsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CustomFieldPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   residences<T extends Prisma.Church$residencesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$residencesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ResidencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   payrolls<T extends Prisma.Church$payrollsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$payrollsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PayrollPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  biometricDevices<T extends Prisma.Church$biometricDevicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$biometricDevicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   checks<T extends Prisma.Church$checksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$checksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CheckPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  subscription<T extends Prisma.Church$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SubscriptionClient<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  smsLogs<T extends Prisma.Church$smsLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$smsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3308,6 +4187,8 @@ export interface ChurchFieldRefs {
   readonly language: Prisma.FieldRef<"Church", 'String'>
   readonly currency: Prisma.FieldRef<"Church", 'String'>
   readonly isActive: Prisma.FieldRef<"Church", 'Boolean'>
+  readonly isSponsored: Prisma.FieldRef<"Church", 'Boolean'>
+  readonly unlimitedUse: Prisma.FieldRef<"Church", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Church", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Church", 'DateTime'>
 }
@@ -3962,6 +4843,30 @@ export type Church$payrollsArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
+ * Church.biometricDevices
+ */
+export type Church$biometricDevicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BiometricDevice
+   */
+  select?: Prisma.BiometricDeviceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BiometricDevice
+   */
+  omit?: Prisma.BiometricDeviceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BiometricDeviceInclude<ExtArgs> | null
+  where?: Prisma.BiometricDeviceWhereInput
+  orderBy?: Prisma.BiometricDeviceOrderByWithRelationInput | Prisma.BiometricDeviceOrderByWithRelationInput[]
+  cursor?: Prisma.BiometricDeviceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BiometricDeviceScalarFieldEnum | Prisma.BiometricDeviceScalarFieldEnum[]
+}
+
+/**
  * Church.checks
  */
 export type Church$checksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3983,6 +4888,49 @@ export type Church$checksArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   take?: number
   skip?: number
   distinct?: Prisma.CheckScalarFieldEnum | Prisma.CheckScalarFieldEnum[]
+}
+
+/**
+ * Church.subscription
+ */
+export type Church$subscriptionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Subscription
+   */
+  select?: Prisma.SubscriptionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Subscription
+   */
+  omit?: Prisma.SubscriptionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SubscriptionInclude<ExtArgs> | null
+  where?: Prisma.SubscriptionWhereInput
+}
+
+/**
+ * Church.smsLogs
+ */
+export type Church$smsLogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SMSLog
+   */
+  select?: Prisma.SMSLogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SMSLog
+   */
+  omit?: Prisma.SMSLogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SMSLogInclude<ExtArgs> | null
+  where?: Prisma.SMSLogWhereInput
+  orderBy?: Prisma.SMSLogOrderByWithRelationInput | Prisma.SMSLogOrderByWithRelationInput[]
+  cursor?: Prisma.SMSLogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SMSLogScalarFieldEnum | Prisma.SMSLogScalarFieldEnum[]
 }
 
 /**

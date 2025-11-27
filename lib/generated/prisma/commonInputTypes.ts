@@ -1013,6 +1013,23 @@ export type EnumLeaveStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumLeaveStatusFilter<$PrismaModel>
 }
 
+export type EnumSubscriptionPlanFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubscriptionPlan | Prisma.EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  in?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
+}
+
+export type EnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubscriptionPlan | Prisma.EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  in?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionPlan
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSubscriptionPlanFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSubscriptionPlanFilter<$PrismaModel>
+}
+
 export type EnumPrayerRequestCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.PrayerRequestCategory | Prisma.EnumPrayerRequestCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.PrayerRequestCategory[] | Prisma.ListEnumPrayerRequestCategoryFieldRefInput<$PrismaModel>
@@ -1062,6 +1079,23 @@ export type EnumPrayerRequestPrivacyWithAggregatesFilter<$PrismaModel = never> =
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPrayerRequestPrivacyFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPrayerRequestPrivacyFilter<$PrismaModel>
+}
+
+export type EnumSMSStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SMSStatus | Prisma.EnumSMSStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSMSStatusFilter<$PrismaModel> | $Enums.SMSStatus
+}
+
+export type EnumSMSStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SMSStatus | Prisma.EnumSMSStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSMSStatusWithAggregatesFilter<$PrismaModel> | $Enums.SMSStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSMSStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSMSStatusFilter<$PrismaModel>
 }
 
 export type EnumSurveyStatusFilter<$PrismaModel = never> = {
@@ -2180,6 +2214,23 @@ export type NestedEnumLeaveStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumLeaveStatusFilter<$PrismaModel>
 }
 
+export type NestedEnumSubscriptionPlanFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubscriptionPlan | Prisma.EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  in?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
+}
+
+export type NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SubscriptionPlan | Prisma.EnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  in?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SubscriptionPlan[] | Prisma.ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionPlan
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSubscriptionPlanFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSubscriptionPlanFilter<$PrismaModel>
+}
+
 export type NestedEnumPrayerRequestCategoryFilter<$PrismaModel = never> = {
   equals?: $Enums.PrayerRequestCategory | Prisma.EnumPrayerRequestCategoryFieldRefInput<$PrismaModel>
   in?: $Enums.PrayerRequestCategory[] | Prisma.ListEnumPrayerRequestCategoryFieldRefInput<$PrismaModel>
@@ -2229,6 +2280,23 @@ export type NestedEnumPrayerRequestPrivacyWithAggregatesFilter<$PrismaModel = ne
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumPrayerRequestPrivacyFilter<$PrismaModel>
   _max?: Prisma.NestedEnumPrayerRequestPrivacyFilter<$PrismaModel>
+}
+
+export type NestedEnumSMSStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SMSStatus | Prisma.EnumSMSStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSMSStatusFilter<$PrismaModel> | $Enums.SMSStatus
+}
+
+export type NestedEnumSMSStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SMSStatus | Prisma.EnumSMSStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SMSStatus[] | Prisma.ListEnumSMSStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSMSStatusWithAggregatesFilter<$PrismaModel> | $Enums.SMSStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSMSStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSMSStatusFilter<$PrismaModel>
 }
 
 export type NestedEnumSurveyStatusFilter<$PrismaModel = never> = {

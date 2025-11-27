@@ -24,6 +24,71 @@ export async function GET(
             name: true,
           },
         },
+        spouse: {
+          select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+            profileImage: true,
+          },
+        },
+        parent: {
+          select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+          },
+        },
+        children: {
+          select: {
+            id: true,
+            firstName: true,
+            lastName: true,
+            dateOfBirth: true,
+          },
+        },
+        groupMemberships: {
+          include: {
+            group: {
+              select: {
+                id: true,
+                name: true,
+                type: true,
+              },
+            },
+          },
+          where: {
+            group: {
+              isActive: true,
+            },
+          },
+        },
+        donations: {
+          select: {
+            id: true,
+            amount: true,
+            category: true,
+            paymentMethod: true,
+            createdAt: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+          take: 10,
+        },
+        attendances: {
+          select: {
+            id: true,
+            date: true,
+            type: true,
+            status: true,
+            createdAt: true,
+          },
+          orderBy: {
+            date: "desc",
+          },
+          take: 10,
+        },
       },
     });
 

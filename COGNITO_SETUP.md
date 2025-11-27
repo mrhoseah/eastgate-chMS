@@ -72,6 +72,57 @@ AWS_ACCESS_KEY_ID=your-access-key-id
 AWS_SECRET_ACCESS_KEY=your-secret-access-key
 ```
 
+## NextAuth + Cognito (runtime configuration)
+
+This project uses NextAuth and can authenticate with Cognito in two ways:
+- The AWS SDK (`@aws-sdk/client-cognito-identity-provider`) — recommended when you have a client secret and AWS credentials available.
+- Direct HTTP calls to the Cognito REST API — used as a lightweight fallback but more sensitive to transient network issues.
+
+The runtime selects the SDK by default when a `COGNITO_CLIENT_SECRET` is present. You can override this with the `USE_COGNITO_SDK` environment variable:
+
+```env
+# Defaults: when `COGNITO_CLIENT_SECRET` exists, SDK is used.
+# To force the SDK:                USE_COGNITO_SDK=true
+# To force direct HTTP (debug):    USE_COGNITO_SDK=false
+```
+
+Fetch timeout and retry behavior for the direct HTTP path are configurable via environment variables:
+
+```env
+COGNITO_FETCH_TIMEOUT_MS=8000    # per-attempt timeout in milliseconds (default: 8000)
+COGNITO_FETCH_RETRIES=2          # number of retries on transient failures (default: 2)
+```
+
+Notes:
+- If you see intermittent "fetch failed" or timeout errors, try increasing `COGNITO_FETCH_TIMEOUT_MS` (for slow networks) and `COGNITO_FETCH_RETRIES` (to tolerate transient failures).
+- When possible, prefer the SDK path (set `USE_COGNITO_SDK=true`) because it uses the AWS client with better retries and error semantics.
+
+Also ensure NextAuth has a secret configured for session signing:
+
+```env
+NEXTAUTH_SECRET=your-nextauth-secret
+```
+
+If you want me to add this to your `.env.example` or `.env.local` template, tell me and I will add a commented example file to the repo.
+
+### NextAuth / Cognito Hosted UI (callback)
+
+When using the NextAuth Cognito provider (Hosted UI) you must configure the App client callback/redirect URL in the Cognito Console to allow NextAuth redirects. Add the following callback URL to your App client settings:
+
+```
+${NEXTAUTH_URL:-http://localhost:3000}/api/auth/callback/cognito
+```
+
+Optional env vars for hosted OIDC provider:
+
+```env
+# Explicit issuer (optional). If not set, the app constructs the issuer from region and user pool id.
+COGNITO_ISSUER="https://cognito-idp.<region>.amazonaws.com/<userPoolId>"
+
+# NEXTAUTH_URL must be set so NextAuth builds correct redirect URIs
+NEXTAUTH_URL="http://localhost:3000"
+```
+
 ## Step 4: IAM Permissions
 
 Create an IAM user or role with the following permissions:

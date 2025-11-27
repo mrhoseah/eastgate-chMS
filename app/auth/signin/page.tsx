@@ -47,6 +47,7 @@ function SignInForm() {
     setLoading(true);
 
     try {
+      // Direct NextAuth sign-in - credentials provider handles Cognito authentication
       const result = await signIn("cognito", {
         email,
         password,
@@ -71,7 +72,7 @@ function SignInForm() {
 
       // Unexpected result
       setLoading(false);
-      setError(result?.error || "Login failed. Please try again.");
+      setError("Login failed. Please try again.");
     } catch (error: any) {
       setLoading(false);
       setError(error.message || "An error occurred. Please try again.");

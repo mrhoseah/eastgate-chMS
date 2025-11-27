@@ -404,7 +404,7 @@ const PresentationsTab = () => {
         setNewPresentationTitle("");
         fetchPresentations();
         // Navigate to the presentation editor
-        window.location.href = `/dashboard/presentations/${data.presentation.id}`;
+        window.location.href = `/dashboard/presentations/${data.presentation.id}/editor`;
       } else {
         toast({
           title: "Error",
@@ -505,7 +505,7 @@ const PresentationsTab = () => {
         fetchPresentations();
         // Navigate to the presentation editor
         if (data.presentation?.id) {
-          window.location.href = `/dashboard/presentations/${data.presentation.id}`;
+          window.location.href = `/dashboard/presentations/${data.presentation.id}/editor`;
         }
       } else {
         toast({
@@ -702,7 +702,7 @@ const PresentationsTab = () => {
                     className="flex-1"
                     asChild
                   >
-                    <Link href={`/dashboard/presentations/${pres.id}`}>
+                    <Link href={`/dashboard/presentations/${pres.id}/editor`}>
                       Edit
                     </Link>
                   </Button>

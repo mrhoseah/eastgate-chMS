@@ -33,6 +33,7 @@ export type AttendanceMinAggregateOutputType = {
   status: $Enums.AttendanceStatus | null
   checkInMethod: string | null
   notes: string | null
+  biometricDeviceId: string | null
   createdAt: Date | null
 }
 
@@ -45,6 +46,7 @@ export type AttendanceMaxAggregateOutputType = {
   status: $Enums.AttendanceStatus | null
   checkInMethod: string | null
   notes: string | null
+  biometricDeviceId: string | null
   createdAt: Date | null
 }
 
@@ -57,6 +59,8 @@ export type AttendanceCountAggregateOutputType = {
   status: number
   checkInMethod: number
   notes: number
+  metadata: number
+  biometricDeviceId: number
   createdAt: number
   _all: number
 }
@@ -71,6 +75,7 @@ export type AttendanceMinAggregateInputType = {
   status?: true
   checkInMethod?: true
   notes?: true
+  biometricDeviceId?: true
   createdAt?: true
 }
 
@@ -83,6 +88,7 @@ export type AttendanceMaxAggregateInputType = {
   status?: true
   checkInMethod?: true
   notes?: true
+  biometricDeviceId?: true
   createdAt?: true
 }
 
@@ -95,6 +101,8 @@ export type AttendanceCountAggregateInputType = {
   status?: true
   checkInMethod?: true
   notes?: true
+  metadata?: true
+  biometricDeviceId?: true
   createdAt?: true
   _all?: true
 }
@@ -180,6 +188,8 @@ export type AttendanceGroupByOutputType = {
   status: $Enums.AttendanceStatus
   checkInMethod: string | null
   notes: string | null
+  metadata: runtime.JsonValue | null
+  biometricDeviceId: string | null
   createdAt: Date
   _count: AttendanceCountAggregateOutputType | null
   _min: AttendanceMinAggregateOutputType | null
@@ -213,8 +223,11 @@ export type AttendanceWhereInput = {
   status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
   checkInMethod?: Prisma.StringNullableFilter<"Attendance"> | string | null
   notes?: Prisma.StringNullableFilter<"Attendance"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Attendance">
+  biometricDeviceId?: Prisma.StringNullableFilter<"Attendance"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Attendance"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  biometricDevice?: Prisma.XOR<Prisma.BiometricDeviceNullableScalarRelationFilter, Prisma.BiometricDeviceWhereInput> | null
 }
 
 export type AttendanceOrderByWithRelationInput = {
@@ -226,8 +239,11 @@ export type AttendanceOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   checkInMethod?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
+  biometricDeviceId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  biometricDevice?: Prisma.BiometricDeviceOrderByWithRelationInput
 }
 
 export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
@@ -242,8 +258,11 @@ export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
   checkInMethod?: Prisma.StringNullableFilter<"Attendance"> | string | null
   notes?: Prisma.StringNullableFilter<"Attendance"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Attendance">
+  biometricDeviceId?: Prisma.StringNullableFilter<"Attendance"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Attendance"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  biometricDevice?: Prisma.XOR<Prisma.BiometricDeviceNullableScalarRelationFilter, Prisma.BiometricDeviceWhereInput> | null
 }, "id">
 
 export type AttendanceOrderByWithAggregationInput = {
@@ -255,6 +274,8 @@ export type AttendanceOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   checkInMethod?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  metadata?: Prisma.SortOrderInput | Prisma.SortOrder
+  biometricDeviceId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.AttendanceCountOrderByAggregateInput
   _max?: Prisma.AttendanceMaxOrderByAggregateInput
@@ -273,6 +294,8 @@ export type AttendanceScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumAttendanceStatusWithAggregatesFilter<"Attendance"> | $Enums.AttendanceStatus
   checkInMethod?: Prisma.StringNullableWithAggregatesFilter<"Attendance"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"Attendance"> | string | null
+  metadata?: Prisma.JsonNullableWithAggregatesFilter<"Attendance">
+  biometricDeviceId?: Prisma.StringNullableWithAggregatesFilter<"Attendance"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Attendance"> | Date | string
 }
 
@@ -284,8 +307,10 @@ export type AttendanceCreateInput = {
   status?: $Enums.AttendanceStatus
   checkInMethod?: string | null
   notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAttendancesInput
+  biometricDevice?: Prisma.BiometricDeviceCreateNestedOneWithoutAttendanceRecordsInput
 }
 
 export type AttendanceUncheckedCreateInput = {
@@ -297,6 +322,8 @@ export type AttendanceUncheckedCreateInput = {
   status?: $Enums.AttendanceStatus
   checkInMethod?: string | null
   notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: string | null
   createdAt?: Date | string
 }
 
@@ -308,8 +335,10 @@ export type AttendanceUpdateInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAttendancesNestedInput
+  biometricDevice?: Prisma.BiometricDeviceUpdateOneWithoutAttendanceRecordsNestedInput
 }
 
 export type AttendanceUncheckedUpdateInput = {
@@ -321,6 +350,8 @@ export type AttendanceUncheckedUpdateInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -333,6 +364,8 @@ export type AttendanceCreateManyInput = {
   status?: $Enums.AttendanceStatus
   checkInMethod?: string | null
   notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: string | null
   createdAt?: Date | string
 }
 
@@ -344,6 +377,7 @@ export type AttendanceUpdateManyMutationInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -356,6 +390,8 @@ export type AttendanceUncheckedUpdateManyInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -378,6 +414,8 @@ export type AttendanceCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   checkInMethod?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  metadata?: Prisma.SortOrder
+  biometricDeviceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -390,6 +428,7 @@ export type AttendanceMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   checkInMethod?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  biometricDeviceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -402,6 +441,7 @@ export type AttendanceMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   checkInMethod?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  biometricDeviceId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -447,6 +487,48 @@ export type AttendanceUncheckedUpdateManyWithoutUserNestedInput = {
   deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
 }
 
+export type AttendanceCreateNestedManyWithoutBiometricDeviceInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput> | Prisma.AttendanceCreateWithoutBiometricDeviceInput[] | Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput | Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput[]
+  createMany?: Prisma.AttendanceCreateManyBiometricDeviceInputEnvelope
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+}
+
+export type AttendanceUncheckedCreateNestedManyWithoutBiometricDeviceInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput> | Prisma.AttendanceCreateWithoutBiometricDeviceInput[] | Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput | Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput[]
+  createMany?: Prisma.AttendanceCreateManyBiometricDeviceInputEnvelope
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+}
+
+export type AttendanceUpdateManyWithoutBiometricDeviceNestedInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput> | Prisma.AttendanceCreateWithoutBiometricDeviceInput[] | Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput | Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput[]
+  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutBiometricDeviceInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutBiometricDeviceInput[]
+  createMany?: Prisma.AttendanceCreateManyBiometricDeviceInputEnvelope
+  set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutBiometricDeviceInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutBiometricDeviceInput[]
+  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutBiometricDeviceInput | Prisma.AttendanceUpdateManyWithWhereWithoutBiometricDeviceInput[]
+  deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
+}
+
+export type AttendanceUncheckedUpdateManyWithoutBiometricDeviceNestedInput = {
+  create?: Prisma.XOR<Prisma.AttendanceCreateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput> | Prisma.AttendanceCreateWithoutBiometricDeviceInput[] | Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput[]
+  connectOrCreate?: Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput | Prisma.AttendanceCreateOrConnectWithoutBiometricDeviceInput[]
+  upsert?: Prisma.AttendanceUpsertWithWhereUniqueWithoutBiometricDeviceInput | Prisma.AttendanceUpsertWithWhereUniqueWithoutBiometricDeviceInput[]
+  createMany?: Prisma.AttendanceCreateManyBiometricDeviceInputEnvelope
+  set?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  disconnect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  delete?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  connect?: Prisma.AttendanceWhereUniqueInput | Prisma.AttendanceWhereUniqueInput[]
+  update?: Prisma.AttendanceUpdateWithWhereUniqueWithoutBiometricDeviceInput | Prisma.AttendanceUpdateWithWhereUniqueWithoutBiometricDeviceInput[]
+  updateMany?: Prisma.AttendanceUpdateManyWithWhereWithoutBiometricDeviceInput | Prisma.AttendanceUpdateManyWithWhereWithoutBiometricDeviceInput[]
+  deleteMany?: Prisma.AttendanceScalarWhereInput | Prisma.AttendanceScalarWhereInput[]
+}
+
 export type AttendanceCreateWithoutUserInput = {
   id?: string
   date: Date | string
@@ -455,7 +537,9 @@ export type AttendanceCreateWithoutUserInput = {
   status?: $Enums.AttendanceStatus
   checkInMethod?: string | null
   notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
+  biometricDevice?: Prisma.BiometricDeviceCreateNestedOneWithoutAttendanceRecordsInput
 }
 
 export type AttendanceUncheckedCreateWithoutUserInput = {
@@ -466,6 +550,8 @@ export type AttendanceUncheckedCreateWithoutUserInput = {
   status?: $Enums.AttendanceStatus
   checkInMethod?: string | null
   notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: string | null
   createdAt?: Date | string
 }
 
@@ -507,7 +593,61 @@ export type AttendanceScalarWhereInput = {
   status?: Prisma.EnumAttendanceStatusFilter<"Attendance"> | $Enums.AttendanceStatus
   checkInMethod?: Prisma.StringNullableFilter<"Attendance"> | string | null
   notes?: Prisma.StringNullableFilter<"Attendance"> | string | null
+  metadata?: Prisma.JsonNullableFilter<"Attendance">
+  biometricDeviceId?: Prisma.StringNullableFilter<"Attendance"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Attendance"> | Date | string
+}
+
+export type AttendanceCreateWithoutBiometricDeviceInput = {
+  id?: string
+  date: Date | string
+  type: string
+  referenceId?: string | null
+  status?: $Enums.AttendanceStatus
+  checkInMethod?: string | null
+  notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAttendancesInput
+}
+
+export type AttendanceUncheckedCreateWithoutBiometricDeviceInput = {
+  id?: string
+  userId: string
+  date: Date | string
+  type: string
+  referenceId?: string | null
+  status?: $Enums.AttendanceStatus
+  checkInMethod?: string | null
+  notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+}
+
+export type AttendanceCreateOrConnectWithoutBiometricDeviceInput = {
+  where: Prisma.AttendanceWhereUniqueInput
+  create: Prisma.XOR<Prisma.AttendanceCreateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput>
+}
+
+export type AttendanceCreateManyBiometricDeviceInputEnvelope = {
+  data: Prisma.AttendanceCreateManyBiometricDeviceInput | Prisma.AttendanceCreateManyBiometricDeviceInput[]
+  skipDuplicates?: boolean
+}
+
+export type AttendanceUpsertWithWhereUniqueWithoutBiometricDeviceInput = {
+  where: Prisma.AttendanceWhereUniqueInput
+  update: Prisma.XOR<Prisma.AttendanceUpdateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedUpdateWithoutBiometricDeviceInput>
+  create: Prisma.XOR<Prisma.AttendanceCreateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedCreateWithoutBiometricDeviceInput>
+}
+
+export type AttendanceUpdateWithWhereUniqueWithoutBiometricDeviceInput = {
+  where: Prisma.AttendanceWhereUniqueInput
+  data: Prisma.XOR<Prisma.AttendanceUpdateWithoutBiometricDeviceInput, Prisma.AttendanceUncheckedUpdateWithoutBiometricDeviceInput>
+}
+
+export type AttendanceUpdateManyWithWhereWithoutBiometricDeviceInput = {
+  where: Prisma.AttendanceScalarWhereInput
+  data: Prisma.XOR<Prisma.AttendanceUpdateManyMutationInput, Prisma.AttendanceUncheckedUpdateManyWithoutBiometricDeviceInput>
 }
 
 export type AttendanceCreateManyUserInput = {
@@ -518,6 +658,8 @@ export type AttendanceCreateManyUserInput = {
   status?: $Enums.AttendanceStatus
   checkInMethod?: string | null
   notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: string | null
   createdAt?: Date | string
 }
 
@@ -529,7 +671,9 @@ export type AttendanceUpdateWithoutUserInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  biometricDevice?: Prisma.BiometricDeviceUpdateOneWithoutAttendanceRecordsNestedInput
 }
 
 export type AttendanceUncheckedUpdateWithoutUserInput = {
@@ -540,6 +684,8 @@ export type AttendanceUncheckedUpdateWithoutUserInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -551,6 +697,60 @@ export type AttendanceUncheckedUpdateManyWithoutUserInput = {
   status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
   checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  biometricDeviceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AttendanceCreateManyBiometricDeviceInput = {
+  id?: string
+  userId: string
+  date: Date | string
+  type: string
+  referenceId?: string | null
+  status?: $Enums.AttendanceStatus
+  checkInMethod?: string | null
+  notes?: string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+}
+
+export type AttendanceUpdateWithoutBiometricDeviceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  referenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
+  checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAttendancesNestedInput
+}
+
+export type AttendanceUncheckedUpdateWithoutBiometricDeviceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  referenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
+  checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AttendanceUncheckedUpdateManyWithoutBiometricDeviceInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  type?: Prisma.StringFieldUpdateOperationsInput | string
+  referenceId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
+  checkInMethod?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  metadata?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -565,8 +765,11 @@ export type AttendanceSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   status?: boolean
   checkInMethod?: boolean
   notes?: boolean
+  metadata?: boolean
+  biometricDeviceId?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  biometricDevice?: boolean | Prisma.Attendance$biometricDeviceArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -578,8 +781,11 @@ export type AttendanceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   status?: boolean
   checkInMethod?: boolean
   notes?: boolean
+  metadata?: boolean
+  biometricDeviceId?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  biometricDevice?: boolean | Prisma.Attendance$biometricDeviceArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -591,8 +797,11 @@ export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   status?: boolean
   checkInMethod?: boolean
   notes?: boolean
+  metadata?: boolean
+  biometricDeviceId?: boolean
   createdAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  biometricDevice?: boolean | Prisma.Attendance$biometricDeviceArgs<ExtArgs>
 }, ExtArgs["result"]["attendance"]>
 
 export type AttendanceSelectScalar = {
@@ -604,24 +813,30 @@ export type AttendanceSelectScalar = {
   status?: boolean
   checkInMethod?: boolean
   notes?: boolean
+  metadata?: boolean
+  biometricDeviceId?: boolean
   createdAt?: boolean
 }
 
-export type AttendanceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "date" | "type" | "referenceId" | "status" | "checkInMethod" | "notes" | "createdAt", ExtArgs["result"]["attendance"]>
+export type AttendanceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "date" | "type" | "referenceId" | "status" | "checkInMethod" | "notes" | "metadata" | "biometricDeviceId" | "createdAt", ExtArgs["result"]["attendance"]>
 export type AttendanceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  biometricDevice?: boolean | Prisma.Attendance$biometricDeviceArgs<ExtArgs>
 }
 export type AttendanceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  biometricDevice?: boolean | Prisma.Attendance$biometricDeviceArgs<ExtArgs>
 }
 export type AttendanceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  biometricDevice?: boolean | Prisma.Attendance$biometricDeviceArgs<ExtArgs>
 }
 
 export type $AttendancePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Attendance"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    biometricDevice: Prisma.$BiometricDevicePayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -632,6 +847,8 @@ export type $AttendancePayload<ExtArgs extends runtime.Types.Extensions.Internal
     status: $Enums.AttendanceStatus
     checkInMethod: string | null
     notes: string | null
+    metadata: runtime.JsonValue | null
+    biometricDeviceId: string | null
     createdAt: Date
   }, ExtArgs["result"]["attendance"]>
   composites: {}
@@ -1028,6 +1245,7 @@ readonly fields: AttendanceFieldRefs;
 export interface Prisma__AttendanceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  biometricDevice<T extends Prisma.Attendance$biometricDeviceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Attendance$biometricDeviceArgs<ExtArgs>>): Prisma.Prisma__BiometricDeviceClient<runtime.Types.Result.GetResult<Prisma.$BiometricDevicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1065,6 +1283,8 @@ export interface AttendanceFieldRefs {
   readonly status: Prisma.FieldRef<"Attendance", 'AttendanceStatus'>
   readonly checkInMethod: Prisma.FieldRef<"Attendance", 'String'>
   readonly notes: Prisma.FieldRef<"Attendance", 'String'>
+  readonly metadata: Prisma.FieldRef<"Attendance", 'Json'>
+  readonly biometricDeviceId: Prisma.FieldRef<"Attendance", 'String'>
   readonly createdAt: Prisma.FieldRef<"Attendance", 'DateTime'>
 }
     
@@ -1459,6 +1679,25 @@ export type AttendanceDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many Attendances to delete.
    */
   limit?: number
+}
+
+/**
+ * Attendance.biometricDevice
+ */
+export type Attendance$biometricDeviceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BiometricDevice
+   */
+  select?: Prisma.BiometricDeviceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BiometricDevice
+   */
+  omit?: Prisma.BiometricDeviceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BiometricDeviceInclude<ExtArgs> | null
+  where?: Prisma.BiometricDeviceWhereInput
 }
 
 /**

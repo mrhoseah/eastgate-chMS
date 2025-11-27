@@ -31,6 +31,26 @@ interface EnhancedReportsPageProps {
 export function EnhancedReportsPage({ initialData }: EnhancedReportsPageProps) {
   const [activeTab, setActiveTab] = useState("dashboard");
   const [filters, setFilters] = useState<any>({});
+  const [chartData, setChartData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/reports/dashboard");
+        if (response.ok) {
+          const data = await response.json();
+          setChartData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const filterConfigs: FilterConfig[] = [
     {
@@ -65,15 +85,6 @@ export function EnhancedReportsPage({ initialData }: EnhancedReportsPageProps) {
       type: "search",
       placeholder: "Search reports...",
     },
-  ];
-
-  // Sample data for demonstration
-  const sampleData = [
-    { name: "Jan", value: 4000, amount: 2400 },
-    { name: "Feb", value: 3000, amount: 1398 },
-    { name: "Mar", value: 2000, amount: 9800 },
-    { name: "Apr", value: 2780, amount: 3908 },
-    { name: "May", value: 1890, amount: 4800 },
   ];
 
   const handleExportPDF = () => {
@@ -136,20 +147,29 @@ export function EnhancedReportsPage({ initialData }: EnhancedReportsPageProps) {
           {/* Dashboard Tab */}
           <TabsContent value="dashboard" className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <ReportSection title="Bar Chart">
-                <BarChartComponent data={sampleData} height={300} />
+              <ReportSection title="Financial Overview">
+                <BarChartComponent 
+                  data={chartData.map(d => ({ name: d.name, Income: d.income, Expenses: d.expenses }))} 
+                  height={300} 
+                />
               </ReportSection>
-              <ReportSection title="Line Chart">
-                <LineChartComponent data={sampleData} height={300} />
+              <ReportSection title="Attendance Trends">
+                <LineChartComponent 
+                  data={chartData.map(d => ({ name: d.name, Attendance: d.attendance }))} 
+                  height={300} 
+                />
               </ReportSection>
-              <ReportSection title="Pie Chart">
+              <ReportSection title="Income Distribution">
                 <PieChartComponent
-                  data={sampleData.map((d) => ({ name: d.name, value: d.value }))}
+                  data={chartData.map((d) => ({ name: d.name, value: d.income }))}
                   height={300}
                 />
               </ReportSection>
-              <ReportSection title="Area Chart">
-                <AreaChartComponent data={sampleData} height={300} />
+              <ReportSection title="Member Growth">
+                <AreaChartComponent 
+                  data={chartData.map(d => ({ name: d.name, "New Members": d.newMembers }))} 
+                  height={300} 
+                />
               </ReportSection>
             </div>
           </TabsContent>
@@ -159,35 +179,42 @@ export function EnhancedReportsPage({ initialData }: EnhancedReportsPageProps) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <ReportSection title="Radar Chart">
                 <RadarChartComponent
-                  data={sampleData.map((d) => ({
+                  data={chartData.map((d) => ({
                     name: d.name,
-                    value: d.value,
-                    amount: d.amount,
+                    value: d.income,
+                    amount: d.expenses,
                   }))}
                   height={300}
                 />
               </ReportSection>
               <ReportSection title="Treemap Chart">
                 <TreemapChartComponent
-                  data={sampleData.map((d) => ({ name: d.name, value: d.value }))}
+                  data={chartData.map((d) => ({ name: d.name, value: d.income }))}
                   height={300}
                 />
               </ReportSection>
               <ReportSection title="Funnel Chart">
                 <FunnelChartComponent
-                  data={sampleData.map((d) => ({ name: d.name, value: d.value }))}
+                  data={chartData.map((d) => ({ name: d.name, value: d.attendance }))}
                   height={300}
                 />
               </ReportSection>
               <ReportSection title="Composed Chart">
-                <ComposedChartComponent data={sampleData} height={300} />
+                <ComposedChartComponent 
+                  data={chartData.map(d => ({ 
+                    name: d.name, 
+                    value: d.income, 
+                    amount: d.expenses 
+                  }))} 
+                  height={300} 
+                />
               </ReportSection>
               <ReportSection title="Scatter Chart">
                 <ScatterChartComponent
-                  data={sampleData.map((d, i) => ({
+                  data={chartData.map((d, i) => ({
                     name: d.name,
-                    x: d.value,
-                    y: d.amount,
+                    x: d.attendance,
+                    y: d.income,
                     z: i * 10,
                   }))}
                   height={300}

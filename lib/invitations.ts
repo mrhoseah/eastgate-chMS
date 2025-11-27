@@ -17,7 +17,7 @@ export async function createInvitation(data: {
   phone?: string;
   firstName: string;
   lastName: string;
-  role?: "ADMIN" | "PASTOR" | "LEADER" | "MEMBER" | "GUEST";
+  role?: "SUPERADMIN" | "ADMIN" | "PASTOR" | "LEADER" | "MEMBER" | "GUEST" | "FINANCE" | "USHER" | "PROTOCOL" | "ACCOUNT_MANAGER";
   campusId?: string;
   invitedById?: string;
   message?: string;

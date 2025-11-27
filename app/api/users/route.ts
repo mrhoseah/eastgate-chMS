@@ -20,6 +20,7 @@ export async function GET(request: NextRequest) {
     const role = searchParams.get("role") || "";
     const roles = searchParams.get("roles") || ""; // Support multiple roles (comma-separated)
     const status = searchParams.get("status") || "";
+    const includeBiometric = searchParams.get("includeBiometric") === "true";
 
     const skip = (page - 1) * limit;
 
@@ -63,6 +64,7 @@ export async function GET(request: NextRequest) {
           role: true,
           status: true,
           canLogin: true,
+          ...(includeBiometric ? { biometricUserId: true } : {}),
           campus: {
             select: {
               id: true,

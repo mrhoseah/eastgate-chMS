@@ -16,11 +16,32 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+interface ChurchPWAConfig {
+  name: string;
+  shortName: string;
+  description: string;
+  themeColor: string;
+  backgroundColor: string;
+}
+
 export function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [pwaConfig, setPwaConfig] = useState<ChurchPWAConfig | null>(null);
+
+  useEffect(() => {
+    // Fetch church-specific PWA config
+    fetch("/api/pwa/config")
+      .then((res) => res.json())
+      .then((config) => {
+        setPwaConfig(config);
+      })
+      .catch((error) => {
+        console.error("Error fetching PWA config:", error);
+      });
+  }, []);
 
   useEffect(() => {
     // Check if app is already installed
@@ -76,14 +97,16 @@ export function PWAInstallPrompt() {
     return null;
   }
 
+  const appName = pwaConfig?.shortName || "Church Management System";
+  const appDescription = pwaConfig?.description || "Install this app on your device for a better experience. You can access it offline and get faster loading times.";
+
   return (
     <Dialog open={showPrompt} onOpenChange={setShowPrompt}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Install Church Management System</DialogTitle>
+          <DialogTitle>Install {appName}</DialogTitle>
           <DialogDescription>
-            Install this app on your device for a better experience. You can access
-            it offline and get faster loading times.
+            {appDescription}
           </DialogDescription>
         </DialogHeader>
         <div className="flex gap-2 justify-end">

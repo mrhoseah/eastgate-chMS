@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     '@jsreport/jsreport-handlebars',
     'emitter',
     'batch',
+    'pdf-parse',
   ],
 };
 

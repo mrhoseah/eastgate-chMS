@@ -85,6 +85,7 @@ export const ModelName = {
   AttendanceSession: 'AttendanceSession',
   AttendanceRecord: 'AttendanceRecord',
   Attendance: 'Attendance',
+  BiometricDevice: 'BiometricDevice',
   ServiceSession: 'ServiceSession',
   SessionAttendee: 'SessionAttendee',
   Decision: 'Decision',
@@ -136,6 +137,7 @@ export const ModelName = {
   Leave: 'Leave',
   PerformanceAppraisal: 'PerformanceAppraisal',
   Church: 'Church',
+  Subscription: 'Subscription',
   ChurchSetting: 'ChurchSetting',
   CommunicationTemplate: 'CommunicationTemplate',
   CustomField: 'CustomField',
@@ -147,6 +149,7 @@ export const ModelName = {
   ConversationParticipant: 'ConversationParticipant',
   Message: 'Message',
   MessageRead: 'MessageRead',
+  SMSLog: 'SMSLog',
   Survey: 'Survey',
   SurveyQuestion: 'SurveyQuestion',
   SurveyResponse: 'SurveyResponse',
@@ -227,6 +230,7 @@ export const UserScalarFieldEnum = {
   baptismLocation: 'baptismLocation',
   dedicationDate: 'dedicationDate',
   weddingAnniversary: 'weddingAnniversary',
+  biometricUserId: 'biometricUserId',
   spouseId: 'spouseId',
   parentId: 'parentId',
   familyPhoto: 'familyPhoto',
@@ -776,10 +780,29 @@ export const AttendanceScalarFieldEnum = {
   status: 'status',
   checkInMethod: 'checkInMethod',
   notes: 'notes',
+  metadata: 'metadata',
+  biometricDeviceId: 'biometricDeviceId',
   createdAt: 'createdAt'
 } as const
 
 export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+export const BiometricDeviceScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  serviceTagId: 'serviceTagId',
+  deviceModel: 'deviceModel',
+  location: 'location',
+  authToken: 'authToken',
+  callbackUrl: 'callbackUrl',
+  isActive: 'isActive',
+  churchId: 'churchId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BiometricDeviceScalarFieldEnum = (typeof BiometricDeviceScalarFieldEnum)[keyof typeof BiometricDeviceScalarFieldEnum]
 
 
 export const ServiceSessionScalarFieldEnum = {
@@ -1397,6 +1420,7 @@ export const PresentationScalarFieldEnum = {
   isPresenting: 'isPresenting',
   viewerCountdown: 'viewerCountdown',
   viewerAnimation: 'viewerAnimation',
+  path: 'path',
   createdById: 'createdById',
   churchId: 'churchId',
   createdAt: 'createdAt',
@@ -1415,9 +1439,12 @@ export const PresentationSlideScalarFieldEnum = {
   y: 'y',
   width: 'width',
   height: 'height',
+  rotation: 'rotation',
+  scale: 'scale',
   order: 'order',
   backgroundColor: 'backgroundColor',
   textColor: 'textColor',
+  borderColor: 'borderColor',
   metadata: 'metadata',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1711,11 +1738,35 @@ export const ChurchScalarFieldEnum = {
   language: 'language',
   currency: 'currency',
   isActive: 'isActive',
+  isSponsored: 'isSponsored',
+  unlimitedUse: 'unlimitedUse',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type ChurchScalarFieldEnum = (typeof ChurchScalarFieldEnum)[keyof typeof ChurchScalarFieldEnum]
+
+
+export const SubscriptionScalarFieldEnum = {
+  id: 'id',
+  churchId: 'churchId',
+  plan: 'plan',
+  features: 'features',
+  status: 'status',
+  billingCycle: 'billingCycle',
+  amount: 'amount',
+  currency: 'currency',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  trialEndDate: 'trialEndDate',
+  cancelledAt: 'cancelledAt',
+  stripeCustomerId: 'stripeCustomerId',
+  stripeSubscriptionId: 'stripeSubscriptionId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum]
 
 
 export const ChurchSettingScalarFieldEnum = {
@@ -1869,6 +1920,28 @@ export const MessageReadScalarFieldEnum = {
 } as const
 
 export type MessageReadScalarFieldEnum = (typeof MessageReadScalarFieldEnum)[keyof typeof MessageReadScalarFieldEnum]
+
+
+export const SMSLogScalarFieldEnum = {
+  id: 'id',
+  churchId: 'churchId',
+  senderId: 'senderId',
+  recipientId: 'recipientId',
+  phoneNumber: 'phoneNumber',
+  message: 'message',
+  status: 'status',
+  messageId: 'messageId',
+  errorMessage: 'errorMessage',
+  sentAt: 'sentAt',
+  deliveredAt: 'deliveredAt',
+  recipientType: 'recipientType',
+  groupId: 'groupId',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SMSLogScalarFieldEnum = (typeof SMSLogScalarFieldEnum)[keyof typeof SMSLogScalarFieldEnum]
 
 
 export const SurveyScalarFieldEnum = {

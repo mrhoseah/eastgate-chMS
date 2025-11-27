@@ -38,6 +38,9 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { PremiumBadge } from "@/components/premium/premium-badge";
+import { UpgradeDialog } from "@/components/premium/upgrade-dialog";
+import { PremiumFeature } from "@/lib/utils/premium-features";
 
 export default function BulkOperationsPage() {
   const [activeTab, setActiveTab] = useState("members");
@@ -52,14 +55,43 @@ export default function BulkOperationsPage() {
   });
   const [operationData, setOperationData] = useState<any>({});
   const { toast } = useToast();
+  const [hasPremiumAccess, setHasPremiumAccess] = useState(false);
+  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
+
+  useEffect(() => {
+    checkPremiumAccess();
+  }, []);
+
+  const checkPremiumAccess = async () => {
+    try {
+      const response = await fetch(
+        `/api/subscription/features?feature=${PremiumFeature.BULK_OPERATIONS}`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setHasPremiumAccess(data.hasAccess || false);
+      }
+    } catch (error) {
+      console.error("Error checking premium access:", error);
+    }
+  };
 
   const handleOperation = (operation: string, entityType: string) => {
+    if (!hasPremiumAccess) {
+      setShowUpgradeDialog(true);
+      return;
+    }
     setCurrentOperation({ operation, entityType });
     setOperationDialogOpen(true);
   };
 
   const executeOperation = async () => {
     if (!currentOperation) return;
+
+    if (!hasPremiumAccess) {
+      setShowUpgradeDialog(true);
+      return;
+    }
 
     setLoading(true);
     try {
@@ -340,7 +372,10 @@ export default function BulkOperationsPage() {
   return (
     <div className="p-6 sm:p-8 lg:p-10 xl:p-12 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Bulk Operations</h1>
+        <div className="flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Bulk Operations</h1>
+          <PremiumBadge size="md" />
+        </div>
         <p className="text-gray-600 dark:text-gray-400 mt-1">
           Perform operations on multiple records at once
         </p>
@@ -560,6 +595,12 @@ export default function BulkOperationsPage() {
       </Tabs>
 
       {renderOperationDialog()}
+
+      <UpgradeDialog
+        open={showUpgradeDialog}
+        onOpenChange={setShowUpgradeDialog}
+        feature={PremiumFeature.BULK_OPERATIONS}
+      />
     </div>
   );
 }

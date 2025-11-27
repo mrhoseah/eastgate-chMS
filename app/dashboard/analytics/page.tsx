@@ -39,6 +39,9 @@ import {
   Area,
   AreaChart
 } from "recharts";
+import { PremiumBadge } from "@/components/premium/premium-badge";
+import { UpgradeDialog } from "@/components/premium/upgrade-dialog";
+import { PremiumFeature } from "@/lib/utils/premium-features";
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
@@ -47,6 +50,7 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [analytics, setAnalytics] = useState<any>(null);
   const [activeTab, setActiveTab] = useState("predictive");
+  const [showUpgradeDialog, setShowUpgradeDialog] = useState(false);
 
   useEffect(() => {
     fetchAnalytics();
@@ -99,9 +103,12 @@ export default function AnalyticsPage() {
                 <BarChart3 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                  Analytics Dashboard
-                </h1>
+                <div className="flex items-center gap-2">
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+                    Analytics Dashboard
+                  </h1>
+                  <PremiumBadge size="md" />
+                </div>
                 <p className="text-gray-600 dark:text-gray-400 mt-1">
                   Comprehensive insights and predictive analytics for your church
                 </p>
@@ -662,6 +669,12 @@ export default function AnalyticsPage() {
           </TabsContent>
         </Tabs>
       </div>
+
+      <UpgradeDialog
+        open={showUpgradeDialog}
+        onOpenChange={setShowUpgradeDialog}
+        feature={PremiumFeature.ADVANCED_ANALYTICS}
+      />
     </div>
   );
 }

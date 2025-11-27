@@ -540,7 +540,7 @@ export default function PresentationViewPage() {
     
     const zoomX = availableWidth / slide.width;
     const zoomY = availableHeight / slide.height;
-    // Use the smaller zoom to fit entirely (Prezi-style), but allow more zoom range
+    // Use the smaller zoom to fit entirely, but allow more zoom range
     const fitZoom = Math.min(Math.min(zoomX, zoomY), 4) * zoomDepth;
     
     // Center the slide in the viewport
@@ -1517,7 +1517,7 @@ export default function PresentationViewPage() {
                             Advanced Features
                           </Label>
                           <p className="text-sm text-gray-400 ml-8">
-                            Enable Prezi-like presentation features
+                            Enable zoomable presentation features
                           </p>
                         </div>
                         
@@ -2463,7 +2463,7 @@ export default function PresentationViewPage() {
           </div>
         )}
 
-        {/* Prezi Mini-Map Navigator */}
+        {/* Mini-Map Navigator */}
         {showMiniMap && presentation && (
           <div
             className={`${

@@ -211,8 +211,18 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // TODO: Send invitation email if sendInvitation is true
-    // You can integrate with your email service here
+    // Send invitation email if sendInvitation is true
+    if (sendInvitation !== false) {
+      // Default to true if not specified
+      try {
+        const { sendInvitationEmail } = await import("@/lib/invitation-email");
+        await sendInvitationEmail(invitation.id).catch((error) => {
+          console.error("Failed to send invitation email:", error);
+        });
+      } catch (error) {
+        console.error("Error sending invitation email:", error);
+      }
+    }
 
     return NextResponse.json(
       {

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { appConfig } from "@/lib/app-config";
 import { getAppNameFromDB } from "@/lib/app-config-server";
+import { getChurchPWAConfig } from "@/lib/church-pwa";
 import { ServiceWorkerRegistration } from "./sw-register";
 import { PWAInstallPrompt } from "@/components/pwa-install-prompt";
 
@@ -19,22 +20,24 @@ const geistMono = Geist_Mono({
 
 export async function generateMetadata(): Promise<Metadata> {
   const appName = await getAppNameFromDB();
+  const pwaConfig = await getChurchPWAConfig();
+  
   return {
     title: appName,
-    description: appConfig.description,
-    manifest: "/manifest.json",
+    description: pwaConfig.description,
+    manifest: "/api/manifest", // Use dynamic manifest endpoint
     appleWebApp: {
       capable: true,
       statusBarStyle: "default",
-      title: appConfig.shortName,
+      title: pwaConfig.shortName,
     },
     icons: {
       icon: [
-        { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
-        { url: "/icons/icon-512x512.png", sizes: "512x512", type: "image/png" },
+        { url: pwaConfig.icon192 ? pwaConfig.icon192.replace(/\.png$/i, ".svg") : "/icons/icon-192x192.svg", sizes: "192x192", type: "image/svg+xml" },
+        { url: pwaConfig.icon512 ? pwaConfig.icon512.replace(/\.png$/i, ".svg") : "/icons/icon-512x512.svg", sizes: "512x512", type: "image/svg+xml" },
       ],
       apple: [
-        { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+        { url: pwaConfig.icon192 ? pwaConfig.icon192.replace(/\.png$/i, ".svg") : "/icons/icon-192x192.svg", sizes: "192x192", type: "image/svg+xml" },
       ],
     },
     other: {
@@ -44,13 +47,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export function generateViewport(): Viewport {
+export async function generateViewport(): Promise<Viewport> {
+  const pwaConfig = await getChurchPWAConfig();
   return {
     width: "device-width",
     initialScale: 1,
     maximumScale: 5,
     userScalable: true,
-    themeColor: "#1E40AF",
+    themeColor: pwaConfig.themeColor,
   };
 }
 

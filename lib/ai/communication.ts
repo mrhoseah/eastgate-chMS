@@ -40,7 +40,7 @@ export async function getAISettings(): Promise<AISettings> {
         enabled: settings.aiCommunication?.enabled || false,
         provider: settings.aiCommunication?.provider || "openai",
         apiKey: settings.aiCommunication?.apiKey,
-        model: settings.aiCommunication?.model || "gpt-3.5-turbo",
+        model: settings.aiCommunication?.model || "gpt-5.1-codex-preview",
         temperature: settings.aiCommunication?.temperature || 0.7,
       };
     }
@@ -163,7 +163,7 @@ async function generateWithOpenAI(
       Authorization: `Bearer ${settings.apiKey}`,
     },
     body: JSON.stringify({
-      model: settings.model || "gpt-3.5-turbo",
+      model: settings.model || "gpt-5.1-codex-preview",
       messages: [
         {
           role: "system",
@@ -215,7 +215,7 @@ async function generateWithAnthropic(
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: settings.model || "claude-3-sonnet-20240229",
+      model: settings.model || "claude-3-5-sonnet-20240620",
       max_tokens: 500,
       messages: [
         {

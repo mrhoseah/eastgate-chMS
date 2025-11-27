@@ -694,7 +694,7 @@ function PublicPresentationViewPageContent() {
             </div>
           )}
 
-          {/* Canvas Backgrounds - Multiple Prezi-style options */}
+          {/* Canvas Backgrounds - Multiple style options */}
           {!isStreamingMode && isPresenting && (
             <>
               {backgroundType === "interactive" && (

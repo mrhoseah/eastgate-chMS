@@ -10,6 +10,7 @@
 */
 
 export const UserRole = {
+  SUPERADMIN: 'SUPERADMIN',
   ADMIN: 'ADMIN',
   PASTOR: 'PASTOR',
   LEADER: 'LEADER',
@@ -17,7 +18,8 @@ export const UserRole = {
   GUEST: 'GUEST',
   FINANCE: 'FINANCE',
   USHER: 'USHER',
-  PROTOCOL: 'PROTOCOL'
+  PROTOCOL: 'PROTOCOL',
+  ACCOUNT_MANAGER: 'ACCOUNT_MANAGER'
 } as const
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
@@ -415,6 +417,43 @@ export const FollowUpStatus = {
 export type FollowUpStatus = (typeof FollowUpStatus)[keyof typeof FollowUpStatus]
 
 
+export const SubscriptionPlan = {
+  FREE: 'FREE',
+  BASIC: 'BASIC',
+  PREMIUM: 'PREMIUM',
+  ENTERPRISE: 'ENTERPRISE'
+} as const
+
+export type SubscriptionPlan = (typeof SubscriptionPlan)[keyof typeof SubscriptionPlan]
+
+
+export const PremiumFeature = {
+  BIOMETRIC_ATTENDANCE: 'BIOMETRIC_ATTENDANCE',
+  ADVANCED_REPORTING: 'ADVANCED_REPORTING',
+  CUSTOM_BRANDING: 'CUSTOM_BRANDING',
+  API_ACCESS: 'API_ACCESS',
+  PRIORITY_SUPPORT: 'PRIORITY_SUPPORT',
+  MULTI_CAMPUS: 'MULTI_CAMPUS',
+  ADVANCED_ANALYTICS: 'ADVANCED_ANALYTICS',
+  AI_POWERED_INSIGHTS: 'AI_POWERED_INSIGHTS',
+  AUTOMATED_WORKFLOWS: 'AUTOMATED_WORKFLOWS',
+  ADVANCED_INTEGRATIONS: 'ADVANCED_INTEGRATIONS',
+  MEMBER_ENGAGEMENT_SCORING: 'MEMBER_ENGAGEMENT_SCORING',
+  PREDICTIVE_ANALYTICS: 'PREDICTIVE_ANALYTICS',
+  BULK_OPERATIONS: 'BULK_OPERATIONS',
+  CUSTOM_FORMS: 'CUSTOM_FORMS',
+  WHITE_LABEL: 'WHITE_LABEL',
+  ADVANCED_SECURITY: 'ADVANCED_SECURITY',
+  DATA_EXPORT_IMPORT: 'DATA_EXPORT_IMPORT',
+  SMS_MESSAGING: 'SMS_MESSAGING',
+  VIDEO_CONFERENCING: 'VIDEO_CONFERENCING',
+  ADVANCED_SCHEDULING: 'ADVANCED_SCHEDULING',
+  MEMBER_DIRECTORY_PRO: 'MEMBER_DIRECTORY_PRO'
+} as const
+
+export type PremiumFeature = (typeof PremiumFeature)[keyof typeof PremiumFeature]
+
+
 export const PrayerRequestStatus = {
   PENDING: 'PENDING',
   ACTIVE: 'ACTIVE',
@@ -446,6 +485,17 @@ export const PrayerRequestPrivacy = {
 } as const
 
 export type PrayerRequestPrivacy = (typeof PrayerRequestPrivacy)[keyof typeof PrayerRequestPrivacy]
+
+
+export const SMSStatus = {
+  PENDING: 'PENDING',
+  SENT: 'SENT',
+  DELIVERED: 'DELIVERED',
+  FAILED: 'FAILED',
+  QUEUED: 'QUEUED'
+} as const
+
+export type SMSStatus = (typeof SMSStatus)[keyof typeof SMSStatus]
 
 
 export const SurveyStatus = {

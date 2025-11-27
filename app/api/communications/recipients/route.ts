@@ -79,8 +79,19 @@ export async function GET(request: NextRequest) {
             id: true,
             name: true,
             description: true,
+            type: true,
+            parentId: true,
+            parent: {
+              select: {
+                id: true,
+                name: true,
+              },
+            },
             _count: {
-              select: { members: true },
+              select: { 
+                members: true,
+                subgroups: true,
+              },
             },
           },
           orderBy: { name: "asc" },

@@ -51,12 +51,35 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
+    let churchId = (session.user as any)?.churchId as string | undefined;
+    if (!churchId) {
+      const activeChurch = await prisma.church.findFirst({
+        where: { isActive: true },
+        select: { id: true },
+      });
+      churchId = activeChurch?.id;
+    }
+
+    if (!churchId) {
+      return NextResponse.json(
+        { error: "Church context not found" },
+        { status: 400 }
+      );
+    }
+
     const body = await request.json();
-    const { message, recipientIds, groupIds, manualNumbers } = body;
+    const { message, recipientIds, groupIds, manualNumbers, recipientType, groupTargetType } = body;
 
     if (!message || message.trim().length === 0) {
       return NextResponse.json(
         { error: "Message is required" },
+        { status: 400 }
+      );
+    }
+
+    if (message.length > 160) {
+      return NextResponse.json(
+        { error: "Message exceeds 160 characters" },
         { status: 400 }
       );
     }
@@ -66,8 +89,32 @@ export async function POST(request: NextRequest) {
     
     // Add group members if groups are selected
     if (groupIds && groupIds.length > 0) {
+      // Fetch all subgroups recursively if needed
+      const getAllSubgroupIds = async (parentIds: string[]): Promise<string[]> => {
+        const subgroups = await prisma.smallGroup.findMany({
+          where: { parentId: { in: parentIds } },
+          select: { id: true },
+        });
+        const subgroupIds = subgroups.map(sg => sg.id);
+        if (subgroupIds.length > 0) {
+          const nestedSubgroups = await getAllSubgroupIds(subgroupIds);
+          return [...subgroupIds, ...nestedSubgroups];
+        }
+        return subgroupIds;
+      };
+
+      // Determine which groups to target based on groupTargetType
+      let targetGroupIds = [...groupIds];
+      
+      // If targeting parent groups with subgroups, include all descendants
+      if (groupTargetType === "parent-with-subgroups") {
+        const subgroupIds = await getAllSubgroupIds(groupIds);
+        targetGroupIds = [...groupIds, ...subgroupIds];
+      }
+
+      // Fetch groups with members
       const groups = await prisma.smallGroup.findMany({
-        where: { id: { in: groupIds } },
+        where: { id: { in: targetGroupIds } },
         include: {
           members: {
             include: {
@@ -85,9 +132,21 @@ export async function POST(request: NextRequest) {
         },
       });
 
+      // Filter members based on groupTargetType
       groups.forEach((group) => {
         group.members.forEach((member) => {
-          if (member.user.phone) {
+          if (!member.user.phone) return;
+
+          // Apply filtering based on target type
+          const shouldInclude = 
+            !groupTargetType || 
+            groupTargetType === "all-members" ||
+            groupTargetType === "parent-with-subgroups" ||
+            (groupTargetType === "leaders-only" && member.isLeader) ||
+            (groupTargetType === "parent-leaders" && member.isLeader && groupIds.includes(group.id)) ||
+            (groupTargetType === "subgroup-leaders" && member.isLeader && !groupIds.includes(group.id));
+
+          if (shouldInclude) {
             allRecipientIds.add(member.user.id);
           }
         });
@@ -132,8 +191,44 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    // Send SMS via Afrika's Talking API
-    const result = await sendBulkSMS(messagesToSend);
+    // Send SMS via Afrika's Talking API using current church's integration settings
+    const result = await sendBulkSMS(messagesToSend, churchId);
+
+    // Log each SMS send attempt
+    const smsLogData = messagesToSend.map((msg, index) => {
+      const sendResult = result.results[index];
+      const groupId = groupIds && groupIds.length > 0 ? groupIds[0] : null;
+      
+      return {
+        churchId,
+        senderId: session.user.id,
+        recipientId: msg.recipientId || null,
+        phoneNumber: msg.to,
+        message: msg.message,
+        status: sendResult?.success ? "SENT" : "FAILED",
+        messageId: sendResult?.messageId || null,
+        errorMessage: sendResult?.error || null,
+        sentAt: sendResult?.success ? new Date() : null,
+        recipientType: recipientType || "individuals",
+        groupId: groupId,
+        metadata: {
+          originalMessage: message,
+          isPersonalized: msg.recipientId !== null,
+          groupTargetType: groupTargetType || null,
+        },
+      };
+    });
+
+    // Bulk create SMS logs
+    try {
+      await prisma.sMSLog.createMany({
+        data: smsLogData,
+        skipDuplicates: true,
+      });
+    } catch (logError) {
+      console.error("Failed to log SMS sends:", logError);
+      // Don't fail the request if logging fails
+    }
 
     if (result.failed > 0 && result.success === 0) {
       // All failed
