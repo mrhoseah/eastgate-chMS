@@ -21,7 +21,15 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
+    const url = new URL(request.url);
+    const { searchParams } = url;
+    const limit = parseInt(searchParams.get("limit") || "20", 10);
+    const offset = parseInt(searchParams.get("offset") || "0", 10);
+    const search = searchParams.get("search") || "";
+
+    const cookieChurchId = request.cookies.get("currentChurchId")?.value;
     let churchId = (session.user as any)?.churchId as string | undefined;
+
     if (!churchId) {
       const activeChurch = await prisma.church.findFirst({
         where: { isActive: true },
@@ -30,19 +38,23 @@ export async function GET(request: NextRequest) {
       churchId = activeChurch?.id;
     }
 
-    if (!churchId) {
-      return NextResponse.json(
-        { error: "Church context not found" },
-        { status: 400 }
-      );
+    if (!churchId && cookieChurchId) {
+      churchId = cookieChurchId;
     }
 
-    const { searchParams } = new URL(request.url);
-    const limit = parseInt(searchParams.get("limit") || "20");
-    const offset = parseInt(searchParams.get("offset") || "0");
-    const search = searchParams.get("search") || "";
+    if (!churchId) {
+      console.warn("SMS history requested without church context");
+      return NextResponse.json({
+        messages: [],
+        pagination: {
+          total: 0,
+          limit,
+          offset,
+          hasMore: false,
+        },
+      });
+    }
 
-    // Build where clause with search
     const whereClause: any = { churchId };
     if (search) {
       whereClause.OR = [
@@ -55,17 +67,10 @@ export async function GET(request: NextRequest) {
       ];
     }
 
-    // Get SMS logs with sender and recipient info
     const smsLogs = await prisma.sMSLog.findMany({
       where: whereClause,
       include: {
-        sender: {
-          select: {
-            id: true,
-            firstName: true,
-            lastName: true,
-          },
-        },
+        sender: { select: { id: true, firstName: true, lastName: true } },
         recipient: {
           select: {
             id: true,
@@ -74,24 +79,20 @@ export async function GET(request: NextRequest) {
             phone: true,
           },
         },
-        group: {
-          select: {
-            id: true,
-            name: true,
-          },
-        },
+        group: { select: { id: true, name: true } },
       },
       orderBy: { createdAt: "desc" },
       take: limit,
       skip: offset,
     });
 
-    // Get total count for pagination
     const totalCount = await prisma.sMSLog.count({ where: whereClause });
 
-    // Group by message and timestamp to show bulk sends together
     const groupedMessages = smsLogs.reduce((acc, log) => {
-      const key = `${log.senderId}-${log.message.substring(0, 50)}-${Math.floor(log.createdAt.getTime() / 60000)}`;
+      const key = `${log.senderId}-${log.message.substring(0, 50)}-${Math.floor(
+        log.createdAt.getTime() / 60000
+      )}`;
+
       if (!acc[key]) {
         acc[key] = {
           id: log.id,
@@ -107,7 +108,7 @@ export async function GET(request: NextRequest) {
           sentAt: log.sentAt,
         };
       }
-      
+
       acc[key].recipients.push({
         id: log.id,
         phoneNumber: log.phoneNumber,
@@ -116,13 +117,13 @@ export async function GET(request: NextRequest) {
         errorMessage: log.errorMessage,
       });
       acc[key].totalRecipients++;
-      
+
       if (log.status === "SENT" || log.status === "DELIVERED") {
         acc[key].successCount++;
       } else if (log.status === "FAILED") {
         acc[key].failedCount++;
       }
-      
+
       return acc;
     }, {} as Record<string, any>);
 

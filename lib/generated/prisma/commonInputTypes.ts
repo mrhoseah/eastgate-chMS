@@ -1251,6 +1251,23 @@ export type EnumFormStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumFormStatusFilter<$PrismaModel>
 }
 
+export type EnumSponsorshipStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SponsorshipStatus | Prisma.EnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSponsorshipStatusFilter<$PrismaModel> | $Enums.SponsorshipStatus
+}
+
+export type EnumSponsorshipStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SponsorshipStatus | Prisma.EnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSponsorshipStatusWithAggregatesFilter<$PrismaModel> | $Enums.SponsorshipStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSponsorshipStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSponsorshipStatusFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -2423,6 +2440,23 @@ export type NestedEnumFormStatusWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumFormStatusFilter<$PrismaModel>
   _max?: Prisma.NestedEnumFormStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSponsorshipStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SponsorshipStatus | Prisma.EnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSponsorshipStatusFilter<$PrismaModel> | $Enums.SponsorshipStatus
+}
+
+export type NestedEnumSponsorshipStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SponsorshipStatus | Prisma.EnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SponsorshipStatus[] | Prisma.ListEnumSponsorshipStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSponsorshipStatusWithAggregatesFilter<$PrismaModel> | $Enums.SponsorshipStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSponsorshipStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSponsorshipStatusFilter<$PrismaModel>
 }
 
 

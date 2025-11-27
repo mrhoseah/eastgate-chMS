@@ -505,6 +505,8 @@ export const ModelName = {
   FormSubmission: 'FormSubmission',
   FormSubmissionAnswer: 'FormSubmissionAnswer',
   MemberConnection: 'MemberConnection',
+  Sponsorship: 'Sponsorship',
+  SponsorshipApplication: 'SponsorshipApplication',
   CasbinRule: 'CasbinRule'
 } as const
 
@@ -521,7 +523,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "fundCategory" | "user" | "socialLogin" | "userSession" | "invitation" | "authAccount" | "session" | "verificationToken" | "activityLog" | "campus" | "smallGroup" | "groupMember" | "groupMeeting" | "groupMeetingRotation" | "groupMeetingAttendance" | "groupDiscussion" | "groupDiscussionReply" | "discipleshipClass" | "discipleshipEnrollment" | "mentorship" | "mentorshipMeeting" | "announcement" | "announcementRead" | "notification" | "messageTemplate" | "servicePlan" | "servicePlanItem" | "serviceAssignment" | "media" | "livestream" | "livestreamChat" | "livestreamAnalytics" | "masterEvent" | "attendanceSession" | "attendanceRecord" | "attendance" | "biometricDevice" | "serviceSession" | "sessionAttendee" | "decision" | "meeting" | "donation" | "givingQRCode" | "recurringDonation" | "expense" | "budget" | "account" | "transaction" | "event" | "eventRegistration" | "eventCheckIn" | "calendarEvent" | "facility" | "facilityBooking" | "volunteerRole" | "volunteerAssignment" | "volunteerShift" | "childrenClass" | "childrenMinistryMember" | "childrenAttendance" | "childrenLesson" | "youthGroup" | "youthGroupMember" | "youthEvent" | "outreach" | "outreachParticipant" | "outreachTestimony" | "communityProject" | "projectDonation" | "projectUpdate" | "document" | "presentation" | "presentationSlide" | "asset" | "assetMaintenance" | "department" | "inventoryItem" | "inventoryTransaction" | "leadershipAssignment" | "staff" | "payroll" | "payslip" | "check" | "guestVisit" | "guestFollowUp" | "leave" | "performanceAppraisal" | "church" | "subscription" | "churchSetting" | "communicationTemplate" | "customField" | "residence" | "prayerRequest" | "prayer" | "prayerRequestUpdate" | "conversation" | "conversationParticipant" | "message" | "messageRead" | "sMSLog" | "survey" | "surveyQuestion" | "surveyResponse" | "surveyResponseAnswer" | "memberEngagementScore" | "workflow" | "workflowAction" | "workflowExecution" | "workflowActionExecution" | "form" | "formField" | "formSubmission" | "formSubmissionAnswer" | "memberConnection" | "casbinRule"
+    modelProps: "fundCategory" | "user" | "socialLogin" | "userSession" | "invitation" | "authAccount" | "session" | "verificationToken" | "activityLog" | "campus" | "smallGroup" | "groupMember" | "groupMeeting" | "groupMeetingRotation" | "groupMeetingAttendance" | "groupDiscussion" | "groupDiscussionReply" | "discipleshipClass" | "discipleshipEnrollment" | "mentorship" | "mentorshipMeeting" | "announcement" | "announcementRead" | "notification" | "messageTemplate" | "servicePlan" | "servicePlanItem" | "serviceAssignment" | "media" | "livestream" | "livestreamChat" | "livestreamAnalytics" | "masterEvent" | "attendanceSession" | "attendanceRecord" | "attendance" | "biometricDevice" | "serviceSession" | "sessionAttendee" | "decision" | "meeting" | "donation" | "givingQRCode" | "recurringDonation" | "expense" | "budget" | "account" | "transaction" | "event" | "eventRegistration" | "eventCheckIn" | "calendarEvent" | "facility" | "facilityBooking" | "volunteerRole" | "volunteerAssignment" | "volunteerShift" | "childrenClass" | "childrenMinistryMember" | "childrenAttendance" | "childrenLesson" | "youthGroup" | "youthGroupMember" | "youthEvent" | "outreach" | "outreachParticipant" | "outreachTestimony" | "communityProject" | "projectDonation" | "projectUpdate" | "document" | "presentation" | "presentationSlide" | "asset" | "assetMaintenance" | "department" | "inventoryItem" | "inventoryTransaction" | "leadershipAssignment" | "staff" | "payroll" | "payslip" | "check" | "guestVisit" | "guestFollowUp" | "leave" | "performanceAppraisal" | "church" | "subscription" | "churchSetting" | "communicationTemplate" | "customField" | "residence" | "prayerRequest" | "prayer" | "prayerRequestUpdate" | "conversation" | "conversationParticipant" | "message" | "messageRead" | "sMSLog" | "survey" | "surveyQuestion" | "surveyResponse" | "surveyResponseAnswer" | "memberEngagementScore" | "workflow" | "workflowAction" | "workflowExecution" | "workflowActionExecution" | "form" | "formField" | "formSubmission" | "formSubmissionAnswer" | "memberConnection" | "sponsorship" | "sponsorshipApplication" | "casbinRule"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -9035,6 +9037,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Sponsorship: {
+      payload: Prisma.$SponsorshipPayload<ExtArgs>
+      fields: Prisma.SponsorshipFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SponsorshipFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SponsorshipFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>
+        }
+        findFirst: {
+          args: Prisma.SponsorshipFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SponsorshipFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>
+        }
+        findMany: {
+          args: Prisma.SponsorshipFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>[]
+        }
+        create: {
+          args: Prisma.SponsorshipCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>
+        }
+        createMany: {
+          args: Prisma.SponsorshipCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SponsorshipCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>[]
+        }
+        delete: {
+          args: Prisma.SponsorshipDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>
+        }
+        update: {
+          args: Prisma.SponsorshipUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>
+        }
+        deleteMany: {
+          args: Prisma.SponsorshipDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SponsorshipUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SponsorshipUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>[]
+        }
+        upsert: {
+          args: Prisma.SponsorshipUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipPayload>
+        }
+        aggregate: {
+          args: Prisma.SponsorshipAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSponsorship>
+        }
+        groupBy: {
+          args: Prisma.SponsorshipGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SponsorshipGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SponsorshipCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SponsorshipCountAggregateOutputType> | number
+        }
+      }
+    }
+    SponsorshipApplication: {
+      payload: Prisma.$SponsorshipApplicationPayload<ExtArgs>
+      fields: Prisma.SponsorshipApplicationFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SponsorshipApplicationFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SponsorshipApplicationFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>
+        }
+        findFirst: {
+          args: Prisma.SponsorshipApplicationFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SponsorshipApplicationFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>
+        }
+        findMany: {
+          args: Prisma.SponsorshipApplicationFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>[]
+        }
+        create: {
+          args: Prisma.SponsorshipApplicationCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>
+        }
+        createMany: {
+          args: Prisma.SponsorshipApplicationCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SponsorshipApplicationCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>[]
+        }
+        delete: {
+          args: Prisma.SponsorshipApplicationDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>
+        }
+        update: {
+          args: Prisma.SponsorshipApplicationUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>
+        }
+        deleteMany: {
+          args: Prisma.SponsorshipApplicationDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SponsorshipApplicationUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SponsorshipApplicationUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>[]
+        }
+        upsert: {
+          args: Prisma.SponsorshipApplicationUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SponsorshipApplicationPayload>
+        }
+        aggregate: {
+          args: Prisma.SponsorshipApplicationAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSponsorshipApplication>
+        }
+        groupBy: {
+          args: Prisma.SponsorshipApplicationGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SponsorshipApplicationGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SponsorshipApplicationCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SponsorshipApplicationCountAggregateOutputType> | number
+        }
+      }
+    }
     CasbinRule: {
       payload: Prisma.$CasbinRulePayload<ExtArgs>
       fields: Prisma.CasbinRuleFieldRefs
@@ -11112,6 +11262,52 @@ export const MemberConnectionScalarFieldEnum = {
 export type MemberConnectionScalarFieldEnum = (typeof MemberConnectionScalarFieldEnum)[keyof typeof MemberConnectionScalarFieldEnum]
 
 
+export const SponsorshipScalarFieldEnum = {
+  id: 'id',
+  churchId: 'churchId',
+  applicationToken: 'applicationToken',
+  status: 'status',
+  periodDays: 'periodDays',
+  isUnlimited: 'isUnlimited',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  appliedAt: 'appliedAt',
+  reviewedAt: 'reviewedAt',
+  approvedById: 'approvedById',
+  rejectionReason: 'rejectionReason',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SponsorshipScalarFieldEnum = (typeof SponsorshipScalarFieldEnum)[keyof typeof SponsorshipScalarFieldEnum]
+
+
+export const SponsorshipApplicationScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  churchName: 'churchName',
+  denomination: 'denomination',
+  contactName: 'contactName',
+  contactEmail: 'contactEmail',
+  contactPhone: 'contactPhone',
+  address: 'address',
+  city: 'city',
+  state: 'state',
+  country: 'country',
+  zipCode: 'zipCode',
+  website: 'website',
+  memberCount: 'memberCount',
+  reason: 'reason',
+  additionalInfo: 'additionalInfo',
+  submittedAt: 'submittedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SponsorshipApplicationScalarFieldEnum = (typeof SponsorshipApplicationScalarFieldEnum)[keyof typeof SponsorshipApplicationScalarFieldEnum]
+
+
 export const CasbinRuleScalarFieldEnum = {
   id: 'id',
   ptype: 'ptype',
@@ -11942,6 +12138,20 @@ export type EnumFormStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
 export type ListEnumFormStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FormStatus[]'>
     
 
+
+/**
+ * Reference to a field of type 'SponsorshipStatus'
+ */
+export type EnumSponsorshipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SponsorshipStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SponsorshipStatus[]'
+ */
+export type ListEnumSponsorshipStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SponsorshipStatus[]'>
+    
+
 /**
  * Batch Payload for updateMany & deleteMany & createMany
  */
@@ -12144,6 +12354,8 @@ export type GlobalOmitConfig = {
   formSubmission?: Prisma.FormSubmissionOmit
   formSubmissionAnswer?: Prisma.FormSubmissionAnswerOmit
   memberConnection?: Prisma.MemberConnectionOmit
+  sponsorship?: Prisma.SponsorshipOmit
+  sponsorshipApplication?: Prisma.SponsorshipApplicationOmit
   casbinRule?: Prisma.CasbinRuleOmit
 }
 

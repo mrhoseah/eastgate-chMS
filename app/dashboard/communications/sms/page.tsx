@@ -137,14 +137,13 @@ export default function SMSPage() {
       alert(`Successfully sent ${data.sent} SMS message(s)!`);
       
       // Refresh history
-      fetchRecentMessages();
+      await fetchSmsHistory();
       
       // Reset form
       setMessage("");
       setSelectedRecipients([]);
       setSelectedGroups([]);
       setManualNumbers("");
-      await fetchSmsHistory();
     } catch (error: any) {
       console.error("Error sending SMS:", error);
       alert(error.message || "Failed to send SMS. Please try again.");

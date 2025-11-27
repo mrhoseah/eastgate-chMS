@@ -317,6 +317,7 @@ export type ChurchWhereInput = {
   checks?: Prisma.CheckListRelationFilter
   subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
   smsLogs?: Prisma.SMSLogListRelationFilter
+  sponsorship?: Prisma.XOR<Prisma.SponsorshipNullableScalarRelationFilter, Prisma.SponsorshipWhereInput> | null
 }
 
 export type ChurchOrderByWithRelationInput = {
@@ -355,6 +356,7 @@ export type ChurchOrderByWithRelationInput = {
   checks?: Prisma.CheckOrderByRelationAggregateInput
   subscription?: Prisma.SubscriptionOrderByWithRelationInput
   smsLogs?: Prisma.SMSLogOrderByRelationAggregateInput
+  sponsorship?: Prisma.SponsorshipOrderByWithRelationInput
 }
 
 export type ChurchWhereUniqueInput = Prisma.AtLeast<{
@@ -396,6 +398,7 @@ export type ChurchWhereUniqueInput = Prisma.AtLeast<{
   checks?: Prisma.CheckListRelationFilter
   subscription?: Prisma.XOR<Prisma.SubscriptionNullableScalarRelationFilter, Prisma.SubscriptionWhereInput> | null
   smsLogs?: Prisma.SMSLogListRelationFilter
+  sponsorship?: Prisma.XOR<Prisma.SponsorshipNullableScalarRelationFilter, Prisma.SponsorshipWhereInput> | null
 }, "id">
 
 export type ChurchOrderByWithAggregationInput = {
@@ -486,6 +489,7 @@ export type ChurchCreateInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateInput = {
@@ -524,6 +528,7 @@ export type ChurchUncheckedCreateInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUpdateInput = {
@@ -562,6 +567,7 @@ export type ChurchUpdateInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateInput = {
@@ -600,6 +606,7 @@ export type ChurchUncheckedUpdateInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateManyInput = {
@@ -955,6 +962,20 @@ export type ChurchUpdateOneRequiredWithoutSmsLogsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutSmsLogsInput, Prisma.ChurchUpdateWithoutSmsLogsInput>, Prisma.ChurchUncheckedUpdateWithoutSmsLogsInput>
 }
 
+export type ChurchCreateNestedOneWithoutSponsorshipInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutSponsorshipInput, Prisma.ChurchUncheckedCreateWithoutSponsorshipInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSponsorshipInput
+  connect?: Prisma.ChurchWhereUniqueInput
+}
+
+export type ChurchUpdateOneRequiredWithoutSponsorshipNestedInput = {
+  create?: Prisma.XOR<Prisma.ChurchCreateWithoutSponsorshipInput, Prisma.ChurchUncheckedCreateWithoutSponsorshipInput>
+  connectOrCreate?: Prisma.ChurchCreateOrConnectWithoutSponsorshipInput
+  upsert?: Prisma.ChurchUpsertWithoutSponsorshipInput
+  connect?: Prisma.ChurchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ChurchUpdateToOneWithWhereWithoutSponsorshipInput, Prisma.ChurchUpdateWithoutSponsorshipInput>, Prisma.ChurchUncheckedUpdateWithoutSponsorshipInput>
+}
+
 export type ChurchCreateWithoutCampusesInput = {
   id?: string
   name: string
@@ -990,6 +1011,7 @@ export type ChurchCreateWithoutCampusesInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutCampusesInput = {
@@ -1027,6 +1049,7 @@ export type ChurchUncheckedCreateWithoutCampusesInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutCampusesInput = {
@@ -1080,6 +1103,7 @@ export type ChurchUpdateWithoutCampusesInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutCampusesInput = {
@@ -1117,6 +1141,7 @@ export type ChurchUncheckedUpdateWithoutCampusesInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutBiometricDevicesInput = {
@@ -1154,6 +1179,7 @@ export type ChurchCreateWithoutBiometricDevicesInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutBiometricDevicesInput = {
@@ -1191,6 +1217,7 @@ export type ChurchUncheckedCreateWithoutBiometricDevicesInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutBiometricDevicesInput = {
@@ -1244,6 +1271,7 @@ export type ChurchUpdateWithoutBiometricDevicesInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutBiometricDevicesInput = {
@@ -1281,6 +1309,7 @@ export type ChurchUncheckedUpdateWithoutBiometricDevicesInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutBudgetsInput = {
@@ -1318,6 +1347,7 @@ export type ChurchCreateWithoutBudgetsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutBudgetsInput = {
@@ -1355,6 +1385,7 @@ export type ChurchUncheckedCreateWithoutBudgetsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutBudgetsInput = {
@@ -1408,6 +1439,7 @@ export type ChurchUpdateWithoutBudgetsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutBudgetsInput = {
@@ -1445,6 +1477,7 @@ export type ChurchUncheckedUpdateWithoutBudgetsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutAccountsInput = {
@@ -1482,6 +1515,7 @@ export type ChurchCreateWithoutAccountsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutAccountsInput = {
@@ -1519,6 +1553,7 @@ export type ChurchUncheckedCreateWithoutAccountsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutAccountsInput = {
@@ -1572,6 +1607,7 @@ export type ChurchUpdateWithoutAccountsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutAccountsInput = {
@@ -1609,6 +1645,7 @@ export type ChurchUncheckedUpdateWithoutAccountsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutCalendarEventsInput = {
@@ -1646,6 +1683,7 @@ export type ChurchCreateWithoutCalendarEventsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutCalendarEventsInput = {
@@ -1683,6 +1721,7 @@ export type ChurchUncheckedCreateWithoutCalendarEventsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutCalendarEventsInput = {
@@ -1736,6 +1775,7 @@ export type ChurchUpdateWithoutCalendarEventsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutCalendarEventsInput = {
@@ -1773,6 +1813,7 @@ export type ChurchUncheckedUpdateWithoutCalendarEventsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutDocumentsInput = {
@@ -1810,6 +1851,7 @@ export type ChurchCreateWithoutDocumentsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutDocumentsInput = {
@@ -1847,6 +1889,7 @@ export type ChurchUncheckedCreateWithoutDocumentsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutDocumentsInput = {
@@ -1900,6 +1943,7 @@ export type ChurchUpdateWithoutDocumentsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutDocumentsInput = {
@@ -1937,6 +1981,7 @@ export type ChurchUncheckedUpdateWithoutDocumentsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutPresentationsInput = {
@@ -1974,6 +2019,7 @@ export type ChurchCreateWithoutPresentationsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutPresentationsInput = {
@@ -2011,6 +2057,7 @@ export type ChurchUncheckedCreateWithoutPresentationsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutPresentationsInput = {
@@ -2064,6 +2111,7 @@ export type ChurchUpdateWithoutPresentationsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutPresentationsInput = {
@@ -2101,6 +2149,7 @@ export type ChurchUncheckedUpdateWithoutPresentationsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutAssetsInput = {
@@ -2138,6 +2187,7 @@ export type ChurchCreateWithoutAssetsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutAssetsInput = {
@@ -2175,6 +2225,7 @@ export type ChurchUncheckedCreateWithoutAssetsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutAssetsInput = {
@@ -2228,6 +2279,7 @@ export type ChurchUpdateWithoutAssetsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutAssetsInput = {
@@ -2265,6 +2317,7 @@ export type ChurchUncheckedUpdateWithoutAssetsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutPayrollsInput = {
@@ -2302,6 +2355,7 @@ export type ChurchCreateWithoutPayrollsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutPayrollsInput = {
@@ -2339,6 +2393,7 @@ export type ChurchUncheckedCreateWithoutPayrollsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutPayrollsInput = {
@@ -2392,6 +2447,7 @@ export type ChurchUpdateWithoutPayrollsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutPayrollsInput = {
@@ -2429,6 +2485,7 @@ export type ChurchUncheckedUpdateWithoutPayrollsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutChecksInput = {
@@ -2466,6 +2523,7 @@ export type ChurchCreateWithoutChecksInput = {
   biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutChecksInput = {
@@ -2503,6 +2561,7 @@ export type ChurchUncheckedCreateWithoutChecksInput = {
   biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutChecksInput = {
@@ -2556,6 +2615,7 @@ export type ChurchUpdateWithoutChecksInput = {
   biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutChecksInput = {
@@ -2593,6 +2653,7 @@ export type ChurchUncheckedUpdateWithoutChecksInput = {
   biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutSubscriptionInput = {
@@ -2630,6 +2691,7 @@ export type ChurchCreateWithoutSubscriptionInput = {
   biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutSubscriptionInput = {
@@ -2667,6 +2729,7 @@ export type ChurchUncheckedCreateWithoutSubscriptionInput = {
   biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutSubscriptionInput = {
@@ -2720,6 +2783,7 @@ export type ChurchUpdateWithoutSubscriptionInput = {
   biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutSubscriptionInput = {
@@ -2757,6 +2821,7 @@ export type ChurchUncheckedUpdateWithoutSubscriptionInput = {
   biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutSettingsInput = {
@@ -2794,6 +2859,7 @@ export type ChurchCreateWithoutSettingsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutSettingsInput = {
@@ -2831,6 +2897,7 @@ export type ChurchUncheckedCreateWithoutSettingsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutSettingsInput = {
@@ -2884,6 +2951,7 @@ export type ChurchUpdateWithoutSettingsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutSettingsInput = {
@@ -2921,6 +2989,7 @@ export type ChurchUncheckedUpdateWithoutSettingsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutCustomFieldsInput = {
@@ -2958,6 +3027,7 @@ export type ChurchCreateWithoutCustomFieldsInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutCustomFieldsInput = {
@@ -2995,6 +3065,7 @@ export type ChurchUncheckedCreateWithoutCustomFieldsInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutCustomFieldsInput = {
@@ -3048,6 +3119,7 @@ export type ChurchUpdateWithoutCustomFieldsInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutCustomFieldsInput = {
@@ -3085,6 +3157,7 @@ export type ChurchUncheckedUpdateWithoutCustomFieldsInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutResidencesInput = {
@@ -3122,6 +3195,7 @@ export type ChurchCreateWithoutResidencesInput = {
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutResidencesInput = {
@@ -3159,6 +3233,7 @@ export type ChurchUncheckedCreateWithoutResidencesInput = {
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
   smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutResidencesInput = {
@@ -3212,6 +3287,7 @@ export type ChurchUpdateWithoutResidencesInput = {
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutResidencesInput = {
@@ -3249,6 +3325,7 @@ export type ChurchUncheckedUpdateWithoutResidencesInput = {
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
   smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchCreateWithoutSmsLogsInput = {
@@ -3286,6 +3363,7 @@ export type ChurchCreateWithoutSmsLogsInput = {
   biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchUncheckedCreateWithoutSmsLogsInput = {
@@ -3323,6 +3401,7 @@ export type ChurchUncheckedCreateWithoutSmsLogsInput = {
   biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
   checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
   subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  sponsorship?: Prisma.SponsorshipUncheckedCreateNestedOneWithoutChurchInput
 }
 
 export type ChurchCreateOrConnectWithoutSmsLogsInput = {
@@ -3376,6 +3455,7 @@ export type ChurchUpdateWithoutSmsLogsInput = {
   biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUpdateOneWithoutChurchNestedInput
 }
 
 export type ChurchUncheckedUpdateWithoutSmsLogsInput = {
@@ -3413,6 +3493,175 @@ export type ChurchUncheckedUpdateWithoutSmsLogsInput = {
   biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
   checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
   subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  sponsorship?: Prisma.SponsorshipUncheckedUpdateOneWithoutChurchNestedInput
+}
+
+export type ChurchCreateWithoutSponsorshipInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogCreateNestedManyWithoutChurchInput
+}
+
+export type ChurchUncheckedCreateWithoutSponsorshipInput = {
+  id?: string
+  name: string
+  denomination?: string | null
+  logo?: string | null
+  website?: string | null
+  email?: string | null
+  phone?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  zipCode?: string | null
+  country?: string | null
+  timezone?: string
+  language?: string
+  currency?: string
+  isActive?: boolean
+  isSponsored?: boolean
+  unlimitedUse?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  campuses?: Prisma.CampusUncheckedCreateNestedManyWithoutChurchInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutChurchInput
+  budgets?: Prisma.BudgetUncheckedCreateNestedManyWithoutChurchInput
+  calendarEvents?: Prisma.CalendarEventUncheckedCreateNestedManyWithoutChurchInput
+  documents?: Prisma.DocumentUncheckedCreateNestedManyWithoutChurchInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutChurchInput
+  assets?: Prisma.AssetUncheckedCreateNestedManyWithoutChurchInput
+  settings?: Prisma.ChurchSettingUncheckedCreateNestedManyWithoutChurchInput
+  customFields?: Prisma.CustomFieldUncheckedCreateNestedManyWithoutChurchInput
+  residences?: Prisma.ResidenceUncheckedCreateNestedManyWithoutChurchInput
+  payrolls?: Prisma.PayrollUncheckedCreateNestedManyWithoutChurchInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedCreateNestedManyWithoutChurchInput
+  checks?: Prisma.CheckUncheckedCreateNestedManyWithoutChurchInput
+  subscription?: Prisma.SubscriptionUncheckedCreateNestedOneWithoutChurchInput
+  smsLogs?: Prisma.SMSLogUncheckedCreateNestedManyWithoutChurchInput
+}
+
+export type ChurchCreateOrConnectWithoutSponsorshipInput = {
+  where: Prisma.ChurchWhereUniqueInput
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutSponsorshipInput, Prisma.ChurchUncheckedCreateWithoutSponsorshipInput>
+}
+
+export type ChurchUpsertWithoutSponsorshipInput = {
+  update: Prisma.XOR<Prisma.ChurchUpdateWithoutSponsorshipInput, Prisma.ChurchUncheckedUpdateWithoutSponsorshipInput>
+  create: Prisma.XOR<Prisma.ChurchCreateWithoutSponsorshipInput, Prisma.ChurchUncheckedCreateWithoutSponsorshipInput>
+  where?: Prisma.ChurchWhereInput
+}
+
+export type ChurchUpdateToOneWithWhereWithoutSponsorshipInput = {
+  where?: Prisma.ChurchWhereInput
+  data: Prisma.XOR<Prisma.ChurchUpdateWithoutSponsorshipInput, Prisma.ChurchUncheckedUpdateWithoutSponsorshipInput>
+}
+
+export type ChurchUpdateWithoutSponsorshipInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUpdateManyWithoutChurchNestedInput
+}
+
+export type ChurchUncheckedUpdateWithoutSponsorshipInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  denomination?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  website?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  timezone?: Prisma.StringFieldUpdateOperationsInput | string
+  language?: Prisma.StringFieldUpdateOperationsInput | string
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  isSponsored?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  unlimitedUse?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  campuses?: Prisma.CampusUncheckedUpdateManyWithoutChurchNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutChurchNestedInput
+  budgets?: Prisma.BudgetUncheckedUpdateManyWithoutChurchNestedInput
+  calendarEvents?: Prisma.CalendarEventUncheckedUpdateManyWithoutChurchNestedInput
+  documents?: Prisma.DocumentUncheckedUpdateManyWithoutChurchNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutChurchNestedInput
+  assets?: Prisma.AssetUncheckedUpdateManyWithoutChurchNestedInput
+  settings?: Prisma.ChurchSettingUncheckedUpdateManyWithoutChurchNestedInput
+  customFields?: Prisma.CustomFieldUncheckedUpdateManyWithoutChurchNestedInput
+  residences?: Prisma.ResidenceUncheckedUpdateManyWithoutChurchNestedInput
+  payrolls?: Prisma.PayrollUncheckedUpdateManyWithoutChurchNestedInput
+  biometricDevices?: Prisma.BiometricDeviceUncheckedUpdateManyWithoutChurchNestedInput
+  checks?: Prisma.CheckUncheckedUpdateManyWithoutChurchNestedInput
+  subscription?: Prisma.SubscriptionUncheckedUpdateOneWithoutChurchNestedInput
+  smsLogs?: Prisma.SMSLogUncheckedUpdateManyWithoutChurchNestedInput
 }
 
 
@@ -3599,6 +3848,7 @@ export type ChurchSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   checks?: boolean | Prisma.Church$checksArgs<ExtArgs>
   subscription?: boolean | Prisma.Church$subscriptionArgs<ExtArgs>
   smsLogs?: boolean | Prisma.Church$smsLogsArgs<ExtArgs>
+  sponsorship?: boolean | Prisma.Church$sponsorshipArgs<ExtArgs>
   _count?: boolean | Prisma.ChurchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["church"]>
 
@@ -3688,6 +3938,7 @@ export type ChurchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   checks?: boolean | Prisma.Church$checksArgs<ExtArgs>
   subscription?: boolean | Prisma.Church$subscriptionArgs<ExtArgs>
   smsLogs?: boolean | Prisma.Church$smsLogsArgs<ExtArgs>
+  sponsorship?: boolean | Prisma.Church$sponsorshipArgs<ExtArgs>
   _count?: boolean | Prisma.ChurchCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ChurchIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -3711,6 +3962,7 @@ export type $ChurchPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     checks: Prisma.$CheckPayload<ExtArgs>[]
     subscription: Prisma.$SubscriptionPayload<ExtArgs> | null
     smsLogs: Prisma.$SMSLogPayload<ExtArgs>[]
+    sponsorship: Prisma.$SponsorshipPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -4142,6 +4394,7 @@ export interface Prisma__ChurchClient<T, Null = never, ExtArgs extends runtime.T
   checks<T extends Prisma.Church$checksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$checksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CheckPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   subscription<T extends Prisma.Church$subscriptionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$subscriptionArgs<ExtArgs>>): Prisma.Prisma__SubscriptionClient<runtime.Types.Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   smsLogs<T extends Prisma.Church$smsLogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$smsLogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  sponsorship<T extends Prisma.Church$sponsorshipArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Church$sponsorshipArgs<ExtArgs>>): Prisma.Prisma__SponsorshipClient<runtime.Types.Result.GetResult<Prisma.$SponsorshipPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4931,6 +5184,25 @@ export type Church$smsLogsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.SMSLogScalarFieldEnum | Prisma.SMSLogScalarFieldEnum[]
+}
+
+/**
+ * Church.sponsorship
+ */
+export type Church$sponsorshipArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sponsorship
+   */
+  select?: Prisma.SponsorshipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sponsorship
+   */
+  omit?: Prisma.SponsorshipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SponsorshipInclude<ExtArgs> | null
+  where?: Prisma.SponsorshipWhereInput
 }
 
 /**

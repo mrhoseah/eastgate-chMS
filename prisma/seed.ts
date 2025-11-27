@@ -14,7 +14,7 @@ async function createUserWithCognito(
   firstName: string,
   lastName: string,
   phone?: string,
-  role: "ADMIN" | "PASTOR" | "LEADER" | "MEMBER" | "GUEST" = "GUEST",
+  role: "SUPERADMIN" | "ADMIN" | "PASTOR" | "LEADER" | "MEMBER" | "GUEST" = "GUEST",
   canLogin: boolean = false
 ) {
   // Create user in Cognito first (if AWS credentials are configured)
@@ -70,9 +70,9 @@ async function createUserWithCognito(
     console.log(`ℹ️  User already exists in database: ${email}`);
     console.log(`   Current role: ${existingUser.role}, Current canLogin: ${existingUser.canLogin}`);
     // Update user to ensure proper settings
-    // For ADMIN role, always enable canLogin
+    // For SUPERADMIN or ADMIN role, always enable canLogin
     // For other roles, use the canLogin parameter
-    const shouldEnableLogin = role === "ADMIN" || canLogin;
+    const shouldEnableLogin = role === "SUPERADMIN" || role === "ADMIN" || canLogin;
     const updated = await prisma.user.update({
       where: { id: existingUser.id },
       data: {
@@ -88,9 +88,9 @@ async function createUserWithCognito(
   }
 
   // Create user in database
-  // For ADMIN role, always enable canLogin
+  // For SUPERADMIN or ADMIN role, always enable canLogin
   // For other roles, use the canLogin parameter
-  const shouldEnableLogin = role === "ADMIN" || canLogin;
+  const shouldEnableLogin = role === "SUPERADMIN" || role === "ADMIN" || canLogin;
   const user = await prisma.user.create({
     data: {
       email,
@@ -112,6 +112,67 @@ async function createUserWithCognito(
 async function main() {
   console.log("🌱 Seeding database...\n");
 
+  // Create East Gate Chapel Church
+  console.log("🏛️  Creating East Gate Chapel church...\n");
+  
+  let eastGateChurch;
+  const existingChurch = await prisma.church.findFirst({
+    where: { name: "East Gate Chapel" },
+  });
+
+  if (existingChurch) {
+    console.log("ℹ️  East Gate Chapel already exists in database");
+    eastGateChurch = existingChurch;
+  } else {
+    eastGateChurch = await prisma.church.create({
+      data: {
+        name: "East Gate Chapel",
+        denomination: "Pentecostal",
+        email: "info@eastgatechapel.org",
+        phone: "+254715070203",
+        address: "Nairobi, Kenya",
+        city: "Nairobi",
+        country: "Kenya",
+        timezone: "Africa/Nairobi",
+        language: "en",
+        currency: "KES",
+        isActive: true,
+        isSponsored: true,
+        unlimitedUse: true,
+      },
+    });
+    console.log(`✅ East Gate Chapel created with ID: ${eastGateChurch.id}\n`);
+  }
+
+  // Create Main Campus for East Gate Chapel
+  console.log("🏫 Creating Main Campus...\n");
+  
+  let mainCampus;
+  const existingCampus = await prisma.campus.findFirst({
+    where: { 
+      churchId: eastGateChurch.id,
+      name: "Main Campus" 
+    },
+  });
+
+  if (existingCampus) {
+    console.log("ℹ️  Main Campus already exists");
+    mainCampus = existingCampus;
+  } else {
+    mainCampus = await prisma.campus.create({
+      data: {
+        name: "Main Campus",
+        churchId: eastGateChurch.id,
+        address: "Nairobi, Kenya",
+        city: "Nairobi",
+        phone: "+254715070203",
+        email: "main@eastgatechapel.org",
+        isActive: true,
+      },
+    });
+    console.log(`✅ Main Campus created with ID: ${mainCampus.id}\n`);
+  }
+
   // Define users to seed
   const usersToSeed = [
     {
@@ -120,8 +181,19 @@ async function main() {
       firstName: "Hoseah",
       lastName: "Kiplang'at",
       phone: "+254715070203",
+      role: "SUPERADMIN" as const,
+      canLogin: true,
+      campusId: null, // System admin not tied to any church
+    },
+    {
+      email: "admin@eastgatechapel.org",
+      password: "EastGate@2025",
+      firstName: "Church",
+      lastName: "Admin",
+      phone: "+254700000000",
       role: "ADMIN" as const,
       canLogin: true,
+      campusId: mainCampus.id,
     },
     // Add more users here as needed
     // {
@@ -132,6 +204,7 @@ async function main() {
     //   phone: "+254700000000",
     //   role: "PASTOR" as const,
     //   canLogin: true,
+    //   campusId: mainCampus.id,
     // },
   ];
 
@@ -149,8 +222,20 @@ async function main() {
         userData.canLogin
       );
 
+      // Update user with campus association (if applicable)
+      if (userData.campusId) {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { 
+            campusId: userData.campusId,
+            memberSince: new Date(),
+          },
+        });
+      }
+
       console.log(`   ✅ ${user.firstName} ${user.lastName} (${user.email})`);
       console.log(`      Role: ${user.role}`);
+      console.log(`      Campus: ${userData.campusId ? 'Main Campus (East Gate Chapel)' : 'System Admin (No Church)'}`);
       console.log(`      Can Login: ${user.canLogin}`);
       console.log(`      Password: ${userData.password}\n`);
     } catch (error: any) {

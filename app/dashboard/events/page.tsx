@@ -287,39 +287,54 @@ export default function EventsPage() {
   };
 
   return (
-    <div className="p-6 sm:p-8 lg:p-10 xl:p-12 space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Events</h1>
-          <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            Manage church events and activities
-          </p>
-        </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button
-              onClick={() => {
-                setEditingEvent(null);
-                setFormData({
-                  title: "",
-                  description: "",
-                  type: "OTHER",
-                  status: "DRAFT",
-                  startDate: "",
-                  endDate: "",
-                  location: "",
-                  capacity: "",
-                  isPublic: "true",
-                  requiresRegistration: "false",
-                  isPaid: "false",
-                  price: "",
-                  posterUrl: "",
-                });
-              }}
-            >
-              Add Event
-            </Button>
-          </DialogTrigger>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30 dark:from-gray-950 dark:via-blue-950/10 dark:to-indigo-950/10 p-6 sm:p-8 lg:p-10 xl:p-12 space-y-8">
+      {/* Header Section */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl opacity-5 dark:opacity-10"></div>
+        <div className="relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-3xl shadow-xl border-2 border-blue-100 dark:border-blue-900/50 p-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <Calendar className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Events Management
+                </h1>
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                  Organize and manage church events seamlessly
+                </p>
+              </div>
+            </div>
+            <Dialog open={open} onOpenChange={setOpen}>
+              <DialogTrigger asChild>
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() => {
+                    setEditingEvent(null);
+                    setFormData({
+                      title: "",
+                      description: "",
+                      type: "OTHER",
+                      status: "DRAFT",
+                      startDate: "",
+                      endDate: "",
+                      location: "",
+                      capacity: "",
+                      isPublic: "true",
+                      requiresRegistration: "false",
+                      isPaid: "false",
+                      price: "",
+                      posterUrl: "",
+                    });
+                  }}
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Create New Event
+                </Button>
+              </DialogTrigger>
           <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>
@@ -533,53 +548,72 @@ export default function EventsPage() {
             </form>
           </DialogContent>
         </Dialog>
+          </div>
+        </div>
       </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="calendar">
-            <Calendar className="w-4 h-4 mr-2" />
-            Calendar View
-          </TabsTrigger>
-          <TabsTrigger value="list">
-            <List className="w-4 h-4 mr-2" />
-            List View
-          </TabsTrigger>
-        </TabsList>
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-8">
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl shadow-lg border-2 border-gray-100 dark:border-gray-800 p-2">
+          <TabsList className="grid w-full grid-cols-2 bg-gray-100 dark:bg-gray-800 rounded-xl p-1">
+            <TabsTrigger 
+              value="calendar" 
+              className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
+            >
+              <Calendar className="w-4 h-4 mr-2" />
+              Calendar View
+            </TabsTrigger>
+            <TabsTrigger 
+              value="list"
+              className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
+            >
+              <List className="w-4 h-4 mr-2" />
+              List View
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
-        <TabsContent value="calendar" className="space-y-6">
+        <TabsContent value="calendar" className="space-y-8">
           {/* Quick Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <Card>
-              <CardContent className="pt-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <Card className="relative overflow-hidden border-2 border-blue-100 dark:border-blue-900/50 hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full -mr-16 -mt-16 opacity-10"></div>
+              <CardContent className="pt-6 relative">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Total Events</p>
-                    <p className="text-2xl font-bold">{events.length}</p>
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Total Events</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">{events.length}</p>
                   </div>
-                  <Calendar className="w-8 h-8 text-blue-500" />
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg">
+                    <Calendar className="w-7 h-7 text-white" />
+                  </div>
                 </div>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-4">
+            
+            <Card className="relative overflow-hidden border-2 border-green-100 dark:border-green-900/50 hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400 to-green-600 rounded-full -mr-16 -mt-16 opacity-10"></div>
+              <CardContent className="pt-6 relative">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Published</p>
-                    <p className="text-2xl font-bold text-green-600">
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Published</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">
                       {events.filter((e) => e.status === "PUBLISHED").length}
                     </p>
                   </div>
-                  <Badge variant="default" className="bg-green-500">Active</Badge>
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center shadow-lg">
+                    <Badge className="text-lg font-bold bg-white text-green-600 hover:bg-white">✓</Badge>
+                  </div>
                 </div>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-4">
+            
+            <Card className="relative overflow-hidden border-2 border-indigo-100 dark:border-indigo-900/50 hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full -mr-16 -mt-16 opacity-10"></div>
+              <CardContent className="pt-6 relative">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">This Month</p>
-                    <p className="text-2xl font-bold text-blue-600">
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">This Month</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-indigo-700 bg-clip-text text-transparent">
                       {
                         events.filter((e) => {
                           const eventDate = new Date(e.startDate);
@@ -592,16 +626,20 @@ export default function EventsPage() {
                       }
                     </p>
                   </div>
-                  <Calendar className="w-8 h-8 text-blue-500" />
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-indigo-600 flex items-center justify-center shadow-lg">
+                    <Calendar className="w-7 h-7 text-white" />
+                  </div>
                 </div>
               </CardContent>
             </Card>
-            <Card>
-              <CardContent className="pt-4">
+            
+            <Card className="relative overflow-hidden border-2 border-purple-100 dark:border-purple-900/50 hover:shadow-xl transition-all duration-300 hover:scale-105 transform">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full -mr-16 -mt-16 opacity-10"></div>
+              <CardContent className="pt-6 relative">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Upcoming</p>
-                    <p className="text-2xl font-bold text-purple-600">
+                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Upcoming</p>
+                    <p className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-700 bg-clip-text text-transparent">
                       {
                         events.filter((e) => {
                           const eventDate = new Date(e.startDate);
@@ -610,17 +648,26 @@ export default function EventsPage() {
                       }
                     </p>
                   </div>
-                  <Calendar className="w-8 h-8 text-purple-500" />
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center shadow-lg">
+                    <Calendar className="w-7 h-7 text-white" />
+                  </div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
           {/* Calendar with Filters */}
-          <Card>
-            <CardHeader>
+          <Card className="border-2 border-gray-100 dark:border-gray-800 shadow-xl rounded-2xl overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border-b-2 border-gray-100 dark:border-gray-800">
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <CardTitle>Event Calendar</CardTitle>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                    <Calendar className="w-5 h-5 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Event Calendar
+                  </CardTitle>
+                </div>
                 <div className="flex flex-wrap items-center gap-2">
                   <Select
                     value={typeFilter}
@@ -628,7 +675,7 @@ export default function EventsPage() {
                       setTypeFilter(value);
                     }}
                   >
-                    <SelectTrigger className="w-40">
+                    <SelectTrigger className="w-48 border-2 border-gray-200 dark:border-gray-700 shadow-sm hover:border-blue-400 transition-colors">
                       <SelectValue placeholder="Filter by type" />
                     </SelectTrigger>
                     <SelectContent>
@@ -645,13 +692,13 @@ export default function EventsPage() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="pt-4">
+            <CardContent className="pt-6">
               {/* Event Type Legend */}
-              <div className="mb-4 pb-4 border-b">
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Event Types:
+              <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/20 dark:to-purple-950/20 rounded-xl border-2 border-blue-100 dark:border-blue-900/50">
+                <p className="text-sm font-bold text-gray-700 dark:text-gray-300 mb-3 uppercase tracking-wide">
+                  Event Types Legend:
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-4">
                   {[
                     { type: "SERVICE", color: "#3B82F6", label: "Service" },
                     { type: "MEETING", color: "#10B981", label: "Meeting" },
@@ -661,12 +708,12 @@ export default function EventsPage() {
                     { type: "TRAINING", color: "#06B6D4", label: "Training" },
                     { type: "OTHER", color: "#6B7280", label: "Other" },
                   ].map((item) => (
-                    <div key={item.type} className="flex items-center gap-2">
+                    <div key={item.type} className="flex items-center gap-2 px-3 py-1.5 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
                       <div
-                        className="w-3 h-3 rounded-full"
+                        className="w-4 h-4 rounded-full shadow-md"
                         style={{ backgroundColor: item.color }}
                       />
-                      <span className="text-xs text-gray-600 dark:text-gray-400">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {item.label}
                       </span>
                     </div>
@@ -690,101 +737,150 @@ export default function EventsPage() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="list" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <div className="flex justify-between items-center">
-                <CardTitle>All Events</CardTitle>
+        <TabsContent value="list" className="space-y-8">
+          <Card className="border-2 border-gray-100 dark:border-gray-800 shadow-xl rounded-2xl overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border-b-2 border-gray-100 dark:border-gray-800">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                    <List className="w-5 h-5 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    All Events
+                  </CardTitle>
+                </div>
                 <Input
-                  placeholder="Search events..."
+                  placeholder="🔍 Search events..."
                   value={search}
                   onChange={(e) => {
                     setSearch(e.target.value);
                     setPage(1);
                   }}
-                  className="max-w-sm"
+                  className="max-w-sm border-2 border-gray-200 dark:border-gray-700 shadow-sm focus:border-blue-400 transition-colors"
                 />
               </div>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-0">
               {loading ? (
-                <div className="text-center py-8">Loading...</div>
+                <div className="text-center py-12">
+                  <div className="inline-block w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                  <p className="mt-4 text-gray-600 dark:text-gray-400">Loading events...</p>
+                </div>
+              ) : events.length === 0 ? (
+                <div className="text-center py-16">
+                  <Calendar className="w-16 h-16 mx-auto text-gray-400 mb-4" />
+                  <p className="text-gray-600 dark:text-gray-400 text-lg">No events found</p>
+                </div>
               ) : (
                 <>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Title</TableHead>
-                        <TableHead>Type</TableHead>
-                        <TableHead>Start Date</TableHead>
-                        <TableHead>Status</TableHead>
-                        <TableHead>Going</TableHead>
-                        <TableHead>Actions</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {events.map((event) => (
-                        <TableRow key={event.id}>
-                          <TableCell className="font-medium">
-                            {event.title}
-                          </TableCell>
-                          <TableCell>
-                            <Badge variant="outline">{event.type}</Badge>
-                          </TableCell>
-                          <TableCell>
-                            {new Date(event.startDate).toLocaleString()}
-                          </TableCell>
-                          <TableCell>
-                            <Badge
-                              variant={
-                                event.status === "PUBLISHED"
-                                  ? "default"
-                                  : event.status === "DRAFT"
-                                  ? "secondary"
-                                  : "destructive"
-                              }
-                            >
-                              {event.status}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>{event._count.registrations}</TableCell>
-                          <TableCell>
-                            <div className="flex gap-2">
-                              <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => handleEdit(event)}
-                              >
-                                Edit
-                              </Button>
-                              <Button
-                                variant="destructive"
-                                size="sm"
-                                onClick={() => handleDelete(event.id)}
-                              >
-                                Delete
-                              </Button>
-                            </div>
-                          </TableCell>
+                  <div className="overflow-x-auto">
+                    <Table>
+                      <TableHeader className="bg-gray-50 dark:bg-gray-800/50">
+                        <TableRow className="border-b-2 border-gray-200 dark:border-gray-700">
+                          <TableHead className="font-bold text-gray-700 dark:text-gray-300">Title</TableHead>
+                          <TableHead className="font-bold text-gray-700 dark:text-gray-300">Type</TableHead>
+                          <TableHead className="font-bold text-gray-700 dark:text-gray-300">Start Date</TableHead>
+                          <TableHead className="font-bold text-gray-700 dark:text-gray-300">Status</TableHead>
+                          <TableHead className="font-bold text-gray-700 dark:text-gray-300">Registrations</TableHead>
+                          <TableHead className="font-bold text-gray-700 dark:text-gray-300">Actions</TableHead>
                         </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                  <div className="flex justify-between items-center mt-4">
+                      </TableHeader>
+                      <TableBody>
+                        {events.map((event, index) => (
+                          <TableRow 
+                            key={event.id} 
+                            className={`border-b border-gray-100 dark:border-gray-800 hover:bg-blue-50/50 dark:hover:bg-blue-950/20 transition-colors ${
+                              index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50/50 dark:bg-gray-800/50'
+                            }`}
+                          >
+                            <TableCell className="font-semibold text-gray-900 dark:text-gray-100">
+                              {event.title}
+                            </TableCell>
+                            <TableCell>
+                              <Badge 
+                                variant="outline" 
+                                className="border-2 font-semibold"
+                                style={{ 
+                                  borderColor: getEventColor(event.type),
+                                  color: getEventColor(event.type)
+                                }}
+                              >
+                                {event.type}
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="text-gray-600 dark:text-gray-400">
+                              {new Date(event.startDate).toLocaleString('en-US', {
+                                month: 'short',
+                                day: 'numeric',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit'
+                              })}
+                            </TableCell>
+                            <TableCell>
+                              <Badge
+                                className="font-semibold shadow-sm"
+                                variant={
+                                  event.status === "PUBLISHED"
+                                    ? "default"
+                                    : event.status === "DRAFT"
+                                    ? "secondary"
+                                    : "destructive"
+                                }
+                              >
+                                {event.status}
+                              </Badge>
+                            </TableCell>
+                            <TableCell>
+                              <div className="flex items-center gap-2">
+                                <span className="text-lg font-bold text-blue-600">{event._count.registrations}</span>
+                                {event.capacity && (
+                                  <span className="text-sm text-gray-500">/ {event.capacity}</span>
+                                )}
+                              </div>
+                            </TableCell>
+                            <TableCell>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => handleEdit(event)}
+                                  className="border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-400 dark:hover:bg-blue-950/30"
+                                >
+                                  Edit
+                                </Button>
+                                <Button
+                                  variant="destructive"
+                                  size="sm"
+                                  onClick={() => handleDelete(event.id)}
+                                  className="shadow-sm"
+                                >
+                                  Delete
+                                </Button>
+                              </div>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                  <div className="flex justify-between items-center p-4 border-t-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
                     <Button
                       variant="outline"
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
                       disabled={page === 1}
+                      className="border-2 hover:border-blue-400 transition-colors"
                     >
                       Previous
                     </Button>
-                    <span className="text-sm text-gray-600">
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300 px-4 py-2 bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-700">
                       Page {page} of {totalPages}
                     </span>
                     <Button
                       variant="outline"
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                       disabled={page === totalPages}
+                      className="border-2 hover:border-blue-400 transition-colors"
                     >
                       Next
                     </Button>

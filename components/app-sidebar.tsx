@@ -36,6 +36,7 @@ import {
   SidebarMenuItem,
   SidebarSeparator,
 } from "@/components/ui/sidebar";
+import { ChurchSelector } from "@/components/church-selector";
 
 const roleGroups = {
   everyone: [
@@ -178,7 +179,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon" variant="sidebar">
-      <SidebarHeader>
+      <SidebarHeader className="space-y-3">
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild className="data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground">
@@ -194,6 +195,7 @@ export function AppSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
+        <ChurchSelector />
       </SidebarHeader>
 
       <SidebarContent>

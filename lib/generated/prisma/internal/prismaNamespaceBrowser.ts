@@ -164,6 +164,8 @@ export const ModelName = {
   FormSubmission: 'FormSubmission',
   FormSubmissionAnswer: 'FormSubmissionAnswer',
   MemberConnection: 'MemberConnection',
+  Sponsorship: 'Sponsorship',
+  SponsorshipApplication: 'SponsorshipApplication',
   CasbinRule: 'CasbinRule'
 } as const
 
@@ -2145,6 +2147,52 @@ export const MemberConnectionScalarFieldEnum = {
 } as const
 
 export type MemberConnectionScalarFieldEnum = (typeof MemberConnectionScalarFieldEnum)[keyof typeof MemberConnectionScalarFieldEnum]
+
+
+export const SponsorshipScalarFieldEnum = {
+  id: 'id',
+  churchId: 'churchId',
+  applicationToken: 'applicationToken',
+  status: 'status',
+  periodDays: 'periodDays',
+  isUnlimited: 'isUnlimited',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  appliedAt: 'appliedAt',
+  reviewedAt: 'reviewedAt',
+  approvedById: 'approvedById',
+  rejectionReason: 'rejectionReason',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SponsorshipScalarFieldEnum = (typeof SponsorshipScalarFieldEnum)[keyof typeof SponsorshipScalarFieldEnum]
+
+
+export const SponsorshipApplicationScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  churchName: 'churchName',
+  denomination: 'denomination',
+  contactName: 'contactName',
+  contactEmail: 'contactEmail',
+  contactPhone: 'contactPhone',
+  address: 'address',
+  city: 'city',
+  state: 'state',
+  country: 'country',
+  zipCode: 'zipCode',
+  website: 'website',
+  memberCount: 'memberCount',
+  reason: 'reason',
+  additionalInfo: 'additionalInfo',
+  submittedAt: 'submittedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SponsorshipApplicationScalarFieldEnum = (typeof SponsorshipApplicationScalarFieldEnum)[keyof typeof SponsorshipApplicationScalarFieldEnum]
 
 
 export const CasbinRuleScalarFieldEnum = {

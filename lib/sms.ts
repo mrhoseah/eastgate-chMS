@@ -149,15 +149,34 @@ export async function sendSMS(
     
     // Only add 'from' if senderId is provided and not empty
     if (settings.senderId && settings.senderId.trim()) {
-      sendOptions.from = settings.senderId;
-      console.log("[SMS] Using Sender ID:", settings.senderId);
+      // Validate sender ID format
+      const validatedSenderId = settings.senderId.trim();
+      
+      // If it looks like an invalid custom sender ID, warn and use default
+      if (validatedSenderId.length > 11) {
+        console.warn(`[SMS] Sender ID "${validatedSenderId}" exceeds 11 characters. Using default.`);
+      } else {
+        sendOptions.from = validatedSenderId;
+        console.log("[SMS] Using Sender ID:", validatedSenderId);
+      }
     } else {
-      console.log("[SMS] No Sender ID specified, using default");
+      console.log("[SMS] No Sender ID specified, using Afrika's Talking default");
     }
+    
+    console.log("[SMS] === REQUEST PAYLOAD ===");
+    console.log(JSON.stringify({
+      username: settings.username,
+      to: sendOptions.to,
+      message: sendOptions.message,
+      from: sendOptions.from || '(default)',
+    }, null, 2));
+    console.log("[SMS] ========================");
     
     const result = await sms.send(sendOptions);
 
-    console.log("[SMS] Afrika's Talking response:", JSON.stringify(result, null, 2));
+    console.log("[SMS] === RESPONSE PAYLOAD ===");
+    console.log(JSON.stringify(result, null, 2));
+    console.log("[SMS] =========================");
 
     // Check response
     if (result.SMSMessageData?.Recipients?.[0]) {
@@ -267,16 +286,36 @@ export async function sendBulkSMS(
         
         // Only add 'from' if senderId is provided and not empty
         if (settings.senderId && settings.senderId.trim()) {
-          sendOptions.from = settings.senderId;
-          console.log("[SMS Bulk] Using Sender ID:", settings.senderId);
+          // Validate sender ID format
+          const validatedSenderId = settings.senderId.trim();
+          
+          // If it looks like an invalid custom sender ID, warn and use default
+          if (validatedSenderId.length > 11) {
+            console.warn(`[SMS Bulk] Sender ID "${validatedSenderId}" exceeds 11 characters. Using default.`);
+          } else {
+            sendOptions.from = validatedSenderId;
+            console.log("[SMS Bulk] Using Sender ID:", validatedSenderId);
+          }
         } else {
-          console.log("[SMS Bulk] No Sender ID specified, using default");
+          console.log("[SMS Bulk] No Sender ID specified, using Afrika's Talking default");
         }
+
+        console.log("[SMS Bulk] === REQUEST PAYLOAD ===");
+        console.log(JSON.stringify({
+          username: settings.username,
+          to: sendOptions.to,
+          message: sendOptions.message,
+          from: sendOptions.from || '(default)',
+          recipientCount: phoneNumbers.length,
+        }, null, 2));
+        console.log("[SMS Bulk] ========================");
 
         // Send bulk SMS
         const result = await sms.send(sendOptions);
 
-        console.log("[SMS Bulk] Afrika's Talking bulk response:", JSON.stringify(result, null, 2));
+        console.log("[SMS Bulk] === RESPONSE PAYLOAD ===");
+        console.log(JSON.stringify(result, null, 2));
+        console.log("[SMS Bulk] ==========================");
 
         // Process results
         if (result.SMSMessageData?.Recipients) {
@@ -300,7 +339,9 @@ export async function sendBulkSMS(
           // Provide helpful error message for InvalidSenderId
           let userFriendlyError = errorMessage;
           if (errorMessage === "InvalidSenderId") {
-            userFriendlyError = `Invalid Sender ID "${settings.senderId}". Use "AFRICASTKNG" for sandbox or register your sender ID in Afrika's Talking dashboard.`;
+            userFriendlyError = settings.senderId 
+              ? `Invalid Sender ID "${settings.senderId}". For sandbox testing, use "AFRICASTKNG". For production, register your custom sender ID at https://account.africastalking.com/senderid`
+              : "Invalid Sender ID. Please configure a valid sender ID in Settings.";
           }
           
           // No recipient data, mark all as failed

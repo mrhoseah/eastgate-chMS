@@ -622,6 +622,16 @@ export type FormSubmissionAnswer = Prisma.FormSubmissionAnswerModel
  */
 export type MemberConnection = Prisma.MemberConnectionModel
 /**
+ * Model Sponsorship
+ * 
+ */
+export type Sponsorship = Prisma.SponsorshipModel
+/**
+ * Model SponsorshipApplication
+ * 
+ */
+export type SponsorshipApplication = Prisma.SponsorshipApplicationModel
+/**
  * Model CasbinRule
  * 
  */

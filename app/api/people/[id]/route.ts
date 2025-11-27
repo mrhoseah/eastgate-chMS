@@ -30,6 +30,10 @@ export async function GET(
             firstName: true,
             lastName: true,
             profileImage: true,
+            phone: true,
+            email: true,
+            dateOfBirth: true,
+            role: true,
           },
         },
         parent: {
@@ -37,6 +41,9 @@ export async function GET(
             id: true,
             firstName: true,
             lastName: true,
+            profileImage: true,
+            dateOfBirth: true,
+            role: true,
           },
         },
         children: {
@@ -45,6 +52,8 @@ export async function GET(
             firstName: true,
             lastName: true,
             dateOfBirth: true,
+            profileImage: true,
+            role: true,
           },
         },
         groupMemberships: {
@@ -88,6 +97,64 @@ export async function GET(
             date: "desc",
           },
           take: 10,
+        },
+        // Guest-specific data
+        guestVisits: {
+          select: {
+            id: true,
+            visitDate: true,
+            serviceType: true,
+            notes: true,
+            event: {
+              select: {
+                id: true,
+                title: true,
+                startDate: true,
+              },
+            },
+            recordedBy: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+              },
+            },
+            createdAt: true,
+          },
+          orderBy: {
+            visitDate: "desc",
+          },
+        },
+        guestFollowUps: {
+          select: {
+            id: true,
+            type: true,
+            method: true,
+            subject: true,
+            content: true,
+            status: true,
+            priority: true,
+            scheduledAt: true,
+            completedAt: true,
+            assignedTo: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+              },
+            },
+            createdBy: {
+              select: {
+                id: true,
+                firstName: true,
+                lastName: true,
+              },
+            },
+            createdAt: true,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
         },
       },
     });

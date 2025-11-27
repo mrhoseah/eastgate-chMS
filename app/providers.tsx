@@ -9,6 +9,7 @@ import { loadState } from "@/lib/store/persist";
 import { initializeSettings } from "@/lib/store/slices/settingsSlice";
 import { initializeCurrency } from "@/lib/store/slices/currencySlice";
 import { ToastProvider } from "@/components/ui/toast";
+import { ChurchProvider } from "@/lib/church-context";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -37,7 +38,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
           disableTransitionOnChange
         >
           <ToastProvider>
-            {children}
+            <ChurchProvider>
+              {children}
+            </ChurchProvider>
           </ToastProvider>
         </ThemeProvider>
       </SessionProvider>

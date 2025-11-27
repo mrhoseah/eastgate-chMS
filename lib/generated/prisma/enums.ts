@@ -573,3 +573,15 @@ export const FormStatus = {
 } as const
 
 export type FormStatus = (typeof FormStatus)[keyof typeof FormStatus]
+
+
+export const SponsorshipStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  ACTIVE: 'ACTIVE',
+  EXPIRED: 'EXPIRED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type SponsorshipStatus = (typeof SponsorshipStatus)[keyof typeof SponsorshipStatus]

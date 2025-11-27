@@ -313,35 +313,54 @@ export default function AttendancePage() {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-950 overflow-hidden">
+    <div className="flex flex-col h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30 dark:from-gray-950 dark:via-blue-950/10 dark:to-indigo-950/10 overflow-hidden">
       <Tabs defaultValue="sessions" className="flex-1 flex flex-col overflow-hidden">
-        <TabsList className="grid w-full grid-cols-3 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 rounded-none shadow-sm">
-          <TabsTrigger value="sessions" className="data-[state=active]:bg-blue-50 data-[state=active]:dark:bg-blue-900/30 data-[state=active]:text-blue-700 data-[state=active]:dark:text-blue-400">Attendance Sessions</TabsTrigger>
-          <TabsTrigger value="biometric" className="data-[state=active]:bg-blue-50 data-[state=active]:dark:bg-blue-900/30 data-[state=active]:text-blue-700 data-[state=active]:dark:text-blue-400 flex items-center gap-2">
-            Biometric Devices
-            <PremiumBadge size="sm" />
-          </TabsTrigger>
-          <TabsTrigger value="link-users" className="data-[state=active]:bg-blue-50 data-[state=active]:dark:bg-blue-900/30 data-[state=active]:text-blue-700 data-[state=active]:dark:text-blue-400 flex items-center gap-2">
-            Link Users
-            <PremiumBadge size="sm" />
-          </TabsTrigger>
-        </TabsList>
+        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b-2 border-gray-200 dark:border-gray-800 shadow-lg">
+          <TabsList className="grid w-full grid-cols-3 bg-transparent p-2 rounded-none">
+            <TabsTrigger 
+              value="sessions" 
+              className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 font-semibold"
+            >
+              <Users className="w-4 h-4 mr-2" />
+              Attendance Sessions
+            </TabsTrigger>
+            <TabsTrigger 
+              value="biometric" 
+              className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 font-semibold flex items-center gap-2"
+            >
+              Biometric Devices
+              <PremiumBadge size="sm" />
+            </TabsTrigger>
+            <TabsTrigger 
+              value="link-users" 
+              className="rounded-lg data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 font-semibold flex items-center gap-2"
+            >
+              Link Users
+              <PremiumBadge size="sm" />
+            </TabsTrigger>
+          </TabsList>
+        </div>
         
-        <TabsContent value="sessions" className="flex-1 overflow-hidden m-0 p-6 bg-gray-50 dark:bg-gray-950">
+        <TabsContent value="sessions" className="flex-1 overflow-hidden m-0 p-6">
           <div className="flex flex-col h-full">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
               {/* Left Column: Master Events & Sessions */}
               <div className="lg:col-span-1 space-y-6 overflow-y-auto">
                 {/* Master Events Card */}
-                <Card>
-                  <CardHeader>
+                <Card className="border-2 border-blue-100 dark:border-blue-900/50 shadow-xl rounded-2xl overflow-hidden">
+                  <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border-b-2 border-gray-100 dark:border-gray-800">
                     <CardTitle className="flex items-center justify-between">
-                      <span>Activities</span>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                          <Building className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Activities</span>
+                      </div>
                       <Dialog open={masterEventDialogOpen} onOpenChange={setMasterEventDialogOpen}>
                         <DialogTrigger asChild>
-                          <Button size="sm" variant="outline">
+                          <Button size="sm" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300">
                             <Plus className="w-4 h-4 mr-1" />
-                            New
+                            New Activity
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
@@ -439,27 +458,28 @@ export default function AttendancePage() {
                         </Button>
                       </div>
                     ) : (
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         {masterEvents.map((event) => (
                           <div
                             key={event.id}
-                            className={`p-3 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors ${
+                            className={`p-4 border-2 rounded-xl cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-102 ${
                               selectedMasterEventId === event.id
-                                ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                                : "border-gray-200 dark:border-gray-800"
+                                ? "border-blue-500 dark:border-blue-400 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 shadow-md"
+                                : "border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700"
                             }`}
                             onClick={() => setSelectedMasterEventId(event.id)}
                           >
-                            <p className="font-medium text-gray-900 dark:text-white">{event.name}</p>
-                            <div className="flex items-center gap-2 mt-1">
+                            <p className="font-bold text-gray-900 dark:text-white text-lg">{event.name}</p>
+                            <div className="flex items-center gap-2 mt-2">
                               <Badge
                                 variant="outline"
-                                className={`text-xs ${getTypeColor(event.type).bg}`}
+                                className={`text-xs font-semibold border-2 shadow-sm ${getTypeColor(event.type).bg}`}
                               >
                                 {event.type}
                               </Badge>
                               {event.campus && (
-                                <span className="text-xs text-gray-500 dark:text-gray-400">
+                                <span className="text-xs font-medium text-gray-600 dark:text-gray-400 flex items-center gap-1">
+                                  <MapPin className="w-3 h-3" />
                                   {event.campus.name}
                                 </span>
                               )}
@@ -473,15 +493,20 @@ export default function AttendancePage() {
 
                 {/* Sessions Card */}
                 {selectedMasterEventId && (
-                  <Card>
-                    <CardHeader>
+                  <Card className="border-2 border-indigo-100 dark:border-indigo-900/50 shadow-xl rounded-2xl overflow-hidden">
+                    <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 border-b-2 border-gray-100 dark:border-gray-800">
                       <CardTitle className="flex items-center justify-between">
-                        <span>Sessions</span>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
+                            <Calendar className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">Sessions</span>
+                        </div>
                         <Dialog open={sessionDialogOpen} onOpenChange={setSessionDialogOpen}>
                           <DialogTrigger asChild>
-                            <Button size="sm" variant="outline">
+                            <Button size="sm" className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transition-all duration-300">
                               <Plus className="w-4 h-4 mr-1" />
-                              New
+                              New Session
                             </Button>
                           </DialogTrigger>
                           <DialogContent>
@@ -579,48 +604,50 @@ export default function AttendancePage() {
                           </Button>
                         </div>
                       ) : (
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           {attendanceSessions.map((session) => (
                             <div
                               key={session.id}
-                              className={`p-3 border rounded-lg cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors ${
+                              className={`p-4 border-2 rounded-xl cursor-pointer hover:shadow-lg transition-all duration-300 transform hover:scale-102 ${
                                 selectedSessionId === session.id
-                                  ? "border-blue-500 dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20"
-                                  : "border-gray-200 dark:border-gray-800"
+                                  ? "border-indigo-500 dark:border-indigo-400 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30 shadow-md"
+                                  : "border-gray-200 dark:border-gray-800 hover:border-indigo-300 dark:hover:border-indigo-700"
                               }`}
                               onClick={() => setSelectedSessionId(session.id)}
                             >
                               <div className="flex items-center justify-between">
                                 <div className="flex-1">
-                                  <p className="font-medium text-gray-900 dark:text-white">
+                                  <p className="font-bold text-gray-900 dark:text-white text-lg">
                                     {session.name || selectedMasterEvent?.name}
                                   </p>
-                                  <div className="flex items-center gap-3 mt-1 text-sm text-gray-500 dark:text-gray-400">
-                                    <span className="flex items-center gap-1">
-                                      <Calendar className="w-3 h-3" />
+                                  <div className="flex flex-wrap items-center gap-3 mt-2 text-sm">
+                                    <span className="flex items-center gap-1 px-2 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-lg font-medium text-blue-700 dark:text-blue-400">
+                                      <Calendar className="w-3.5 h-3.5" />
                                       {format(new Date(session.date), "MMM d, yyyy")}
                                     </span>
-                                    <span className="flex items-center gap-1">
-                                      <Clock className="w-3 h-3" />
+                                    <span className="flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 rounded-lg font-medium text-green-700 dark:text-green-400">
+                                      <Clock className="w-3.5 h-3.5" />
                                       {format(new Date(session.startTime), "h:mm a")}
                                     </span>
                                     {session.location && (
-                                      <span className="flex items-center gap-1">
-                                        <MapPin className="w-3 h-3" />
+                                      <span className="flex items-center gap-1 px-2 py-1 bg-purple-100 dark:bg-purple-900/30 rounded-lg font-medium text-purple-700 dark:text-purple-400">
+                                        <MapPin className="w-3.5 h-3.5" />
                                         {session.location}
                                       </span>
                                     )}
                                   </div>
                                 </div>
-                                <div className="text-right">
-                                  <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                                    {session._count.attendees}
-                                  </p>
-                                  <p className="text-xs text-gray-500 dark:text-gray-400">attended</p>
+                                <div className="text-right ml-4">
+                                  <div className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl shadow-lg">
+                                    <p className="text-2xl font-bold">
+                                      {session._count.attendees}
+                                    </p>
+                                    <p className="text-xs opacity-90">attended</p>
+                                  </div>
                                 </div>
                               </div>
                               {session.isJointService && (
-                                <Badge variant="outline" className="mt-2">
+                                <Badge className="mt-3 bg-gradient-to-r from-orange-500 to-red-500 text-white border-0 shadow-md">
                                   Joint Service
                                 </Badge>
                               )}

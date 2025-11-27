@@ -608,6 +608,7 @@ export type UserWhereInput = {
   engagementScores?: Prisma.MemberEngagementScoreListRelationFilter
   connections?: Prisma.MemberConnectionListRelationFilter
   connectedTo?: Prisma.MemberConnectionListRelationFilter
+  approvedSponsorships?: Prisma.SponsorshipListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -752,6 +753,7 @@ export type UserOrderByWithRelationInput = {
   engagementScores?: Prisma.MemberEngagementScoreOrderByRelationAggregateInput
   connections?: Prisma.MemberConnectionOrderByRelationAggregateInput
   connectedTo?: Prisma.MemberConnectionOrderByRelationAggregateInput
+  approvedSponsorships?: Prisma.SponsorshipOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -899,6 +901,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   engagementScores?: Prisma.MemberEngagementScoreListRelationFilter
   connections?: Prisma.MemberConnectionListRelationFilter
   connectedTo?: Prisma.MemberConnectionListRelationFilter
+  approvedSponsorships?: Prisma.SponsorshipListRelationFilter
 }, "id" | "email" | "phone" | "spouseId">
 
 export type UserOrderByWithAggregationInput = {
@@ -1145,6 +1148,7 @@ export type UserCreateInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -1285,6 +1289,7 @@ export type UserUncheckedCreateInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUpdateInput = {
@@ -1425,6 +1430,7 @@ export type UserUpdateInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -1565,6 +1571,7 @@ export type UserUncheckedUpdateInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -3405,6 +3412,22 @@ export type UserUpdateOneRequiredWithoutConnectedToNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutConnectedToInput, Prisma.UserUpdateWithoutConnectedToInput>, Prisma.UserUncheckedUpdateWithoutConnectedToInput>
 }
 
+export type UserCreateNestedOneWithoutApprovedSponsorshipsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovedSponsorshipsInput, Prisma.UserUncheckedCreateWithoutApprovedSponsorshipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovedSponsorshipsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutApprovedSponsorshipsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutApprovedSponsorshipsInput, Prisma.UserUncheckedCreateWithoutApprovedSponsorshipsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutApprovedSponsorshipsInput
+  upsert?: Prisma.UserUpsertWithoutApprovedSponsorshipsInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutApprovedSponsorshipsInput, Prisma.UserUpdateWithoutApprovedSponsorshipsInput>, Prisma.UserUncheckedUpdateWithoutApprovedSponsorshipsInput>
+}
+
 export type UserCreateWithoutSpouseOfInput = {
   id?: string
   email?: string | null
@@ -3542,6 +3565,7 @@ export type UserCreateWithoutSpouseOfInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSpouseOfInput = {
@@ -3681,6 +3705,7 @@ export type UserUncheckedCreateWithoutSpouseOfInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSpouseOfInput = {
@@ -3825,6 +3850,7 @@ export type UserCreateWithoutSpouseInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSpouseInput = {
@@ -3964,6 +3990,7 @@ export type UserUncheckedCreateWithoutSpouseInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSpouseInput = {
@@ -4108,6 +4135,7 @@ export type UserCreateWithoutChildrenInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChildrenInput = {
@@ -4247,6 +4275,7 @@ export type UserUncheckedCreateWithoutChildrenInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChildrenInput = {
@@ -4391,6 +4420,7 @@ export type UserCreateWithoutParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutParentInput = {
@@ -4530,6 +4560,7 @@ export type UserUncheckedCreateWithoutParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutParentInput = {
@@ -4679,6 +4710,7 @@ export type UserCreateWithoutFamilyMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFamilyMembersInput = {
@@ -4818,6 +4850,7 @@ export type UserUncheckedCreateWithoutFamilyMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFamilyMembersInput = {
@@ -4962,6 +4995,7 @@ export type UserCreateWithoutFamilyHeadInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFamilyHeadInput = {
@@ -5101,6 +5135,7 @@ export type UserUncheckedCreateWithoutFamilyHeadInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFamilyHeadInput = {
@@ -5261,6 +5296,7 @@ export type UserUpdateWithoutSpouseOfInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSpouseOfInput = {
@@ -5400,6 +5436,7 @@ export type UserUncheckedUpdateWithoutSpouseOfInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutSpouseInput = {
@@ -5550,6 +5587,7 @@ export type UserUpdateWithoutSpouseInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSpouseInput = {
@@ -5689,6 +5727,7 @@ export type UserUncheckedUpdateWithoutSpouseInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutChildrenInput = {
@@ -5839,6 +5878,7 @@ export type UserUpdateWithoutChildrenInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChildrenInput = {
@@ -5978,6 +6018,7 @@ export type UserUncheckedUpdateWithoutChildrenInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutParentInput = {
@@ -6197,6 +6238,7 @@ export type UserUpdateWithoutFamilyMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFamilyMembersInput = {
@@ -6336,6 +6378,7 @@ export type UserUncheckedUpdateWithoutFamilyMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutFamilyHeadInput = {
@@ -6491,6 +6534,7 @@ export type UserCreateWithoutSocialLoginsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSocialLoginsInput = {
@@ -6630,6 +6674,7 @@ export type UserUncheckedCreateWithoutSocialLoginsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSocialLoginsInput = {
@@ -6785,6 +6830,7 @@ export type UserUpdateWithoutSocialLoginsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSocialLoginsInput = {
@@ -6924,6 +6970,7 @@ export type UserUncheckedUpdateWithoutSocialLoginsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutUserSessionsInput = {
@@ -7063,6 +7110,7 @@ export type UserCreateWithoutUserSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutUserSessionsInput = {
@@ -7202,6 +7250,7 @@ export type UserUncheckedCreateWithoutUserSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutUserSessionsInput = {
@@ -7357,6 +7406,7 @@ export type UserUpdateWithoutUserSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutUserSessionsInput = {
@@ -7496,6 +7546,7 @@ export type UserUncheckedUpdateWithoutUserSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutInvitationsInput = {
@@ -7635,6 +7686,7 @@ export type UserCreateWithoutInvitationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutInvitationsInput = {
@@ -7774,6 +7826,7 @@ export type UserUncheckedCreateWithoutInvitationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutInvitationsInput = {
@@ -7918,6 +7971,7 @@ export type UserCreateWithoutInvitationInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutInvitationInput = {
@@ -8057,6 +8111,7 @@ export type UserUncheckedCreateWithoutInvitationInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutInvitationInput = {
@@ -8212,6 +8267,7 @@ export type UserUpdateWithoutInvitationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitationsInput = {
@@ -8351,6 +8407,7 @@ export type UserUncheckedUpdateWithoutInvitationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutInvitationInput = {
@@ -8501,6 +8558,7 @@ export type UserUpdateWithoutInvitationInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInvitationInput = {
@@ -8640,6 +8698,7 @@ export type UserUncheckedUpdateWithoutInvitationInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAuthAccountsInput = {
@@ -8779,6 +8838,7 @@ export type UserCreateWithoutAuthAccountsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAuthAccountsInput = {
@@ -8918,6 +8978,7 @@ export type UserUncheckedCreateWithoutAuthAccountsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAuthAccountsInput = {
@@ -9073,6 +9134,7 @@ export type UserUpdateWithoutAuthAccountsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAuthAccountsInput = {
@@ -9212,6 +9274,7 @@ export type UserUncheckedUpdateWithoutAuthAccountsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
@@ -9351,6 +9414,7 @@ export type UserCreateWithoutSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -9490,6 +9554,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -9645,6 +9710,7 @@ export type UserUpdateWithoutSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -9784,6 +9850,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutActivityLogsInput = {
@@ -9923,6 +9990,7 @@ export type UserCreateWithoutActivityLogsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutActivityLogsInput = {
@@ -10062,6 +10130,7 @@ export type UserUncheckedCreateWithoutActivityLogsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutActivityLogsInput = {
@@ -10217,6 +10286,7 @@ export type UserUpdateWithoutActivityLogsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutActivityLogsInput = {
@@ -10356,6 +10426,7 @@ export type UserUncheckedUpdateWithoutActivityLogsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutCampusPastorInput = {
@@ -10495,6 +10566,7 @@ export type UserCreateWithoutCampusPastorInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutCampusPastorInput = {
@@ -10634,6 +10706,7 @@ export type UserUncheckedCreateWithoutCampusPastorInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutCampusPastorInput = {
@@ -10778,6 +10851,7 @@ export type UserCreateWithoutCampusInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutCampusInput = {
@@ -10917,6 +10991,7 @@ export type UserUncheckedCreateWithoutCampusInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutCampusInput = {
@@ -11077,6 +11152,7 @@ export type UserUpdateWithoutCampusPastorInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCampusPastorInput = {
@@ -11216,6 +11292,7 @@ export type UserUncheckedUpdateWithoutCampusPastorInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithWhereUniqueWithoutCampusInput = {
@@ -11371,6 +11448,7 @@ export type UserCreateWithoutGroupLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutGroupLeadershipInput = {
@@ -11510,6 +11588,7 @@ export type UserUncheckedCreateWithoutGroupLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutGroupLeadershipInput = {
@@ -11665,6 +11744,7 @@ export type UserUpdateWithoutGroupLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGroupLeadershipInput = {
@@ -11804,6 +11884,7 @@ export type UserUncheckedUpdateWithoutGroupLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutGroupMembershipsInput = {
@@ -11943,6 +12024,7 @@ export type UserCreateWithoutGroupMembershipsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutGroupMembershipsInput = {
@@ -12082,6 +12164,7 @@ export type UserUncheckedCreateWithoutGroupMembershipsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutGroupMembershipsInput = {
@@ -12237,6 +12320,7 @@ export type UserUpdateWithoutGroupMembershipsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
@@ -12376,6 +12460,7 @@ export type UserUncheckedUpdateWithoutGroupMembershipsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutHostedGroupMeetingsInput = {
@@ -12515,6 +12600,7 @@ export type UserCreateWithoutHostedGroupMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutHostedGroupMeetingsInput = {
@@ -12654,6 +12740,7 @@ export type UserUncheckedCreateWithoutHostedGroupMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutHostedGroupMeetingsInput = {
@@ -12809,6 +12896,7 @@ export type UserUpdateWithoutHostedGroupMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutHostedGroupMeetingsInput = {
@@ -12948,6 +13036,7 @@ export type UserUncheckedUpdateWithoutHostedGroupMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutGroupAttendancesInput = {
@@ -13087,6 +13176,7 @@ export type UserCreateWithoutGroupAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutGroupAttendancesInput = {
@@ -13226,6 +13316,7 @@ export type UserUncheckedCreateWithoutGroupAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutGroupAttendancesInput = {
@@ -13381,6 +13472,7 @@ export type UserUpdateWithoutGroupAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGroupAttendancesInput = {
@@ -13520,6 +13612,7 @@ export type UserUncheckedUpdateWithoutGroupAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutDiscussionAuthorsInput = {
@@ -13659,6 +13752,7 @@ export type UserCreateWithoutDiscussionAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutDiscussionAuthorsInput = {
@@ -13798,6 +13892,7 @@ export type UserUncheckedCreateWithoutDiscussionAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutDiscussionAuthorsInput = {
@@ -13953,6 +14048,7 @@ export type UserUpdateWithoutDiscussionAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDiscussionAuthorsInput = {
@@ -14092,6 +14188,7 @@ export type UserUncheckedUpdateWithoutDiscussionAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutReplyAuthorsInput = {
@@ -14231,6 +14328,7 @@ export type UserCreateWithoutReplyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutReplyAuthorsInput = {
@@ -14370,6 +14468,7 @@ export type UserUncheckedCreateWithoutReplyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutReplyAuthorsInput = {
@@ -14525,6 +14624,7 @@ export type UserUpdateWithoutReplyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReplyAuthorsInput = {
@@ -14664,6 +14764,7 @@ export type UserUncheckedUpdateWithoutReplyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutDiscipleshipEnrollmentsInput = {
@@ -14803,6 +14904,7 @@ export type UserCreateWithoutDiscipleshipEnrollmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutDiscipleshipEnrollmentsInput = {
@@ -14942,6 +15044,7 @@ export type UserUncheckedCreateWithoutDiscipleshipEnrollmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutDiscipleshipEnrollmentsInput = {
@@ -15097,6 +15200,7 @@ export type UserUpdateWithoutDiscipleshipEnrollmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDiscipleshipEnrollmentsInput = {
@@ -15236,6 +15340,7 @@ export type UserUncheckedUpdateWithoutDiscipleshipEnrollmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutMentorRelationsInput = {
@@ -15375,6 +15480,7 @@ export type UserCreateWithoutMentorRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutMentorRelationsInput = {
@@ -15514,6 +15620,7 @@ export type UserUncheckedCreateWithoutMentorRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutMentorRelationsInput = {
@@ -15658,6 +15765,7 @@ export type UserCreateWithoutMenteeRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutMenteeRelationsInput = {
@@ -15797,6 +15905,7 @@ export type UserUncheckedCreateWithoutMenteeRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutMenteeRelationsInput = {
@@ -15952,6 +16061,7 @@ export type UserUpdateWithoutMentorRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMentorRelationsInput = {
@@ -16091,6 +16201,7 @@ export type UserUncheckedUpdateWithoutMentorRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutMenteeRelationsInput = {
@@ -16241,6 +16352,7 @@ export type UserUpdateWithoutMenteeRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMenteeRelationsInput = {
@@ -16380,6 +16492,7 @@ export type UserUncheckedUpdateWithoutMenteeRelationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAnnouncementAuthorsInput = {
@@ -16519,6 +16632,7 @@ export type UserCreateWithoutAnnouncementAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementAuthorsInput = {
@@ -16658,6 +16772,7 @@ export type UserUncheckedCreateWithoutAnnouncementAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementAuthorsInput = {
@@ -16813,6 +16928,7 @@ export type UserUpdateWithoutAnnouncementAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementAuthorsInput = {
@@ -16952,6 +17068,7 @@ export type UserUncheckedUpdateWithoutAnnouncementAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAnnouncementsReadInput = {
@@ -17091,6 +17208,7 @@ export type UserCreateWithoutAnnouncementsReadInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAnnouncementsReadInput = {
@@ -17230,6 +17348,7 @@ export type UserUncheckedCreateWithoutAnnouncementsReadInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAnnouncementsReadInput = {
@@ -17385,6 +17504,7 @@ export type UserUpdateWithoutAnnouncementsReadInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAnnouncementsReadInput = {
@@ -17524,6 +17644,7 @@ export type UserUncheckedUpdateWithoutAnnouncementsReadInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -17663,6 +17784,7 @@ export type UserCreateWithoutNotificationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -17802,6 +17924,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -17946,6 +18069,7 @@ export type UserCreateWithoutNotificationsAboutMeInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsAboutMeInput = {
@@ -18085,6 +18209,7 @@ export type UserUncheckedCreateWithoutNotificationsAboutMeInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsAboutMeInput = {
@@ -18240,6 +18365,7 @@ export type UserUpdateWithoutNotificationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -18379,6 +18505,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutNotificationsAboutMeInput = {
@@ -18529,6 +18656,7 @@ export type UserUpdateWithoutNotificationsAboutMeInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsAboutMeInput = {
@@ -18668,6 +18796,7 @@ export type UserUncheckedUpdateWithoutNotificationsAboutMeInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutServiceAssignmentsInput = {
@@ -18807,6 +18936,7 @@ export type UserCreateWithoutServiceAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutServiceAssignmentsInput = {
@@ -18946,6 +19076,7 @@ export type UserUncheckedCreateWithoutServiceAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutServiceAssignmentsInput = {
@@ -19101,6 +19232,7 @@ export type UserUpdateWithoutServiceAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutServiceAssignmentsInput = {
@@ -19240,6 +19372,7 @@ export type UserUncheckedUpdateWithoutServiceAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutMediaUploadsInput = {
@@ -19379,6 +19512,7 @@ export type UserCreateWithoutMediaUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutMediaUploadsInput = {
@@ -19518,6 +19652,7 @@ export type UserUncheckedCreateWithoutMediaUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutMediaUploadsInput = {
@@ -19673,6 +19808,7 @@ export type UserUpdateWithoutMediaUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMediaUploadsInput = {
@@ -19812,6 +19948,7 @@ export type UserUncheckedUpdateWithoutMediaUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAttendanceRecordsInput = {
@@ -19951,6 +20088,7 @@ export type UserCreateWithoutAttendanceRecordsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAttendanceRecordsInput = {
@@ -20090,6 +20228,7 @@ export type UserUncheckedCreateWithoutAttendanceRecordsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAttendanceRecordsInput = {
@@ -20245,6 +20384,7 @@ export type UserUpdateWithoutAttendanceRecordsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAttendanceRecordsInput = {
@@ -20384,6 +20524,7 @@ export type UserUncheckedUpdateWithoutAttendanceRecordsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAttendancesInput = {
@@ -20523,6 +20664,7 @@ export type UserCreateWithoutAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAttendancesInput = {
@@ -20662,6 +20804,7 @@ export type UserUncheckedCreateWithoutAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAttendancesInput = {
@@ -20817,6 +20960,7 @@ export type UserUpdateWithoutAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAttendancesInput = {
@@ -20956,6 +21100,7 @@ export type UserUncheckedUpdateWithoutAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutSessionAttendancesInput = {
@@ -21095,6 +21240,7 @@ export type UserCreateWithoutSessionAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSessionAttendancesInput = {
@@ -21234,6 +21380,7 @@ export type UserUncheckedCreateWithoutSessionAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSessionAttendancesInput = {
@@ -21389,6 +21536,7 @@ export type UserUpdateWithoutSessionAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionAttendancesInput = {
@@ -21528,6 +21676,7 @@ export type UserUncheckedUpdateWithoutSessionAttendancesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutProposedDecisionsInput = {
@@ -21667,6 +21816,7 @@ export type UserCreateWithoutProposedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutProposedDecisionsInput = {
@@ -21806,6 +21956,7 @@ export type UserUncheckedCreateWithoutProposedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutProposedDecisionsInput = {
@@ -21950,6 +22101,7 @@ export type UserCreateWithoutApprovedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutApprovedDecisionsInput = {
@@ -22089,6 +22241,7 @@ export type UserUncheckedCreateWithoutApprovedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutApprovedDecisionsInput = {
@@ -22233,6 +22386,7 @@ export type UserCreateWithoutAssignedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAssignedDecisionsInput = {
@@ -22372,6 +22526,7 @@ export type UserUncheckedCreateWithoutAssignedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAssignedDecisionsInput = {
@@ -22516,6 +22671,7 @@ export type UserCreateWithoutRecordedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutRecordedDecisionsInput = {
@@ -22655,6 +22811,7 @@ export type UserUncheckedCreateWithoutRecordedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutRecordedDecisionsInput = {
@@ -22799,6 +22956,7 @@ export type UserCreateWithoutDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutDecisionsInput = {
@@ -22938,6 +23096,7 @@ export type UserUncheckedCreateWithoutDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutDecisionsInput = {
@@ -23093,6 +23252,7 @@ export type UserUpdateWithoutProposedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProposedDecisionsInput = {
@@ -23232,6 +23392,7 @@ export type UserUncheckedUpdateWithoutProposedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutApprovedDecisionsInput = {
@@ -23382,6 +23543,7 @@ export type UserUpdateWithoutApprovedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutApprovedDecisionsInput = {
@@ -23521,6 +23683,7 @@ export type UserUncheckedUpdateWithoutApprovedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutAssignedDecisionsInput = {
@@ -23671,6 +23834,7 @@ export type UserUpdateWithoutAssignedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAssignedDecisionsInput = {
@@ -23810,6 +23974,7 @@ export type UserUncheckedUpdateWithoutAssignedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutRecordedDecisionsInput = {
@@ -23960,6 +24125,7 @@ export type UserUpdateWithoutRecordedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecordedDecisionsInput = {
@@ -24099,6 +24265,7 @@ export type UserUncheckedUpdateWithoutRecordedDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutDecisionsInput = {
@@ -24249,6 +24416,7 @@ export type UserUpdateWithoutDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDecisionsInput = {
@@ -24388,6 +24556,7 @@ export type UserUncheckedUpdateWithoutDecisionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutOrganizedMeetingsInput = {
@@ -24527,6 +24696,7 @@ export type UserCreateWithoutOrganizedMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutOrganizedMeetingsInput = {
@@ -24666,6 +24836,7 @@ export type UserUncheckedCreateWithoutOrganizedMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutOrganizedMeetingsInput = {
@@ -24821,6 +24992,7 @@ export type UserUpdateWithoutOrganizedMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOrganizedMeetingsInput = {
@@ -24960,6 +25132,7 @@ export type UserUncheckedUpdateWithoutOrganizedMeetingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutDonationsInput = {
@@ -25099,6 +25272,7 @@ export type UserCreateWithoutDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutDonationsInput = {
@@ -25238,6 +25412,7 @@ export type UserUncheckedCreateWithoutDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutDonationsInput = {
@@ -25393,6 +25568,7 @@ export type UserUpdateWithoutDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDonationsInput = {
@@ -25532,6 +25708,7 @@ export type UserUncheckedUpdateWithoutDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutRecurringDonationsInput = {
@@ -25671,6 +25848,7 @@ export type UserCreateWithoutRecurringDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutRecurringDonationsInput = {
@@ -25810,6 +25988,7 @@ export type UserUncheckedCreateWithoutRecurringDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutRecurringDonationsInput = {
@@ -25965,6 +26144,7 @@ export type UserUpdateWithoutRecurringDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutRecurringDonationsInput = {
@@ -26104,6 +26284,7 @@ export type UserUncheckedUpdateWithoutRecurringDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutExpenseSubmissionsInput = {
@@ -26243,6 +26424,7 @@ export type UserCreateWithoutExpenseSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutExpenseSubmissionsInput = {
@@ -26382,6 +26564,7 @@ export type UserUncheckedCreateWithoutExpenseSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutExpenseSubmissionsInput = {
@@ -26526,6 +26709,7 @@ export type UserCreateWithoutExpenseApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutExpenseApprovalsInput = {
@@ -26665,6 +26849,7 @@ export type UserUncheckedCreateWithoutExpenseApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutExpenseApprovalsInput = {
@@ -26820,6 +27005,7 @@ export type UserUpdateWithoutExpenseSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutExpenseSubmissionsInput = {
@@ -26959,6 +27145,7 @@ export type UserUncheckedUpdateWithoutExpenseSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutExpenseApprovalsInput = {
@@ -27109,6 +27296,7 @@ export type UserUpdateWithoutExpenseApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutExpenseApprovalsInput = {
@@ -27248,6 +27436,7 @@ export type UserUncheckedUpdateWithoutExpenseApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutEventOrganizationsInput = {
@@ -27387,6 +27576,7 @@ export type UserCreateWithoutEventOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutEventOrganizationsInput = {
@@ -27526,6 +27716,7 @@ export type UserUncheckedCreateWithoutEventOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutEventOrganizationsInput = {
@@ -27681,6 +27872,7 @@ export type UserUpdateWithoutEventOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventOrganizationsInput = {
@@ -27820,6 +28012,7 @@ export type UserUncheckedUpdateWithoutEventOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutEventRegistrationsInput = {
@@ -27959,6 +28152,7 @@ export type UserCreateWithoutEventRegistrationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutEventRegistrationsInput = {
@@ -28098,6 +28292,7 @@ export type UserUncheckedCreateWithoutEventRegistrationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutEventRegistrationsInput = {
@@ -28253,6 +28448,7 @@ export type UserUpdateWithoutEventRegistrationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventRegistrationsInput = {
@@ -28392,6 +28588,7 @@ export type UserUncheckedUpdateWithoutEventRegistrationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutEventCheckInsInput = {
@@ -28531,6 +28728,7 @@ export type UserCreateWithoutEventCheckInsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutEventCheckInsInput = {
@@ -28670,6 +28868,7 @@ export type UserUncheckedCreateWithoutEventCheckInsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutEventCheckInsInput = {
@@ -28825,6 +29024,7 @@ export type UserUpdateWithoutEventCheckInsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventCheckInsInput = {
@@ -28964,6 +29164,7 @@ export type UserUncheckedUpdateWithoutEventCheckInsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutFacilityBookingsInput = {
@@ -29103,6 +29304,7 @@ export type UserCreateWithoutFacilityBookingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFacilityBookingsInput = {
@@ -29242,6 +29444,7 @@ export type UserUncheckedCreateWithoutFacilityBookingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFacilityBookingsInput = {
@@ -29397,6 +29600,7 @@ export type UserUpdateWithoutFacilityBookingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFacilityBookingsInput = {
@@ -29536,6 +29740,7 @@ export type UserUncheckedUpdateWithoutFacilityBookingsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutVolunteerAssignmentsInput = {
@@ -29675,6 +29880,7 @@ export type UserCreateWithoutVolunteerAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutVolunteerAssignmentsInput = {
@@ -29814,6 +30020,7 @@ export type UserUncheckedCreateWithoutVolunteerAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutVolunteerAssignmentsInput = {
@@ -29969,6 +30176,7 @@ export type UserUpdateWithoutVolunteerAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVolunteerAssignmentsInput = {
@@ -30108,6 +30316,7 @@ export type UserUncheckedUpdateWithoutVolunteerAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutChildrenLeadershipInput = {
@@ -30247,6 +30456,7 @@ export type UserCreateWithoutChildrenLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChildrenLeadershipInput = {
@@ -30386,6 +30596,7 @@ export type UserUncheckedCreateWithoutChildrenLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChildrenLeadershipInput = {
@@ -30541,6 +30752,7 @@ export type UserUpdateWithoutChildrenLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChildrenLeadershipInput = {
@@ -30680,6 +30892,7 @@ export type UserUncheckedUpdateWithoutChildrenLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutChildrenMinistryMembersInput = {
@@ -30819,6 +31032,7 @@ export type UserCreateWithoutChildrenMinistryMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChildrenMinistryMembersInput = {
@@ -30958,6 +31172,7 @@ export type UserUncheckedCreateWithoutChildrenMinistryMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChildrenMinistryMembersInput = {
@@ -31102,6 +31317,7 @@ export type UserCreateWithoutChildrenParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChildrenParentInput = {
@@ -31241,6 +31457,7 @@ export type UserUncheckedCreateWithoutChildrenParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChildrenParentInput = {
@@ -31396,6 +31613,7 @@ export type UserUpdateWithoutChildrenMinistryMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChildrenMinistryMembersInput = {
@@ -31535,6 +31753,7 @@ export type UserUncheckedUpdateWithoutChildrenMinistryMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutChildrenParentInput = {
@@ -31685,6 +31904,7 @@ export type UserUpdateWithoutChildrenParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChildrenParentInput = {
@@ -31824,6 +32044,7 @@ export type UserUncheckedUpdateWithoutChildrenParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutYouthLeadershipInput = {
@@ -31963,6 +32184,7 @@ export type UserCreateWithoutYouthLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutYouthLeadershipInput = {
@@ -32102,6 +32324,7 @@ export type UserUncheckedCreateWithoutYouthLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutYouthLeadershipInput = {
@@ -32257,6 +32480,7 @@ export type UserUpdateWithoutYouthLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutYouthLeadershipInput = {
@@ -32396,6 +32620,7 @@ export type UserUncheckedUpdateWithoutYouthLeadershipInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutYouthGroupMembersInput = {
@@ -32535,6 +32760,7 @@ export type UserCreateWithoutYouthGroupMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutYouthGroupMembersInput = {
@@ -32674,6 +32900,7 @@ export type UserUncheckedCreateWithoutYouthGroupMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutYouthGroupMembersInput = {
@@ -32829,6 +33056,7 @@ export type UserUpdateWithoutYouthGroupMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutYouthGroupMembersInput = {
@@ -32968,6 +33196,7 @@ export type UserUncheckedUpdateWithoutYouthGroupMembersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutOutreachOrganizationsInput = {
@@ -33107,6 +33336,7 @@ export type UserCreateWithoutOutreachOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutOutreachOrganizationsInput = {
@@ -33246,6 +33476,7 @@ export type UserUncheckedCreateWithoutOutreachOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutOutreachOrganizationsInput = {
@@ -33401,6 +33632,7 @@ export type UserUpdateWithoutOutreachOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOutreachOrganizationsInput = {
@@ -33540,6 +33772,7 @@ export type UserUncheckedUpdateWithoutOutreachOrganizationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutOutreachParticipationsInput = {
@@ -33679,6 +33912,7 @@ export type UserCreateWithoutOutreachParticipationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutOutreachParticipationsInput = {
@@ -33818,6 +34052,7 @@ export type UserUncheckedCreateWithoutOutreachParticipationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutOutreachParticipationsInput = {
@@ -33973,6 +34208,7 @@ export type UserUpdateWithoutOutreachParticipationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutOutreachParticipationsInput = {
@@ -34112,6 +34348,7 @@ export type UserUncheckedUpdateWithoutOutreachParticipationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutTestimonyAuthorsInput = {
@@ -34251,6 +34488,7 @@ export type UserCreateWithoutTestimonyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutTestimonyAuthorsInput = {
@@ -34390,6 +34628,7 @@ export type UserUncheckedCreateWithoutTestimonyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutTestimonyAuthorsInput = {
@@ -34545,6 +34784,7 @@ export type UserUpdateWithoutTestimonyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTestimonyAuthorsInput = {
@@ -34684,6 +34924,7 @@ export type UserUncheckedUpdateWithoutTestimonyAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutProjectDonationsInput = {
@@ -34823,6 +35064,7 @@ export type UserCreateWithoutProjectDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutProjectDonationsInput = {
@@ -34962,6 +35204,7 @@ export type UserUncheckedCreateWithoutProjectDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutProjectDonationsInput = {
@@ -35117,6 +35360,7 @@ export type UserUpdateWithoutProjectDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectDonationsInput = {
@@ -35256,6 +35500,7 @@ export type UserUncheckedUpdateWithoutProjectDonationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutProjectUpdateAuthorsInput = {
@@ -35395,6 +35640,7 @@ export type UserCreateWithoutProjectUpdateAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutProjectUpdateAuthorsInput = {
@@ -35534,6 +35780,7 @@ export type UserUncheckedCreateWithoutProjectUpdateAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutProjectUpdateAuthorsInput = {
@@ -35689,6 +35936,7 @@ export type UserUpdateWithoutProjectUpdateAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutProjectUpdateAuthorsInput = {
@@ -35828,6 +36076,7 @@ export type UserUncheckedUpdateWithoutProjectUpdateAuthorsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutDocumentUploadsInput = {
@@ -35967,6 +36216,7 @@ export type UserCreateWithoutDocumentUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutDocumentUploadsInput = {
@@ -36106,6 +36356,7 @@ export type UserUncheckedCreateWithoutDocumentUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutDocumentUploadsInput = {
@@ -36261,6 +36512,7 @@ export type UserUpdateWithoutDocumentUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDocumentUploadsInput = {
@@ -36400,6 +36652,7 @@ export type UserUncheckedUpdateWithoutDocumentUploadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutPresentationsInput = {
@@ -36539,6 +36792,7 @@ export type UserCreateWithoutPresentationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutPresentationsInput = {
@@ -36678,6 +36932,7 @@ export type UserUncheckedCreateWithoutPresentationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutPresentationsInput = {
@@ -36833,6 +37088,7 @@ export type UserUpdateWithoutPresentationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPresentationsInput = {
@@ -36972,6 +37228,7 @@ export type UserUncheckedUpdateWithoutPresentationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAssetAssignmentsInput = {
@@ -37111,6 +37368,7 @@ export type UserCreateWithoutAssetAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAssetAssignmentsInput = {
@@ -37250,6 +37508,7 @@ export type UserUncheckedCreateWithoutAssetAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAssetAssignmentsInput = {
@@ -37405,6 +37664,7 @@ export type UserUpdateWithoutAssetAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAssetAssignmentsInput = {
@@ -37544,6 +37804,7 @@ export type UserUncheckedUpdateWithoutAssetAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutDepartmentLeaderInput = {
@@ -37683,6 +37944,7 @@ export type UserCreateWithoutDepartmentLeaderInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutDepartmentLeaderInput = {
@@ -37822,6 +38084,7 @@ export type UserUncheckedCreateWithoutDepartmentLeaderInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutDepartmentLeaderInput = {
@@ -37977,6 +38240,7 @@ export type UserUpdateWithoutDepartmentLeaderInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDepartmentLeaderInput = {
@@ -38116,6 +38380,7 @@ export type UserUncheckedUpdateWithoutDepartmentLeaderInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutInventoryTransactionsInput = {
@@ -38255,6 +38520,7 @@ export type UserCreateWithoutInventoryTransactionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutInventoryTransactionsInput = {
@@ -38394,6 +38660,7 @@ export type UserUncheckedCreateWithoutInventoryTransactionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutInventoryTransactionsInput = {
@@ -38549,6 +38816,7 @@ export type UserUpdateWithoutInventoryTransactionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutInventoryTransactionsInput = {
@@ -38688,6 +38956,7 @@ export type UserUncheckedUpdateWithoutInventoryTransactionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutLeadershipAssignmentsInput = {
@@ -38827,6 +39096,7 @@ export type UserCreateWithoutLeadershipAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutLeadershipAssignmentsInput = {
@@ -38966,6 +39236,7 @@ export type UserUncheckedCreateWithoutLeadershipAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutLeadershipAssignmentsInput = {
@@ -39121,6 +39392,7 @@ export type UserUpdateWithoutLeadershipAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLeadershipAssignmentsInput = {
@@ -39260,6 +39532,7 @@ export type UserUncheckedUpdateWithoutLeadershipAssignmentsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutStaffRecordInput = {
@@ -39399,6 +39672,7 @@ export type UserCreateWithoutStaffRecordInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutStaffRecordInput = {
@@ -39538,6 +39812,7 @@ export type UserUncheckedCreateWithoutStaffRecordInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutStaffRecordInput = {
@@ -39693,6 +39968,7 @@ export type UserUpdateWithoutStaffRecordInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutStaffRecordInput = {
@@ -39832,6 +40108,7 @@ export type UserUncheckedUpdateWithoutStaffRecordInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutPayrollProcessedInput = {
@@ -39971,6 +40248,7 @@ export type UserCreateWithoutPayrollProcessedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutPayrollProcessedInput = {
@@ -40110,6 +40388,7 @@ export type UserUncheckedCreateWithoutPayrollProcessedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutPayrollProcessedInput = {
@@ -40265,6 +40544,7 @@ export type UserUpdateWithoutPayrollProcessedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPayrollProcessedInput = {
@@ -40404,6 +40684,7 @@ export type UserUncheckedUpdateWithoutPayrollProcessedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutPayslipsGeneratedInput = {
@@ -40543,6 +40824,7 @@ export type UserCreateWithoutPayslipsGeneratedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutPayslipsGeneratedInput = {
@@ -40682,6 +40964,7 @@ export type UserUncheckedCreateWithoutPayslipsGeneratedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutPayslipsGeneratedInput = {
@@ -40837,6 +41120,7 @@ export type UserUpdateWithoutPayslipsGeneratedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPayslipsGeneratedInput = {
@@ -40976,6 +41260,7 @@ export type UserUncheckedUpdateWithoutPayslipsGeneratedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutChecksDonatedInput = {
@@ -41115,6 +41400,7 @@ export type UserCreateWithoutChecksDonatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChecksDonatedInput = {
@@ -41254,6 +41540,7 @@ export type UserUncheckedCreateWithoutChecksDonatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChecksDonatedInput = {
@@ -41398,6 +41685,7 @@ export type UserCreateWithoutChecksReceivedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChecksReceivedInput = {
@@ -41537,6 +41825,7 @@ export type UserUncheckedCreateWithoutChecksReceivedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChecksReceivedInput = {
@@ -41681,6 +41970,7 @@ export type UserCreateWithoutChecksDepositedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutChecksDepositedInput = {
@@ -41820,6 +42110,7 @@ export type UserUncheckedCreateWithoutChecksDepositedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutChecksDepositedInput = {
@@ -41975,6 +42266,7 @@ export type UserUpdateWithoutChecksDonatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChecksDonatedInput = {
@@ -42114,6 +42406,7 @@ export type UserUncheckedUpdateWithoutChecksDonatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutChecksReceivedInput = {
@@ -42264,6 +42557,7 @@ export type UserUpdateWithoutChecksReceivedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChecksReceivedInput = {
@@ -42403,6 +42697,7 @@ export type UserUncheckedUpdateWithoutChecksReceivedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutChecksDepositedInput = {
@@ -42553,6 +42848,7 @@ export type UserUpdateWithoutChecksDepositedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutChecksDepositedInput = {
@@ -42692,6 +42988,7 @@ export type UserUncheckedUpdateWithoutChecksDepositedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutGuestVisitsInput = {
@@ -42831,6 +43128,7 @@ export type UserCreateWithoutGuestVisitsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutGuestVisitsInput = {
@@ -42970,6 +43268,7 @@ export type UserUncheckedCreateWithoutGuestVisitsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutGuestVisitsInput = {
@@ -43114,6 +43413,7 @@ export type UserCreateWithoutGuestVisitsRecordedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutGuestVisitsRecordedInput = {
@@ -43253,6 +43553,7 @@ export type UserUncheckedCreateWithoutGuestVisitsRecordedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutGuestVisitsRecordedInput = {
@@ -43408,6 +43709,7 @@ export type UserUpdateWithoutGuestVisitsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGuestVisitsInput = {
@@ -43547,6 +43849,7 @@ export type UserUncheckedUpdateWithoutGuestVisitsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutGuestVisitsRecordedInput = {
@@ -43697,6 +44000,7 @@ export type UserUpdateWithoutGuestVisitsRecordedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGuestVisitsRecordedInput = {
@@ -43836,6 +44140,7 @@ export type UserUncheckedUpdateWithoutGuestVisitsRecordedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutGuestFollowUpsInput = {
@@ -43975,6 +44280,7 @@ export type UserCreateWithoutGuestFollowUpsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutGuestFollowUpsInput = {
@@ -44114,6 +44420,7 @@ export type UserUncheckedCreateWithoutGuestFollowUpsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutGuestFollowUpsInput = {
@@ -44258,6 +44565,7 @@ export type UserCreateWithoutFollowUpsAssignedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFollowUpsAssignedInput = {
@@ -44397,6 +44705,7 @@ export type UserUncheckedCreateWithoutFollowUpsAssignedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFollowUpsAssignedInput = {
@@ -44541,6 +44850,7 @@ export type UserCreateWithoutFollowUpsCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFollowUpsCreatedInput = {
@@ -44680,6 +44990,7 @@ export type UserUncheckedCreateWithoutFollowUpsCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFollowUpsCreatedInput = {
@@ -44835,6 +45146,7 @@ export type UserUpdateWithoutGuestFollowUpsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGuestFollowUpsInput = {
@@ -44974,6 +45286,7 @@ export type UserUncheckedUpdateWithoutGuestFollowUpsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutFollowUpsAssignedInput = {
@@ -45124,6 +45437,7 @@ export type UserUpdateWithoutFollowUpsAssignedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowUpsAssignedInput = {
@@ -45263,6 +45577,7 @@ export type UserUncheckedUpdateWithoutFollowUpsAssignedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutFollowUpsCreatedInput = {
@@ -45413,6 +45728,7 @@ export type UserUpdateWithoutFollowUpsCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFollowUpsCreatedInput = {
@@ -45552,6 +45868,7 @@ export type UserUncheckedUpdateWithoutFollowUpsCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutLeaveApprovalsInput = {
@@ -45691,6 +46008,7 @@ export type UserCreateWithoutLeaveApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutLeaveApprovalsInput = {
@@ -45830,6 +46148,7 @@ export type UserUncheckedCreateWithoutLeaveApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutLeaveApprovalsInput = {
@@ -45985,6 +46304,7 @@ export type UserUpdateWithoutLeaveApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutLeaveApprovalsInput = {
@@ -46124,6 +46444,7 @@ export type UserUncheckedUpdateWithoutLeaveApprovalsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutAppraisalReviewsInput = {
@@ -46263,6 +46584,7 @@ export type UserCreateWithoutAppraisalReviewsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutAppraisalReviewsInput = {
@@ -46402,6 +46724,7 @@ export type UserUncheckedCreateWithoutAppraisalReviewsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutAppraisalReviewsInput = {
@@ -46557,6 +46880,7 @@ export type UserUpdateWithoutAppraisalReviewsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAppraisalReviewsInput = {
@@ -46696,6 +47020,7 @@ export type UserUncheckedUpdateWithoutAppraisalReviewsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutTemplatesCreatedInput = {
@@ -46835,6 +47160,7 @@ export type UserCreateWithoutTemplatesCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutTemplatesCreatedInput = {
@@ -46974,6 +47300,7 @@ export type UserUncheckedCreateWithoutTemplatesCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutTemplatesCreatedInput = {
@@ -47129,6 +47456,7 @@ export type UserUpdateWithoutTemplatesCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTemplatesCreatedInput = {
@@ -47268,6 +47596,7 @@ export type UserUncheckedUpdateWithoutTemplatesCreatedInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutPrayerRequestsInput = {
@@ -47407,6 +47736,7 @@ export type UserCreateWithoutPrayerRequestsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutPrayerRequestsInput = {
@@ -47546,6 +47876,7 @@ export type UserUncheckedCreateWithoutPrayerRequestsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutPrayerRequestsInput = {
@@ -47701,6 +48032,7 @@ export type UserUpdateWithoutPrayerRequestsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrayerRequestsInput = {
@@ -47840,6 +48172,7 @@ export type UserUncheckedUpdateWithoutPrayerRequestsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutPrayersInput = {
@@ -47979,6 +48312,7 @@ export type UserCreateWithoutPrayersInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutPrayersInput = {
@@ -48118,6 +48452,7 @@ export type UserUncheckedCreateWithoutPrayersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutPrayersInput = {
@@ -48273,6 +48608,7 @@ export type UserUpdateWithoutPrayersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrayersInput = {
@@ -48412,6 +48748,7 @@ export type UserUncheckedUpdateWithoutPrayersInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutPrayerRequestUpdatesInput = {
@@ -48551,6 +48888,7 @@ export type UserCreateWithoutPrayerRequestUpdatesInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutPrayerRequestUpdatesInput = {
@@ -48690,6 +49028,7 @@ export type UserUncheckedCreateWithoutPrayerRequestUpdatesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutPrayerRequestUpdatesInput = {
@@ -48845,6 +49184,7 @@ export type UserUpdateWithoutPrayerRequestUpdatesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrayerRequestUpdatesInput = {
@@ -48984,6 +49324,7 @@ export type UserUncheckedUpdateWithoutPrayerRequestUpdatesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutConversationsInput = {
@@ -49123,6 +49464,7 @@ export type UserCreateWithoutConversationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutConversationsInput = {
@@ -49262,6 +49604,7 @@ export type UserUncheckedCreateWithoutConversationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutConversationsInput = {
@@ -49417,6 +49760,7 @@ export type UserUpdateWithoutConversationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConversationsInput = {
@@ -49556,6 +49900,7 @@ export type UserUncheckedUpdateWithoutConversationsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutSentMessagesInput = {
@@ -49695,6 +50040,7 @@ export type UserCreateWithoutSentMessagesInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSentMessagesInput = {
@@ -49834,6 +50180,7 @@ export type UserUncheckedCreateWithoutSentMessagesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSentMessagesInput = {
@@ -49989,6 +50336,7 @@ export type UserUpdateWithoutSentMessagesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentMessagesInput = {
@@ -50128,6 +50476,7 @@ export type UserUncheckedUpdateWithoutSentMessagesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutMessageReadsInput = {
@@ -50267,6 +50616,7 @@ export type UserCreateWithoutMessageReadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutMessageReadsInput = {
@@ -50406,6 +50756,7 @@ export type UserUncheckedCreateWithoutMessageReadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutMessageReadsInput = {
@@ -50561,6 +50912,7 @@ export type UserUpdateWithoutMessageReadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutMessageReadsInput = {
@@ -50700,6 +51052,7 @@ export type UserUncheckedUpdateWithoutMessageReadsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutSentSMSInput = {
@@ -50839,6 +51192,7 @@ export type UserCreateWithoutSentSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSentSMSInput = {
@@ -50978,6 +51332,7 @@ export type UserUncheckedCreateWithoutSentSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSentSMSInput = {
@@ -51122,6 +51477,7 @@ export type UserCreateWithoutReceivedSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutReceivedSMSInput = {
@@ -51261,6 +51617,7 @@ export type UserUncheckedCreateWithoutReceivedSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutReceivedSMSInput = {
@@ -51416,6 +51773,7 @@ export type UserUpdateWithoutSentSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSentSMSInput = {
@@ -51555,6 +51913,7 @@ export type UserUncheckedUpdateWithoutSentSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutReceivedSMSInput = {
@@ -51705,6 +52064,7 @@ export type UserUpdateWithoutReceivedSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutReceivedSMSInput = {
@@ -51844,6 +52204,7 @@ export type UserUncheckedUpdateWithoutReceivedSMSInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutSurveysInput = {
@@ -51983,6 +52344,7 @@ export type UserCreateWithoutSurveysInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSurveysInput = {
@@ -52122,6 +52484,7 @@ export type UserUncheckedCreateWithoutSurveysInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSurveysInput = {
@@ -52277,6 +52640,7 @@ export type UserUpdateWithoutSurveysInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSurveysInput = {
@@ -52416,6 +52780,7 @@ export type UserUncheckedUpdateWithoutSurveysInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutSurveyResponsesInput = {
@@ -52555,6 +52920,7 @@ export type UserCreateWithoutSurveyResponsesInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutSurveyResponsesInput = {
@@ -52694,6 +53060,7 @@ export type UserUncheckedCreateWithoutSurveyResponsesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutSurveyResponsesInput = {
@@ -52849,6 +53216,7 @@ export type UserUpdateWithoutSurveyResponsesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSurveyResponsesInput = {
@@ -52988,6 +53356,7 @@ export type UserUncheckedUpdateWithoutSurveyResponsesInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutEngagementScoresInput = {
@@ -53127,6 +53496,7 @@ export type UserCreateWithoutEngagementScoresInput = {
   workflows?: Prisma.WorkflowCreateNestedManyWithoutAuthorInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutEngagementScoresInput = {
@@ -53266,6 +53636,7 @@ export type UserUncheckedCreateWithoutEngagementScoresInput = {
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutAuthorInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutEngagementScoresInput = {
@@ -53421,6 +53792,7 @@ export type UserUpdateWithoutEngagementScoresInput = {
   workflows?: Prisma.WorkflowUpdateManyWithoutAuthorNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEngagementScoresInput = {
@@ -53560,6 +53932,7 @@ export type UserUncheckedUpdateWithoutEngagementScoresInput = {
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutAuthorNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutWorkflowsInput = {
@@ -53699,6 +54072,7 @@ export type UserCreateWithoutWorkflowsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutWorkflowsInput = {
@@ -53838,6 +54212,7 @@ export type UserUncheckedCreateWithoutWorkflowsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutWorkflowsInput = {
@@ -53993,6 +54368,7 @@ export type UserUpdateWithoutWorkflowsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutWorkflowsInput = {
@@ -54132,6 +54508,7 @@ export type UserUncheckedUpdateWithoutWorkflowsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutFormsInput = {
@@ -54271,6 +54648,7 @@ export type UserCreateWithoutFormsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFormsInput = {
@@ -54410,6 +54788,7 @@ export type UserUncheckedCreateWithoutFormsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFormsInput = {
@@ -54565,6 +54944,7 @@ export type UserUpdateWithoutFormsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFormsInput = {
@@ -54704,6 +55084,7 @@ export type UserUncheckedUpdateWithoutFormsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutFormSubmissionsInput = {
@@ -54843,6 +55224,7 @@ export type UserCreateWithoutFormSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutFormSubmissionsInput = {
@@ -54982,6 +55364,7 @@ export type UserUncheckedCreateWithoutFormSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutFormSubmissionsInput = {
@@ -55137,6 +55520,7 @@ export type UserUpdateWithoutFormSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFormSubmissionsInput = {
@@ -55276,6 +55660,7 @@ export type UserUncheckedUpdateWithoutFormSubmissionsInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserCreateWithoutConnectionsInput = {
@@ -55415,6 +55800,7 @@ export type UserCreateWithoutConnectionsInput = {
   workflows?: Prisma.WorkflowCreateNestedManyWithoutAuthorInput
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutConnectionsInput = {
@@ -55554,6 +55940,7 @@ export type UserUncheckedCreateWithoutConnectionsInput = {
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutAuthorInput
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutConnectionsInput = {
@@ -55698,6 +56085,7 @@ export type UserCreateWithoutConnectedToInput = {
   workflows?: Prisma.WorkflowCreateNestedManyWithoutAuthorInput
   engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
+  approvedSponsorships?: Prisma.SponsorshipCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserUncheckedCreateWithoutConnectedToInput = {
@@ -55837,6 +56225,7 @@ export type UserUncheckedCreateWithoutConnectedToInput = {
   workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutAuthorInput
   engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
   connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedCreateNestedManyWithoutApprovedByInput
 }
 
 export type UserCreateOrConnectWithoutConnectedToInput = {
@@ -55992,6 +56381,7 @@ export type UserUpdateWithoutConnectionsInput = {
   workflows?: Prisma.WorkflowUpdateManyWithoutAuthorNestedInput
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConnectionsInput = {
@@ -56131,6 +56521,7 @@ export type UserUncheckedUpdateWithoutConnectionsInput = {
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutAuthorNestedInput
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUpsertWithoutConnectedToInput = {
@@ -56281,6 +56672,7 @@ export type UserUpdateWithoutConnectedToInput = {
   workflows?: Prisma.WorkflowUpdateManyWithoutAuthorNestedInput
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutConnectedToInput = {
@@ -56420,6 +56812,583 @@ export type UserUncheckedUpdateWithoutConnectedToInput = {
   workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutAuthorNestedInput
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
+}
+
+export type UserCreateWithoutApprovedSponsorshipsInput = {
+  id?: string
+  email?: string | null
+  phone?: string | null
+  title?: string | null
+  firstName: string
+  lastName: string
+  middleName?: string | null
+  gender?: $Enums.Gender | null
+  dateOfBirth?: Date | string | null
+  maritalStatus?: $Enums.MaritalStatus | null
+  profession?: string | null
+  profileImage?: string | null
+  bio?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  county?: string | null
+  zipCode?: string | null
+  country?: string | null
+  residence?: string | null
+  emergencyContact?: string | null
+  emergencyPhone?: string | null
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  canLogin?: boolean
+  enableFollowUps?: boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  memberSince?: Date | string | null
+  baptismDate?: Date | string | null
+  baptismLocation?: string | null
+  dedicationDate?: Date | string | null
+  weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
+  familyPhoto?: string | null
+  familyName?: string | null
+  emailVerified?: boolean
+  phoneVerified?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  campus?: Prisma.CampusCreateNestedOneWithoutUsersInput
+  spouse?: Prisma.UserCreateNestedOneWithoutSpouseOfInput
+  spouseOf?: Prisma.UserCreateNestedOneWithoutSpouseInput
+  parent?: Prisma.UserCreateNestedOneWithoutChildrenInput
+  children?: Prisma.UserCreateNestedManyWithoutParentInput
+  familyHead?: Prisma.UserCreateNestedOneWithoutFamilyMembersInput
+  familyMembers?: Prisma.UserCreateNestedManyWithoutFamilyHeadInput
+  socialLogins?: Prisma.SocialLoginCreateNestedManyWithoutUserInput
+  userSessions?: Prisma.UserSessionCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogCreateNestedManyWithoutUserInput
+  authAccounts?: Prisma.AuthAccountCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationCreateNestedManyWithoutInvitedByInput
+  invitation?: Prisma.InvitationCreateNestedOneWithoutUserInput
+  groupMemberships?: Prisma.GroupMemberCreateNestedManyWithoutUserInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentCreateNestedManyWithoutUserInput
+  serviceAssignments?: Prisma.ServiceAssignmentCreateNestedManyWithoutUserInput
+  departmentLeader?: Prisma.DepartmentCreateNestedManyWithoutLeaderInput
+  inventoryTransactions?: Prisma.InventoryTransactionCreateNestedManyWithoutPerformedByInput
+  attendances?: Prisma.AttendanceCreateNestedManyWithoutUserInput
+  sessionAttendances?: Prisma.SessionAttendeeCreateNestedManyWithoutUserInput
+  attendanceRecords?: Prisma.AttendanceRecordCreateNestedManyWithoutUserInput
+  decisions?: Prisma.DecisionCreateNestedManyWithoutUserInput
+  proposedDecisions?: Prisma.DecisionCreateNestedManyWithoutProposedByInput
+  approvedDecisions?: Prisma.DecisionCreateNestedManyWithoutApprovedByInput
+  assignedDecisions?: Prisma.DecisionCreateNestedManyWithoutAssignedToInput
+  recordedDecisions?: Prisma.DecisionCreateNestedManyWithoutRecordedByInput
+  organizedMeetings?: Prisma.MeetingCreateNestedManyWithoutOrganizerInput
+  donations?: Prisma.DonationCreateNestedManyWithoutUserInput
+  eventRegistrations?: Prisma.EventRegistrationCreateNestedManyWithoutUserInput
+  eventCheckIns?: Prisma.EventCheckInCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  notificationsAboutMe?: Prisma.NotificationCreateNestedManyWithoutRelatedUserInput
+  announcementsRead?: Prisma.AnnouncementReadCreateNestedManyWithoutUserInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberCreateNestedManyWithoutUserInput
+  youthGroupMembers?: Prisma.YouthGroupMemberCreateNestedManyWithoutUserInput
+  staffRecord?: Prisma.StaffCreateNestedOneWithoutUserInput
+  mediaUploads?: Prisma.MediaCreateNestedManyWithoutUploadedByInput
+  expenseSubmissions?: Prisma.ExpenseCreateNestedManyWithoutSubmittedByInput
+  expenseApprovals?: Prisma.ExpenseCreateNestedManyWithoutApprovedByInput
+  eventOrganizations?: Prisma.EventCreateNestedManyWithoutOrganizerInput
+  facilityBookings?: Prisma.FacilityBookingCreateNestedManyWithoutUserInput
+  childrenLeadership?: Prisma.ChildrenClassCreateNestedManyWithoutLeaderInput
+  childrenParent?: Prisma.ChildrenMinistryMemberCreateNestedManyWithoutParentInput
+  youthLeadership?: Prisma.YouthGroupCreateNestedManyWithoutLeaderInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentCreateNestedManyWithoutUserInput
+  outreachOrganizations?: Prisma.OutreachCreateNestedManyWithoutOrganizerInput
+  outreachParticipations?: Prisma.OutreachParticipantCreateNestedManyWithoutUserInput
+  testimonyAuthors?: Prisma.OutreachTestimonyCreateNestedManyWithoutAuthorInput
+  projectDonations?: Prisma.ProjectDonationCreateNestedManyWithoutUserInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateCreateNestedManyWithoutAuthorInput
+  documentUploads?: Prisma.DocumentCreateNestedManyWithoutUploadedByInput
+  presentations?: Prisma.PresentationCreateNestedManyWithoutCreatedByInput
+  assetAssignments?: Prisma.AssetCreateNestedManyWithoutAssignedToInput
+  leaveApprovals?: Prisma.LeaveCreateNestedManyWithoutApprovedByInput
+  appraisalReviews?: Prisma.PerformanceAppraisalCreateNestedManyWithoutReviewedByInput
+  recurringDonations?: Prisma.RecurringDonationCreateNestedManyWithoutUserInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceCreateNestedManyWithoutUserInput
+  payrollProcessed?: Prisma.PayrollCreateNestedManyWithoutProcessedByInput
+  payslipsGenerated?: Prisma.PayslipCreateNestedManyWithoutGeneratedByInput
+  checksReceived?: Prisma.CheckCreateNestedManyWithoutReceivedByInput
+  checksDeposited?: Prisma.CheckCreateNestedManyWithoutDepositedByInput
+  checksDonated?: Prisma.CheckCreateNestedManyWithoutDonorInput
+  guestVisits?: Prisma.GuestVisitCreateNestedManyWithoutGuestInput
+  guestVisitsRecorded?: Prisma.GuestVisitCreateNestedManyWithoutRecordedByInput
+  guestFollowUps?: Prisma.GuestFollowUpCreateNestedManyWithoutGuestInput
+  followUpsAssigned?: Prisma.GuestFollowUpCreateNestedManyWithoutAssignedToInput
+  followUpsCreated?: Prisma.GuestFollowUpCreateNestedManyWithoutCreatedByInput
+  templatesCreated?: Prisma.CommunicationTemplateCreateNestedManyWithoutCreatedByInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentCreateNestedManyWithoutUserInput
+  mentorRelations?: Prisma.MentorshipCreateNestedManyWithoutMentorInput
+  menteeRelations?: Prisma.MentorshipCreateNestedManyWithoutMenteeInput
+  announcementAuthors?: Prisma.AnnouncementCreateNestedManyWithoutAuthorInput
+  discussionAuthors?: Prisma.GroupDiscussionCreateNestedManyWithoutAuthorInput
+  replyAuthors?: Prisma.GroupDiscussionReplyCreateNestedManyWithoutAuthorInput
+  groupLeadership?: Prisma.SmallGroupCreateNestedManyWithoutLeaderInput
+  campusPastor?: Prisma.CampusCreateNestedManyWithoutPastorInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationCreateNestedManyWithoutMemberInput
+  prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutAuthorInput
+  prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateCreateNestedManyWithoutAuthorInput
+  conversations?: Prisma.ConversationParticipantCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogCreateNestedManyWithoutRecipientInput
+  surveys?: Prisma.SurveyCreateNestedManyWithoutAuthorInput
+  surveyResponses?: Prisma.SurveyResponseCreateNestedManyWithoutUserInput
+  forms?: Prisma.FormCreateNestedManyWithoutAuthorInput
+  formSubmissions?: Prisma.FormSubmissionCreateNestedManyWithoutUserInput
+  workflows?: Prisma.WorkflowCreateNestedManyWithoutAuthorInput
+  engagementScores?: Prisma.MemberEngagementScoreCreateNestedManyWithoutUserInput
+  connections?: Prisma.MemberConnectionCreateNestedManyWithoutUserInput
+  connectedTo?: Prisma.MemberConnectionCreateNestedManyWithoutConnectedUserInput
+}
+
+export type UserUncheckedCreateWithoutApprovedSponsorshipsInput = {
+  id?: string
+  email?: string | null
+  phone?: string | null
+  title?: string | null
+  firstName: string
+  lastName: string
+  middleName?: string | null
+  gender?: $Enums.Gender | null
+  dateOfBirth?: Date | string | null
+  maritalStatus?: $Enums.MaritalStatus | null
+  profession?: string | null
+  profileImage?: string | null
+  bio?: string | null
+  address?: string | null
+  city?: string | null
+  state?: string | null
+  county?: string | null
+  zipCode?: string | null
+  country?: string | null
+  residence?: string | null
+  emergencyContact?: string | null
+  emergencyPhone?: string | null
+  role?: $Enums.UserRole
+  status?: $Enums.UserStatus
+  canLogin?: boolean
+  enableFollowUps?: boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  campusId?: string | null
+  memberSince?: Date | string | null
+  baptismDate?: Date | string | null
+  baptismLocation?: string | null
+  dedicationDate?: Date | string | null
+  weddingAnniversary?: Date | string | null
+  biometricUserId?: string | null
+  spouseId?: string | null
+  parentId?: string | null
+  familyPhoto?: string | null
+  familyHeadId?: string | null
+  familyName?: string | null
+  emailVerified?: boolean
+  phoneVerified?: boolean
+  twoFactorEnabled?: boolean
+  twoFactorSecret?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  lastLoginAt?: Date | string | null
+  deletedAt?: Date | string | null
+  spouseOf?: Prisma.UserUncheckedCreateNestedOneWithoutSpouseInput
+  children?: Prisma.UserUncheckedCreateNestedManyWithoutParentInput
+  familyMembers?: Prisma.UserUncheckedCreateNestedManyWithoutFamilyHeadInput
+  socialLogins?: Prisma.SocialLoginUncheckedCreateNestedManyWithoutUserInput
+  userSessions?: Prisma.UserSessionUncheckedCreateNestedManyWithoutUserInput
+  activityLogs?: Prisma.ActivityLogUncheckedCreateNestedManyWithoutUserInput
+  authAccounts?: Prisma.AuthAccountUncheckedCreateNestedManyWithoutUserInput
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  invitations?: Prisma.InvitationUncheckedCreateNestedManyWithoutInvitedByInput
+  invitation?: Prisma.InvitationUncheckedCreateNestedOneWithoutUserInput
+  groupMemberships?: Prisma.GroupMemberUncheckedCreateNestedManyWithoutUserInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUncheckedCreateNestedManyWithoutUserInput
+  serviceAssignments?: Prisma.ServiceAssignmentUncheckedCreateNestedManyWithoutUserInput
+  departmentLeader?: Prisma.DepartmentUncheckedCreateNestedManyWithoutLeaderInput
+  inventoryTransactions?: Prisma.InventoryTransactionUncheckedCreateNestedManyWithoutPerformedByInput
+  attendances?: Prisma.AttendanceUncheckedCreateNestedManyWithoutUserInput
+  sessionAttendances?: Prisma.SessionAttendeeUncheckedCreateNestedManyWithoutUserInput
+  attendanceRecords?: Prisma.AttendanceRecordUncheckedCreateNestedManyWithoutUserInput
+  decisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutUserInput
+  proposedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutProposedByInput
+  approvedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutApprovedByInput
+  assignedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutAssignedToInput
+  recordedDecisions?: Prisma.DecisionUncheckedCreateNestedManyWithoutRecordedByInput
+  organizedMeetings?: Prisma.MeetingUncheckedCreateNestedManyWithoutOrganizerInput
+  donations?: Prisma.DonationUncheckedCreateNestedManyWithoutUserInput
+  eventRegistrations?: Prisma.EventRegistrationUncheckedCreateNestedManyWithoutUserInput
+  eventCheckIns?: Prisma.EventCheckInUncheckedCreateNestedManyWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  notificationsAboutMe?: Prisma.NotificationUncheckedCreateNestedManyWithoutRelatedUserInput
+  announcementsRead?: Prisma.AnnouncementReadUncheckedCreateNestedManyWithoutUserInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUncheckedCreateNestedManyWithoutUserInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUncheckedCreateNestedManyWithoutUserInput
+  staffRecord?: Prisma.StaffUncheckedCreateNestedOneWithoutUserInput
+  mediaUploads?: Prisma.MediaUncheckedCreateNestedManyWithoutUploadedByInput
+  expenseSubmissions?: Prisma.ExpenseUncheckedCreateNestedManyWithoutSubmittedByInput
+  expenseApprovals?: Prisma.ExpenseUncheckedCreateNestedManyWithoutApprovedByInput
+  eventOrganizations?: Prisma.EventUncheckedCreateNestedManyWithoutOrganizerInput
+  facilityBookings?: Prisma.FacilityBookingUncheckedCreateNestedManyWithoutUserInput
+  childrenLeadership?: Prisma.ChildrenClassUncheckedCreateNestedManyWithoutLeaderInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUncheckedCreateNestedManyWithoutParentInput
+  youthLeadership?: Prisma.YouthGroupUncheckedCreateNestedManyWithoutLeaderInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUncheckedCreateNestedManyWithoutUserInput
+  outreachOrganizations?: Prisma.OutreachUncheckedCreateNestedManyWithoutOrganizerInput
+  outreachParticipations?: Prisma.OutreachParticipantUncheckedCreateNestedManyWithoutUserInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUncheckedCreateNestedManyWithoutAuthorInput
+  projectDonations?: Prisma.ProjectDonationUncheckedCreateNestedManyWithoutUserInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUncheckedCreateNestedManyWithoutAuthorInput
+  documentUploads?: Prisma.DocumentUncheckedCreateNestedManyWithoutUploadedByInput
+  presentations?: Prisma.PresentationUncheckedCreateNestedManyWithoutCreatedByInput
+  assetAssignments?: Prisma.AssetUncheckedCreateNestedManyWithoutAssignedToInput
+  leaveApprovals?: Prisma.LeaveUncheckedCreateNestedManyWithoutApprovedByInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUncheckedCreateNestedManyWithoutReviewedByInput
+  recurringDonations?: Prisma.RecurringDonationUncheckedCreateNestedManyWithoutUserInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUncheckedCreateNestedManyWithoutUserInput
+  payrollProcessed?: Prisma.PayrollUncheckedCreateNestedManyWithoutProcessedByInput
+  payslipsGenerated?: Prisma.PayslipUncheckedCreateNestedManyWithoutGeneratedByInput
+  checksReceived?: Prisma.CheckUncheckedCreateNestedManyWithoutReceivedByInput
+  checksDeposited?: Prisma.CheckUncheckedCreateNestedManyWithoutDepositedByInput
+  checksDonated?: Prisma.CheckUncheckedCreateNestedManyWithoutDonorInput
+  guestVisits?: Prisma.GuestVisitUncheckedCreateNestedManyWithoutGuestInput
+  guestVisitsRecorded?: Prisma.GuestVisitUncheckedCreateNestedManyWithoutRecordedByInput
+  guestFollowUps?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutGuestInput
+  followUpsAssigned?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutAssignedToInput
+  followUpsCreated?: Prisma.GuestFollowUpUncheckedCreateNestedManyWithoutCreatedByInput
+  templatesCreated?: Prisma.CommunicationTemplateUncheckedCreateNestedManyWithoutCreatedByInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUncheckedCreateNestedManyWithoutUserInput
+  mentorRelations?: Prisma.MentorshipUncheckedCreateNestedManyWithoutMentorInput
+  menteeRelations?: Prisma.MentorshipUncheckedCreateNestedManyWithoutMenteeInput
+  announcementAuthors?: Prisma.AnnouncementUncheckedCreateNestedManyWithoutAuthorInput
+  discussionAuthors?: Prisma.GroupDiscussionUncheckedCreateNestedManyWithoutAuthorInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUncheckedCreateNestedManyWithoutAuthorInput
+  groupLeadership?: Prisma.SmallGroupUncheckedCreateNestedManyWithoutLeaderInput
+  campusPastor?: Prisma.CampusUncheckedCreateNestedManyWithoutPastorInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUncheckedCreateNestedManyWithoutMemberInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutAuthorInput
+  prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedCreateNestedManyWithoutAuthorInput
+  conversations?: Prisma.ConversationParticipantUncheckedCreateNestedManyWithoutUserInput
+  sentMessages?: Prisma.MessageUncheckedCreateNestedManyWithoutSenderInput
+  messageReads?: Prisma.MessageReadUncheckedCreateNestedManyWithoutUserInput
+  sentSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutSenderInput
+  receivedSMS?: Prisma.SMSLogUncheckedCreateNestedManyWithoutRecipientInput
+  surveys?: Prisma.SurveyUncheckedCreateNestedManyWithoutAuthorInput
+  surveyResponses?: Prisma.SurveyResponseUncheckedCreateNestedManyWithoutUserInput
+  forms?: Prisma.FormUncheckedCreateNestedManyWithoutAuthorInput
+  formSubmissions?: Prisma.FormSubmissionUncheckedCreateNestedManyWithoutUserInput
+  workflows?: Prisma.WorkflowUncheckedCreateNestedManyWithoutAuthorInput
+  engagementScores?: Prisma.MemberEngagementScoreUncheckedCreateNestedManyWithoutUserInput
+  connections?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutUserInput
+  connectedTo?: Prisma.MemberConnectionUncheckedCreateNestedManyWithoutConnectedUserInput
+}
+
+export type UserCreateOrConnectWithoutApprovedSponsorshipsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovedSponsorshipsInput, Prisma.UserUncheckedCreateWithoutApprovedSponsorshipsInput>
+}
+
+export type UserUpsertWithoutApprovedSponsorshipsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutApprovedSponsorshipsInput, Prisma.UserUncheckedUpdateWithoutApprovedSponsorshipsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutApprovedSponsorshipsInput, Prisma.UserUncheckedCreateWithoutApprovedSponsorshipsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutApprovedSponsorshipsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutApprovedSponsorshipsInput, Prisma.UserUncheckedUpdateWithoutApprovedSponsorshipsInput>
+}
+
+export type UserUpdateWithoutApprovedSponsorshipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  maritalStatus?: Prisma.NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+  profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  county?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  residence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  canLogin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableFollowUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  memberSince?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  campus?: Prisma.CampusUpdateOneWithoutUsersNestedInput
+  spouse?: Prisma.UserUpdateOneWithoutSpouseOfNestedInput
+  spouseOf?: Prisma.UserUpdateOneWithoutSpouseNestedInput
+  parent?: Prisma.UserUpdateOneWithoutChildrenNestedInput
+  children?: Prisma.UserUpdateManyWithoutParentNestedInput
+  familyHead?: Prisma.UserUpdateOneWithoutFamilyMembersNestedInput
+  familyMembers?: Prisma.UserUpdateManyWithoutFamilyHeadNestedInput
+  socialLogins?: Prisma.SocialLoginUpdateManyWithoutUserNestedInput
+  userSessions?: Prisma.UserSessionUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogUpdateManyWithoutUserNestedInput
+  authAccounts?: Prisma.AuthAccountUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUpdateManyWithoutInvitedByNestedInput
+  invitation?: Prisma.InvitationUpdateOneWithoutUserNestedInput
+  groupMemberships?: Prisma.GroupMemberUpdateManyWithoutUserNestedInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUpdateManyWithoutUserNestedInput
+  serviceAssignments?: Prisma.ServiceAssignmentUpdateManyWithoutUserNestedInput
+  departmentLeader?: Prisma.DepartmentUpdateManyWithoutLeaderNestedInput
+  inventoryTransactions?: Prisma.InventoryTransactionUpdateManyWithoutPerformedByNestedInput
+  attendances?: Prisma.AttendanceUpdateManyWithoutUserNestedInput
+  sessionAttendances?: Prisma.SessionAttendeeUpdateManyWithoutUserNestedInput
+  attendanceRecords?: Prisma.AttendanceRecordUpdateManyWithoutUserNestedInput
+  decisions?: Prisma.DecisionUpdateManyWithoutUserNestedInput
+  proposedDecisions?: Prisma.DecisionUpdateManyWithoutProposedByNestedInput
+  approvedDecisions?: Prisma.DecisionUpdateManyWithoutApprovedByNestedInput
+  assignedDecisions?: Prisma.DecisionUpdateManyWithoutAssignedToNestedInput
+  recordedDecisions?: Prisma.DecisionUpdateManyWithoutRecordedByNestedInput
+  organizedMeetings?: Prisma.MeetingUpdateManyWithoutOrganizerNestedInput
+  donations?: Prisma.DonationUpdateManyWithoutUserNestedInput
+  eventRegistrations?: Prisma.EventRegistrationUpdateManyWithoutUserNestedInput
+  eventCheckIns?: Prisma.EventCheckInUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  notificationsAboutMe?: Prisma.NotificationUpdateManyWithoutRelatedUserNestedInput
+  announcementsRead?: Prisma.AnnouncementReadUpdateManyWithoutUserNestedInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUpdateManyWithoutUserNestedInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUpdateManyWithoutUserNestedInput
+  staffRecord?: Prisma.StaffUpdateOneWithoutUserNestedInput
+  mediaUploads?: Prisma.MediaUpdateManyWithoutUploadedByNestedInput
+  expenseSubmissions?: Prisma.ExpenseUpdateManyWithoutSubmittedByNestedInput
+  expenseApprovals?: Prisma.ExpenseUpdateManyWithoutApprovedByNestedInput
+  eventOrganizations?: Prisma.EventUpdateManyWithoutOrganizerNestedInput
+  facilityBookings?: Prisma.FacilityBookingUpdateManyWithoutUserNestedInput
+  childrenLeadership?: Prisma.ChildrenClassUpdateManyWithoutLeaderNestedInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUpdateManyWithoutParentNestedInput
+  youthLeadership?: Prisma.YouthGroupUpdateManyWithoutLeaderNestedInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUpdateManyWithoutUserNestedInput
+  outreachOrganizations?: Prisma.OutreachUpdateManyWithoutOrganizerNestedInput
+  outreachParticipations?: Prisma.OutreachParticipantUpdateManyWithoutUserNestedInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUpdateManyWithoutAuthorNestedInput
+  projectDonations?: Prisma.ProjectDonationUpdateManyWithoutUserNestedInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUpdateManyWithoutAuthorNestedInput
+  documentUploads?: Prisma.DocumentUpdateManyWithoutUploadedByNestedInput
+  presentations?: Prisma.PresentationUpdateManyWithoutCreatedByNestedInput
+  assetAssignments?: Prisma.AssetUpdateManyWithoutAssignedToNestedInput
+  leaveApprovals?: Prisma.LeaveUpdateManyWithoutApprovedByNestedInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUpdateManyWithoutReviewedByNestedInput
+  recurringDonations?: Prisma.RecurringDonationUpdateManyWithoutUserNestedInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUpdateManyWithoutUserNestedInput
+  payrollProcessed?: Prisma.PayrollUpdateManyWithoutProcessedByNestedInput
+  payslipsGenerated?: Prisma.PayslipUpdateManyWithoutGeneratedByNestedInput
+  checksReceived?: Prisma.CheckUpdateManyWithoutReceivedByNestedInput
+  checksDeposited?: Prisma.CheckUpdateManyWithoutDepositedByNestedInput
+  checksDonated?: Prisma.CheckUpdateManyWithoutDonorNestedInput
+  guestVisits?: Prisma.GuestVisitUpdateManyWithoutGuestNestedInput
+  guestVisitsRecorded?: Prisma.GuestVisitUpdateManyWithoutRecordedByNestedInput
+  guestFollowUps?: Prisma.GuestFollowUpUpdateManyWithoutGuestNestedInput
+  followUpsAssigned?: Prisma.GuestFollowUpUpdateManyWithoutAssignedToNestedInput
+  followUpsCreated?: Prisma.GuestFollowUpUpdateManyWithoutCreatedByNestedInput
+  templatesCreated?: Prisma.CommunicationTemplateUpdateManyWithoutCreatedByNestedInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUpdateManyWithoutUserNestedInput
+  mentorRelations?: Prisma.MentorshipUpdateManyWithoutMentorNestedInput
+  menteeRelations?: Prisma.MentorshipUpdateManyWithoutMenteeNestedInput
+  announcementAuthors?: Prisma.AnnouncementUpdateManyWithoutAuthorNestedInput
+  discussionAuthors?: Prisma.GroupDiscussionUpdateManyWithoutAuthorNestedInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUpdateManyWithoutAuthorNestedInput
+  groupLeadership?: Prisma.SmallGroupUpdateManyWithoutLeaderNestedInput
+  campusPastor?: Prisma.CampusUpdateManyWithoutPastorNestedInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUpdateManyWithoutMemberNestedInput
+  prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutAuthorNestedInput
+  prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUpdateManyWithoutAuthorNestedInput
+  conversations?: Prisma.ConversationParticipantUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUpdateManyWithoutRecipientNestedInput
+  surveys?: Prisma.SurveyUpdateManyWithoutAuthorNestedInput
+  surveyResponses?: Prisma.SurveyResponseUpdateManyWithoutUserNestedInput
+  forms?: Prisma.FormUpdateManyWithoutAuthorNestedInput
+  formSubmissions?: Prisma.FormSubmissionUpdateManyWithoutUserNestedInput
+  workflows?: Prisma.WorkflowUpdateManyWithoutAuthorNestedInput
+  engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
+  connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
+  connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutApprovedSponsorshipsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  firstName?: Prisma.StringFieldUpdateOperationsInput | string
+  lastName?: Prisma.StringFieldUpdateOperationsInput | string
+  middleName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  maritalStatus?: Prisma.NullableEnumMaritalStatusFieldUpdateOperationsInput | $Enums.MaritalStatus | null
+  profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profileImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  county?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  country?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  residence?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyContact?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emergencyPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  canLogin?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  enableFollowUps?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  permissions?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  campusId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  memberSince?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  baptismLocation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicationDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  weddingAnniversary?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  biometricUserId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  spouseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyPhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyHeadId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  familyName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  phoneVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorEnabled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  twoFactorSecret?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  lastLoginAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  spouseOf?: Prisma.UserUncheckedUpdateOneWithoutSpouseNestedInput
+  children?: Prisma.UserUncheckedUpdateManyWithoutParentNestedInput
+  familyMembers?: Prisma.UserUncheckedUpdateManyWithoutFamilyHeadNestedInput
+  socialLogins?: Prisma.SocialLoginUncheckedUpdateManyWithoutUserNestedInput
+  userSessions?: Prisma.UserSessionUncheckedUpdateManyWithoutUserNestedInput
+  activityLogs?: Prisma.ActivityLogUncheckedUpdateManyWithoutUserNestedInput
+  authAccounts?: Prisma.AuthAccountUncheckedUpdateManyWithoutUserNestedInput
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  invitations?: Prisma.InvitationUncheckedUpdateManyWithoutInvitedByNestedInput
+  invitation?: Prisma.InvitationUncheckedUpdateOneWithoutUserNestedInput
+  groupMemberships?: Prisma.GroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  volunteerAssignments?: Prisma.VolunteerAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  serviceAssignments?: Prisma.ServiceAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  departmentLeader?: Prisma.DepartmentUncheckedUpdateManyWithoutLeaderNestedInput
+  inventoryTransactions?: Prisma.InventoryTransactionUncheckedUpdateManyWithoutPerformedByNestedInput
+  attendances?: Prisma.AttendanceUncheckedUpdateManyWithoutUserNestedInput
+  sessionAttendances?: Prisma.SessionAttendeeUncheckedUpdateManyWithoutUserNestedInput
+  attendanceRecords?: Prisma.AttendanceRecordUncheckedUpdateManyWithoutUserNestedInput
+  decisions?: Prisma.DecisionUncheckedUpdateManyWithoutUserNestedInput
+  proposedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutProposedByNestedInput
+  approvedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutApprovedByNestedInput
+  assignedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutAssignedToNestedInput
+  recordedDecisions?: Prisma.DecisionUncheckedUpdateManyWithoutRecordedByNestedInput
+  organizedMeetings?: Prisma.MeetingUncheckedUpdateManyWithoutOrganizerNestedInput
+  donations?: Prisma.DonationUncheckedUpdateManyWithoutUserNestedInput
+  eventRegistrations?: Prisma.EventRegistrationUncheckedUpdateManyWithoutUserNestedInput
+  eventCheckIns?: Prisma.EventCheckInUncheckedUpdateManyWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  notificationsAboutMe?: Prisma.NotificationUncheckedUpdateManyWithoutRelatedUserNestedInput
+  announcementsRead?: Prisma.AnnouncementReadUncheckedUpdateManyWithoutUserNestedInput
+  childrenMinistryMembers?: Prisma.ChildrenMinistryMemberUncheckedUpdateManyWithoutUserNestedInput
+  youthGroupMembers?: Prisma.YouthGroupMemberUncheckedUpdateManyWithoutUserNestedInput
+  staffRecord?: Prisma.StaffUncheckedUpdateOneWithoutUserNestedInput
+  mediaUploads?: Prisma.MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+  expenseSubmissions?: Prisma.ExpenseUncheckedUpdateManyWithoutSubmittedByNestedInput
+  expenseApprovals?: Prisma.ExpenseUncheckedUpdateManyWithoutApprovedByNestedInput
+  eventOrganizations?: Prisma.EventUncheckedUpdateManyWithoutOrganizerNestedInput
+  facilityBookings?: Prisma.FacilityBookingUncheckedUpdateManyWithoutUserNestedInput
+  childrenLeadership?: Prisma.ChildrenClassUncheckedUpdateManyWithoutLeaderNestedInput
+  childrenParent?: Prisma.ChildrenMinistryMemberUncheckedUpdateManyWithoutParentNestedInput
+  youthLeadership?: Prisma.YouthGroupUncheckedUpdateManyWithoutLeaderNestedInput
+  leadershipAssignments?: Prisma.LeadershipAssignmentUncheckedUpdateManyWithoutUserNestedInput
+  outreachOrganizations?: Prisma.OutreachUncheckedUpdateManyWithoutOrganizerNestedInput
+  outreachParticipations?: Prisma.OutreachParticipantUncheckedUpdateManyWithoutUserNestedInput
+  testimonyAuthors?: Prisma.OutreachTestimonyUncheckedUpdateManyWithoutAuthorNestedInput
+  projectDonations?: Prisma.ProjectDonationUncheckedUpdateManyWithoutUserNestedInput
+  projectUpdateAuthors?: Prisma.ProjectUpdateUncheckedUpdateManyWithoutAuthorNestedInput
+  documentUploads?: Prisma.DocumentUncheckedUpdateManyWithoutUploadedByNestedInput
+  presentations?: Prisma.PresentationUncheckedUpdateManyWithoutCreatedByNestedInput
+  assetAssignments?: Prisma.AssetUncheckedUpdateManyWithoutAssignedToNestedInput
+  leaveApprovals?: Prisma.LeaveUncheckedUpdateManyWithoutApprovedByNestedInput
+  appraisalReviews?: Prisma.PerformanceAppraisalUncheckedUpdateManyWithoutReviewedByNestedInput
+  recurringDonations?: Prisma.RecurringDonationUncheckedUpdateManyWithoutUserNestedInput
+  groupAttendances?: Prisma.GroupMeetingAttendanceUncheckedUpdateManyWithoutUserNestedInput
+  payrollProcessed?: Prisma.PayrollUncheckedUpdateManyWithoutProcessedByNestedInput
+  payslipsGenerated?: Prisma.PayslipUncheckedUpdateManyWithoutGeneratedByNestedInput
+  checksReceived?: Prisma.CheckUncheckedUpdateManyWithoutReceivedByNestedInput
+  checksDeposited?: Prisma.CheckUncheckedUpdateManyWithoutDepositedByNestedInput
+  checksDonated?: Prisma.CheckUncheckedUpdateManyWithoutDonorNestedInput
+  guestVisits?: Prisma.GuestVisitUncheckedUpdateManyWithoutGuestNestedInput
+  guestVisitsRecorded?: Prisma.GuestVisitUncheckedUpdateManyWithoutRecordedByNestedInput
+  guestFollowUps?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutGuestNestedInput
+  followUpsAssigned?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutAssignedToNestedInput
+  followUpsCreated?: Prisma.GuestFollowUpUncheckedUpdateManyWithoutCreatedByNestedInput
+  templatesCreated?: Prisma.CommunicationTemplateUncheckedUpdateManyWithoutCreatedByNestedInput
+  discipleshipEnrollments?: Prisma.DiscipleshipEnrollmentUncheckedUpdateManyWithoutUserNestedInput
+  mentorRelations?: Prisma.MentorshipUncheckedUpdateManyWithoutMentorNestedInput
+  menteeRelations?: Prisma.MentorshipUncheckedUpdateManyWithoutMenteeNestedInput
+  announcementAuthors?: Prisma.AnnouncementUncheckedUpdateManyWithoutAuthorNestedInput
+  discussionAuthors?: Prisma.GroupDiscussionUncheckedUpdateManyWithoutAuthorNestedInput
+  replyAuthors?: Prisma.GroupDiscussionReplyUncheckedUpdateManyWithoutAuthorNestedInput
+  groupLeadership?: Prisma.SmallGroupUncheckedUpdateManyWithoutLeaderNestedInput
+  campusPastor?: Prisma.CampusUncheckedUpdateManyWithoutPastorNestedInput
+  hostedGroupMeetings?: Prisma.GroupMeetingRotationUncheckedUpdateManyWithoutMemberNestedInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutAuthorNestedInput
+  prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  prayerRequestUpdates?: Prisma.PrayerRequestUpdateUncheckedUpdateManyWithoutAuthorNestedInput
+  conversations?: Prisma.ConversationParticipantUncheckedUpdateManyWithoutUserNestedInput
+  sentMessages?: Prisma.MessageUncheckedUpdateManyWithoutSenderNestedInput
+  messageReads?: Prisma.MessageReadUncheckedUpdateManyWithoutUserNestedInput
+  sentSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutSenderNestedInput
+  receivedSMS?: Prisma.SMSLogUncheckedUpdateManyWithoutRecipientNestedInput
+  surveys?: Prisma.SurveyUncheckedUpdateManyWithoutAuthorNestedInput
+  surveyResponses?: Prisma.SurveyResponseUncheckedUpdateManyWithoutUserNestedInput
+  forms?: Prisma.FormUncheckedUpdateManyWithoutAuthorNestedInput
+  formSubmissions?: Prisma.FormSubmissionUncheckedUpdateManyWithoutUserNestedInput
+  workflows?: Prisma.WorkflowUncheckedUpdateManyWithoutAuthorNestedInput
+  engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
+  connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
+  connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
 }
 
 export type UserCreateManyParentInput = {
@@ -56657,6 +57626,7 @@ export type UserUpdateWithoutParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutParentInput = {
@@ -56796,6 +57766,7 @@ export type UserUncheckedUpdateWithoutParentInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutParentInput = {
@@ -56984,6 +57955,7 @@ export type UserUpdateWithoutFamilyHeadInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFamilyHeadInput = {
@@ -57123,6 +58095,7 @@ export type UserUncheckedUpdateWithoutFamilyHeadInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutFamilyHeadInput = {
@@ -57360,6 +58333,7 @@ export type UserUpdateWithoutCampusInput = {
   engagementScores?: Prisma.MemberEngagementScoreUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCampusInput = {
@@ -57499,6 +58473,7 @@ export type UserUncheckedUpdateWithoutCampusInput = {
   engagementScores?: Prisma.MemberEngagementScoreUncheckedUpdateManyWithoutUserNestedInput
   connections?: Prisma.MemberConnectionUncheckedUpdateManyWithoutUserNestedInput
   connectedTo?: Prisma.MemberConnectionUncheckedUpdateManyWithoutConnectedUserNestedInput
+  approvedSponsorships?: Prisma.SponsorshipUncheckedUpdateManyWithoutApprovedByNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutCampusInput = {
@@ -57643,6 +58618,7 @@ export type UserCountOutputType = {
   engagementScores: number
   connections: number
   connectedTo: number
+  approvedSponsorships: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -57733,6 +58709,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   engagementScores?: boolean | UserCountOutputTypeCountEngagementScoresArgs
   connections?: boolean | UserCountOutputTypeCountConnectionsArgs
   connectedTo?: boolean | UserCountOutputTypeCountConnectedToArgs
+  approvedSponsorships?: boolean | UserCountOutputTypeCountApprovedSponsorshipsArgs
 }
 
 /**
@@ -58354,6 +59331,13 @@ export type UserCountOutputTypeCountConnectedToArgs<ExtArgs extends runtime.Type
   where?: Prisma.MemberConnectionWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountApprovedSponsorshipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SponsorshipWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -58497,6 +59481,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   engagementScores?: boolean | Prisma.User$engagementScoresArgs<ExtArgs>
   connections?: boolean | Prisma.User$connectionsArgs<ExtArgs>
   connectedTo?: boolean | Prisma.User$connectedToArgs<ExtArgs>
+  approvedSponsorships?: boolean | Prisma.User$approvedSponsorshipsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -58754,6 +59739,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   engagementScores?: boolean | Prisma.User$engagementScoresArgs<ExtArgs>
   connections?: boolean | Prisma.User$connectionsArgs<ExtArgs>
   connectedTo?: boolean | Prisma.User$connectedToArgs<ExtArgs>
+  approvedSponsorships?: boolean | Prisma.User$approvedSponsorshipsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -58866,6 +59852,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     engagementScores: Prisma.$MemberEngagementScorePayload<ExtArgs>[]
     connections: Prisma.$MemberConnectionPayload<ExtArgs>[]
     connectedTo: Prisma.$MemberConnectionPayload<ExtArgs>[]
+    approvedSponsorships: Prisma.$SponsorshipPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -59403,6 +60390,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   engagementScores<T extends Prisma.User$engagementScoresArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$engagementScoresArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberEngagementScorePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   connections<T extends Prisma.User$connectionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$connectionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   connectedTo<T extends Prisma.User$connectedToArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$connectedToArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberConnectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  approvedSponsorships<T extends Prisma.User$approvedSponsorshipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$approvedSponsorshipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SponsorshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -62093,6 +63081,30 @@ export type User$connectedToArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   distinct?: Prisma.MemberConnectionScalarFieldEnum | Prisma.MemberConnectionScalarFieldEnum[]
+}
+
+/**
+ * User.approvedSponsorships
+ */
+export type User$approvedSponsorshipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Sponsorship
+   */
+  select?: Prisma.SponsorshipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Sponsorship
+   */
+  omit?: Prisma.SponsorshipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SponsorshipInclude<ExtArgs> | null
+  where?: Prisma.SponsorshipWhereInput
+  orderBy?: Prisma.SponsorshipOrderByWithRelationInput | Prisma.SponsorshipOrderByWithRelationInput[]
+  cursor?: Prisma.SponsorshipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SponsorshipScalarFieldEnum | Prisma.SponsorshipScalarFieldEnum[]
 }
 
 /**
